@@ -1,0 +1,38 @@
+$color1: #5271c2;
+$color2: #35a541;
+$color3: #bdb235;
+$color4: #db6623;
+$color5: #3e5eb3;
+$color6: #aa9e5c;
+
+@function longshadow($color_a,$color_b,$stepnum, $opacity: 1) {
+  $gradient_steps: null;
+  @for $i from 1 through $stepnum {
+    $weight: ( ($i - 1) / $stepnum) * 100;
+    $colour_mix: mix($color_b, rgba($color_a, $opacity), $weight);
+    $seperator: null;
+    @if ($i != $stepnum) {
+      $seperator: #{','};
+    }
+    $gradient_steps: append(
+      #{$gradient_steps},
+      #{$i}px #{$i}px $colour_mix $seperator
+    );
+  }
+  @return $gradient_steps;
+}
+.logo__bg {
+  background: $color3;
+  display: flex;
+  width: 60px;
+  height: 60px;
+}
+.logo {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: longshadow(darken($color3, 15%), $color3, 10, 0.8);
+}
