@@ -2,12 +2,25 @@ import React from "react";
 import "./navi.scss";
 
 const Navi = () => {
+  const onMouseOver = el => {
+    console.log(el);
+    console.log(el.target);
+    console.log("test");
+  };
   return (
-    <ul className="navi">
-      <li>Home</li>
-      <li>About Me</li>
-      <li>Blog</li>
-    </ul>
+    <nav className="navi">
+      <ul>
+        <a href="./">
+          <li onMouseOver={onMouseOver}>Home</li>
+        </a>
+        <a href="./">
+          <li onMouseOver={onMouseOver}>About Me</li>
+        </a>
+        <a href="">
+          <li onMouseOver={onMouseOver}>Blog</li>
+        </a>
+      </ul>
+    </nav>
   );
 };
 

@@ -1,6 +1,6 @@
 $color1: #5271c2;
 $color2: #35a541;
-$color3: #bdb235;
+$color3: #f1c40f;
 $color4: #db6623;
 $color5: #3e5eb3;
 $color6: #aa9e5c;
@@ -12,7 +12,7 @@ $color6: #aa9e5c;
     $colour_mix: mix($color_b, rgba($color_a, $opacity), $weight);
     $seperator: null;
     @if ($i != $stepnum) {
-      $seperator: #{','};
+      $seperator: #{","};
     }
     $gradient_steps: append(
       #{$gradient_steps},
