@@ -6,8 +6,14 @@ import Logo from "./logo";
 import Navi from "./navi";
 import "./header.scss";
 import "./index.scss";
+import WebFont from "webfontloader";
 
-const Header = () =>
+WebFont.load({
+  google: {
+    families: ["Raleway"]
+  }
+});
+const Header = () => (
   <div
     style={{
       marginBottom: "1.45rem"
@@ -21,9 +27,10 @@ const Header = () =>
       </h1>
       <Navi />
     </div>
-  </div>;
+  </div>
+);
 
-const TemplateWrapper = ({ children }) =>
+const TemplateWrapper = ({ children }) => (
   <div className="bg">
     <Helmet
       title="Gatsby Default Starter"
@@ -43,7 +50,8 @@ const TemplateWrapper = ({ children }) =>
     >
       {children()}
     </div>
-  </div>;
+  </div>
+);
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func

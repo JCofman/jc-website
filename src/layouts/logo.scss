@@ -24,15 +24,20 @@ $color6: #aa9e5c;
 .logo__bg {
   background: $color3;
   display: flex;
+  text-align: center;
+  justify-content: center;
   width: 60px;
   height: 60px;
 }
 .logo {
   color: white;
   display: flex;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 100;
   align-items: center;
   justify-content: center;
   text-align: center;
   text-decoration: none;
-  text-shadow: longshadow(darken($color3, 15%), $color3, 10, 0.8);
+  text-shadow: longshadow(darken($color3, 15%), $color3, 7, 0.8);
 }

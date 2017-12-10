@@ -1,12 +1,43 @@
-import React from 'react'
-import Link from 'gatsby-link'
+import React from "react";
+import Link from "gatsby-link";
 
-const IndexPage = () =>
-  <div>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-  </div>
+const IndexPage = ({ data }) => {
+  const { edges } = data.allMarkdownRemark;
+  return (
+    <div>
+      <h1>Hi people</h1>
+      <p>Welcome to your new Gatsby site.</p>
+      {edges.map(({ node: post }) => {
+        const { frontmatter } = post;
+        return (
+          <div>
+            <h2>
+              <Link to={frontmatter.path}>{frontmatter.title}</Link>
+            </h2>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
-export default IndexPage
+export const query = graphql`
+  query IndexQuery {
+    allMarkdownRemark {
+      totalCount
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            date(formatString: "MMMM DD, YYYY")
+            path
+            tags
+            excerpt
+          }
+        }
+      }
+    }
+  }
+`;
+export default IndexPage;
