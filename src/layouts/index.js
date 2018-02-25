@@ -6,13 +6,16 @@ import Logo from "./logo";
 import Navi from "./navi";
 import "./header.scss";
 import "./index.scss";
-import WebFont from "webfontloader";
 
-WebFont.load({
-  google: {
-    families: ["Raleway"]
-  }
-});
+if (typeof window !== `undefined`) {
+  const WebFont = require("webfontloader");
+  WebFont.load({
+    google: {
+      families: ["Raleway"]
+    }
+  });
+}
+
 const Header = () => (
   <div
     style={{

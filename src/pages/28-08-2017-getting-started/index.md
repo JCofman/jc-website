@@ -6,6 +6,15 @@ tags: [first]
 excerpt: "this is a test"
 ---
 
-#yehaaaa
+# Start fast keep be faster
 
-Oooooh-weeee, my first blog post!
+The story behind this post is a classical one. I am a web developer who had bought a domain, server and started a blog. But killed it after a year or so. I think that happens really often 🙈. But I will try it againg and start this blog by also talking about it.
+
+Its actually a pretty shinny eraaa when you are a web developer especiall in the JavaScript scene. There is a lot going on.
+Use a fast base and embrace all the Open Source performance tools to not get slower
+
+gatsbyjs
+lighthouse
+sitespeed io recently also used in gitlab integation
+bundlesize
+webpagetest
