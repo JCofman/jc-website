@@ -16,6 +16,10 @@
     "webfontloader": "^1.6.28"
   },
   "keywords": ["gatsby"],
+  "now": {
+    "name": "jcofman",
+    "alias": "jcofman.now.sh"
+  },
   "license": "MIT",
   "main": "n/a",
   "scripts": {
@@ -26,7 +30,7 @@
     "start": "serve public/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "now -e NODE_ENV=production --token $NOW_TOKEN --npm",
-    "alias": "now alias jcofman"
+    "alias": "now alias --token=$NOW_TOKEN"
   },
   "devDependencies": {
     "prettier": "^1.10.2"
