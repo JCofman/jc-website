@@ -24,9 +24,11 @@
     "format":
       "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js'",
     "start": "serve public/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "now -e NODE_ENV=production --token $NOW_TOKEN --npm",
+    "alias": "now alias jcofman"
   },
   "devDependencies": {
-    "prettier": "^1.9.1"
+    "prettier": "^1.10.2"
   }
 }
