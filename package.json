@@ -4,15 +4,15 @@
   "version": "1.0.0",
   "author": "Jacob Cofman <cofman.jacob@gmail.com>",
   "dependencies": {
-    "gatsby": "^1.9.214",
+    "gatsby": "^1.9.222",
     "gatsby-cli": "^1.1.44",
-    "gatsby-link": "^1.6.37",
-    "gatsby-plugin-react-helmet": "^2.0.5",
-    "gatsby-plugin-sass": "^1.0.17",
-    "gatsby-source-filesystem": "^1.5.23",
-    "gatsby-transformer-remark": "^1.7.33",
+    "gatsby-link": "^1.6.38",
+    "gatsby-plugin-react-helmet": "^2.0.6",
+    "gatsby-plugin-sass": "^1.0.18",
+    "gatsby-source-filesystem": "^1.5.25",
+    "gatsby-transformer-remark": "^1.7.34",
     "react-helmet": "^5.2.0",
-    "serve": "^6.5.0",
+    "serve": "^6.5.1",
     "webfontloader": "^1.6.28"
   },
   "keywords": ["gatsby"],
@@ -33,6 +33,7 @@
     "alias": "now alias --token=$NOW_TOKEN"
   },
   "devDependencies": {
+    "now": "^10.1.4",
     "prettier": "^1.10.2"
   }
 }
