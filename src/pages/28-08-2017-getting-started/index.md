@@ -14,7 +14,10 @@ Its actually a pretty shinny eraaa when you are a web developer especiall in the
 Use a fast base and embrace all the Open Source performance tools to not get slower
 
 gatsbyjs
-lighthouse
+[lighthouse](https://github.com/ebidel/lighthouse-ci)
+1.add lighthouse 
+
+
 sitespeed io recently also used in gitlab integation
 bundlesize
 webpagetest

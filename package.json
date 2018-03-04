@@ -15,7 +15,9 @@
     "serve": "^6.5.1",
     "webfontloader": "^1.6.28"
   },
-  "keywords": ["gatsby"],
+  "keywords": [
+    "gatsby"
+  ],
   "now": {
     "name": "jcofman",
     "alias": "jcofman.now.sh"
@@ -25,14 +27,15 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format":
-      "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js'",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js'",
     "start": "serve public/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "now -e NODE_ENV=production --token $NOW_TOKEN --npm --public",
-    "alias": "now alias --token=$NOW_TOKEN"
+    "alias": "now alias --token=$NOW_TOKEN",
+    "lh": "lighthouse-ci"
   },
   "devDependencies": {
+    "lighthouse-ci": "git+https://github.com/ebidel/lighthouse-ci.git",
     "now": "^10.1.4",
     "prettier": "^1.10.2"
   }
