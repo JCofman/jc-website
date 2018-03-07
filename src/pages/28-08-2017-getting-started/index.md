@@ -15,8 +15,8 @@ Use a fast base and embrace all the Open Source performance tools to not get slo
 
 gatsbyjs
 [lighthouse](https://github.com/ebidel/lighthouse-ci)
-1.add lighthouse 
-
+1.add lighthouse
+First we want to automate the deployment process now makes it pretty easy to test all our changes on perf aspects before mergin pull requests. it generates a custom url for al deployments.
 
 sitespeed io recently also used in gitlab integation
 bundlesize

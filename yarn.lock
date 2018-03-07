@@ -3344,28 +3344,6 @@ gatsby-1-config-css-modules@^1.0.10:
   dependencies:
     babel-runtime "^6.26.0"
 
-gatsby-cli@^1.1.44:
-  version "1.1.44"
-  resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-1.1.44.tgz#74c881e01e09d406bb8cd81d3397c2950d3560d9"
-  dependencies:
-    babel-code-frame "^6.26.0"
-    babel-runtime "^6.26.0"
-    bluebird "^3.5.0"
-    common-tags "^1.4.0"
-    convert-hrtime "^2.0.0"
-    core-js "^2.5.0"
-    execa "^0.8.0"
-    fs-extra "^4.0.1"
-    hosted-git-info "^2.5.0"
-    lodash "^4.17.4"
-    pretty-error "^2.1.1"
-    resolve-cwd "^2.0.0"
-    source-map "^0.5.7"
-    stack-trace "^0.0.10"
-    update-notifier "^2.3.0"
-    yargs "^8.0.2"
-    yurnalist "^0.2.1"
-
 gatsby-cli@^1.1.45:
   version "1.1.45"
   resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-1.1.45.tgz#d68f780bc861130c9afe7dae7cd5bdb665b0f05a"
@@ -3430,9 +3408,9 @@ gatsby-react-router-scroll@^1.0.12:
     scroll-behavior "^0.9.9"
     warning "^3.0.0"
 
-gatsby-source-filesystem@^1.5.25:
-  version "1.5.25"
-  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-1.5.25.tgz#51c08f9812d3d8554721df4e32a0cdd12eccb0cd"
+gatsby-source-filesystem@^1.5.26:
+  version "1.5.26"
+  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-1.5.26.tgz#1901649fddf31e8fab35b94aefb9e16af81f01a0"
   dependencies:
     babel-cli "^6.26.0"
     babel-runtime "^6.26.0"
@@ -3471,9 +3449,9 @@ gatsby-transformer-remark@^1.7.34:
     unist-util-select "^1.5.0"
     unist-util-visit "^1.1.1"
 
-gatsby@^1.9.222:
-  version "1.9.222"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-1.9.222.tgz#691af7d75f3baa4a15610d9c636eb36a050c140c"
+gatsby@^1.9.223:
+  version "1.9.223"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-1.9.223.tgz#1bf9416cd6a6ceccb1f74da7f0eb10f16fb8010b"
   dependencies:
     async "^2.1.2"
     babel-code-frame "^6.22.0"
@@ -4901,6 +4879,13 @@ liftoff@^2.2.0:
     rechoir "^0.6.2"
     resolve "^1.1.7"
 
+"lighthouse-ci@git+https://github.com/ebidel/lighthouse-ci.git":
+  version "0.0.2"
+  resolved "git+https://github.com/ebidel/lighthouse-ci.git#229c426b1dc1c60bf51e9247bae9b3266ce917a1"
+  dependencies:
+    minimist "^1.2.0"
+    node-fetch "^1.7.3"
+
 linked-list@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/linked-list/-/linked-list-0.1.0.tgz#798b0ff97d1b92a4fd08480f55aea4e9d49d37bf"
@@ -5551,6 +5536,13 @@ node-eta@^0.9.0:
 node-fetch@^1.0.1:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.1.tgz#899cb3d0a3c92f952c47f1b876f4c8aeabd400d5"
+  dependencies:
+    encoding "^0.1.11"
+    is-stream "^1.0.1"
+
+node-fetch@^1.7.3:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
   dependencies:
     encoding "^0.1.11"
     is-stream "^1.0.1"
@@ -6736,9 +6728,9 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prettier@^1.10.2:
-  version "1.10.2"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.10.2.tgz#1af8356d1842276a99a5b5529c82dd9e9ad3cc93"
+prettier@^1.11.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.11.1.tgz#61e43fc4cd44e68f2b0dfc2c38cd4bb0fccdcc75"
 
 prettier@^1.3.1:
   version "1.5.3"
