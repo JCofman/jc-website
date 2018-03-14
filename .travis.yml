@@ -4,7 +4,7 @@ node_js:
 cache: npm
 
 script: 
-  - NOW_URL="$(npm run deploy)"
+  - NOW_URL="$(now --public -e NODE_ENV=production --token $NOW_TOKEN --yarn)"
   - echo $NOW_URL
   # store deployment url from clipboard into the deployment url 
 after_script: 
