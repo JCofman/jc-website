@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "lighthouse-ci": "git+https://github.com/ebidel/lighthouse-ci.git",
-    "now": "^10.1.4",
+    "now": "^10.1.6",
     "prettier": "^1.11.1"
   }
 }

@@ -9,9 +9,10 @@ addons:
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y xclip
+  - sudo apt-get install -y xsel
 script: 
-  - npm run deploy 
-  - echo $NOW_URL
+  - npm run deploy
+  - NOW_URL=xsel --clipboard --output
   # store deployment url from clipboard into the deployment url 
 after_script: 
   # https://graysonkoonce.com/getting-the-current-branch-name-during-a-pull-request-in-travis-ci/
