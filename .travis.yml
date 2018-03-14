@@ -2,13 +2,17 @@ language: node_js
 node_js:
 - node
 cache: npm
-script: npm run deploy 
-after_script: 
+script: 
+  - npm run deploy 
   # store deployment url from clipboard into the deployment url 
-  - currentDeploymentUrl=$(xclip -selection clipboard -o)
+  - CURRENTDEPLOYMENTURL=$(xclip -selection clipboard -o)
+after_script: 
+  # https://graysonkoonce.com/getting-the-current-branch-name-during-a-pull-request-in-travis-ci/
+  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
   # alias url only when deploying master branch
-  - $TRAVIS_BRANCH = "master" && npm run alias 
-  - npm run lh $currentDeploymentUrl
+  - $BRANCH=master && npm run alias 
+  - npm run lh $CURRENTDEPLOYMENTURL
 addons:
   apt:
     packages:
