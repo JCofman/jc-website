@@ -11,16 +11,16 @@ before_install:
   - sudo apt-get install -y xclip
 script: 
   - npm run deploy 
+  - echo $NOW_URL
   # store deployment url from clipboard into the deployment url 
-  - CURRENTDEPLOYMENTURL=$(xclip -selection clipboard -o)
 after_script: 
   # https://graysonkoonce.com/getting-the-current-branch-name-during-a-pull-request-in-travis-ci/
   - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
   - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
   # alias url only when deploying master branch
-  - if [ $BRANCH= = master ]; then npm run alias; fi
+  - if [ $BRANCH = master ]; then npm run alias; fi
  # - $BRANCH=master && npm run alias 
-  - npm run lh $CURRENTDEPLOYMENTURL
+  - npm run lh $NOW_URL
 
 env:
   global:
