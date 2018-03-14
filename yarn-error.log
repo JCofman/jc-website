@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/jcofman/.nvm/versions/node/v9.3.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js deploy
+  /Users/jcofman/.nvm/versions/node/v9.3.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js add bundlesize
 
 PATH: 
   /Users/jcofman/.yarn-0.27.5/bin:/Users/jcofman/.nvm/versions/node/v9.3.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/jcofman/Go/bin:/usr/local/opt/go/libexec/bin
@@ -9357,16 +9357,8 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/zwitch/-/zwitch-1.0.2.tgz#9b059541bfa844799fe2d903bde609de2503a041"
 
 Trace: 
-  Error: Command failed.
-  Exit code: 1
-  Command: sh
-  Arguments: -c now --public -e NODE_ENV=production --token $NOW_TOKEN --yarn
-  Directory: /Users/jcofman/Documents/git/jc-gatsby-site
-  Output:
-  
-      at ProcessTermError.MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
-      at new ProcessTermError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:226:113)
-      at ChildProcess.<anonymous> (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:30281:17)
-      at ChildProcess.emit (events.js:159:13)
-      at maybeClose (internal/child_process.js:943:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:220:5)
+  Error: https://registry.yarnpkg.com/bundlesize: ETIMEDOUT
+      at Timeout._onTimeout (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:133094:19)
+      at ontimeout (timers.js:466:11)
+      at tryOnTimeout (timers.js:304:5)
+      at Timer.listOnTimeout (timers.js:264:5)

@@ -28,7 +28,7 @@
     "format":
       "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js'",
     "start": "serve public/",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "bundlesize",
     "deploy": "now --public -e NODE_ENV=production --token $NOW_TOKEN --yarn",
     "alias": "now alias --token=$NOW_TOKEN",
     "lh": "lighthouse-ci"
@@ -37,5 +37,15 @@
     "lighthouse-ci": "git+https://github.com/ebidel/lighthouse-ci.git",
     "now": "^10.1.6",
     "prettier": "^1.11.1"
-  }
+  },
+  "bundlesize": [
+    {
+      "path": "./build/*.js",
+      "maxSize": "250 kB"
+    },
+    {
+      "path": "./build/*.css",
+      "maxSize": "50 kB"
+    }
+  ]
 }
