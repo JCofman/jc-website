@@ -4,7 +4,8 @@ node_js:
 cache: npm
 
 script: 
-  - export NOW_URL=`npm run deploy`
+  - NOW_URL="$(npm run deploy)"
+  - echo $NOW_URL
   # store deployment url from clipboard into the deployment url 
 after_script: 
   # https://graysonkoonce.com/getting-the-current-branch-name-during-a-pull-request-in-travis-ci/
