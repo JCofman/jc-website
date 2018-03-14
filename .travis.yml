@@ -6,11 +6,14 @@ addons:
   apt:
     packages:
       - xclip
+      - xsel
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y xclip
   - sudo apt-get install -y xsel
 script: 
+  - echo "Hallo Welt" | xsel -bi 
+  - xsel -bo 
   - npm run deploy
   - NOW_URL=xsel --clipboard --output
   # store deployment url from clipboard into the deployment url 
