@@ -2,6 +2,13 @@ language: node_js
 node_js:
 - node
 cache: npm
+addons:
+  apt:
+    packages:
+      - xclip
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y xclip
 script: 
   - npm run deploy 
   # store deployment url from clipboard into the deployment url 
@@ -11,12 +18,10 @@ after_script:
   - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
   - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
   # alias url only when deploying master branch
-  - $BRANCH=master && npm run alias 
+  - if [ $BRANCH= = master ]; then npm run alias; fi
+ # - $BRANCH=master && npm run alias 
   - npm run lh $CURRENTDEPLOYMENTURL
-addons:
-  apt:
-    packages:
-      - xclip
+
 env:
   global:
   - secure: fz3Aud9IxEtyZ6RYoMUXuXtF4VZMhiQRSXgivK1yxLpjSM/jjNWsbf8enOpegs33nxWu2tRH87WvqtG2Wn2vvrupzCA/9i4uurMgve6bunwGaIlKPgChb+bSJPwzhn7m15dyG34GYMOL8358QjwU/GFPV2yrEB88phRp6OCCHuFkFsGdTWn2NaHrl0v1VvGkRS8U/TzOjHhMwfWwIoSaStA8rDQrmxWwqxllnBIDWulVbSCP5Oy7/VbPAgZHt1BqNRvwAVxyGVLXtuTOOyFDlv4excRHFlxkmFKDcmod/4M+INPyIxiPsJzK/yLNd2iddyHzKhtLKmAM7ILrbVZwOgodHKyF0dRLOo0I3+fjLrVy9IOTHUabTEOESna8ErPeoqYbACWl5+MPjKSEbm2MOQFjKn4KnfN4tbzzu/Sp5yNwf6fXtPjbfHa9M/pDURGMFlECuV9rePilnEsyRccg1vR+SzRv4pT8wpGL8L2d3+o3boqTtC6w3fpS23nleLwE1tVn9NZYxE38MB3njI/k61VHkOo9R2SyiqHQTC/Z8hjmNuEbwiEypK+KJcjap4ytcpz1tQxXAFppyjtWxFOAY630pY6EkmKRAI8lgtArBwIqB5hIBBKUff6cMC/7lgtzysvv41hDGpdgU0U8gguGygFmUUwaQu156M+kVbTrwr4=
