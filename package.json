@@ -4,13 +4,13 @@
   "version": "1.0.0",
   "author": "Jacob Cofman <cofman.jacob@gmail.com>",
   "dependencies": {
-    "gatsby": "^1.9.232",
-    "gatsby-cli": "^1.1.45",
+    "gatsby": "^1.9.237",
+    "gatsby-cli": "^1.1.46",
     "gatsby-link": "^1.6.39",
-    "gatsby-plugin-react-helmet": "^2.0.7",
-    "gatsby-plugin-sass": "^1.0.21",
+    "gatsby-plugin-react-helmet": "^2.0.8",
+    "gatsby-plugin-sass": "^1.0.23",
     "gatsby-source-filesystem": "^1.5.27",
-    "gatsby-transformer-remark": "^1.7.36",
+    "gatsby-transformer-remark": "^1.7.37",
     "react-helmet": "^5.2.0",
     "serve": "^6.5.3",
     "webfontloader": "^1.6.28"
@@ -28,14 +28,25 @@
     "format":
       "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js'",
     "start": "serve public/",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "bundlesize",
     "deploy": "now --public -e NODE_ENV=production --token $NOW_TOKEN --yarn",
     "alias": "now alias --token=$NOW_TOKEN",
     "lh": "lighthouse-ci"
   },
   "devDependencies": {
+    "bundlesize": "^0.16.0",
     "lighthouse-ci": "git+https://github.com/ebidel/lighthouse-ci.git",
     "now": "^10.1.6",
     "prettier": "^1.11.1"
-  }
+  },
+  "bundlesize": [
+    {
+      "path": "./public/*.js",
+      "maxSize": "100 kB"
+    },
+    {
+      "path": "./public/*.css",
+      "maxSize": "10 kB"
+    }
+  ]
 }
