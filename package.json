@@ -28,7 +28,7 @@
     "format":
       "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js'",
     "start": "serve public/",
-    "test": "bundlesize",
+    "test": "bundlesize && size-limit",
     "deploy": "now --public -e NODE_ENV=production --token $NOW_TOKEN --yarn",
     "alias": "now alias --token=$NOW_TOKEN",
     "lh": "lighthouse-ci"
@@ -36,17 +36,26 @@
   "devDependencies": {
     "bundlesize": "^0.16.0",
     "lighthouse-ci": "git+https://github.com/ebidel/lighthouse-ci.git",
-    "now": "^10.1.6",
-    "prettier": "^1.11.1"
+    "now": "^10.2.1",
+    "prettier": "^1.11.1",
+    "size-limit": "^0.17.0"
   },
   "bundlesize": [
     {
-      "path": "./public/*.js",
-      "maxSize": "100 kB"
+      "path": "./public/component*.js",
+      "maxSize": "55 kB"
     },
     {
       "path": "./public/*.css",
       "maxSize": "10 kB"
+    }
+  ],
+
+  "size-limit": [
+    {
+      "path": "./public/*.js",
+      "webpack": false,
+      "limit": "250 KB"
     }
   ]
 }
