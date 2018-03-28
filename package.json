@@ -4,13 +4,13 @@
   "version": "1.0.0",
   "author": "Jacob Cofman <cofman.jacob@gmail.com>",
   "dependencies": {
-    "gatsby": "^1.9.237",
-    "gatsby-cli": "^1.1.46",
-    "gatsby-link": "^1.6.39",
+    "gatsby": "^1.9.243",
+    "gatsby-cli": "^1.1.49",
+    "gatsby-link": "^1.6.40",
     "gatsby-plugin-react-helmet": "^2.0.8",
-    "gatsby-plugin-sass": "^1.0.23",
+    "gatsby-plugin-sass": "^1.0.25",
     "gatsby-source-filesystem": "^1.5.27",
-    "gatsby-transformer-remark": "^1.7.37",
+    "gatsby-transformer-remark": "^1.7.39",
     "react-helmet": "^5.2.0",
     "serve": "^6.5.3",
     "webfontloader": "^1.6.28"
@@ -31,12 +31,12 @@
     "test": "bundlesize && size-limit",
     "deploy": "now --public -e NODE_ENV=production --token $NOW_TOKEN --yarn",
     "alias": "now alias --token=$NOW_TOKEN",
-    "lh": "lighthouse-ci"
+    "lh": "lighthouse-ci --score=90"
   },
   "devDependencies": {
-    "bundlesize": "^0.16.0",
+    "bundlesize": "^0.17.0",
     "lighthouse-ci": "git+https://github.com/ebidel/lighthouse-ci.git",
-    "now": "^10.2.1",
+    "now": "^10.2.2",
     "prettier": "^1.11.1",
     "size-limit": "^0.17.0"
   },

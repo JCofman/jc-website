@@ -3,7 +3,7 @@ path: "/performance"
 date: "2017-07-12T17:12:33.962Z"
 title: "Start fast, be fast, keep fast!"
 tags: [performance, fast, web]
-excerpt: "this is a test"
+excerpt: "This post will show you how you can leverage some basic and some more advanced tools when starting a web frontend project, so that your project will start fast, be fast and keep fast."
 ---
 
 # Start fast, be fast, keep fast!
@@ -14,10 +14,44 @@ tl;dr
 * its much easier to run perf tools on public projects which are hosted on github ( which is often not the case for most a lot of sites.... maybe thats the reason why many popular sites are not as fast as they can be)
 * use the tools and contribute back :)
 
-I am a passionate developer especially for the visual parts of a software who had bought a domain, a server and started a blog. But shut it down after a year or so. When I asked several of my colleagues they all told me that they had started a blog while back ago and closed it... I think that happens really to a lot of us 🙈. But I want to try it again and start this blog by also talking about topics which fascinate me it. The last time I have started to create a website I have lost the interessed and passion about the site pretty fast. I didn't have improve or develope it furthermore. Now I want to start again and share some knowledge and my opinions on diffrerent topics since I have recognized that when I write things down I feel that I can keep the knowledge.
+I am a passionate web developer who had (not only) once bought a domain, a server and started a blog. But I shut it down after usually some months or so. When I asked several of my colleagues which work in the same industry as I do man of them told me that they had started a blog while back ago and closed it several months later (like me).
 
-Its actually a pretty shinny eraaa when you are a web developer especiall in the JavaScript scene. There is a lot going on.
+In conclusion I think that happens to a lot of people 🙈. But I want to try it again and start this blog by also talking about topics which fascinate me it. The last time I have started to create a website I have lost the interessed and passion about the my own site pretty fast. I didn't have improve or develope it furthermore after I had finalized it. Now I want to start again and share some knowledge and my opinions on diffrerent topics since I have recognized that when I write things down I feel that I can keep the knowledge much better.
+
+## Okay so lets get it started
+
+Its actually a pretty shinny era when you are a web developer especially in the JavaScript scene. There are a lot of things going on.
 Use a fast base and embrace all the Open Source performance tools to not get slower
+
+Before I can get started creating the blog I want to make sure to setup all the web dev performance tools which I think are helpful to measure different aspects of web performance. I want to make sure that the blog is accessible to everyone so it should be fast, bulletprof, seo optimized so people can actually find it...
+
+### Setting the baseline
+
+If you want all the things mentioned above you have to make sure that these things get tested regularly while developing your stuff. So what I want to do is to run different CI jobs which analyse my site after I deploy a change. I decided to create my blog based on gatsby since it uses react and some other fancy new tech which I have some more or less familarity with and as mentioned by several blog posts is super fast. So what I did first was to measure the starting point when creating a new project with gatsby-cli. I use lighthouse which is develpped by google to measure the baseline for gatsby.
+
+* first install gatsby-cli
+
+```js
+npm install --global gatsby-cli //or
+yarn add gatsby-cli --global
+```
+
+* create a new gatsby side
+
+```js
+gatsby new gatsby-site
+```
+
+* build and serve the production a production build (so that all the js, css files get bundled minified and served by a local server)
+
+```js
+gatsby build
+gatsby serve
+```
+
+this will boot up a server which hosts your statical stuff. Now we want to measure how fast gatsby-js is at the begining of a project. Be aware this measurement uses a site provisioned by gatsby-cli v.1.1.48.
+
+So when
 
 ## First Automate the build process
 

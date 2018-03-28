@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/jcofman/.nvm/versions/node/v9.3.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js run size-limit
+  /Users/jcofman/.nvm/versions/node/v9.3.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js test
 
 PATH: 
   /Users/jcofman/.yarn-0.27.5/bin:/Users/jcofman/.nvm/versions/node/v9.3.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/jcofman/Go/bin:/usr/local/opt/go/libexec/bin
@@ -20,11 +20,11 @@ npm manifest:
     "version": "1.0.0",
     "author": "Jacob Cofman <cofman.jacob@gmail.com>",
     "dependencies": {
-      "gatsby": "^1.9.237",
-      "gatsby-cli": "^1.1.46",
+      "gatsby": "^1.9.241",
+      "gatsby-cli": "^1.1.48",
       "gatsby-link": "^1.6.39",
       "gatsby-plugin-react-helmet": "^2.0.8",
-      "gatsby-plugin-sass": "^1.0.23",
+      "gatsby-plugin-sass": "^1.0.24",
       "gatsby-source-filesystem": "^1.5.27",
       "gatsby-transformer-remark": "^1.7.37",
       "react-helmet": "^5.2.0",
@@ -47,30 +47,31 @@ npm manifest:
       "test": "bundlesize && size-limit",
       "deploy": "now --public -e NODE_ENV=production --token $NOW_TOKEN --yarn",
       "alias": "now alias --token=$NOW_TOKEN",
-      "lh": "lighthouse-ci"
+      "lh": "lighthouse-ci --score=90"
     },
     "devDependencies": {
-      "bundlesize": "^0.16.0",
+      "bundlesize": "^0.17.0",
       "lighthouse-ci": "git+https://github.com/ebidel/lighthouse-ci.git",
-      "now": "^10.1.6",
+      "now": "^10.2.1",
       "prettier": "^1.11.1",
       "size-limit": "^0.17.0"
     },
     "bundlesize": [
       {
-        "path": "./public/*.js",
-        "maxSize": "100 kB"
+        "path": "./public/component*.js",
+        "maxSize": "55 kB"
       },
       {
         "path": "./public/*.css",
         "maxSize": "10 kB"
       }
     ],
+  
     "size-limit": [
       {
         "path": "./public/*.js",
         "webpack": false,
-        "limit": "9 KB"
+        "limit": "250 KB"
       }
     ]
   }
@@ -10291,9 +10292,9 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 3
+  Exit code: 1
   Command: sh
-  Arguments: -c /Users/jcofman/Documents/git/jc-gatsby-site/node_modules/.bin/size-limit
+  Arguments: -c bundlesize && size-limit
   Directory: /Users/jcofman/Documents/git/jc-gatsby-site
   Output:
   
