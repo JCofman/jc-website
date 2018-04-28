@@ -1,4 +1,4 @@
-var GitHubApi = require("github");
+var GitHubApi = require("@octokit/rest");
 var webPageTest = require("webpagetest");
 
 if (
@@ -22,17 +22,7 @@ var dataAsMarkdown = "";
 const testURL = process.env.TEST_URL;
 
 // init github
-var github = new GitHubApi({
-  debug: true,
-  protocol: "https",
-  host: "api.github.com",
-  headers: {
-    "user-agent": "My-Cool-GitHub-App"
-  },
-  Promise: require("bluebird"),
-  followRedirects: false,
-  timeout: 5000
-});
+var github = new GitHubApi();
 
 github.authenticate({ type: "oauth", token: process.env.GIT_TOKEN });
 
@@ -195,7 +185,7 @@ ${result.data.median.repeatView.videoFrames
       return github.repos.createCommitComment({
         owner: myOwner,
         repo: myRepo,
-        sha: allCommits[0].sha,
+        sha: allCommits.data[0].sha,
         body: dataAsMarkdown
       });
     })

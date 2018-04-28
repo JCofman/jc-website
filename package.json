@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "bundlesize": "^0.17.0",
-    "github": "^7.3.2",
+    "@octokit/rest": "^15.2.6",
     "lighthouse-ci": "git+https://github.com/ebidel/lighthouse-ci.git",
     "now": "^11.1.7",
     "prettier": "^1.12.1",
