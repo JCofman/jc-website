@@ -41,7 +41,8 @@ wpt.runTest(
   {
     video: true,
     pollResults: 5,
-    timeout: 1000
+    timeout: 1000,
+    lighthouse: true
   },
   function(err, result) {
     console.log(err || result);
