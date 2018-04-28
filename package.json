@@ -4,16 +4,25 @@
   "version": "1.0.0",
   "author": "Jacob Cofman <cofman.jacob@gmail.com>",
   "dependencies": {
-    "gatsby": "^1.9.243",
-    "gatsby-cli": "^1.1.49",
-    "gatsby-link": "^1.6.40",
-    "gatsby-plugin-react-helmet": "^2.0.8",
-    "gatsby-plugin-sass": "^1.0.25",
-    "gatsby-source-filesystem": "^1.5.27",
-    "gatsby-transformer-remark": "^1.7.39",
+    "gatsby": "^1.9.255",
+    "gatsby-cli": "^1.1.51",
+    "gatsby-link": "^1.6.41",
+    "gatsby-plugin-react-helmet": "^2.0.11",
+    "gatsby-plugin-sass": "^1.0.26",
+    "gatsby-source-filesystem": "^1.5.34",
+    "gatsby-transformer-remark": "^1.7.40",
     "react-helmet": "^5.2.0",
-    "serve": "^6.5.3",
+    "serve": "^6.5.6",
     "webfontloader": "^1.6.28"
+  },
+  "devDependencies": {
+    "bundlesize": "^0.17.0",
+    "github": "^7.3.2",
+    "lighthouse-ci": "git+https://github.com/ebidel/lighthouse-ci.git",
+    "now": "^11.1.7",
+    "prettier": "^1.12.1",
+    "size-limit": "^0.17.0",
+    "webpagetest": "^0.3.8"
   },
   "keywords": ["gatsby"],
   "now": {
@@ -33,13 +42,6 @@
     "alias": "now alias --token=$NOW_TOKEN",
     "lh": "lighthouse-ci --score=90"
   },
-  "devDependencies": {
-    "bundlesize": "^0.17.0",
-    "lighthouse-ci": "git+https://github.com/ebidel/lighthouse-ci.git",
-    "now": "^10.2.2",
-    "prettier": "^1.11.1",
-    "size-limit": "^0.17.0"
-  },
   "bundlesize": [
     {
       "path": "./public/component*.js",
@@ -50,7 +52,6 @@
       "maxSize": "10 kB"
     }
   ],
-
   "size-limit": [
     {
       "path": "./public/*.js",
