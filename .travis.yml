@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - node
-cache: npm
+cache: yarn
 install:
   - yarn
 
@@ -23,6 +23,7 @@ after_success:
   - if [ $BRANCH = master ]; then npm run alias; fi
  # - $BRANCH=master && npm run alias 
   - npm run lh $NOW_URL
+  - TEST_URL=$NOW_URL GIT_TOKEN=$GIT_TOKEN WEBPAGETEST_API_KEY=$WEBPAGETEST_API_KEY node webPageTest.js
 
 env:
   global:
