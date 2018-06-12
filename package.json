@@ -4,27 +4,33 @@
   "version": "1.0.0",
   "author": "Jacob Cofman <cofman.jacob@gmail.com>",
   "dependencies": {
-    "gatsby": "^1.9.255",
-    "gatsby-cli": "^1.1.51",
-    "gatsby-link": "^1.6.41",
+    "@jacobmischka/gatsby-plugin-react-svg": "^1.1.0",
+    "gatsby": "^1.9.270",
+    "gatsby-cli": "^1.1.58",
+    "gatsby-link": "^1.6.44",
     "gatsby-plugin-react-helmet": "^2.0.11",
-    "gatsby-plugin-sass": "^1.0.26",
-    "gatsby-source-filesystem": "^1.5.34",
-    "gatsby-transformer-remark": "^1.7.40",
+    "gatsby-plugin-styled-components": "^2.0.11",
+    "gatsby-plugin-webpack-bundle-analyzer": "^0.1.1",
+    "gatsby-source-filesystem": "^1.5.38",
+    "gatsby-transformer-remark": "^1.7.42",
     "react-helmet": "^5.2.0",
-    "serve": "^6.5.6",
+    "react-icons": "^2.2.7",
+    "serve": "^8.1.4",
+    "styled-components": "^3.3.2",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
+    "@octokit/rest": "^15.8.2",
     "bundlesize": "^0.17.0",
-    "@octokit/rest": "^15.2.6",
     "lighthouse-ci": "git+https://github.com/ebidel/lighthouse-ci.git",
-    "now": "^11.1.7",
-    "prettier": "^1.12.1",
-    "size-limit": "^0.17.0",
+    "now": "^11.2.3",
+    "prettier": "^1.13.5",
+    "size-limit": "^0.18.2",
     "webpagetest": "^0.3.8"
   },
-  "keywords": ["gatsby"],
+  "keywords": [
+    "gatsby"
+  ],
   "now": {
     "name": "jcofman",
     "alias": "jcofman.now.sh"
@@ -34,8 +40,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format":
-      "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js'",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js'",
     "start": "serve public/",
     "test": "bundlesize && size-limit",
     "deploy": "now --public -e NODE_ENV=production --token $NOW_TOKEN --yarn",

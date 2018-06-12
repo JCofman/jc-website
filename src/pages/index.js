@@ -1,22 +1,47 @@
-import React from "react";
 import Link from "gatsby-link";
+import React from "react";
+import Home from "./Home/Home";
+import styled from "styled-components";
+
+const BlogArtikelWrapper = styled.div`
+  background-color: black;
+  height: 1024px;
+  display: flex;
+  justify-content: center;
+`;
+
+const BlogArtikel = styled.div`
+  margin: 50px;
+  display: flex;
+`;
+
+const BlogArtikelHeader = styled.div`
+  font-size: 50px;
+`;
+
+const BlogArtikelImage = styled.div``;
 
 const IndexPage = ({ data }) => {
   const { edges } = data.allMarkdownRemark;
   return (
     <div>
-      <h1>Hi people</h1>
-      <p>Welcome to your new Gatsby site.</p>
-      {edges.map(({ node: post }) => {
-        const { frontmatter } = post;
-        return (
-          <div>
-            <h2>
-              <Link to={frontmatter.path}>{frontmatter.title}</Link>
-            </h2>
-          </div>
-        );
-      })}
+      <Home />
+      <main>
+        {edges.map(({ node: post }) => {
+          const { frontmatter } = post;
+          return (
+            <BlogArtikelWrapper>
+              <BlogArtikel>
+                <BlogArtikelHeader>
+                  <h2>
+                    <Link to={frontmatter.path}>{frontmatter.title}</Link>
+                  </h2>
+                </BlogArtikelHeader>
+              </BlogArtikel>
+            </BlogArtikelWrapper>
+          );
+        })}
+      </main>
     </div>
   );
 };

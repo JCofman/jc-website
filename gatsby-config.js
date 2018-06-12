@@ -4,8 +4,9 @@ module.exports = {
     author: `Jacob Cofman`
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sass`,
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-webpack-bundle-analyzer",
+    "@jacobmischka/gatsby-plugin-react-svg",
     {
       resolve: `gatsby-source-filesystem`,
       options: {
