@@ -1,18 +1,22 @@
-import PropTypes from "prop-types";
 import React from "react";
-import { injectGlobal } from "styled-components";
-import Navigation from "./Navigation";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+import theme from "styled-theming";
+import posed, { PoseGroup } from "react-pose";
 
-injectGlobal`
-html {
-  font-family: "Raleway", sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-body {
-  margin: 0;
-  background-color: #262626;
-}
+import Navigation from "../Navigation";
+import Footer from "../Footer";
+
+const backgroundColor = theme("mode", {
+  light: "#F4F4F4",
+  dark: "#010101"
+});
+
+const bodyTextColor = theme("mode", {
+  light: "#010101",
+  dark: "#F4F4F4"
+});
+
+const GlobalStyle = createGlobalStyle`
 article,
 aside,
 details,
@@ -66,10 +70,7 @@ strong {
 dfn {
   font-style: italic;
 }
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
+
 mark {
   background-color: #ff0;
   color: #000;
@@ -190,8 +191,11 @@ textarea {
   -webkit-appearance: button;
   font: inherit;
 }
-html {
-  font: 112.5%/1.45em georgia, serif;
+html {  
+  font-family: "Raleway", sans-serif;
+  font-size: 10px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -205,8 +209,9 @@ html {
   box-sizing: inherit;
 }
 body {
-  color: #fff;
-  background-color: #262626;
+  color: ${bodyTextColor};
+  background-color: ${backgroundColor};
+  font-size: 1.5rem;
   font-family: "Raleway", sans-serif;
   font-weight: normal;
   word-wrap: break-word;
@@ -215,6 +220,7 @@ body {
   -ms-font-feature-settings: "kern", "liga", "clig", "calt";
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
+  margin: 0;
 }
 img {
   max-width: 100%;
@@ -255,7 +261,6 @@ h2 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-family: "Raleway", sans-serif;
-
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1.62671rem;
@@ -272,7 +277,6 @@ h3 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-family: "Raleway", sans-serif;
-
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
@@ -632,18 +636,14 @@ pre tt:after {
   }
 }`;
 
-const TemplateWrapper = ({ children }) => (
-  <div>
-    <header>
-      <Navigation />
-    </header>
-
-    {children()}
-  </div>
+const Layout = ({ children }) => (
+  <ThemeProvider theme={{ mode: "dark" }}>
+    <div>
+      {children}
+      <Footer />
+      <GlobalStyle />
+    </div>
+  </ThemeProvider>
 );
 
-TemplateWrapper.propTypes = {
-  children: PropTypes.func
-};
-
-export default TemplateWrapper;
+export default Layout;

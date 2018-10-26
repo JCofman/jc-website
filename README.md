@@ -1,13 +1,18 @@
-# gatsby-starter-default
-The default Gatsby starter
+# My Blog Personal Blog
 
-For an overview of the project structure please refer to the [Gatsby documentation - Building with Components](https://www.gatsbyjs.org/docs/building-with-components/)
+uses gatsby
+hosted on Zeit
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
+jcofman.now.sh
+
+## Dev
+
+```shell
+yarn run dev
 ```
-gatsby new gatsby-example-site
+
+## build
+
+```shell
+yarn run dev
 ```
-
-## Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)

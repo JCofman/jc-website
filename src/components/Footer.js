@@ -1,10 +1,27 @@
 import React from "react";
 import styled from "styled-components";
-const Nav = styled.nav`
+import WorldMap from "./WorldMap";
+
+const Map = styled.div`
   display: flex;
-  float: right;
+  width: 1024px;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+`;
+
+const FooterIcons = styled.div``;
+
+const StyledFooter = styled.footer`
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
 `;
+
 const NavList = styled.ul`
   list-style: none;
   margin: 0;
@@ -14,9 +31,10 @@ const NavList = styled.ul`
 `;
 
 const NavListItem = styled.li`
-  font-size: 16px;
+  font-size: 1.5rem;
   text-transform: uppercase;
   font-weight: 100;
+  text-decoration: line-through;
   padding: 15px 20px 18px;
   color: #fff;
   a:hover {
@@ -27,14 +45,18 @@ const NavListItem = styled.li`
   }
 `;
 
-const Navigation = () => {
+const Footer = () => {
   const onMouseOver = el => {
     console.log(el);
     console.log(el.target);
     console.log("test");
   };
   return (
-    <Nav>
+    <StyledFooter>
+      <Map>
+        <WorldMap />{" "}
+      </Map>
+      <FooterIcons />
       <NavList>
         <NavListItem>
           <a href="./">Home</a>
@@ -46,8 +68,8 @@ const Navigation = () => {
           <a href="./">Blog</a>
         </NavListItem>
       </NavList>
-    </Nav>
+    </StyledFooter>
   );
 };
 
-export default Navigation;
+export default Footer;

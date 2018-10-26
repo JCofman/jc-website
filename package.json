@@ -5,28 +5,34 @@
   "author": "Jacob Cofman <cofman.jacob@gmail.com>",
   "dependencies": {
     "@jacobmischka/gatsby-plugin-react-svg": "^1.1.0",
-    "gatsby": "^1.9.270",
-    "gatsby-cli": "^1.1.58",
-    "gatsby-link": "^1.6.44",
-    "gatsby-plugin-react-helmet": "^2.0.11",
-    "gatsby-plugin-styled-components": "^2.0.11",
-    "gatsby-plugin-webpack-bundle-analyzer": "^0.1.1",
-    "gatsby-source-filesystem": "^1.5.38",
-    "gatsby-transformer-remark": "^1.7.42",
+    "babel-plugin-styled-components": "^1.8.0",
+    "gatsby": "2.0.31",
+    "gatsby-cli": "2.4.3",
+    "gatsby-plugin-nprogress": "^2.0.5",
+    "gatsby-plugin-react-helmet": "3.0.0",
+    "gatsby-plugin-styled-components": "3.0.0",
+    "gatsby-plugin-svgr": "^1.0.1",
+    "gatsby-plugin-webpack-bundle-analyzer": "1.0.3",
+    "gatsby-source-filesystem": "2.0.5",
+    "gatsby-transformer-remark": "2.1.9",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
     "react-helmet": "^5.2.0",
-    "react-icons": "^2.2.7",
-    "serve": "^8.1.4",
-    "styled-components": "^3.3.2",
+    "react-icons": "^3.2.2",
+    "react-pose": "^3.3.7",
+    "serve": "^10.0.2",
+    "styled-components": "^4.0.2",
+    "styled-theming": "^2.2.0",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
-    "@octokit/rest": "^15.8.2",
+    "@octokit/rest": "^15.15.1",
     "bundlesize": "^0.17.0",
     "lighthouse-ci": "git+https://github.com/ebidel/lighthouse-ci.git",
-    "now": "^11.2.3",
-    "prettier": "^1.13.5",
-    "size-limit": "^0.18.2",
-    "webpagetest": "^0.3.8"
+    "now": "^11.4.6",
+    "prettier": "^1.14.3",
+    "size-limit": "^0.20.1",
+    "webpagetest": "^0.3.9"
   },
   "keywords": [
     "gatsby"
@@ -39,13 +45,13 @@
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js'",
     "start": "serve public/",
     "test": "bundlesize && size-limit",
     "deploy": "now --public -e NODE_ENV=production --token $NOW_TOKEN --yarn",
     "alias": "now alias --token=$NOW_TOKEN",
-    "lh": "lighthouse-ci --score=90"
+    "lh": "lighthouse-ci --score=90 --performance=90 --pwa=90 --accessibility=90 --best-practice=90 --seo=90"
   },
   "bundlesize": [
     {

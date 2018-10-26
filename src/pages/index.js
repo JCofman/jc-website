@@ -1,30 +1,60 @@
-import Link from "gatsby-link";
+import { Link, graphql } from "gatsby";
 import React from "react";
+import Layout from "../components/Layout";
 import Home from "./Home/Home";
 import styled from "styled-components";
 
 const BlogArtikelWrapper = styled.div`
-  background-color: black;
+  background-color: ${props => props.theme.black};
   height: 1024px;
   display: flex;
   justify-content: center;
 `;
 
 const BlogArtikel = styled.div`
-  margin: 50px;
   display: flex;
+  width: 60%;
+  margin: 2rem auto;
 `;
 
-const BlogArtikelHeader = styled.div`
-  font-size: 50px;
+const BlogArtikelHeader = styled.h2`
+  font-size: 5rem;
+  color: white;
+  a {
+    color: white;
+  }
+  a:hover {
+    color: #f1c40f;
+  }
 `;
 
-const BlogArtikelImage = styled.div``;
+const BlogArtikelImageWrapper = styled.div`
+  height: 200px;
+  width: 200px;
+  flex-direction: row;
+`;
+
+const BlogArtikelSingleWrapper = styled.div`
+  flex-direction: row;
+`;
+
+const BlogArtikelHeaderTime = styled.time`
+  font-size: 1.8rem;
+  color: white;
+  padding: 0.1em 0.25em;
+  margin: 0.25em 0;
+`;
+const BlogArtikelHeaderTags = styled.span`
+  font-size: 1.8rem;
+  padding: 0.1em 0.25em;
+  margin: 0.25em 0;
+  color: white;
+`;
 
 const IndexPage = ({ data }) => {
   const { edges } = data.allMarkdownRemark;
   return (
-    <div>
+    <Layout>
       <Home />
       <main>
         {edges.map(({ node: post }) => {
@@ -32,17 +62,30 @@ const IndexPage = ({ data }) => {
           return (
             <BlogArtikelWrapper>
               <BlogArtikel>
-                <BlogArtikelHeader>
-                  <h2>
+                <BlogArtikelImageWrapper>
+                  <img
+                    src="http://via.placeholder.com/200x200"
+                    alt="placeholder"
+                  />
+                </BlogArtikelImageWrapper>
+                <BlogArtikelSingleWrapper>
+                  <BlogArtikelHeader>
                     <Link to={frontmatter.path}>{frontmatter.title}</Link>
-                  </h2>
-                </BlogArtikelHeader>
+                    <BlogArtikelHeaderTime>
+                      {frontmatter.date}
+                    </BlogArtikelHeaderTime>
+                    <BlogArtikelHeaderTags>
+                      {frontmatter.tags.map(tag => ` ${tag}`)}
+                    </BlogArtikelHeaderTags>
+                  </BlogArtikelHeader>
+                  {frontmatter.excerpt}
+                </BlogArtikelSingleWrapper>
               </BlogArtikel>
             </BlogArtikelWrapper>
           );
         })}
       </main>
-    </div>
+    </Layout>
   );
 };
 
