@@ -1,9 +1,7 @@
 import React from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import theme from "styled-theming";
-import posed, { PoseGroup } from "react-pose";
 
-import Navigation from "../Navigation";
 import Footer from "../Footer";
 
 const backgroundColor = theme("mode", {

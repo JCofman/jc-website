@@ -42,11 +42,6 @@ const StyledLogo = styled.svg`
 `;
 
 const Navigation = () => {
-  const onMouseOver = el => {
-    console.log(el);
-    console.log(el.target);
-    console.log("test");
-  };
   return (
     <div>
       <StyledLogo>

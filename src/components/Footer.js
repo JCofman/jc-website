@@ -46,11 +46,6 @@ const NavListItem = styled.li`
 `;
 
 const Footer = () => {
-  const onMouseOver = el => {
-    console.log(el);
-    console.log(el.target);
-    console.log("test");
-  };
   return (
     <StyledFooter>
       <Map>

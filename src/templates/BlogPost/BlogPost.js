@@ -1,6 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
-import posed, { PoseGroup } from "react-pose";
+import posed from "react-pose";
 
 import { Link, graphql } from "gatsby";
 
