@@ -1,11 +1,12 @@
 import React from "react";
-import Link from "gatsby-link";
+import { Link } from "gatsby";
 
-const ThirdPage = () =>
+const AboutMe = () => (
   <div>
     <h1>Hi people</h1>
     <p>Welcome to page 2</p>
     <Link to="/">Go back to the homepage</Link>
-  </div>;
+  </div>
+);
 
-export default ThirdPage;
+export default AboutMe;

@@ -10,7 +10,6 @@ if (
     "The script hasnt run since you did not provide a webpagtest api key a test url and a git token"
   );
 }
-
 const wpt = new webPageTest(
   "www.webpagetest.org",
   process.env.WEBPAGETEST_API_KEY
