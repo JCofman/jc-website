@@ -52,6 +52,7 @@
     "test:size": "npm-run-all -p test:size:bundlesize test:size:size-limit",
     "test:size:bundlesize": "bundlesize",
     "test:size:size-limit": "size-limit",
+    "now-build": "echo 'Built on Travis CI'",
     "deploy": "now --public -e NODE_ENV=production --token $NOW_TOKEN --yarn",
     "alias": "now alias --token=$NOW_TOKEN",
     "lh": "lighthouse-ci --score=90 --performance=90 --pwa=90 --accessibility=90 --best-practice=90 --seo=90"
