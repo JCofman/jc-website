@@ -10,13 +10,24 @@ excerpt: "This post will show you how you can leverage some basic and some more 
 
 tl;dr
 
-* try to embrace all OS performance tools
-* its much easier to run perf tools on public projects which are hosted on github ( which is often not the case for most a lot of sites.... maybe thats the reason why many popular sites are not as fast as they can be)
-* use the tools and contribute back :)
+- try to embrace all OS performance tools
+- its much easier to run perf tools on public projects which are hosted on github ( which is often not the case for most a lot of sites.... maybe thats the reason why many popular sites are not as fast as they can be)
+- use the tools and contribute back :)
+
+<blockquote>
+      <p>You’ve got a pain deep in your bones, son.</p>
+</blockquote>
 
 I am a passionate web developer who had (not only) once bought a domain, a server and started a blog. But I shut it down after usually some months or so. When I asked several of my colleagues which work in the same industry as I do man of them told me that they had started a blog while back ago and closed it several months later (like me).
 
+<figure>
+    <img src="https://source.unsplash.com/1000x300" alt="Big Ass Image">
+    <figcaption>Super Nice Photo</figcaption>
+</figure>
+
 In conclusion I think that happens to a lot of people 🙈. But I want to try it again and start this blog by also talking about topics which fascinate me it. The last time I have started to create a website I have lost the interessed and passion about the my own site pretty fast. I didn't have improve or develope it furthermore after I had finalized it. Now I want to start again and share some knowledge and my opinions on diffrerent topics since I have recognized that when I write things down I feel that I can keep the knowledge much better.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4n0xNbfJLR8" frameborder="0" allowfullscreen></iframe>
 
 ## Okay so lets get it started
 
@@ -29,20 +40,20 @@ Before I can get started creating the blog I want to make sure to setup all the 
 
 If you want all the things mentioned above you have to make sure that these things get tested regularly while developing your stuff. So what I want to do is to run different CI jobs which analyse my site after I deploy a change. I decided to create my blog based on gatsby since it uses react and some other fancy new tech which I have some more or less familarity with and as mentioned by several blog posts is super fast. So what I did first was to measure the starting point when creating a new project with gatsby-cli. I use lighthouse which is develpped by google to measure the baseline for gatsby.
 
-* first install gatsby-cli
+- first install gatsby-cli
 
 ```js
 npm install --global gatsby-cli //or
 yarn add gatsby-cli --global
 ```
 
-* create a new gatsby side
+- create a new gatsby side
 
 ```js
 gatsby new gatsby-site
 ```
 
-* build and serve the production a production build (so that all the js, css files get bundled minified and served by a local server)
+- build and serve the production a production build (so that all the js, css files get bundled minified and served by a local server)
 
 ```js
 gatsby build
@@ -55,8 +66,8 @@ So when
 
 ## First Automate the build process
 
-* travis deployment
-* zeit urls
+- travis deployment
+- zeit urls
 
 For each feature we want to make sure to run some steps to check the performance therefore we need to make sure that each pull request gets deployed to a different url to run tests on the url and make sure that all deployments have same settings. We use zeit now.sh to make immutable deployments which are deployed by travis CI
 
@@ -70,11 +81,11 @@ https://infrequently.org/2017/10/can-you-afford-it-real-world-web-performance-bu
 
 ### Lightweight tools
 
-* [size-limits](https://github.com/ai/size-limit)
+- [size-limits](https://github.com/ai/size-limit)
 
 perfect for checking the whole bundle size
 
-* [budlesize](https://github.com/siddharthkp/bundlesize)
+- [budlesize](https://github.com/siddharthkp/bundlesize)
 
 perfect for checking each vendor (commons) bundle and async chunks
 

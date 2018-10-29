@@ -4,6 +4,8 @@ import posed from "react-pose";
 
 import { Link, graphql } from "gatsby";
 
+import { StyledSingleBlogPostArticle } from "./StyledBlogPost";
+
 // Use `posed.div` elements anywhere on the pages.
 const Transition = posed.div({
   enter: {
@@ -19,16 +21,13 @@ export default function Template({ data, pageContext }) {
   const { next, prev } = pageContext;
 
   return (
-    <div>
+    <StyledSingleBlogPostArticle className="blog-post">
       <Helmet title={`Your Blog Name - ${post.frontmatter.title}`} />
       <Transition>
-        <div className="blog-post">
-          <h1>{post.frontmatter.title}</h1>
-          <div
-            className="blog-post-content"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
-        </div>
+        <div
+          className="blog-post-content"
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
 
         {prev && (
           <Link to={prev.frontmatter.path}>
@@ -39,7 +38,7 @@ export default function Template({ data, pageContext }) {
           <Link to={next.frontmatter.path}>Next: {next.frontmatter.title}</Link>
         )}
       </Transition>
-    </div>
+    </StyledSingleBlogPostArticle>
   );
 }
 
