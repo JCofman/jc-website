@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledSingleBlogPostArticle = styled.article`
   .blog-post-content {
     display: grid;
-    max-width: 1000px;
+    max-width: 1280px;
     margin: 200px auto;
     grid-gap: 10px 50px;
     grid-template-columns: 3fr 12fr 5fr;

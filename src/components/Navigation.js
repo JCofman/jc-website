@@ -30,7 +30,6 @@ const NavListItem = styled.li`
   }
 `;
 const StyledLogo = styled.svg`
-  display: none;
   float: left;
   margin-left: 20px;
 
@@ -43,7 +42,7 @@ const StyledLogo = styled.svg`
 
 const Navigation = () => {
   return (
-    <div>
+    <>
       <StyledLogo>
         <Logo />
       </StyledLogo>
@@ -60,7 +59,7 @@ const Navigation = () => {
           </NavListItem>
         </NavList>
       </Nav>
-    </div>
+    </>
   );
 };
 

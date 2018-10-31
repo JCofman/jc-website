@@ -21,7 +21,7 @@ tl;dr
 I am a passionate web developer who had (not only) once bought a domain, a server and started a blog. But I shut it down after usually some months or so. When I asked several of my colleagues which work in the same industry as I do man of them told me that they had started a blog while back ago and closed it several months later (like me).
 
 <figure>
-    <img src="https://source.unsplash.com/1000x300" alt="Big Ass Image">
+    <img src="https://source.unsplash.com/1280x300" alt="Big Ass Image">
     <figcaption>Super Nice Photo</figcaption>
 </figure>
 
