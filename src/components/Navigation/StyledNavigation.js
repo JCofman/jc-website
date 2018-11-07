@@ -1,38 +1,18 @@
-import React from "react";
-import { Link } from "gatsby";
-import styled, { withTheme } from "styled-components";
+import styled from "styled-components";
 import theme from "styled-theming";
-import { FaMoon, FaLightbulb } from "react-icons/fa";
-
-import Logo from "./Logo";
-// import LogoDark from "../../assets/Logo-dark.svg";
 
 const NavBackgroundColor = theme("mode", {
   light: props => props.theme.colors.white,
   dark: props => props.theme.colors.black
 });
 
-const StyledNavWrapper = styled.div`
+export const StyledNavWrapper = styled.div`
   display: flex;
   height: 70px;
   z-index: 1001;
 `;
 
-const StyledLogo = styled.svg`
-  width: 200px;
-  height: 200px;
-  display: inline-block;
-  transition: all 0.25s ease-out 0s;
-  z-index: 2000;
-  svg {
-    width: 100%;
-    display: inline-block;
-    transition: all 0.25s ease-out 0s;
-    z-index: 2000;
-  }
-`;
-
-const Nav = styled.nav`
+export const StyledNav = styled.nav`
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -49,7 +29,24 @@ const Nav = styled.nav`
   transition: height 0.25s ease-in-out 0s, box-shadow 0.2s ease-in-out 0.05s;
 `;
 
-const NavList = styled.ul`
+export const StyledNavLogo = styled.svg`
+  width: 200px;
+  height: 200px;
+  transition: all 0.25s ease-out 0s;
+  z-index: 2000;
+  display: none;
+  ${props => props.theme.small} {
+    display: inline-block;
+  }
+  svg {
+    width: 100%;
+    display: inline-block;
+    transition: all 0.25s ease-out 0s;
+    z-index: 2000;
+  }
+`;
+
+export const StyledNavList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
@@ -68,8 +65,11 @@ const NavList = styled.ul`
     align-items: center;
     text-transform: uppercase;
     color: #fff;
-    @media (max-width: 700px) {
+    ${props => props.theme.medium} {
       font-size: 1.6rem;
+    }
+    ${props => props.theme.small} {
+      font-size: 1.4rem;
     }
     &:after {
       height: 2px;
@@ -92,38 +92,3 @@ const NavList = styled.ul`
     }
   }
 `;
-
-const Navigation = props => {
-  const {
-    theme: { mode }
-  } = props;
-
-  return (
-    <StyledNavWrapper>
-      <StyledLogo>
-        <Logo />{" "}
-      </StyledLogo>
-      <Nav>
-        <NavList>
-          <li>
-            <button onClick={() => props.changeTheme()}>
-              {mode === "light" ? <FaLightbulb /> : <FaMoon />}
-            </button>
-          </li>
-
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/AboutMe/">About Me</Link>
-          </li>
-          <li>
-            <Link to="/Blog/">Blog</Link>
-          </li>
-        </NavList>
-      </Nav>
-    </StyledNavWrapper>
-  );
-};
-
-export default withTheme(Navigation);

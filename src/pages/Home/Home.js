@@ -9,7 +9,7 @@ const StyledLogo = styled.svg`
   height: 800px;
   width: 600px;
   padding: 50px;
-
+  display: block;
   ${props => props.theme.medium} {
     display: none;
   }
@@ -28,34 +28,46 @@ const Information = styled.div`
   display: flex;
   flex-direction: column;
   margin: 1rem 1rem;
-  h1 {
-    font-size: 5rem;
-    text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
-    ${props => props.theme.large} {
-      font-size: 4rem;
-    }
-    ${props => props.theme.medium} {
-      font-size: 3rem;
-    }
-  }
 
-  ${props => props.theme.large} {
-    padding-top: 200px;
-    padding-bottom: 100px;
+  ${props => props.theme.small} {
+    padding-top: 150px;
+    padding-bottom: 30px;
   }
   ${props => props.theme.medium} {
     padding-top: 200px;
     padding-bottom: 30px;
   }
+  ${props => props.theme.large} {
+    padding-top: 200px;
+    padding-bottom: 100px;
+  }
+
+  h1 {
+    font-size: 5rem;
+    text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
+    ${props => props.theme.small} {
+      font-size: 4rem;
+    }
+    ${props => props.theme.medium} {
+      font-size: 4rem;
+    }
+    ${props => props.theme.large} {
+      font-size: 4rem;
+    }
+  }
+
   p {
     font-size: 2rem;
     color: ${props => props.theme.colors.secondary};
     font-weight: 800;
-    ${props => props.theme.large} {
+    ${props => props.theme.small} {
       font-size: 1.5rem;
     }
     ${props => props.theme.medium} {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
+    }
+    ${props => props.theme.large} {
+      font-size: 1.5rem;
     }
   }
 `;
@@ -81,13 +93,13 @@ const HeaderBG = styled.header`
   height: 1024px;
   height: 100vh;
   width: 100%;
-  ${props => props.theme.large} {
-    height: 800px;
+  ${props => props.theme.medium} {
+    height: 600px;
     height: 100vh;
     background: url(${HedaerBG}) no-repeat center center fixed;
   }
-  ${props => props.theme.medium} {
-    height: 600px;
+  ${props => props.theme.large} {
+    height: 800px;
     height: 100vh;
     background: url(${HedaerBG}) no-repeat center center fixed;
   }

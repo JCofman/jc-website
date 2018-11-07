@@ -11,17 +11,20 @@ import StyledLayout from "./StyledLayout";
 setConfig({ pureSFC: true });
 
 const sizes = {
-  giant: 1200,
-  desktop: 992,
+  phone: 576,
   tablet: 768,
-  phone: 576
+  desktop: 992,
+  giant: 1200
 };
 
 const breakPoints = {
-  small: `@media (max-width: ${sizes.phone}px)`,
-  medium: `@media (max-width: ${sizes.tablet}px)`,
-  large: `@media (max-width: ${sizes.desktop}px)`,
-  xlarge: `@media (max-width: ${sizes.giant}px)`
+  small: `@media (max-width: ${sizes.phone - 0.2}px)`,
+  medium: `@media (min-width: ${sizes.phone}px) and (max-width: ${sizes.tablet -
+    0.2}px)`,
+  large: `@media (min-width: ${
+    sizes.tablet
+  }px) and (max-width: ${sizes.desktop - 0.2}px)`,
+  xlarge: `@media (min-width: ${sizes.giant}px)`
 };
 
 const colors = {
@@ -660,11 +663,7 @@ pre tt:before,
 pre tt:after {
   content: "";
 }
-@media only screen and (max-width: 480px) {
-  html {
-    font-size: 100%;
-  }
-}`;
+`;
 
 const Layout = ({ children }) => {
   const [themeMode, setThemeMode] = useState("dark");

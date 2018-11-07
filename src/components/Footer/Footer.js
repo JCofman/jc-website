@@ -1,6 +1,13 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
+import theme from "styled-theming";
+
+const FooterBackground = theme("mode", {
+  light: props => props.theme.colors.white,
+  dark: props => props.theme.colors.black
+});
+
 import WorldMap from "../WorldMap";
 
 const Map = styled.div`
@@ -19,6 +26,7 @@ const StyledFooter = styled.footer`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: ${FooterBackground};
   overflow: hidden;
 `;
 
