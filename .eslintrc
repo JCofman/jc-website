@@ -1,0 +1,24 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "16.6.6"
+    }
+  },
+  "plugins": ["react-hooks"],
+  "parser": "babel-eslint",
+  "rules": {
+    "strict": 0,
+    "react/prop-types": 0,
+    "no-unused-vars": "warn",
+    "no-console": "warn",
+    "react-hooks/rules-of-hooks": "error"
+  },
+
+  "extends": ["eslint:recommended", "plugin:react/recommended"]
+}

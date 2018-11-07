@@ -1,18 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import theme from "styled-theming";
+import { setConfig } from "react-hot-loader";
 
+import Navigation from "../Navigation";
 import Footer from "../Footer";
+import StyledLayout from "./StyledLayout";
+
+// gatsby react hooks alpha fix
+setConfig({ pureSFC: true });
+
+const sizes = {
+  giant: 1200,
+  desktop: 992,
+  tablet: 768,
+  phone: 576
+};
+
+const breakPoints = {
+  small: `@media (max-width: ${sizes.phone}px)`,
+  medium: `@media (max-width: ${sizes.tablet}px)`,
+  large: `@media (max-width: ${sizes.desktop}px)`,
+  xlarge: `@media (max-width: ${sizes.giant}px)`
+};
+
+const colors = {
+  white: "#F4F4F4",
+  black: "#010101",
+  primary: "#50E3C2",
+  secondary: "#4A90E2"
+};
 
 const backgroundColor = theme("mode", {
-  light: "#F4F4F4",
-  dark: "#010101"
+  light: colors.white,
+  dark: colors.black
 });
 
 const bodyTextColor = theme("mode", {
-  light: "#010101",
-  dark: "#F4F4F4"
+  light: colors.black,
+  dark: colors.white
 });
+
+const themes = {
+  dark: "dark",
+  light: "light"
+};
 
 const GlobalStyle = createGlobalStyle`
 article,
@@ -634,14 +666,29 @@ pre tt:after {
   }
 }`;
 
-const Layout = ({ children }) => (
-  <ThemeProvider theme={{ mode: "dark" }}>
-    <div>
-      {children}
-      <Footer />
-      <GlobalStyle />
-    </div>
-  </ThemeProvider>
-);
+const Layout = ({ children }) => {
+  const [themeMode, setThemeMode] = useState("dark");
+
+  const changeTheme = () => {
+    setThemeMode(prevState => (prevState === "light" ? "dark" : "light"));
+  };
+
+  return (
+    <ThemeProvider
+      theme={{
+        mode: themes[themeMode],
+        ...breakPoints,
+        colors: { ...colors }
+      }}
+    >
+      <StyledLayout>
+        <GlobalStyle />
+        <Navigation changeTheme={changeTheme} />
+        {children}
+        <Footer />
+      </StyledLayout>
+    </ThemeProvider>
+  );
+};
 
 export default Layout;

@@ -8,12 +8,13 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-styled-components",
     "gatsby-plugin-webpack-bundle-analyzer",
+    "gatsby-plugin-eslint",
     {
-      resolve: "gatsby-plugin-svgr",
+      resolve: "gatsby-plugin-react-svg",
       options: {
-        icon: true,
-        viewBox: false
-        // see https://github.com/smooth-code/svgr for a list of all options
+        rule: {
+          include: /assets/
+        }
       }
     },
     {

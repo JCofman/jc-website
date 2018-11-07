@@ -28,7 +28,7 @@ const BlogArtikelHeader = styled.h2`
     color: white;
   }
   a:hover {
-    color: #f1c40f;
+    color: ${props => props.theme.colors.primary};
   }
 `;
 
@@ -64,7 +64,7 @@ const IndexPage = ({ data }) => {
         {edges.map(({ node: post }) => {
           const { frontmatter } = post;
           return (
-            <BlogArtikelWrapper>
+            <BlogArtikelWrapper key={frontmatter.title}>
               <BlogArtikel>
                 <BlogArtikelImageWrapper>
                   <img

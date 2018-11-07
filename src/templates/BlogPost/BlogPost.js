@@ -4,6 +4,7 @@ import posed from "react-pose";
 import styled from "styled-components";
 import { Link, graphql } from "gatsby";
 
+import Layout from "../../components/Layout";
 import { StyledSingleBlogPostArticle } from "./StyledBlogPost";
 
 // Use `posed.div` elements anywhere on the pages.
@@ -44,7 +45,7 @@ export default function Template({ data, pageContext }) {
   const { next, prev } = pageContext;
 
   return (
-    <>
+    <Layout>
       <StyledHeader>
         <h1>This is super duper fast 🚗</h1>
       </StyledHeader>
@@ -68,7 +69,7 @@ export default function Template({ data, pageContext }) {
           )}
         </Transition>
       </StyledSingleBlogPostArticle>
-    </>
+    </Layout>
   );
 }
 
