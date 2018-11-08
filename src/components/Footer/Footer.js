@@ -1,6 +1,14 @@
 import React from "react";
+import { Link } from "gatsby";
 import styled from "styled-components";
-import WorldMap from "./WorldMap";
+import theme from "styled-theming";
+
+const FooterBackground = theme("mode", {
+  light: props => props.theme.colors.white,
+  dark: props => props.theme.colors.black
+});
+
+import WorldMap from "../WorldMap";
 
 const Map = styled.div`
   display: flex;
@@ -15,10 +23,10 @@ const FooterIcons = styled.div``;
 
 const StyledFooter = styled.footer`
   display: flex;
-
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: ${FooterBackground};
   overflow: hidden;
 `;
 
@@ -54,13 +62,13 @@ const Footer = () => {
       <FooterIcons />
       <NavList>
         <NavListItem>
-          <a href="./">Home</a>
+          <Link to="/">Home</Link>
         </NavListItem>
         <NavListItem>
-          <a href="./">About Me</a>
+          <Link to="/aboutme">About Me</Link>
         </NavListItem>
         <NavListItem>
-          <a href="./">Blog</a>
+          <Link to="/blog">Blog</Link>
         </NavListItem>
       </NavList>
     </StyledFooter>

@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const BlogArtikelWrapper = styled.div`
   background-color: ${props => props.theme.black};
-  height: 1024px;
+  min-height: 300px;
   display: flex;
   justify-content: center;
 `;
@@ -19,12 +19,16 @@ const BlogArtikel = styled.div`
 
 const BlogArtikelHeader = styled.h2`
   font-size: 5rem;
+  transform: rotate(-3deg);
+  padding: 10px;
+  margin: 10px;
   color: white;
+
   a {
     color: white;
   }
   a:hover {
-    color: #f1c40f;
+    color: ${props => props.theme.colors.primary};
   }
 `;
 
@@ -60,7 +64,7 @@ const IndexPage = ({ data }) => {
         {edges.map(({ node: post }) => {
           const { frontmatter } = post;
           return (
-            <BlogArtikelWrapper>
+            <BlogArtikelWrapper key={frontmatter.title}>
               <BlogArtikel>
                 <BlogArtikelImageWrapper>
                   <img
