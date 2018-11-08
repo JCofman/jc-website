@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import HedaerBG from "./homebg.jpg";
+import posed, { PoseGroup } from "react-pose";
 import { FaTwitter, FaFacebook, FaBehance, FaGithub } from "react-icons/fa";
 
 import Logo from "../../components/Logo";
+import HedaerBG from "./homebg.jpg";
 
-const StyledLogo = styled.svg`
+const LogoAnimation = posed.svg({
+  enter: {
+    y: 0,
+    opacity: 1,
+    delay: 100
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 150 }
+  }
+});
+
+const StyledLogo = styled(LogoAnimation)`
   height: 800px;
   width: 600px;
   padding: 50px;
@@ -113,46 +126,61 @@ const StyledName = styled.span`
   justify-content: center;
 `;
 
-const Home = () => (
-  <HeaderBG>
-    <Wrapper>
-      <StyledLogo>
-        <Logo />
-      </StyledLogo>
-      <Information>
-        <p>HEY EVERYONE MY NAME IS JACOB COFMAN</p>
-        <h1>
-          I LOVE WEB DEVELOPMENT
-          <span role="img" aria-label="web dev emoji">
-            💻
-          </span>
-          , VOLLEYBALL
-          <span role="img" aria-label="volleyball emoji">
-            🏐
-          </span>{" "}
-          AND TRAVELLING
-          <span role="img" aria-label="outdoor emoji">
-            ⛺️ 🌲 🏃
-          </span>
-        </h1>
-      </Information>
-    </Wrapper>
-    <Social>
-      <SocialIcons>
-        <FaTwitter size={24} />
-      </SocialIcons>
-      <SocialIcons>
-        <FaFacebook size={24} />
-      </SocialIcons>
-      <SocialIcons>
-        <FaBehance size={24} />
-      </SocialIcons>
-      <SocialIcons>
-        <FaGithub size={24} />
-      </SocialIcons>
-    </Social>
-    <StyledName>Jacob Cofman</StyledName>
-  </HeaderBG>
-);
+const Home = () => {
+  const [logoIsVisible, setLogoToVisible] = useState(false);
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    setLogoToVisible(true);
+  });
+
+  return (
+    <HeaderBG>
+      <Wrapper>
+        <PoseGroup>
+          {logoIsVisible && (
+            <StyledLogo key="logo">
+              <Logo />
+            </StyledLogo>
+          )}
+        </PoseGroup>
+
+        <Information>
+          <p>HEY EVERYONE MY NAME IS JACOB COFMAN</p>
+          <h1>
+            I LOVE WEB DEVELOPMENT
+            <span role="img" aria-label="web dev emoji">
+              💻
+            </span>
+            , VOLLEYBALL
+            <span role="img" aria-label="volleyball emoji">
+              🏐
+            </span>{" "}
+            AND TRAVELLING
+            <span role="img" aria-label="outdoor emoji">
+              ⛺️ 🌲 🏃
+            </span>
+          </h1>
+        </Information>
+      </Wrapper>
+      <Social>
+        <SocialIcons>
+          <FaTwitter size={24} />
+        </SocialIcons>
+        <SocialIcons>
+          <FaFacebook size={24} />
+        </SocialIcons>
+        <SocialIcons>
+          <FaBehance size={24} />
+        </SocialIcons>
+        <SocialIcons>
+          <FaGithub size={24} />
+        </SocialIcons>
+      </Social>
+      <StyledName>Jacob Cofman</StyledName>
+    </HeaderBG>
+  );
+};
 
 export default Home;
