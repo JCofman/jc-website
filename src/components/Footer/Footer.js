@@ -44,9 +44,9 @@ const NavListItem = styled.li`
   font-weight: 100;
   text-decoration: line-through;
   padding: 15px 20px 18px;
-  color: #fff;
+  color: ${props => props.theme.colors.white};
   a:hover {
-    color: #f1c40f;
+    color: ${props => props.theme.colors.primary};
   }
   a {
     color: #fff;

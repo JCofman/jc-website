@@ -71,7 +71,8 @@ const Information = styled.div`
 
   p {
     font-size: 2rem;
-    color: ${props => props.theme.colors.secondary};
+    /* color: ${props =>
+      props.theme.colors.secondary}; needs further investigation */ 
     font-weight: 800;
     ${props => props.theme.small} {
       font-size: 1.5rem;
