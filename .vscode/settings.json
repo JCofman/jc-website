@@ -1,3 +1,7 @@
 {
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "Dank Mono",
+  "workbench.colorTheme": "Night Owl",
+  "editor.fontSize": 16,
+  "editor.fontLigatures": true
 }

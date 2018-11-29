@@ -6,6 +6,11 @@ const NavBackgroundColor = theme("mode", {
   dark: props => props.theme.colors.black
 });
 
+const NavFontColor = theme("mode", {
+  light: props => props.theme.colors.black,
+  dark: props => props.theme.colors.white
+});
+
 export const StyledNavWrapper = styled.div`
   display: flex;
   height: 70px;
@@ -64,7 +69,7 @@ export const StyledNavList = styled.ul`
     cursor: pointer;
     align-items: center;
     text-transform: uppercase;
-    color: #fff;
+    color: ${NavFontColor};
     ${props => props.theme.medium} {
       font-size: 1.6rem;
     }

@@ -22,20 +22,20 @@ const StyledHeader = styled.header`
   height: 500px;
   height: 100vh;
   background: #2e1811;
-  background-image: url("http://labs.jensimmons.com/2016/examples/images/dirt.jpg");
+  background-image: url(${props =>
+    `https://source.unsplash.com/1600x900/?${props.title}`});
   background-size: cover;
   padding: 2rem 0;
   color: #fff;
   border: 1px solid #000;
-
-  text-shadow: 0px 1px 6px rgba(0, 0, 0, 0.6);
   h1 {
     width: 80%;
     margin: auto;
     line-height: 1.1em;
-    font-size: 4rem;
-    @media (min-width: 500px) {
-      font-size: 5rem;
+    font-size: 8rem;
+    text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
+    ${props => props.theme.small} {
+      font-size: 4rem;
     }
   }
 `;
@@ -46,11 +46,11 @@ export default function Template({ data, pageContext }) {
 
   return (
     <Layout>
-      <StyledHeader>
+      <StyledHeader title={post.frontmatter.path}>
         <h1>This is super duper fast 🚗</h1>
       </StyledHeader>
       <StyledSingleBlogPostArticle className="blog-post">
-        <Helmet title={`Your Blog Name - ${post.frontmatter.title}`} />
+        <Helmet title={`JCofman - ${post.frontmatter.title}`} />
         <Transition>
           <div
             className="blog-post-content"
