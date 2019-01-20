@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://jcofman.de">
-    <img alt="Jays portfolio" src="https://github.com/JCofman/jc-website/blob/master/src/assets/images/icon.png" width="240" />
+    <img alt="Jays portfolio" src="https://github.com/JCofman/jc-website/blob/master/src/assets/images/icon.png" width="300" />
   </a>
 </p>
 <h1 align="center">

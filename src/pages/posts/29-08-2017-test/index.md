@@ -1,10 +1,10 @@
 ---
-path: '/performance'
+path: '/test'
 date: '2017-07-12T17:12:33.962Z'
-title: 'Start fast, be fast, keep fast!'
+title: 'Test!'
 featuredImage: './featured-image.jpg'
 headerImage: './header.jpg'
-tags: [performance, fast, web]
+tags: [test]
 excerpt: 'This post will show you how you can leverage some basic and some more advanced tools when starting a web frontend project, so that your project will start fast, be fast and keep fast.'
 ---
 

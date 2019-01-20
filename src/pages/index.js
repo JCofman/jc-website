@@ -13,6 +13,7 @@ const BlogArtikelWrapper = styled.div`
   transition: color ${props => props.theme.themeTransition},
     background-color ${props => props.theme.themeTransition};
   min-height: 300px;
+  font-size: 1.6rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -38,23 +39,23 @@ const BlogArtikel = styled.div`
   }
 `;
 
-const BlogArtikelHeaderTextShadow = theme('mode', {
+export const BlogArtikelHeaderTextShadow = theme('mode', {
   light: '2px 2px 0 rgba(0,0, 0,0.3)',
   dark: '2px 2px 0 rgba(255,255, 255,0.3)',
 });
 
-const BlogArtikelTextColor = theme('mode', {
+export const BlogArtikelTextColor = theme('mode', {
   light: props => props.theme.colors.black,
   dark: props => props.theme.colors.white,
 });
 
-const BlogArtikelHeader = styled.h2`
+const BaseArtikelHeader = styled.h2`
   font-size: 5rem;
-  transform: skew(-5deg) rotate(-1deg);
   margin-bottom: 2rem;
   color: ${BlogArtikelTextColor};
+  transform: skew(-5deg) rotate(-1deg);
+  color: ${BlogArtikelTextColor};
   text-shadow: ${BlogArtikelHeaderTextShadow};
-
   a {
     color: ${BlogArtikelTextColor};
     transition: color ${props => props.theme.themeTransition};
@@ -63,7 +64,10 @@ const BlogArtikelHeader = styled.h2`
     color: ${props => props.theme.colors.primary};
     transition: none;
   }
-  a:before {
+`;
+
+export const StyledBlogArtikelHeaderTriangle = styled(BaseArtikelHeader)`
+  :before {
     width: 0;
     height: 0;
     opacity: 0.2;
@@ -78,6 +82,33 @@ const BlogArtikelHeader = styled.h2`
   }
 `;
 
+export const StyledBlogArtikelHeaderCircle = styled(BaseArtikelHeader)`
+  :before {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    opacity: 0.2;
+    background-color: ${props => props.theme.colors.white};
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    transform: translateX(-0.5em) translateY(-1.5rem);
+  }
+`;
+
+export const StyledBlogArtikelHeaderParallelogram = styled(BaseArtikelHeader)`
+  :before {
+    width: 50px;
+    height: 40px;
+    background: ${props => props.theme.colors.white};
+    opacity: 0.2;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    transform: translateX(-0.5em) translateY(-1.5rem) skew(20deg);
+  }
+`;
+
 const BlogArtikelImageWrapper = styled.div`
   margin: 1rem 1rem;
   min-width: 200px;
@@ -89,6 +120,11 @@ const BlogArtikelSingleWrapper = styled.div`
   flex-direction: row;
   margin: 1rem;
   padding: 1rem;
+`;
+
+const BlogartikleSubInfo = styled.p`
+  font-style: italic;
+  font-size: 1.4rem;
 `;
 
 const BlogArtikelHeaderTime = styled.time`
@@ -113,8 +149,9 @@ const IndexPage = ({ data }) => {
     <Layout>
       <Home />
       <main>
-        {edges.map(({ node: post }) => {
+        {edges.map(({ node: post }, index) => {
           const { frontmatter } = post;
+
           return (
             <BlogArtikelWrapper key={frontmatter.title}>
               <BlogArtikel>
@@ -126,17 +163,30 @@ const IndexPage = ({ data }) => {
                   </Link>
                 </BlogArtikelImageWrapper>
                 <BlogArtikelSingleWrapper>
-                  <BlogArtikelHeader>
-                    <Link to={frontmatter.path}>{frontmatter.title}</Link>
-                  </BlogArtikelHeader>
-                  <p>
+                  {index === 0 && (
+                    <StyledBlogArtikelHeaderTriangle>
+                      <Link to={frontmatter.path}>{frontmatter.title}</Link>
+                    </StyledBlogArtikelHeaderTriangle>
+                  )}
+                  {index === 1 && (
+                    <StyledBlogArtikelHeaderCircle>
+                      <Link to={frontmatter.path}>{frontmatter.title}</Link>
+                    </StyledBlogArtikelHeaderCircle>
+                  )}
+                  {index === 2 && (
+                    <StyledBlogArtikelHeaderParallelogram>
+                      <Link to={frontmatter.path}>{frontmatter.title}</Link>
+                    </StyledBlogArtikelHeaderParallelogram>
+                  )}
+
+                  <BlogartikleSubInfo>
                     <BlogArtikelHeaderTime>
                       {frontmatter.date}
                     </BlogArtikelHeaderTime>
                     <BlogArtikelHeaderTags>
                       {frontmatter.tags.map(tag => ` ${tag}`)}
                     </BlogArtikelHeaderTags>{' '}
-                  </p>
+                  </BlogartikleSubInfo>
 
                   {frontmatter.excerpt}
                 </BlogArtikelSingleWrapper>

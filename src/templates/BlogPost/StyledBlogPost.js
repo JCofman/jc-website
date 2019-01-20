@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledSingleBlogPostArticle = styled.article`
   .blog-post-header-image {
@@ -11,8 +11,12 @@ export const StyledSingleBlogPostArticle = styled.article`
     max-width: 1280px;
     margin: 5rem auto;
     grid-gap: 10px 50px;
+    font-size: 2rem;
     grid-template-columns: 3fr 12fr 5fr;
     transition: color ${props => props.theme.themeTransition};
+    a {
+      color: ${props => props.theme.colors.primary};
+    }
   }
 
   .blog-post-content > * {

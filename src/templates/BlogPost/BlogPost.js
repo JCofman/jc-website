@@ -1,27 +1,27 @@
-import React from "react";
-import Helmet from "react-helmet";
-import posed from "react-pose";
-import styled from "styled-components";
-import { Link, graphql } from "gatsby";
-import Img from "gatsby-image";
+import React from 'react';
+import Helmet from 'react-helmet';
+import posed from 'react-pose';
+import styled from 'styled-components';
+import { Link, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
-import Layout from "../../components/Layout";
-import { StyledSingleBlogPostArticle } from "./StyledBlogPost";
+import Layout from '../../components/Layout';
+import { StyledSingleBlogPostArticle } from './StyledBlogPost';
 
 // Use `posed.div` elements anywhere on the pages.
 const Transition = posed.div({
   enter: {
-    opacity: 1
+    opacity: 1,
   },
   exit: {
-    opacity: 0
-  }
+    opacity: 0,
+  },
 });
 
 const StyledHeader = styled.header`
   .gatsby-image-wrapper {
     width: 100%;
-    height: 300px;
+    height: 400px;
     object-fit: cover;
   }
   h1 {
@@ -46,6 +46,15 @@ const StyledHeader = styled.header`
   }
 `;
 
+const StyledBlogBottomNav = styled.div`
+  display: grid;
+  justify-content: center;
+  font-size: 2rem;
+  a {
+    color: ${props => props.theme.colors.primary};
+  }
+`;
+
 const StyledInfo = styled.p`
   text-align: center;
   margin: 1rem;
@@ -59,7 +68,7 @@ export default function Template({ data, pageContext }) {
     <Layout>
       <StyledHeader>
         <Img
-          sizes={post.frontmatter.featuredImage.childImageSharp.sizes}
+          sizes={post.frontmatter.headerImage.childImageSharp.sizes}
           alt={`background image which represents - ${post.frontmatter.title}`}
         />
         <h1>{post.frontmatter.title}</h1>
@@ -74,17 +83,20 @@ export default function Template({ data, pageContext }) {
             className="blog-post-content"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
-
-          {prev && (
-            <Link to={prev.frontmatter.path}>
-              Previous: {prev.frontmatter.title}
-            </Link>
-          )}
-          {next && (
-            <Link to={next.frontmatter.path}>
-              Next: {next.frontmatter.title}
-            </Link>
-          )}
+          <StyledBlogBottomNav>
+            {prev && (
+              <>
+                Previous Post:
+                <Link to={prev.frontmatter.path}>{prev.frontmatter.title}</Link>
+              </>
+            )}
+            {next && (
+              <>
+                Next Post:
+                <Link to={next.frontmatter.path}>{next.frontmatter.title}</Link>
+              </>
+            )}
+          </StyledBlogBottomNav>
         </Transition>
       </StyledSingleBlogPostArticle>
     </Layout>
@@ -100,7 +112,7 @@ export const pageQuery = graphql`
         path
         title
         tags
-        featuredImage {
+        headerImage {
           childImageSharp {
             sizes(maxWidth: 1024, maxHeight: 300) {
               ...GatsbyImageSharpSizes
