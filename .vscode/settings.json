@@ -1,7 +1,6 @@
 {
-  "editor.formatOnSave": true,
-  "editor.fontFamily": "Dank Mono",
-  "workbench.colorTheme": "Night Owl",
-  "editor.fontSize": 16,
-  "editor.fontLigatures": true
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#4A90E2",
+    "titleBar.inactiveBackground": "#4A90E2"
+  }
 }

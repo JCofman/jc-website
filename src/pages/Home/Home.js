@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { PoseGroup } from "react-pose";
 import SplitText from "react-pose-text";
 
-import { FaTwitter, FaFacebook, FaBehance, FaGithub } from "react-icons/fa";
 import {
   HeaderBG,
   Wrapper,
@@ -10,9 +9,10 @@ import {
   Information,
   StyledName,
   SubHeaderPose,
-  HeaderPose,
-  Social
-} from "./StyledHome";
+  HeaderPose
+} from "../../templates/PageStyles/StyledHome";
+
+import Social from "../../components/Social";
 import Logo from "../../components/Logo";
 
 const Home = () => {
@@ -27,13 +27,18 @@ const Home = () => {
   return (
     <HeaderBG>
       <Wrapper>
-        <PoseGroup>
-          {logoIsVisible && (
-            <StyledLogo key="logo">
-              <Logo />
-            </StyledLogo>
-          )}
-        </PoseGroup>
+        <div className="stars">
+          <PoseGroup>
+            {logoIsVisible && (
+              <StyledLogo key="logo">
+                <Logo />
+              </StyledLogo>
+            )}
+          </PoseGroup>
+          <div className="small" />
+          <div className="medium" />
+          <div className="big" />
+        </div>
 
         <Information>
           <span>
@@ -47,25 +52,34 @@ const Home = () => {
           </span>
           <h1>
             <SplitText charPoses={HeaderPose} initialPose="exit" pose="enter">
-              I LOVE WEB DEVELOPMENT 💻, VOLLEYBALL 🏐 AND TRAVELLING ⛺️ 🌲 🏃
+              I LOVE WEB DEVELOPMENT
             </SplitText>
+            <span role="img" aria-label="computer">
+              {" "}
+              💻
+            </span>
+            <SplitText charPoses={HeaderPose} initialPose="exit" pose="enter">
+              , VOLLEYBALL
+            </SplitText>{" "}
+            <span role="img" aria-label="computer">
+              🏐
+            </span>{" "}
+            <SplitText charPoses={HeaderPose} initialPose="exit" pose="enter">
+              AND TRAVELLING
+            </SplitText>{" "}
+            <span role="img" aria-label="tent">
+              ⛺️
+            </span>{" "}
+            <span role="img" aria-label="nature tree">
+              🌲
+            </span>{" "}
+            <span role="img" aria-label="run">
+              🏃
+            </span>
           </h1>
         </Information>
       </Wrapper>
-      <Social>
-        <a href="https://twitter.com/JCofman">
-          <FaTwitter size={24} />
-        </a>
-        <a href="https://www.facebook.com/jac.cof">
-          <FaFacebook size={24} />
-        </a>
-        <a href="https://www.behance.net/cofmanjacob2a8">
-          <FaBehance size={24} />
-        </a>
-        <a href="https://github.com/JCofman">
-          <FaGithub size={24} />
-        </a>
-      </Social>
+      <Social />
       <StyledName>Jacob Cofman</StyledName>
     </HeaderBG>
   );

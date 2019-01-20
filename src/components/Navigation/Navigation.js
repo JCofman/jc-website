@@ -21,21 +21,19 @@ const Navigation = props => {
         <Logo />{" "}
       </StyledNavLogo>
       <StyledNav>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
         <StyledNavList>
-          <li>
-            <button onClick={() => props.changeTheme()}>
+          {/* <li>
+            <button disabled onClick={() => props.changeTheme()}>
               {mode === "light" ? <FaLightbulb /> : <FaMoon />}
             </button>
-          </li>
-
+          </li> */}
           <li>
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/AboutMe/">About Me</Link>
-          </li>
-          <li>
-            <Link to="/Blog/">Blog</Link>
+            <Link to="/me">About Me</Link>
           </li>
         </StyledNavList>
       </StyledNav>

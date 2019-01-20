@@ -21,17 +21,22 @@ export const StyledNav = styled.nav`
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
   height: 70px;
   position: fixed;
   left: 0px;
   right: 0px;
-  border-top: 3px solid ${props => props.theme.colors.primary};
+  border-top: 1px solid #201c29;
+  border-bottom: 1px solid #201c29;
   background-color: ${NavBackgroundColor};
   z-index: 1000;
   float: right;
   overflow: hidden;
   box-shadow: none;
-  transition: height 0.25s ease-in-out 0s, box-shadow 0.2s ease-in-out 0.05s;
+  transition: height 0.25s ease-in-out 0s, box-shadow 0.2s ease-in-out 0.05s,
+    background-color ${props => props.theme.themeTransition};
 `;
 
 export const StyledNavLogo = styled.svg`
@@ -56,7 +61,6 @@ export const StyledNavList = styled.ul`
   margin: 0;
   padding: 0;
   display: flex;
-  justify-self: end;
   a,
   button {
     font-size: 2rem;
@@ -76,6 +80,7 @@ export const StyledNavList = styled.ul`
     ${props => props.theme.small} {
       font-size: 1.4rem;
     }
+
     &:after {
       height: 2px;
       background: #50e3c2;

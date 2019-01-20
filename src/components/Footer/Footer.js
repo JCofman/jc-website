@@ -1,33 +1,74 @@
 import React from "react";
 import { Link } from "gatsby";
+import Social from "../../components/Social";
 import styled from "styled-components";
 import theme from "styled-theming";
+import { StyledNavList } from "../../components/Navigation/StyledNavigation";
+import WorldMap from "../WorldMap";
 
 const FooterBackground = theme("mode", {
   light: props => props.theme.colors.white,
   dark: props => props.theme.colors.black
 });
 
-import WorldMap from "../WorldMap";
+const MapColor = theme("mode", {
+  light: props => props.theme.colors.white,
+  dark: props => props.theme.colors.black
+});
 
 const Map = styled.div`
   display: flex;
-  width: 1024px;
+  max-width: ${props => props.theme.maxWidth};
   height: 500px;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin: 5rem auto;
+  transition: background-color ${props => props.theme.themeTransition};
+  svg {
+    width: 100%;
+    stroke: black;
+    ${props => props.theme.small} {
+      width: 80%;
+    }
+    svg g {
+      stroke: ${MapColor};
+    }
+    ${props => props.theme.medium} {
+      width: 80%;
+    }
+    ${props => props.theme.large} {
+      width: 80%;
+    }
+  }
 `;
-
-const FooterIcons = styled.div``;
 
 const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: ${FooterBackground};
+  background-color: ${FooterBackground};
+  border-top: 1px solid #201c29;
+  transition: background-color ${props => props.theme.themeTransition};
   overflow: hidden;
+`;
+
+const NavListWrapper = styled.div`
+  width: 100%;
+  display: grid;
+  grid-gap: 20px;
+  ${props => props.theme.small} {
+    grid-template-columns: 1 1fr;
+  }
+  ${props => props.theme.medium} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  ${props => props.theme.large} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  ${props => props.theme.xlarge} {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const NavList = styled.ul`
@@ -38,39 +79,25 @@ const NavList = styled.ul`
   justify-content: center;
 `;
 
-const NavListItem = styled.li`
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  font-weight: 100;
-  text-decoration: line-through;
-  padding: 15px 20px 18px;
-  color: ${props => props.theme.colors.white};
-  a:hover {
-    color: ${props => props.theme.colors.primary};
-  }
-  a {
-    color: #fff;
-  }
-`;
-
 const Footer = () => {
   return (
     <StyledFooter>
       <Map>
         <WorldMap />{" "}
       </Map>
-      <FooterIcons />
-      <NavList>
-        <NavListItem>
-          <Link to="/">Home</Link>
-        </NavListItem>
-        <NavListItem>
-          <Link to="/aboutme">About Me</Link>
-        </NavListItem>
-        <NavListItem>
-          <Link to="/blog">Blog</Link>
-        </NavListItem>
-      </NavList>
+      <NavListWrapper>
+        <NavList>
+          <StyledNavList>
+            <Link to="/">Home</Link>
+          </StyledNavList>
+        </NavList>
+        <Social />
+        <NavList>
+          <StyledNavList>
+            <Link to="/aboutme">About Me</Link>
+          </StyledNavList>
+        </NavList>
+      </NavListWrapper>
     </StyledFooter>
   );
 };

@@ -13,9 +13,11 @@ setConfig({ pureSFC: true });
 const sizes = {
   phone: 576,
   tablet: 768,
-  desktop: 992,
+  desktop: 1024,
   giant: 1200
 };
+
+const maxWidth = "1024px";
 
 const breakPoints = {
   small: `@media (max-width: ${sizes.phone - 0.2}px)`,
@@ -26,6 +28,8 @@ const breakPoints = {
   }px) and (max-width: ${sizes.desktop - 0.2}px)`,
   xlarge: `@media (min-width: ${sizes.giant}px)`
 };
+
+const themeTransition = "2s ease-in-out";
 
 const colors = {
   white: "#F4F4F4",
@@ -663,6 +667,8 @@ pre tt:before,
 pre tt:after {
   content: "";
 }
+::selection { background: ${props => props.theme.colors.primary}; }
+
 `;
 
 const Layout = ({ children }) => {
@@ -677,6 +683,8 @@ const Layout = ({ children }) => {
       theme={{
         mode: themes[themeMode],
         ...breakPoints,
+        maxWidth,
+        themeTransition,
         colors: { ...colors }
       }}
     >

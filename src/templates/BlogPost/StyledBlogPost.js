@@ -9,9 +9,10 @@ export const StyledSingleBlogPostArticle = styled.article`
   .blog-post-content {
     display: grid;
     max-width: 1280px;
-    margin: 200px auto;
+    margin: 5rem auto;
     grid-gap: 10px 50px;
     grid-template-columns: 3fr 12fr 5fr;
+    transition: color ${props => props.theme.themeTransition};
   }
 
   .blog-post-content > * {
