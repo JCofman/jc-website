@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Layout from '../../components/Layout';
 import { StaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import theme from 'styled-theming';
+
 import { Link } from 'gatsby';
 
 const StyledH1 = styled.h1`
@@ -21,6 +23,46 @@ const StyledH1 = styled.h1`
     transform: translateX(-0.5em) translateY(-1.5rem);
   }
 `;
+
+const StyledSpan = styled.span`
+  font-style: italic;
+`;
+const color = theme('mode', {
+  light: props => props.theme.colors.dark,
+  dark: props => props.theme.colors.white,
+});
+
+const StyledH2Circle = styled.h2`
+  color: ${color};
+  font-size: 5rem;
+  :before {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    opacity: 0.2;
+    background-color: ${props => props.theme.colors.white};
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    transform: translateX(-0.5em) translateY(-1.5rem);
+  }
+`;
+
+const StyledH2Parallelogram = styled.h2`
+  color: ${color};
+  font-size: 5rem;
+  :before {
+    width: 50px;
+    height: 40px;
+    background: ${props => props.theme.colors.white};
+    opacity: 0.2;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    transform: translateX(-0.5em) translateY(-1.5rem) skew(20deg);
+  }
+`;
+
 export const Wrapper = styled.div`
   display: grid;
   margin: 5rem auto;
@@ -40,9 +82,8 @@ const StyledTriangle = styled.div`
   width: 100%;
   max-width: 800px;
 `;
-const StyledPentagon = styled.div`
-  -webkit-clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+const StyledParallelogram = styled.div`
+  clip-path: polygon(0% 0%, 75% 0%, 100% 100%, 25% 100%);
   max-width: 800px;
   align-self: center;
   width: 70%;
@@ -56,6 +97,9 @@ const StyledCircle = styled.div`
 export const StyledHeader = styled.h1`
   display: flex;
   align-items: left;
+`;
+export const StyledH3 = styled.h3`
+  font-size: 3rem;
 `;
 
 const AboutMe = () => (
@@ -94,22 +138,25 @@ const AboutMe = () => (
           </StyledTriangle>
           <div>
             <StyledH1>Jacob Cofman</StyledH1>
-            <span>lorem ipsum</span>
+            <StyledSpan>This is me</StyledSpan>
             <ul>
-              <li>27 years old</li>
-              <li>Tea</li>
-              <li>Milk</li>
+              <li>👴 27 years old</li>
+              <li>🏠 Living in Karlsruhe Germany</li>
+              <li>👪 One twin brother</li>
             </ul>
           </div>
         </Wrapper>
         <Wrapper>
           <div>
-            <h2>Jacob Cofman</h2>
-            <span>lorem ipsum</span>
+            <StyledH2Circle> Hobbies </StyledH2Circle>
+            <StyledSpan>This is what I love ❤️</StyledSpan>
             <ul>
-              <li>27 years old</li>
-              <li>Tea</li>
-              <li>Milk</li>
+              <li>🏐 I play volleyball since I am 7</li>
+              <li>💻 All the things especially frontend engineering stuff</li>
+              <li>
+                🏂 🏃 ⛺️ A lot of outdoor activities like snowboarding, hiking
+                and just enjoing the nature
+              </li>
             </ul>
           </div>
           <StyledCircle>
@@ -117,14 +164,24 @@ const AboutMe = () => (
           </StyledCircle>
         </Wrapper>
         <Wrapper>
-          <StyledPentagon>
+          <StyledParallelogram>
             <Img fluid={data.meHackingImage.childImageSharp.fluid} alt="test" />
-          </StyledPentagon>
+          </StyledParallelogram>
           <div>
-            <h2>Jacob Cofman</h2>
-            <span>lorem ipsum</span>
+            <StyledH2Parallelogram>Skills</StyledH2Parallelogram>
+            <StyledSpan>major skills</StyledSpan>
             <ul>
-              <li>27 years old</li>
+              <StyledH3>Frontend</StyledH3>
+              <li>JavaScript</li>
+              <li>CSS</li>
+              <li>GraphQL</li>
+              <li>React</li>
+              <li>Node</li>
+              <li>Sketch</li>
+
+              <StyledH3>Backend</StyledH3>
+              <StyledH3>Things I am currently learning</StyledH3>
+              <li>Security</li>
               <li>Tea</li>
               <li>Milk</li>
             </ul>

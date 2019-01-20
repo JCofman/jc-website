@@ -2,5 +2,8 @@
   "workbench.colorCustomizations": {
     "titleBar.activeBackground": "#4A90E2",
     "titleBar.inactiveBackground": "#4A90E2"
+  },
+  "files.associations": {
+    "*.md": "mdx"
   }
 }

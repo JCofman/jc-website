@@ -9,11 +9,14 @@
     "url": "https://github.com/JCofman/jc-website/issues"
   },
   "dependencies": {
+    "@mdx-js/mdx": "^0.16.6",
+    "@mdx-js/tag": "^0.16.6",
     "babel-plugin-styled-components": "^1.10.0",
     "eslint-plugin-react-hooks": "^0.0.0",
     "gatsby": "2.0.91",
     "gatsby-cli": "2.4.8",
     "gatsby-image": "^2.0.26",
+    "gatsby-mdx": "^0.3.5",
     "gatsby-plugin-manifest": "^2.0.13",
     "gatsby-plugin-offline": "^2.0.21",
     "gatsby-plugin-react-helmet": "3.0.5",

@@ -2,15 +2,15 @@ module.exports = {
   siteMetadata: {
     title: `Jacob Cofman Website`,
     description: `This is my website and blog`,
-    author: `Jacob Cofman`
+    author: `Jacob Cofman`,
   },
   plugins: [
-    "gatsby-plugin-react-helmet",
+    'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-plugin-styled-components`
+      resolve: `gatsby-plugin-styled-components`,
     },
-    "gatsby-plugin-webpack-bundle-analyzer",
-    "gatsby-plugin-eslint",
+    'gatsby-plugin-webpack-bundle-analyzer',
+    'gatsby-plugin-eslint',
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -24,33 +24,33 @@ module.exports = {
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: `standalone`,
-        icon: `src/assets/images/icon.png` // This path is relative to the root of the site.
-      }
+        icon: `src/assets/images/icon.png`, // This path is relative to the root of the site.
+      },
     },
     {
-      resolve: "gatsby-plugin-react-svg",
+      resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /assets/
-        }
-      }
+          include: /assets/,
+        },
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/pages`,
-        name: "pages"
-      }
+        name: 'pages',
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/assets/images`
-      }
+        path: `${__dirname}/src/assets/images`,
+      },
     },
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
@@ -60,11 +60,11 @@ module.exports = {
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
               maxWidth: 1024,
-              withWebp: true
-            }
-          }
-        ]
-      }
-    }
-  ]
+              withWebp: true,
+            },
+          },
+        ],
+      },
+    },
+  ],
 };
