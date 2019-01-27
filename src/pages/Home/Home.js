@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { PoseGroup } from "react-pose";
-import SplitText from "react-pose-text";
+import React from 'react';
+import { useWindowScrollPosition } from 'the-platform';
 
 import {
   HeaderBG,
@@ -8,71 +7,39 @@ import {
   StyledLogo,
   Information,
   StyledName,
-  SubHeaderPose,
-  HeaderPose
-} from "../../templates/PageStyles/StyledHome";
+} from '../../templates/PageStyles/StyledHome';
 
-import Social from "../../components/Social";
-import Logo from "../../components/Logo";
+import Social from '../../components/Social';
+import Logo from '../../components/Logo';
 
 const Home = () => {
-  const [logoIsVisible, setLogoToVisible] = useState(false);
-
-  // Similar to componentDidMount and componentDidUpdate:
-  useEffect(() => {
-    // Update the document title using the browser API
-    setLogoToVisible(true);
-  });
+  const { x, y } = useWindowScrollPosition();
 
   return (
     <HeaderBG>
       <Wrapper>
-        <div className="stars">
-          <PoseGroup>
-            {logoIsVisible && (
-              <StyledLogo key="logo">
-                <Logo />
-              </StyledLogo>
-            )}
-          </PoseGroup>
-          <div className="small" />
-          <div className="medium" />
-          <div className="big" />
-        </div>
-
+        <StyledLogo key="logo" scrollPositionY={y}>
+          <Logo />
+        </StyledLogo>
         <Information>
-          <span>
-            <SplitText
-              charPoses={SubHeaderPose}
-              initialPose="exit"
-              pose="enter"
-            >
-              HEY EVERYONE MY NAME IS JACOB COFMAN
-            </SplitText>
-          </span>
+          <span>HEY EVERYONE MY NAME IS JACOB COFMAN</span>
           <h1>
-            <SplitText charPoses={HeaderPose} initialPose="exit" pose="enter">
-              I LOVE WEB DEVELOPMENT
-            </SplitText>
+            I LOVE WEB DEVELOPMENT
             <span role="img" aria-label="computer">
-              {" "}
+              {' '}
               💻
             </span>
-            <SplitText charPoses={HeaderPose} initialPose="exit" pose="enter">
-              , VOLLEYBALL
-            </SplitText>{" "}
+            , VOLLEYBALL
             <span role="img" aria-label="computer">
               🏐
-            </span>{" "}
-            <SplitText charPoses={HeaderPose} initialPose="exit" pose="enter">
-              AND TRAVELLING
-            </SplitText>{" "}
+            </span>{' '}
+            AND TRAVELLING{' '}
             <span role="img" aria-label="tent">
               ⛺️
-            </span>{" "}
+            </span>{' '}
             <span role="img" aria-label="nature tree">
               🌲
-            </span>{" "}
+            </span>{' '}
             <span role="img" aria-label="run">
               🏃
             </span>

@@ -3,6 +3,7 @@ import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import theme from 'styled-theming';
+import { zIndexbackGroundAfterElements } from '../components/Styles/zIndex';
 
 import Layout from '../components/Layout';
 import Home from './home/';
@@ -77,7 +78,7 @@ export const StyledBlogArtikelHeaderTriangle = styled(BaseArtikelHeader)`
     content: '';
     pointer-events: none;
     position: absolute;
-    z-index: -1;
+    z-index: ${zIndexbackGroundAfterElements};
     transform: translateX(-0.5em) translateY(-1.5rem);
   }
 `;
@@ -110,7 +111,7 @@ export const StyledBlogArtikelHeaderParallelogram = styled(BaseArtikelHeader)`
 `;
 
 const BlogArtikelImageWrapper = styled.div`
-  margin: 1rem 1rem;
+  margin: 1rem 2rem;
   min-width: 200px;
   width: 250px;
   flex-direction: row;
@@ -118,7 +119,7 @@ const BlogArtikelImageWrapper = styled.div`
 
 const BlogArtikelSingleWrapper = styled.div`
   flex-direction: row;
-  margin: 1rem;
+  margin: 1rem 2rem;
   padding: 1rem;
 `;
 

@@ -1,36 +1,28 @@
-import styled from "styled-components";
-import posed from "react-pose";
-import DarkHeaderBG from "./homebg.jpg";
-import WhiteHeaderBG from "./whiteHomeBg.jpg";
-import theme from "styled-theming";
+import styled from 'styled-components';
+import DarkHeaderBG from './homebg.jpg';
+import WhiteHeaderBG from './whiteHomeBg.jpg';
+import { zIndexLogo } from '../../components/Styles/zIndex';
 
-const LogoAnimation = posed.svg({
-  enter: {
-    y: 0,
-    opacity: 1,
-    delay: 100
-  },
-  exit: {
-    opacity: 0,
-    transition: { duration: 150 }
-  }
-});
+import theme from 'styled-theming';
 
-export const StyledLogo = styled(LogoAnimation)`
-  position: sticky;
+export const StyledLogo = styled.svg`
+  position: ${props => (props.scrollPositionY > 0 ? 'fixed' : 'static')};
+  top: -325px;
+  left: -200px;
   align-self: flex-start;
-  z-index: 2;
+  z-index: ${zIndexLogo};
   height: 80rem;
   width: 60rem;
   margin-left: 6rem;
+  transition: all 0.25s ease-out 0s;
+  transform: ${props =>
+    props.scrollPositionY > 0 ? 'scale(0.2)' : 'scale(1.0)'};
 
   ${props => props.theme.small} {
     display: none;
   }
   ${props => props.theme.medium} {
-    height: 30rem;
-    width: 15rem;
-    margin-left: 1rem;
+    display: none;
   }
   ${props => props.theme.large} {
     height: 60rem;
@@ -42,11 +34,13 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-items: center;
+  height: 1028px;
+  height: 100vh;
 `;
 
-const InformationTextShadow = theme("mode", {
-  light: "3px 3px 0 rgba(0, 0, 0, 0.2)",
-  dark: "3px 3px 0 rgba(255, 255, 255, 0.2)"
+const InformationTextShadow = theme('mode', {
+  light: '3px 3px 0 rgba(0, 0, 0, 0.2)',
+  dark: '3px 3px 0 rgba(255, 255, 255, 0.2)',
 });
 
 export const Information = styled.div`
@@ -59,20 +53,20 @@ export const Information = styled.div`
   margin-right: 6rem;
 
   ${props => props.theme.small} {
-    padding-top: 15rem;
+    position: initial;
+    padding-top: 18rem;
     padding-bottom: 3rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    top: 10rem;
-    left: 30rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+   
   }
   ${props => props.theme.medium} {
+    position: initial;
     padding-top: 25rem;
     padding-bottom: 3rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    top: -5rem;
-    left: 15rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  
   }
   ${props => props.theme.large} {
     padding-top: 10rem;
@@ -116,42 +110,9 @@ export const Information = styled.div`
   }
 `;
 
-export const Social = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  a {
-    color: white;
-    margin: 2rem;
-  }
-  svg {
-    transition: all 0.5s ease;
-
-    &:hover {
-      color: ${props => props.theme.colors.primary};
-      transform: scale(1.5);
-    }
-  }
-`;
-
-export const SubHeaderPose = {
-  exit: { opacity: 0 },
-  enter: {
-    opacity: 1,
-    delay: ({ charIndex }) => charIndex * 30
-  }
-};
-export const HeaderPose = {
-  exit: { opacity: 0 },
-  enter: {
-    opacity: 1,
-    delay: ({ charIndex }) => charIndex * 30
-  }
-};
-
-const themedHeaderBG = theme("mode", {
+const themedHeaderBG = theme('mode', {
   light: WhiteHeaderBG,
-  dark: DarkHeaderBG
+  dark: DarkHeaderBG,
 });
 
 export const HeaderBG = styled.header`
@@ -425,7 +386,7 @@ export const HeaderBG = styled.header`
     animation: starsAnimation 50s linear infinite;
   }
   .stars > .small:after {
-    content: " ";
+    content: ' ';
     position: absolute;
     top: 2000px;
     width: 1px;
@@ -741,7 +702,7 @@ export const HeaderBG = styled.header`
     animation: starsAnimation 100s linear infinite;
   }
   .stars > .medium:after {
-    content: " ";
+    content: ' ';
     position: absolute;
     top: 2000px;
     width: 2px;
@@ -858,7 +819,7 @@ export const HeaderBG = styled.header`
     animation: starsAnimation 150s linear infinite;
   }
   .stars > .big:after {
-    content: " ";
+    content: ' ';
     position: absolute;
     top: 2000px;
     width: 3px;

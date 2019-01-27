@@ -1,14 +1,14 @@
-import styled from "styled-components";
-import theme from "styled-theming";
+import styled from 'styled-components';
+import theme from 'styled-theming';
 
-const HeadingTextShadow = theme("mode", {
-  light: "2px 2px 0 rgba(0,0, 0,0.3)",
-  dark: "2px 2px 0 rgba(255,255, 255,0.3)"
+const HeadingTextShadow = theme('mode', {
+  light: '2px 2px 0 rgba(0,0, 0,0.3)',
+  dark: '2px 2px 0 rgba(255,255, 255,0.3)',
 });
 
-const HeadingTextColor = theme("mode", {
+const HeadingTextColor = theme('mode', {
   light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white
+  dark: props => props.theme.colors.white,
 });
 
 const StyledHeadingH1 = styled.h1`
@@ -32,7 +32,7 @@ const StyledHeadingH1 = styled.h1`
     border-left: 25px solid transparent;
     border-right: 25px solid transparent;
     border-bottom: 50px solid ${props => props.theme.colors.white};
-    content: "";
+    content: '';
     pointer-events: none;
     position: absolute;
     z-index: -1;

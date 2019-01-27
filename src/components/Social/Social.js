@@ -1,31 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import theme from "styled-theming";
+import React from 'react';
 
-import { FaTwitter, FaFacebook, FaBehance, FaGithub } from "react-icons/fa";
+import { StyledSocial } from './StyledSocial';
 
-const SocialIconColor = theme("mode", {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white
-});
-
-export const StyledSocial = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  a {
-    color: ${SocialIconColor};
-    margin: 2rem;
-  }
-  svg {
-    transition: all 0.5s ease;
-
-    &:hover {
-      color: ${props => props.theme.colors.primary};
-      transform: scale(1.5);
-    }
-  }
-`;
+import { FaTwitter, FaFacebook, FaBehance, FaGithub } from 'react-icons/fa';
 
 const Social = () => {
   return (

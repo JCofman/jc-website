@@ -1,19 +1,15 @@
-import React from "react";
-import { Link } from "gatsby";
-import Social from "../../components/Social";
-import styled from "styled-components";
-import theme from "styled-theming";
-import { StyledNavList } from "../../components/Navigation/StyledNavigation";
-import WorldMap from "../WorldMap";
+import React from 'react';
+import { Link } from 'gatsby';
+import styled from 'styled-components';
+import theme from 'styled-theming';
 
-const FooterBackground = theme("mode", {
-  light: props => props.theme.colors.white,
-  dark: props => props.theme.colors.black
-});
+import Social from '../../components/Social';
+import { StyledNavList } from '../../components/Navigation/StyledNavigation';
+import WorldMap from '../WorldMap';
 
-const MapColor = theme("mode", {
+const MapColor = theme('mode', {
   light: props => props.theme.colors.white,
-  dark: props => props.theme.colors.black
+  dark: props => props.theme.colors.black,
 });
 
 const Map = styled.div`
@@ -47,9 +43,6 @@ const StyledFooter = styled.footer`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${FooterBackground};
-  border-top: 1px solid #201c29;
-  transition: background-color ${props => props.theme.themeTransition};
   overflow: hidden;
 `;
 
@@ -83,7 +76,7 @@ const Footer = () => {
   return (
     <StyledFooter>
       <Map>
-        <WorldMap />{" "}
+        <WorldMap />{' '}
       </Map>
       <NavListWrapper>
         <NavList>

@@ -1,22 +1,11 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import posed from 'react-pose';
 import styled from 'styled-components';
 import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 import Layout from '../../components/Layout';
 import { StyledSingleBlogPostArticle } from './StyledBlogPost';
-
-// Use `posed.div` elements anywhere on the pages.
-const Transition = posed.div({
-  enter: {
-    opacity: 1,
-  },
-  exit: {
-    opacity: 0,
-  },
-});
 
 const StyledHeader = styled.header`
   .gatsby-image-wrapper {
@@ -78,26 +67,24 @@ export default function Template({ data, pageContext }) {
       </StyledInfo>
       <StyledSingleBlogPostArticle className="blog-post">
         <Helmet title={`JCofman - ${post.frontmatter.title}`} />
-        <Transition>
-          <div
-            className="blog-post-content"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
-          <StyledBlogBottomNav>
-            {prev && (
-              <>
-                Previous Post:
-                <Link to={prev.frontmatter.path}>{prev.frontmatter.title}</Link>
-              </>
-            )}
-            {next && (
-              <>
-                Next Post:
-                <Link to={next.frontmatter.path}>{next.frontmatter.title}</Link>
-              </>
-            )}
-          </StyledBlogBottomNav>
-        </Transition>
+        <div
+          className="blog-post-content"
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
+        <StyledBlogBottomNav>
+          {prev && (
+            <>
+              Previous Post:
+              <Link to={prev.frontmatter.path}>{prev.frontmatter.title}</Link>
+            </>
+          )}
+          {next && (
+            <>
+              Next Post:
+              <Link to={next.frontmatter.path}>{next.frontmatter.title}</Link>
+            </>
+          )}
+        </StyledBlogBottomNav>
       </StyledSingleBlogPostArticle>
     </Layout>
   );

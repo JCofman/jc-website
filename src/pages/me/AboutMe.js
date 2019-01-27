@@ -202,8 +202,8 @@ const AboutMe = () => (
                 <StyledH3>🤓 Things I am currently learning</StyledH3>
 
                 <li>Web-Security</li>
-                <li>In depth JS</li>
                 <li>Vue</li>
+                <li>Go</li>
               </StyledList>
             </StyledSkills>
           </div>
