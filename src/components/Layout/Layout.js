@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-import theme from "styled-theming";
-import { setConfig } from "react-hot-loader";
+import React, { useState } from 'react';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import theme from 'styled-theming';
+import { setConfig } from 'react-hot-loader';
 
-import Navigation from "../Navigation";
-import Footer from "../Footer";
-import StyledLayout from "./StyledLayout";
+import Navigation from '../Navigation';
+import Footer from '../Footer';
+import StyledLayout from './StyledLayout';
 
 // gatsby react hooks alpha fix
 setConfig({ pureSFC: true });
@@ -14,10 +14,10 @@ const sizes = {
   phone: 576,
   tablet: 768,
   desktop: 1024,
-  giant: 1200
+  giant: 1200,
 };
 
-const maxWidth = "1024px";
+const maxWidth = '1024px';
 
 const breakPoints = {
   small: `@media (max-width: ${sizes.phone - 0.2}px)`,
@@ -26,31 +26,33 @@ const breakPoints = {
   large: `@media (min-width: ${
     sizes.tablet
   }px) and (max-width: ${sizes.desktop - 0.2}px)`,
-  xlarge: `@media (min-width: ${sizes.giant}px)`
+  xlarge: `@media (min-width: ${sizes.giant}px)`,
 };
 
-const themeTransition = "2s ease-in-out";
+const themeTransition = '2s ease-in-out';
 
 const colors = {
-  white: "#F4F4F4",
-  black: "#010101",
-  primary: "#50E3C2",
-  secondary: "#4A90E2"
+  white: '#F4F4F4',
+  black: '#010101',
+  primary: '#50E3C2',
+  secondary: '#4A90E2',
+  darkGrey: '#201c29',
+  lightGrey: '#535B68',
 };
 
-const backgroundColor = theme("mode", {
+const backgroundColor = theme('mode', {
   light: colors.white,
-  dark: colors.black
+  dark: colors.black,
 });
 
-const bodyTextColor = theme("mode", {
+const bodyTextColor = theme('mode', {
   light: colors.black,
-  dark: colors.white
+  dark: colors.white,
 });
 
 const themes = {
-  dark: "dark",
-  light: "light"
+  dark: 'dark',
+  light: 'light',
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -672,10 +674,10 @@ pre tt:after {
 `;
 
 const Layout = ({ children }) => {
-  const [themeMode, setThemeMode] = useState("dark");
+  const [themeMode, setThemeMode] = useState('dark');
 
   const changeTheme = () => {
-    setThemeMode(prevState => (prevState === "light" ? "dark" : "light"));
+    setThemeMode(prevState => (prevState === 'light' ? 'dark' : 'light'));
   };
 
   return (
@@ -685,7 +687,7 @@ const Layout = ({ children }) => {
         ...breakPoints,
         maxWidth,
         themeTransition,
-        colors: { ...colors }
+        colors: { ...colors },
       }}
     >
       <StyledLayout>

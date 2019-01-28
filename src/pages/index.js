@@ -144,12 +144,16 @@ const BlogArtikelHeaderTags = styled.span`
   color: ${BlogArtikelTextColor};
 `;
 
+const StyledMain = styled.main`
+  border-top: 1px solid #201c29;
+`;
+
 const IndexPage = ({ data }) => {
   const { edges } = data.allMarkdownRemark;
   return (
     <Layout>
       <Home />
-      <main>
+      <StyledMain>
         {edges.map(({ node: post }, index) => {
           const { frontmatter } = post;
 
@@ -196,7 +200,7 @@ const IndexPage = ({ data }) => {
             </BlogArtikelWrapper>
           );
         })}
-      </main>
+      </StyledMain>
     </Layout>
   );
 };

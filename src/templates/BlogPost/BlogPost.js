@@ -101,7 +101,7 @@ export const pageQuery = graphql`
         tags
         headerImage {
           childImageSharp {
-            sizes(maxWidth: 1024, maxHeight: 300) {
+            sizes(maxWidth: 2024) {
               ...GatsbyImageSharpSizes
             }
           }

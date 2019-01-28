@@ -1,24 +1,43 @@
-import React from "react";
-import { Link } from "gatsby";
-import { withTheme } from "styled-components";
-import { FaMoon, FaLightbulb } from "react-icons/fa";
-import Logo from "../Logo";
+import React from 'react';
+import { Link } from 'gatsby';
+import { withTheme } from 'styled-components';
+import { FaMoon, FaLightbulb } from 'react-icons/fa';
+import Logo from '../Logo';
 
 import {
   StyledNav,
   StyledNavLogo,
   StyledNavList,
-  StyledNavWrapper
-} from "./StyledNavigation";
+  StyledNavWrapper,
+  StyledNavListLink,
+} from './StyledNavigation';
+
+export const NavLink = props => (
+  <StyledNavListLink>
+    <Link
+      {...props}
+      getProps={({ isCurrent }) => {
+        // the object returned here is passed to the
+        // anchor element's props
+        // todo find a good way addin hint to user where he ist
+        // return {
+        //   style: {
+        //     color: !isCurrent && '#535B68',
+        //   },
+        // };
+      }}
+    />
+  </StyledNavListLink>
+);
 
 const Navigation = props => {
   const {
-    theme: { mode }
+    theme: { mode },
   } = props;
   return (
     <StyledNavWrapper>
       <StyledNavLogo>
-        <Logo />{" "}
+        <Logo />{' '}
       </StyledNavLogo>
       <StyledNav>
         <div>&nbsp;</div>
@@ -30,10 +49,10 @@ const Navigation = props => {
             </button>
           </li> */}
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <Link to="/me">About Me</Link>
+            <NavLink to="/me">About Me</NavLink>
           </li>
         </StyledNavList>
       </StyledNav>

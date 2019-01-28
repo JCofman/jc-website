@@ -1,11 +1,5 @@
 {
   "version": 2,
   "name": "jcofman",
-  "alias": "jcofman.now.sh",
-  "builds": [
-    {
-      "use": "@now/static-build",
-      "config": { "distDir": "public" }
-    }
-  ]
+  "alias": "jcofman.now.sh"
 }

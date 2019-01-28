@@ -4,7 +4,11 @@ import styled from 'styled-components';
 import theme from 'styled-theming';
 
 import Social from '../../components/Social';
-import { StyledNavList } from '../../components/Navigation/StyledNavigation';
+import {
+  StyledNavList,
+  StyledNavListLink,
+} from '../../components/Navigation/StyledNavigation';
+import { NavLink } from '../../components/Navigation/Navigation';
 import WorldMap from '../WorldMap';
 
 const MapColor = theme('mode', {
@@ -44,6 +48,8 @@ const StyledFooter = styled.footer`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  margin-top: 2rem;
+  border-top: 1px solid #201c29;
 `;
 
 const NavListWrapper = styled.div`
@@ -80,15 +86,17 @@ const Footer = () => {
       </Map>
       <NavListWrapper>
         <NavList>
-          <StyledNavList>
-            <Link to="/">Home</Link>
-          </StyledNavList>
+          <NavLink to="/">Home</NavLink>
+
+          <StyledNavListLink>
+            <Link to="/" />
+          </StyledNavListLink>
         </NavList>
         <Social />
         <NavList>
-          <StyledNavList>
-            <Link to="/aboutme">About Me</Link>
-          </StyledNavList>
+          <NavLink to="/me">About Me</NavLink>
+
+          <Link to="/me" />
         </NavList>
       </NavListWrapper>
     </StyledFooter>

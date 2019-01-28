@@ -35,7 +35,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-items: center;
   height: 1028px;
-  height: 100vh;
+  height: 80vh;
 `;
 
 const InformationTextShadow = theme('mode', {
@@ -51,6 +51,8 @@ export const Information = styled.div`
   flex-direction: column;
   margin-left: 2rem;
   margin-right: 6rem;
+  text-shadow: ${InformationTextShadow};
+
 
   ${props => props.theme.small} {
     position: initial;
@@ -77,7 +79,6 @@ export const Information = styled.div`
 
   h1 {
     font-size: 5rem;
-    text-shadow: ${InformationTextShadow};
     transition: color ${props => props.theme.themeTransition};
     ${props => props.theme.small} {
       font-size: 4rem;

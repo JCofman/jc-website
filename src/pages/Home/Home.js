@@ -1,5 +1,5 @@
 import React from 'react';
-import { useWindowScrollPosition } from 'the-platform';
+import { useWindowScrollPosition } from '../../hooks/useWindowScrollPosition';
 
 import {
   HeaderBG,
@@ -13,7 +13,7 @@ import Social from '../../components/Social';
 import Logo from '../../components/Logo';
 
 const Home = () => {
-  const { x, y } = useWindowScrollPosition();
+  const { y } = useWindowScrollPosition();
 
   return (
     <HeaderBG>

@@ -39,32 +39,82 @@ export const Wrapper = styled.div`
   min-height: 50vh;
   align-items: center;
   max-width: ${props => props.theme.maxWidth};
-  grid-gap: 20px;
+  grid-gap: 2rem;
+  grid-row-gap: 10rem;
   grid-template-columns: 1fr 1fr;
   ${props => props.theme.small} {
     grid-template-columns: 1fr;
+    margin: 5rem 5rem;
+  }
+  ${props => props.theme.medium} {
+    margin: 5rem 3rem;
+    align-items: center;
+    justify-content: center;
+  }
+  ${props => props.theme.large} {
+    margin: 5rem 3rem;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
-// const StyledListTriangle = styled.ul`
-//   margin: 0.75em 0;
-//   font-size: 2rem;
-//   padding: 0 1em;
-//   list-style: none;
-//   li:before {
-//     content: '';
-//     width: 0;
-//     height: 0;
-//     opacity: 0.5;
-//     border-left: 5px solid transparent;
-//     border-right: 5px solid transparent;
-//     border-bottom: 10px solid ${props => props.theme.colors.white};
-//     left: -1em;
-//     top: 0.9em;
-//     position: relative;
-//     display: block;
-//   }
-// `;
+const StyledListTriangle = styled.ul`
+  margin: 0.75em 0;
+  font-size: 2rem;
+  padding: 0 1em;
+  list-style: none;
+  li:before {
+    content: '';
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid ${props => props.theme.colors.white};
+    left: -1em;
+    top: 0.9em;
+    position: relative;
+    display: block;
+  }
+`;
+
+const StyledListDots = styled.ul`
+  margin: 0.75em 0;
+  font-size: 2rem;
+  padding: 0 1em;
+  list-style-type: none;
+  li:before {
+    content: '';
+    width: 1rem;
+    height: 1rem;
+    opacity: 0.5;
+    border-radius: 50%;
+    background-color: ${props => props.theme.colors.white};
+    left: -1em;
+    top: 0.9em;
+    position: relative;
+    display: block;
+  }
+`;
+
+const StyledListParallelogram = styled.ul`
+  margin: 0.75em 0;
+  font-size: 2rem;
+  padding: 0 1em;
+  list-style-type: none;
+  li:before {
+    content: '';
+    width: 1.2rem;
+    height: 0.9rem;
+    opacity: 0.5;
+    background-color: ${props => props.theme.colors.white};
+    left: -1em;
+    top: 0.9em;
+    position: relative;
+    display: block;
+    clip-path: polygon(0% 0%, 75% 0%, 100% 100%, 25% 100%);
+  }
+`;
 
 const StyledList = styled.ul`
   margin: 0.75em 0;
@@ -75,28 +125,49 @@ const StyledList = styled.ul`
 
 const StyledSkills = styled.ul`
   font-size: 2rem;
-
   list-style: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  order: 3;
 `;
 
 const StyledTriangle = styled.div`
   clip-path: polygon(50% 0%, 0% 150%, 80% 100%);
   align-self: center;
+  order: 1;
   width: 100%;
   max-width: 800px;
 `;
+
 const StyledParallelogram = styled.div`
   clip-path: polygon(0% 0%, 75% 0%, 100% 100%, 25% 100%);
   max-width: 800px;
   align-self: center;
   width: 70%;
+  order: 5;
 `;
+
 const StyledCircle = styled.div`
   clip-path: circle(35% at 50% 50%);
   align-self: center;
   width: 100%;
+  order: 4;
+  ${props => props.theme.small} {
+    order: 3;
+  }
+`;
+
+const StyledMainInformation = styled.div`
+  order: 2;
+`;
+const StyledInformationHobbies = styled.div`
+  order: 3;
+  ${props => props.theme.small} {
+    order: 4;
+  }
+`;
+const StyledInformationSkills = styled.div`
+  order: 6;
 `;
 
 export const StyledHeader = styled.h1`
@@ -118,7 +189,7 @@ const AboutMe = () => (
             }
           }
         }
-        meJumpingImage: file(relativePath: { eq: "meJumping.jpg" }) {
+        meJumpingImage: file(relativePath: { eq: "meJumping3.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 800) {
               ...GatsbyImageSharpFluid
@@ -139,50 +210,55 @@ const AboutMe = () => (
         <Wrapper>
           <StyledTriangle>
             {' '}
-            <Img fluid={data.profileImage.childImageSharp.fluid} alt="test" />
+            <Img
+              fluid={data.profileImage.childImageSharp.fluid}
+              alt="A picture of me"
+            />
           </StyledTriangle>
-          <div>
+          <StyledMainInformation>
             <StyledH1>Jacob Cofman</StyledH1>
-            <StyledSpan>This is me 😏</StyledSpan>
-            <StyledList>
-              <li>👴 27 years old</li>
-              <li>🏠 Living in Karlsruhe Germany</li>
-              <li>👪 One twin brother</li>
-              <li>💁 A lovely girlfriend</li>
-            </StyledList>
-          </div>
-        </Wrapper>
-        <Wrapper>
-          <div>
+            <StyledSpan>That`s me 😏</StyledSpan>
+            <StyledListTriangle>
+              <li> 27 years old</li>
+              <li> Living in Karlsruhe Germany</li>
+              <li> One twin brother</li>
+              <li> A lovely girlfriend</li>
+            </StyledListTriangle>
+          </StyledMainInformation>
+          <StyledInformationHobbies>
             <StyledBlogArtikelHeaderCircle>
               {' '}
               Hobbies{' '}
             </StyledBlogArtikelHeaderCircle>
             <StyledSpan>This is what I love ❤️</StyledSpan>
-            <StyledList>
-              <li>🏐 I play volleyball since I am seven years old</li>
-              <li>💻 All the things especially frontend engineering stuff</li>
+            <StyledListDots>
+              <li> I play volleyball since I am seven years old</li>
+              <li> All the things especially frontend engineering stuff</li>
               <li>
-                🏂 🏃 ⛺️ A lot of outdoor activities like snowboarding, hiking
-                and just enjoing the nature
+                A lot of outdoor activities like snowboarding, hiking and just
+                enjoing the nature
               </li>
-            </StyledList>
-          </div>
+            </StyledListDots>
+          </StyledInformationHobbies>
           <StyledCircle>
-            <Img fluid={data.meJumpingImage.childImageSharp.fluid} alt="test" />
+            <Img
+              fluid={data.meJumpingImage.childImageSharp.fluid}
+              alt="Picture of me in the nature"
+            />
           </StyledCircle>
-        </Wrapper>
-        <Wrapper>
           <StyledParallelogram>
-            <Img fluid={data.meHackingImage.childImageSharp.fluid} alt="test" />
+            <Img
+              fluid={data.meHackingImage.childImageSharp.fluid}
+              alt="Coding"
+            />
           </StyledParallelogram>
-          <div>
+          <StyledInformationSkills>
             <StyledBlogArtikelHeaderParallelogram>
               Skills
             </StyledBlogArtikelHeaderParallelogram>
-            <StyledSpan>major skills</StyledSpan>
+            <StyledSpan>Major skills 💪</StyledSpan>
             <StyledSkills>
-              <StyledList>
+              <StyledListParallelogram>
                 <StyledH3>💅 Frontend</StyledH3>
 
                 <li>JavaScript</li>
@@ -190,23 +266,23 @@ const AboutMe = () => (
                 <li>GraphQL</li>
                 <li>React</li>
                 <li>Sketch</li>
-              </StyledList>
-              <StyledList>
+              </StyledListParallelogram>
+              <StyledListParallelogram>
                 <StyledH3>💻 Backend</StyledH3>
 
                 <li>GraphQL</li>
                 <li>Kubernetes</li>
                 <li>Node</li>
-              </StyledList>
-              <StyledList>
+              </StyledListParallelogram>
+              <StyledListParallelogram>
                 <StyledH3>🤓 Things I am currently learning</StyledH3>
 
                 <li>Web-Security</li>
                 <li>Vue</li>
                 <li>Go</li>
-              </StyledList>
+              </StyledListParallelogram>
             </StyledSkills>
-          </div>
+          </StyledInformationSkills>
         </Wrapper>
       </Layout>
     )}
