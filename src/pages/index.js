@@ -6,7 +6,7 @@ import theme from 'styled-theming';
 import { zIndexbackGroundAfterElements } from '../components/Styles/zIndex';
 
 import Layout from '../components/Layout';
-import Home from './home/';
+import Home from './home';
 import Divider from '../components/Divider';
 
 const BlogArtikelWrapper = styled.div`
