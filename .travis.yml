@@ -12,7 +12,7 @@ before_script:
   - yarn test:size
 
 script:
-  - NOW_URL="$(now --public -e NODE_ENV=production --token $NOW_TOKEN --yarn --local-config=./now.json public)"
+  - NOW_URL="$(yarn deploy:ci)"
   # store deployment url from clipboard into the deployment url
   - echo $NOW_URL
 
@@ -21,9 +21,9 @@ after_success:
   - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
   - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
   # alias url only when deploying master branch
-  - if [ $BRANCH = master ]; then npm run alias; fi
+  - if [ $BRANCH = master ]; then yarn alias; fi
   # - $BRANCH=master && npm run alias
-  - npm run lh $NOW_URL
+  - yarn lighthouse $NOW_URL
   - TEST_URL=$NOW_URL GIT_TOKEN=$GIT_TOKEN WEBPAGETEST_API_KEY=$WEBPAGETEST_API_KEY node webPageTest.js
 
 env:
