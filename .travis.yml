@@ -12,7 +12,7 @@ before_script:
   - yarn test:size
 
 script:
-  - NOW_URL="$(yarn deploy:ci)"
+  - NOW_URL="$(now --token $NOW_TOKEN ./public  --local-config=../now.json)"
   # store deployment url from clipboard into the deployment url
   - echo $NOW_URL
 
