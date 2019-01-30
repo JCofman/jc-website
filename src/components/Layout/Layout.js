@@ -160,7 +160,7 @@ textarea {
   margin: 0;
 }
 optgroup {
-  font-weight: 700;
+  font-weight: 800;
 }
 button,
 input {
@@ -248,7 +248,7 @@ html {
   box-sizing: inherit;
 }
 body {
-  color: ${bodyTextColor};
+  color: ${bodyTextColor} !important;
   background-color: ${backgroundColor};
   font-size: 1.5rem;
   font-family: "Raleway", sans-serif;

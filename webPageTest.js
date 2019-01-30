@@ -1,37 +1,46 @@
-var GitHubApi = require("@octokit/rest");
-var webPageTest = require("webpagetest");
+
+const GitHubApi = require('@octokit/rest')
+const webPageTest = require('webpagetest')
+const axios = require('axios')
 
 if (
   (process.env.WEBPAGETEST_API_KEY ||
     process.env.TEST_URL ||
-    process.env.GIT_TOKEN) === undefined
+    process.env.GIT_TOKEN ||
+    process.env.SLACK_HOOK_URL ||
+    process.env.GIT_BRANCH) === undefined
 ) {
   throw new Error(
-    "The script hasnt run since you did not provide a webpagtest api key a test url and a git token"
-  );
+    'The script hasnt run since you did not provide a webpagtest api key a test url and a git token'
+  )
 }
-const wpt = new webPageTest(
-  "www.webpagetest.org",
-  process.env.WEBPAGETEST_API_KEY
-);
 
-var myRepo = "jc-website";
-var myOwner = "JCofman";
-var dataAsMarkdown = "";
-const testURL = process.env.TEST_URL;
+const webpagetestApiKey = process.env.WEBPAGETEST_API_KEY
+const testURL = process.env.TEST_URL
+const gitToken = process.env.GIT_TOKEN
+const gitBranch = process.env.GIT_BRANCH
+const slackHookUrl = process.env.SLACK_HOOK_URL
+const wpt = new webPageTest('www.webpagetest.org', webpagetestApiKey)
+
+const myRepo = "jc-website";
+const myOwner = "JCofman";
+let dataAsMarkdown = "";
 
 // init github
-var github = new GitHubApi();
+var github = new GitHubApi({ type: "oauth", token: process.env.GIT_TOKEN });
 
-github.authenticate({ type: "oauth", token: process.env.GIT_TOKEN });
 
 wpt.runTest(
   testURL,
   {
     video: true,
     pollResults: 5,
+    location: 'Dulles_MotoG4',
+    connectivity: '3GSlow',
+    mobile: 1,
+    device: 'Motorola G (gen 4)',
     timeout: 1000,
-    lighthouse: true
+    lighthouse: true,
   },
   function(err, result) {
     console.log(err || result);
@@ -51,47 +60,6 @@ const humanFileSize = size => {
 };
 
 const convertToMarkdown = result => {
-  console.log("FIRSTVIEW Load time:", result.data.average.firstView.loadTime);
-  console.log("FIRSTVIEW First byte:", result.data.average.firstView.TTFB);
-  console.log("FIRSTVIEW Start render:", result.data.average.firstView.render);
-  console.log(
-    "FIRSTVIEW Speed Index:",
-    result.data.average.firstView.SpeedIndex
-  );
-  console.log(
-    "FIRSTVIEW DOM elements:",
-    result.data.average.firstView.domElements
-  );
-  console.log(
-    "FIRSTVIEW VisualComplete:",
-    result.data.average.firstView.visualComplete
-  );
-
-  console.log(
-    "(FIRSTVIEW Doc complete) Requests:",
-    result.data.average.firstView.requestsDoc
-  );
-  console.log(
-    "(FIRSTVIEW Doc complete) Bytes in:",
-    result.data.average.firstView.bytesInDoc
-  );
-
-  console.log(
-    "(FIRSTVIEW Fully loaded) Time:",
-    result.data.average.firstView.fullyLoaded
-  );
-  console.log(
-    "(FIRSTVIEW Fully loaded) Requests:",
-    result.data.average.firstView.requestsFull
-  );
-  console.log(
-    "(FIRSTVIEW Fully loaded) Bytes in:",
-    result.data.average.firstView.bytesIn
-  );
-
-  console.log(`URL tested: ${result.data.testUrl}`);
-  console.log(`* Summary of the test: ${result.data.summary}`);
-
   dataAsMarkdown = `
 # WebpageTest report
 * run id: ${result.data.id}
@@ -100,97 +68,181 @@ const convertToMarkdown = result => {
 * location where the test has run: ${result.data.location}
 * from run parameter: ${result.data.from}
 * connectivity: ${result.data.connectivity}
-* runs: ${result.data.runs}, successFullRuns: ${result.data.successfulFVRuns}
-
+* successFullRuns: ${result.data.successfulFVRuns}
 ## Report
-### FirstView
-| File | FileSize | 
-|----------|----------|
- ${result.data.median.firstView.requests
-   .map(request => `${request.url}|${humanFileSize(request.bytesIn)} \r\n`)
-   .join("")}
-
+# FilmStrip
+## FirstView median
+${result.data.median.firstView.videoFrames
+    .map((item, index) => {
+      if (index === 0) {
+        return `| ${item.time} milliseconds |`
+      } else {
+        return ` ${item.time} milliseconds |`
+      }
+    })
+    .join('')}
+${result.data.median.firstView.videoFrames
+    .map((item, index) => {
+      if (index === 0) {
+        return `|--------------|`
+      } else {
+        return `--------------|`
+      }
+    })
+    .join('')}
+${result.data.median.firstView.videoFrames
+    .map((item, index) => {
+      if (index === 0) {
+        return `| ![alt text](${item.image}) |`
+      } else {
+        return ` ![alt text](${item.image}) |`
+      }
+    })
+    .join('')}
+${result.data.median.firstView.videoFrames
+    .map((item, index) => {
+      if (index === 0) {
+        return `| ${item.VisuallyComplete} |`
+      } else {
+        return ` ${item.VisuallyComplete} |`
+      }
+    })
+    .join('')}     
+      
+## ReapeatView median
+${result.data.median.repeatView.videoFrames
+    .map((item, index) => {
+      if (index === 0) {
+        return `| ${item.time} milliseconds |`
+      } else {
+        return ` ${item.time} milliseconds |`
+      }
+    })
+    .join('')}
+${result.data.median.repeatView.videoFrames
+    .map((item, index) => {
+      if (index === 0) {
+        return `|--------------|`
+      } else {
+        return `--------------|`
+      }
+    })
+    .join('')}
+${result.data.median.repeatView.videoFrames
+    .map((item, index) => {
+      if (index === 0) {
+        return `| ![alt text](${item.image}) |`
+      } else {
+        return ` ![alt text](${item.image}) |`
+      }
+    })
+    .join('')}
+${result.data.median.repeatView.videoFrames
+    .map((item, index) => {
+      if (index === 0) {
+        return `| ${item.VisuallyComplete} |`
+      } else {
+        return ` ${item.VisuallyComplete} |`
+      }
+    })
+    .join('')} 
 # VisualMetrics
-## Metrics Median
-| View | Time to First Byte |  Render Started  |  Visualy Completed | SpeedIndex | Load Time |
-|----------|----------|:-------------:|------:| ------:|------:|
-FirstView  | ${result.data.median.firstView.TTFB} | ${
+## Metrics Median Run
+| View | First Paint | First Contentful Paint | First Meaningful Paint | Time to First Byte | Time to interactive |  Render Started |  Visualy Completed | SpeedIndex | Load Time |
+|----------|----------|----------|----------|----------|----------|----------|----------|----------|----------|
+FirstView  | ${result.data.median.firstView.firstPaint} | ${
+    result.data.median.firstView.firstContentfulPaint
+  } | ${result.data.median.firstView.firstMeaningfulPaint} | ${
+    result.data.median.firstView['lighthouse.Performance.interactive']
+  } | ${result.data.median.firstView.TTFB} | ${
     result.data.median.firstView.render
   } | ${result.data.median.firstView.visualComplete} | ${
     result.data.median.firstView.SpeedIndex
   } | ${result.data.median.firstView.loadTime} |  
-RepeatView | ${result.data.median.repeatView.TTFB} | ${
+RepeatView | ${result.data.median.repeatView.firstPaint} | ${
+    result.data.median.repeatView.firstContentfulPaint
+  } | ${result.data.median.repeatView.firstMeaningfulPaint} | ${
+    result.data.median.repeatView['lighthouse.Performance.interactive']
+  } | ${result.data.median.repeatView.TTFB} | ${
     result.data.median.repeatView.render
   } | ${result.data.median.repeatView.visualComplete} | ${
     result.data.median.repeatView.SpeedIndex
   } | ${result.data.median.repeatView.loadTime} |  
-
-  ## Metrics Average
-| View | Time to First Byte |  Render Started  |  Visualy Completed | SpeedIndex | Load Time |
-|----------|----------|:-------------:|------:| ------:|------:|
-FirstView  | ${result.data.average.firstView.TTFB} | ${
+  ## Metrics Average Run
+  | View | First Paint | First Contentful Paint | First Meaningful Paint | Time to First Byte | Time to interactive |  Render Started |  Visualy Completed | SpeedIndex | Load Time |
+  |----------|----------|----------|----------|----------|----------|----------|----------|----------|----------|
+  FirstView  | ${result.data.average.firstView.firstPaint} | ${
+    result.data.average.firstView.firstContentfulPaint
+  } | ${result.data.average.firstView.firstMeaningfulPaint} | ${
+    result.data.average.firstView['lighthouse.Performance.interactive']
+  } | ${result.data.average.firstView.TTFB} | ${
     result.data.average.firstView.render
   } | ${result.data.average.firstView.visualComplete} | ${
     result.data.average.firstView.SpeedIndex
   } | ${result.data.average.firstView.loadTime} |  
-RepeatView | ${result.data.average.repeatView.TTFB} | ${
+  RepeatView | ${result.data.average.repeatView.firstPaint} | ${
+    result.data.average.repeatView.firstContentfulPaint
+  } | ${result.data.average.repeatView.firstMeaningfulPaint} | ${
+    result.data.average.repeatView['lighthouse.Performance.interactive']
+  } | ${result.data.average.repeatView.TTFB} | ${
     result.data.average.repeatView.render
   } | ${result.data.average.repeatView.visualComplete} | ${
     result.data.average.repeatView.SpeedIndex
   } | ${result.data.average.repeatView.loadTime} |  
-
-
 # Waterfall
-
 ## FirstView median
 ![alt text](${result.data.median.firstView.images.waterfall})
-
-
-# FilmStrip
-## FirstView median
-${result.data.median.firstView.videoFrames
-    .map(
-      item => `
-| ${item.time} milliseconds|
-|--------------|
-| ![alt text](${item.image})|
-| ${item.VisuallyComplete}|
+# Files 
+## FirstView median Files
+| File | FileSize | 
+|----------|----------|
+ ${result.data.median.firstView.requests
+   .map(request => `${request.url}|${humanFileSize(request.bytesIn)} \r\n`)
+   .join('')}
+ 
     `
-    )
-    .join("")}
-        
-
-## ReapeatView median
-${result.data.median.repeatView.videoFrames
-    .map(
-      item => `
-| ${item.time} milliseconds|
-|--------------|
-| ![alt text](${item.image})|
-| ${item.VisuallyComplete}|
-    `
-    )
-    .join("")}
-    `;
   /**
    * first get all commits
    * then get latest
    * and push webpagetest results as comment to latest commit
    */
-
   github.repos
-    .getCommits({ owner: myOwner, repo: myRepo })
-    .then(allCommits => {
+    .getCommit({ owner: myOwner, repo: myRepo, sha: gitBranch })
+    .then(commit => {
       return github.repos.createCommitComment({
         owner: myOwner,
         repo: myRepo,
-        sha: allCommits.data[0].sha,
-        body: dataAsMarkdown
-      });
+        sha: commit.data.sha,
+        body: dataAsMarkdown,
+      })
     })
     .catch(error => {
       console.log(`ERROR could either not get commits of the repo ${myRepo} of the owner ${myOwner}
             or could not sent the commit to the repositorie ERRORMSG: ${error}
-            `);
-    });
-};
+            `)
+    })
+  axios
+    .post(slackHookUrl, {
+      text: ` ⚡️🚀🚗💨  *New WebPagetest Results* for ${testURL} ⚡️🚀🚗💨 
+             _First Paint:_ ${result.data.median.firstView.firstPaint}
+             _First Contentful Paint:_ ${
+               result.data.median.firstView.firstContentfulPaint
+             }
+             _First Meaningful Paint:_ ${
+               result.data.median.firstView.firstMeaningfulPaint
+             }
+             _Time to Interactive:_ ${
+               result.data.median.firstView[
+                 'lighthouse.Performance.interactive'
+               ]
+             }
+             _SpeedIndex:_ ${result.data.median.firstView.SpeedIndex}
+      `,
+    })
+    .then(function(response) {
+      console.log('SEND TO SLACK')
+    })
+    .catch(function(error) {
+      console.log(error)
+    })
+}
