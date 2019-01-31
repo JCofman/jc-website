@@ -1,7 +1,6 @@
-
-const GitHubApi = require('@octokit/rest')
-const webPageTest = require('webpagetest')
-const axios = require('axios')
+const GitHubApi = require('@octokit/rest');
+const webPageTest = require('webpagetest');
+const axios = require('axios');
 
 if (
   (process.env.WEBPAGETEST_API_KEY ||
@@ -12,23 +11,22 @@ if (
 ) {
   throw new Error(
     'The script hasnt run since you did not provide a webpagtest api key a test url and a git token'
-  )
+  );
 }
 
-const webpagetestApiKey = process.env.WEBPAGETEST_API_KEY
-const testURL = process.env.TEST_URL
-const gitToken = process.env.GIT_TOKEN
-const gitBranch = process.env.GIT_BRANCH
-const slackHookUrl = process.env.SLACK_HOOK_URL
-const wpt = new webPageTest('www.webpagetest.org', webpagetestApiKey)
+const webpagetestApiKey = process.env.WEBPAGETEST_API_KEY;
+const testURL = process.env.TEST_URL;
+const gitToken = process.env.GIT_TOKEN;
+const gitBranch = process.env.GIT_BRANCH;
+const slackHookUrl = process.env.SLACK_HOOK_URL;
+const wpt = new webPageTest('www.webpagetest.org', webpagetestApiKey);
 
-const myRepo = "jc-website";
-const myOwner = "JCofman";
-let dataAsMarkdown = "";
+const myRepo = 'jc-website';
+const myOwner = 'JCofman';
+let dataAsMarkdown = '';
 
 // init github
-var github = new GitHubApi({ type: "oauth", token: process.env.GIT_TOKEN });
-
+var github = new GitHubApi({ auth: `token ${gitToken}` });
 
 wpt.runTest(
   testURL,
@@ -54,8 +52,8 @@ const humanFileSize = size => {
   var i = Math.floor(Math.log(size) / Math.log(1024));
   return (
     (size / Math.pow(1024, i)).toFixed(2) * 1 +
-    " " +
-    ["B", "kB", "MB", "GB", "TB"][i]
+    ' ' +
+    ['B', 'kB', 'MB', 'GB', 'TB'][i]
   );
 };
 
@@ -73,79 +71,79 @@ const convertToMarkdown = result => {
 # FilmStrip
 ## FirstView median
 ${result.data.median.firstView.videoFrames
-    .map((item, index) => {
-      if (index === 0) {
-        return `| ${item.time} milliseconds |`
-      } else {
-        return ` ${item.time} milliseconds |`
-      }
-    })
-    .join('')}
+  .map((item, index) => {
+    if (index === 0) {
+      return `| ${item.time} milliseconds |`;
+    } else {
+      return ` ${item.time} milliseconds |`;
+    }
+  })
+  .join('')}
 ${result.data.median.firstView.videoFrames
-    .map((item, index) => {
-      if (index === 0) {
-        return `|--------------|`
-      } else {
-        return `--------------|`
-      }
-    })
-    .join('')}
+  .map((item, index) => {
+    if (index === 0) {
+      return `|--------------|`;
+    } else {
+      return `--------------|`;
+    }
+  })
+  .join('')}
 ${result.data.median.firstView.videoFrames
-    .map((item, index) => {
-      if (index === 0) {
-        return `| ![alt text](${item.image}) |`
-      } else {
-        return ` ![alt text](${item.image}) |`
-      }
-    })
-    .join('')}
+  .map((item, index) => {
+    if (index === 0) {
+      return `| ![alt text](${item.image}) |`;
+    } else {
+      return ` ![alt text](${item.image}) |`;
+    }
+  })
+  .join('')}
 ${result.data.median.firstView.videoFrames
-    .map((item, index) => {
-      if (index === 0) {
-        return `| ${item.VisuallyComplete} |`
-      } else {
-        return ` ${item.VisuallyComplete} |`
-      }
-    })
-    .join('')}     
+  .map((item, index) => {
+    if (index === 0) {
+      return `| ${item.VisuallyComplete} |`;
+    } else {
+      return ` ${item.VisuallyComplete} |`;
+    }
+  })
+  .join('')}     
       
 ## ReapeatView median
 ${result.data.median.repeatView.videoFrames
-    .map((item, index) => {
-      if (index === 0) {
-        return `| ${item.time} milliseconds |`
-      } else {
-        return ` ${item.time} milliseconds |`
-      }
-    })
-    .join('')}
+  .map((item, index) => {
+    if (index === 0) {
+      return `| ${item.time} milliseconds |`;
+    } else {
+      return ` ${item.time} milliseconds |`;
+    }
+  })
+  .join('')}
 ${result.data.median.repeatView.videoFrames
-    .map((item, index) => {
-      if (index === 0) {
-        return `|--------------|`
-      } else {
-        return `--------------|`
-      }
-    })
-    .join('')}
+  .map((item, index) => {
+    if (index === 0) {
+      return `|--------------|`;
+    } else {
+      return `--------------|`;
+    }
+  })
+  .join('')}
 ${result.data.median.repeatView.videoFrames
-    .map((item, index) => {
-      if (index === 0) {
-        return `| ![alt text](${item.image}) |`
-      } else {
-        return ` ![alt text](${item.image}) |`
-      }
-    })
-    .join('')}
+  .map((item, index) => {
+    if (index === 0) {
+      return `| ![alt text](${item.image}) |`;
+    } else {
+      return ` ![alt text](${item.image}) |`;
+    }
+  })
+  .join('')}
 ${result.data.median.repeatView.videoFrames
-    .map((item, index) => {
-      if (index === 0) {
-        return `| ${item.VisuallyComplete} |`
-      } else {
-        return ` ${item.VisuallyComplete} |`
-      }
-    })
-    .join('')} 
+  .map((item, index) => {
+    if (index === 0) {
+      return `| ${item.VisuallyComplete} |`;
+    } else {
+      return ` ${item.VisuallyComplete} |`;
+    }
+  })
+  .join('')} 
 # VisualMetrics
 ## Metrics Median Run
 | View | First Paint | First Contentful Paint | First Meaningful Paint | Time to First Byte | Time to interactive |  Render Started |  Visualy Completed | SpeedIndex | Load Time |
@@ -200,10 +198,9 @@ RepeatView | ${result.data.median.repeatView.firstPaint} | ${
    .map(request => `${request.url}|${humanFileSize(request.bytesIn)} \r\n`)
    .join('')}
  
-    `
+    `;
   /**
-   * first get all commits
-   * then get latest
+   * get latest commit
    * and push webpagetest results as comment to latest commit
    */
   github.repos
@@ -214,13 +211,13 @@ RepeatView | ${result.data.median.repeatView.firstPaint} | ${
         repo: myRepo,
         sha: commit.data.sha,
         body: dataAsMarkdown,
-      })
+      });
     })
     .catch(error => {
       console.log(`ERROR could either not get commits of the repo ${myRepo} of the owner ${myOwner}
             or could not sent the commit to the repositorie ERRORMSG: ${error}
-            `)
-    })
+            `);
+    });
   axios
     .post(slackHookUrl, {
       text: ` ⚡️🚀🚗💨  *New WebPagetest Results* for ${testURL} ⚡️🚀🚗💨 
@@ -240,9 +237,9 @@ RepeatView | ${result.data.median.repeatView.firstPaint} | ${
       `,
     })
     .then(function(response) {
-      console.log('SEND TO SLACK')
+      console.log('SEND TO SLACK');
     })
     .catch(function(error) {
-      console.log(error)
-    })
-}
+      console.log(error);
+    });
+};
