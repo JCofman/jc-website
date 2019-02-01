@@ -1,9 +1,9 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
+import SEO from '../../components/SEO';
 import Layout from '../../components/Layout';
 import { StyledSingleBlogPostArticle } from './StyledBlogPost';
 
@@ -55,6 +55,15 @@ export default function Template({ data, pageContext }) {
 
   return (
     <Layout>
+      <SEO
+        title={`JCofman - ${post.frontmatter.title}`}
+        description={
+          post.frontmatter.description || post.frontmatter.excerpt || 'nothin’'
+        }
+        image={post.frontmatter.headerImage.childImageSharp.sizes.src}
+        pathname={post.frontmatter.path}
+        article
+      />
       <StyledHeader>
         <Img
           sizes={post.frontmatter.headerImage.childImageSharp.sizes}
@@ -66,7 +75,6 @@ export default function Template({ data, pageContext }) {
         {post.frontmatter.date}, {post.frontmatter.tags.map(tag => ` ${tag}`)}
       </StyledInfo>
       <StyledSingleBlogPostArticle className="blog-post">
-        <Helmet title={`JCofman - ${post.frontmatter.title}`} />
         <div
           className="blog-post-content"
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -99,6 +107,7 @@ export const pageQuery = graphql`
         path
         title
         tags
+        excerpt
         headerImage {
           childImageSharp {
             sizes(maxWidth: 2024) {

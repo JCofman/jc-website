@@ -1,13 +1,8 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 import theme from 'styled-theming';
 
 import Social from '../../components/Social';
-import {
-  StyledNavList,
-  StyledNavListLink,
-} from '../../components/Navigation/StyledNavigation';
 import { NavLink } from '../../components/Navigation/Navigation';
 import WorldMap from '../WorldMap';
 
@@ -87,13 +82,10 @@ const Footer = () => {
       <NavListWrapper>
         <NavList>
           <NavLink to="/">Home</NavLink>
-
         </NavList>
         <Social />
         <NavList>
-          <NavLink to="/me">About Me</NavLink>
-
-          <Link to="/me" />
+          <NavLink to="/me">About</NavLink>
         </NavList>
       </NavListWrapper>
     </StyledFooter>

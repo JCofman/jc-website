@@ -68,7 +68,7 @@ export const StyledNavList = styled.ul`
   display: flex;
 `;
 
-export const StyledNavListLink = styled.div`
+export const StyledNavListLink = styled.li`
   a,
   button {
     font-size: 2rem;

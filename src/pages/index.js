@@ -3,6 +3,9 @@ import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import theme from 'styled-theming';
+
+import SEO from '../components/SEO';
+
 import { zIndexbackGroundAfterElements } from '../components/Styles/zIndex';
 
 import Layout from '../components/Layout';
@@ -152,6 +155,10 @@ const IndexPage = ({ data }) => {
   const { edges } = data.allMarkdownRemark;
   return (
     <Layout>
+      <SEO
+        title="All posts"
+        keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+      />
       <Home />
       <StyledMain>
         {edges.map(({ node: post }, index) => {

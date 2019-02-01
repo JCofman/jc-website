@@ -7,9 +7,7 @@ import {
 } from '../';
 import { StaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import theme from 'styled-theming';
-
-import { Link } from 'gatsby';
+// import theme from 'styled-theming';
 
 const StyledH1 = styled.h1`
   color: ${props => props.theme.colors.primary};
@@ -114,13 +112,6 @@ const StyledListParallelogram = styled.ul`
     display: block;
     clip-path: polygon(0% 0%, 75% 0%, 100% 100%, 25% 100%);
   }
-`;
-
-const StyledList = styled.ul`
-  margin: 0.75em 0;
-  font-size: 2rem;
-  padding: 0 1em;
-  list-style: none;
 `;
 
 const StyledSkills = styled.ul`
