@@ -49,7 +49,7 @@ const Navigation = () => {
             </button>
           </li> */}
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/me">About Me</NavLink>
+          <NavLink to="/me">About</NavLink>
         </StyledNavList>
       </StyledNav>
     </StyledNavWrapper>
