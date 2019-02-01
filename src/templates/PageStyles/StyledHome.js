@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import DarkHeaderBG from './homebg.jpg';
 import WhiteHeaderBG from './whiteHomeBg.jpg';
 import DarkHeaderBGWebP from './homebg.webp';
@@ -114,20 +114,29 @@ export const Information = styled.div`
 `;
 
 const themedHeaderBG = theme('mode', {
-  light: WhiteHeaderBG,
-  dark: DarkHeaderBG,
+  light: css`
+    @supports (display: grid) {
+      background: url(${WhiteHeaderBG}) no-repeat center right fixed;
+    }
+    @supports not (display: grid) {
+      background: url(${WhiteHeaderBGWebP}) no-repeat center right fixed;
+    }
+  `,
+  dark: css`
+    @supports (display: grid) {
+      background: url(${DarkHeaderBGWebP}) no-repeat center right fixed;
+    }
+    @supports not (display: grid) {
+      background: url(${DarkHeaderBG}) no-repeat center right fixed;
+    }
+  `,
 });
 
 export const HeaderBG = styled.header`
   /* Full height */
   display: flex;
   flex-direction: column;
-  @supports (display: grid) {
-    background: url(${DarkHeaderBGWebP}) no-repeat center right fixed;
-  }
-  @supports not (display: grid) {
-    background: url(${themedHeaderBG}) no-repeat center right fixed;
-  }
+  ${themedHeaderBG}
   background-size: auto;
   background-repeat: no-repeat;
   height: 1024px;
