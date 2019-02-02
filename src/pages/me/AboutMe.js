@@ -12,7 +12,7 @@ import Img from 'gatsby-image';
 const StyledH1 = styled.h1`
   color: ${props => props.theme.colors.primary};
   transform: skew(-5deg) rotate(-1deg);
-  font-size: 8rem;
+  font-size: 6rem;
   :before {
     width: 0;
     height: 0;
@@ -25,34 +25,45 @@ const StyledH1 = styled.h1`
     position: absolute;
     transform: translateX(-0.5em) translateY(-1.5rem);
   }
+  ${props => props.theme.xsmall} {
+    font-size: 6rem;
+  }
+  ${props => props.theme.small} {
+    font-size: 8rem;
+  }
 `;
 
 const StyledSpan = styled.span`
-  text-shadow: 3px 3px 0 rgba(255,255,255,0.2);
+  text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.2);
 `;
 
 export const Wrapper = styled.div`
   display: grid;
-  margin: 5rem auto;
+  margin: 5rem 5rem;
   min-height: 50vh;
   align-items: center;
   max-width: ${props => props.theme.maxWidth};
+  grid-template-columns: 1fr;
   grid-gap: 2rem;
   grid-row-gap: 10rem;
-  grid-template-columns: 1fr 1fr;
+
   ${props => props.theme.small} {
     grid-template-columns: 1fr;
     margin: 5rem 5rem;
   }
+
   ${props => props.theme.medium} {
-    margin: 5rem 3rem;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: center;
+    margin: 5rem 3rem;
   }
+
   ${props => props.theme.large} {
-    margin: 5rem 3rem;
+    margin: 5rem auto;
     align-items: center;
     justify-content: center;
+    grid-template-columns: 1fr 1fr;
   }
 `;
 
@@ -118,8 +129,11 @@ const StyledSkills = styled.ul`
   font-size: 2rem;
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   order: 3;
+  ${props => props.theme.small} {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 const StyledTriangle = styled.div`
@@ -142,21 +156,23 @@ const StyledCircle = styled.div`
   clip-path: circle(35% at 50% 50%);
   align-self: center;
   width: 100%;
-  order: 4;
-  ${props => props.theme.small} {
-    order: 3;
+  order: 3;
+  ${props => props.theme.medium} {
+    order: 4;
   }
 `;
 
 const StyledMainInformation = styled.div`
   order: 2;
 `;
+
 const StyledInformationHobbies = styled.div`
-  order: 3;
-  ${props => props.theme.small} {
-    order: 4;
+  order: 4;
+  ${props => props.theme.medium} {
+    order: 3;
   }
 `;
+
 const StyledInformationSkills = styled.div`
   order: 6;
 `;
@@ -165,6 +181,7 @@ export const StyledHeader = styled.h1`
   display: flex;
   align-items: left;
 `;
+
 export const StyledH3 = styled.h3`
   font-size: 3rem;
 `;

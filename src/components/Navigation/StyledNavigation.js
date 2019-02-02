@@ -46,12 +46,16 @@ export const StyledNavLogo = styled.svg`
   height: 200px;
   transition: all 0.25s ease-out 0s;
   z-index: ${zIndexLogo};
-  display: none;
-  ${props => props.theme.small} {
-    display: inline-block;
+
+  ${props => props.theme.xsmall} {
+    width: 150px;
+    height: 150px;
   }
   ${props => props.theme.medium} {
     display: inline-block;
+  }
+  ${props => props.theme.large} {
+    display: none;
   }
   svg {
     width: 100%;

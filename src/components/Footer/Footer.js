@@ -35,7 +35,6 @@ const Map = styled.div`
     svg g {
       stroke: ${MapColor};
     }
-
     ${props => props.theme.small} {
       width: 95%;
     }

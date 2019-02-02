@@ -7,20 +7,25 @@ import { zIndexLogo } from '../../components/Styles/zIndex';
 
 import theme from 'styled-theming';
 
-
 export const StyledLogo = styled.svg`
+  display: none;
   position: ${props => (props.scrollPositionY > 0 ? 'fixed' : 'static')};
-  top: -320px;
+  top: -235px;
+
   left: -200px;
   align-self: flex-start;
   z-index: ${zIndexLogo};
-  height: 80rem;
-  width: 60rem;
+  height: 60rem;
+  width: 40rem;
+
   margin-left: 6rem;
   transition: all 0.25s ease-out 0s;
   transform: ${props =>
     props.scrollPositionY > 0 ? 'scale(0.2)' : 'scale(1.0)'};
 
+  ${props => props.theme.xsmall} {
+    display: none;
+  }
   ${props => props.theme.small} {
     display: none;
   }
@@ -28,9 +33,10 @@ export const StyledLogo = styled.svg`
     display: none;
   }
   ${props => props.theme.large} {
-    top: -235px;
-    height: 60rem;
-    width: 40rem;
+    display: flex;
+    top: -320px;
+    height: 80rem;
+    width: 60rem;
   }
 `;
 
@@ -48,23 +54,22 @@ const InformationTextShadow = theme('mode', {
 });
 
 export const Information = styled.div`
-  position: absolute;
-  top: 25rem;
-  left: 30rem;
   display: flex;
   flex-direction: column;
+  position: initial;
+  padding-top: 18rem;
+  padding-bottom: 3rem;
   margin-left: 2rem;
-  margin-right: 6rem;
+  margin-right: 2rem;
   text-shadow: ${InformationTextShadow};
 
-
+  
   ${props => props.theme.small} {
     position: initial;
     padding-top: 18rem;
     padding-bottom: 3rem;
     margin-left: 2rem;
     margin-right: 2rem;
-   
   }
   ${props => props.theme.medium} {
     position: initial;
@@ -75,15 +80,28 @@ export const Information = styled.div`
   
   }
   ${props => props.theme.large} {
+    position: absolute;
     padding-top: 10rem;
     padding-bottom: 10rem;
-    top: 8rem;
+    top: 15rem;
     left: 25rem;
   }
 
+  ${props => props.theme.xlarge} {
+    position: absolute;
+    top: 15rem;
+    left: 30rem;
+    margin-left: 2rem;
+    margin-right: 6rem;
+    text-shadow: ${InformationTextShadow};
+  }
+
   h1 {
-    font-size: 5rem;
+    font-size: 3rem;
     transition: color ${props => props.theme.themeTransition};
+    ${props => props.theme.xsmall} {
+      font-size: 3rem;
+    }
     ${props => props.theme.small} {
       font-size: 4rem;
     }
@@ -91,25 +109,37 @@ export const Information = styled.div`
       font-size: 4rem;
     }
     ${props => props.theme.large} {
-      font-size: 4rem;
+      font-size: 5rem;
     }
     span {
+      font-size: 3rem;
+    ${props => props.theme.xsmall} {
+      font-size: 3rem;
+    }
+    ${props => props.theme.small} {
+        font-size: 4rem;
+    }
+    ${props => props.theme.medium} {
+      font-size: 4rem;
+    }
+    ${props => props.theme.large} {
       font-size: 5rem;
+    }
     }
   }
 
   span {
-    font-size: 2rem;
+    font-size: 1.5rem;
     /* color: ${props => props.theme.colors.secondary}; */
     font-weight: 800;
     ${props => props.theme.small} {
       font-size: 1.5rem;
     }
     ${props => props.theme.medium} {
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
     ${props => props.theme.large} {
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
   }
 `;

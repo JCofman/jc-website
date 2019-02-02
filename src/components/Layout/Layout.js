@@ -11,6 +11,7 @@ import StyledLayout from './StyledLayout';
 setConfig({ pureSFC: true });
 
 const sizes = {
+  smallPhone: 380,
   phone: 576,
   tablet: 768,
   desktop: 1024,
@@ -20,12 +21,12 @@ const sizes = {
 const maxWidth = '1024px';
 
 const breakPoints = {
-  small: `@media (max-width: ${sizes.phone - 0.2}px)`,
-  medium: `@media (min-width: ${sizes.phone}px) and (max-width: ${sizes.tablet -
-    0.2}px)`,
+  xsmall: `@media (min-width: ${sizes.smallPhone}px)`,
+  small: `@media (min-width: ${sizes.phone}px)`,
+  medium: `@media (min-width: ${sizes.tablet}px)`,
   large: `@media (min-width: ${
-    sizes.tablet
-  }px) and (max-width: ${sizes.desktop - 0.2}px)`,
+    sizes.desktop
+  }px)`,
   xlarge: `@media (min-width: ${sizes.giant}px)`,
 };
 

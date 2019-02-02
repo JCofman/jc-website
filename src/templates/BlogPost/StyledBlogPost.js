@@ -11,6 +11,7 @@ export const StyledSingleBlogPostArticle = styled.article`
     max-width: 1280px;
     margin: 5rem auto;
     grid-gap: 10px 50px;
+    word-break: break-word;
     font-size: 2rem;
     grid-template-columns: 3fr 12fr 5fr;
     transition: color ${props => props.theme.themeTransition};
@@ -20,20 +21,22 @@ export const StyledSingleBlogPostArticle = styled.article`
   }
 
   .blog-post-content > * {
-    grid-column: 2 / -2;
+    grid-column: 1 / -1;
+    margin: 2rem;
     ${props => props.theme.small} {
-      grid-column: 1 / -1;
+      grid-column: 2 / -2;
+      margin: 0;
     }
   }
   .blog-post-content h1,
   h2 {
-    font-size: 8rem;
+    font-size: 4rem;
     font-style: italic;
     font-weight: 100;
     margin: 0;
     ${props => props.theme.small} {
       display: inline-block;
-      font-size: 4rem;
+      font-size: 8rem;
     }
   }
   .blog-post-content pre {
@@ -52,9 +55,10 @@ export const StyledSingleBlogPostArticle = styled.article`
     font-style: italic;
     text-align: center;
     margin: 0;
-    font-size: 6rem;
+    font-size: 3rem;
+
     ${props => props.theme.small} {
-      font-size: 2rem;
+      font-size: 6rem;
     }
   }
   .blog-post-tip {

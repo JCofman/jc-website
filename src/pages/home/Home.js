@@ -7,7 +7,6 @@ import {
   StyledLogo,
   Information,
   StyledName,
-  
 } from '../../templates/PageStyles/StyledHome';
 
 import Social from '../../components/Social';

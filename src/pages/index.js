@@ -25,19 +25,19 @@ const BlogArtikelWrapper = styled.div`
 
 const BlogArtikel = styled.div`
   display: flex;
-  width: 60%;
   margin: 2rem auto;
+  flex-direction: column;
 
   ${props => props.theme.small} {
     flex-direction: column;
     width: 80%;
   }
-  ${props => props.theme.medium} {
-    flex-direction: column;
-  }
+
   ${props => props.theme.large} {
+    width: 60%;
     flex-direction: row;
   }
+
   ${props => props.theme.xlarge} {
     flex-direction: row;
   }
@@ -114,10 +114,18 @@ export const StyledBlogArtikelHeaderParallelogram = styled(BaseArtikelHeader)`
 `;
 
 const BlogArtikelImageWrapper = styled.div`
-  margin: 1rem 2rem;
   min-width: 200px;
   width: 250px;
   flex-direction: row;
+  margin: 0 auto;
+
+
+  ${props => props.theme.small} {
+    margin: 0 auto;
+  }
+  ${props => props.theme.medium} {
+    margin: 1rem 2rem;
+  }
 `;
 
 const BlogArtikelSingleWrapper = styled.div`

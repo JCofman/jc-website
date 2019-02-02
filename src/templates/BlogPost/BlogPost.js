@@ -27,10 +27,14 @@ const StyledHeader = styled.header`
     background-color: ${props => props.theme.colors.primary};
     transition: color ${props => props.theme.themeTransition};
     line-height: 1.1em;
-    font-size: 8rem;
+    font-size: 4rem;
+
     text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
     ${props => props.theme.small} {
-      font-size: 4rem;
+      font-size: 6rem;
+    }
+    ${props => props.theme.medium} {
+      font-size: 8rem;
     }
   }
 `;
