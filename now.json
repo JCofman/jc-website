@@ -1,5 +1,23 @@
 {
   "version": 2,
   "name": "jcofman",
-  "alias": "jcofman.now.sh"
+  "alias": "jcofman.now.sh",
+  "routes": [
+    {
+      "src": "^/static/(.*)",
+      "headers": { "cache-control": "public,max-age=31536000,immutable" }
+    },
+    {
+      "src": "^/(.*).(css|js)",
+      "headers": { "cache-control": "public,max-age=31536000,immutable" }
+    },
+    {
+      "src": "^/sw.js)",
+      "headers": { "cache-control": "public,max-age=0,must-revalidate" }
+    },
+    {
+      "src": "^/(.*).html",
+      "headers": { "cache-control": "public,max-age=0,must-revalidate" }
+    }
+  ]
 }
