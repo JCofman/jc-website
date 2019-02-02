@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Layout from '../../components/Layout';
+import SEO from '../../components/SEO';
+
 import {
   StyledBlogArtikelHeaderParallelogram,
   StyledBlogArtikelHeaderCircle,
@@ -215,6 +217,10 @@ const AboutMe = () => (
     `}
     render={data => (
       <Layout>
+        <SEO
+          title="About Me"
+          keywords={[`about me`, `jacob cofman`, `frontend`, `engineer`]}
+        />
         <Wrapper>
           <StyledTriangle>
             {' '}
