@@ -7,9 +7,10 @@ import { zIndexLogo } from '../../components/Styles/zIndex';
 
 import theme from 'styled-theming';
 
+
 export const StyledLogo = styled.svg`
   position: ${props => (props.scrollPositionY > 0 ? 'fixed' : 'static')};
-  top: -325px;
+  top: -320px;
   left: -200px;
   align-self: flex-start;
   z-index: ${zIndexLogo};
@@ -27,6 +28,7 @@ export const StyledLogo = styled.svg`
     display: none;
   }
   ${props => props.theme.large} {
+    top: -235px;
     height: 60rem;
     width: 40rem;
   }
@@ -93,7 +95,6 @@ export const Information = styled.div`
     }
     span {
       font-size: 5rem;
-      text-shadow: none;
     }
   }
 
@@ -114,19 +115,20 @@ export const Information = styled.div`
 `;
 
 const themedHeaderBG = theme('mode', {
+  // touch action comes close to the webpp implementation usage now. It shows webp on most browsers but doesnt load on safari
   light: css`
-    @supports (display: grid) {
+    @supports (display: touch-action) {
       background: url(${WhiteHeaderBG}) no-repeat center right fixed;
     }
-    @supports not (display: grid) {
+    @supports not (display: touch-action) {
       background: url(${WhiteHeaderBGWebP}) no-repeat center right fixed;
     }
   `,
   dark: css`
-    @supports (display: grid) {
+    @supports (display: touch-action) {
       background: url(${DarkHeaderBGWebP}) no-repeat center right fixed;
     }
-    @supports not (display: grid) {
+    @supports not (display: touch-action) {
       background: url(${DarkHeaderBG}) no-repeat center right fixed;
     }
   `,

@@ -28,7 +28,7 @@ const StyledH1 = styled.h1`
 `;
 
 const StyledSpan = styled.span`
-  font-style: italic;
+  text-shadow: 3px 3px 0 rgba(255,255,255,0.2);
 `;
 
 export const Wrapper = styled.div`

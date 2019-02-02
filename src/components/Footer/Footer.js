@@ -14,11 +14,16 @@ const MapColor = theme('mode', {
 const Map = styled.div`
   display: flex;
   max-width: ${props => props.theme.maxWidth};
+  width: 100%;
   height: 500px;
   justify-content: center;
   align-items: center;
   margin: 5rem auto;
   transition: background-color ${props => props.theme.themeTransition};
+
+  ${props => props.theme.small} {
+    margin: 0px;
+  }
 
   ${props => props.theme.medium} {
     margin: 1rem auto;
@@ -27,14 +32,15 @@ const Map = styled.div`
   svg {
     width: 100%;
     stroke: black;
-    ${props => props.theme.small} {
-      width: 80%;
-    }
     svg g {
       stroke: ${MapColor};
     }
+
+    ${props => props.theme.small} {
+      width: 95%;
+    }
     ${props => props.theme.medium} {
-      width: 80%;
+      width: 90%;
     }
     ${props => props.theme.large} {
       width: 80%;
