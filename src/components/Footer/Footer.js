@@ -19,6 +19,11 @@ const Map = styled.div`
   align-items: center;
   margin: 5rem auto;
   transition: background-color ${props => props.theme.themeTransition};
+
+  ${props => props.theme.medium} {
+    margin: 1rem auto;
+  }
+
   svg {
     width: 100%;
     stroke: black;
