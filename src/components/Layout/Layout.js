@@ -674,7 +674,7 @@ pre tt:after {
 
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
   const [themeMode, setThemeMode] = useState('dark');
 
   const changeTheme = () => {
@@ -693,7 +693,7 @@ const Layout = ({ children }) => {
     >
       <StyledLayout>
         <GlobalStyle />
-        <Navigation changeTheme={changeTheme} />
+        <Navigation location={location} changeTheme={changeTheme} />
         {children}
         <Footer />
       </StyledLayout>

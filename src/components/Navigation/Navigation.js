@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import { withTheme } from 'styled-components';
 // import { FaMoon, FaLightbulb } from 'react-icons/fa';
 import Logo from '../Logo';
+import { Location } from '@reach/router';
 
 import {
   StyledNav,
@@ -35,8 +36,11 @@ const Navigation = () => {
   //   theme: { mode },
   // } = props;
   return (
-    <StyledNavWrapper>
-      <StyledNavLogo>
+    <Location>
+    {({ location }) =>(
+  
+  <StyledNavWrapper>
+      <StyledNavLogo display={location.pathname !== '/' ? true : false}>
         <Logo />{' '}
       </StyledNavLogo>
       <StyledNav>
@@ -53,6 +57,9 @@ const Navigation = () => {
         </StyledNavList>
       </StyledNav>
     </StyledNavWrapper>
+    )
+  }
+  </Location>
   );
 };
 

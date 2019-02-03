@@ -35,7 +35,7 @@ export const StyledLogo = styled.svg`
   ${props => props.theme.large} {
     display: flex;
     top: -320px;
-    height: 80rem;
+    height: 81rem;
     width: 60rem;
   }
 `;

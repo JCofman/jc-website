@@ -42,8 +42,6 @@ export const StyledNav = styled.nav`
 `;
 
 export const StyledNavLogo = styled.svg`
-  width: 200px;
-  height: 200px;
   transition: all 0.25s ease-out 0s;
   z-index: ${zIndexLogo};
 
@@ -52,10 +50,14 @@ export const StyledNavLogo = styled.svg`
     height: 150px;
   }
   ${props => props.theme.medium} {
+    width: 180px;
+    height: 180px;
+    left: 70px;
     display: inline-block;
   }
   ${props => props.theme.large} {
-    display: none;
+    display: ${props => (props.display ? 'inline-block' : 'none')};
+    position: fixed;
   }
   svg {
     width: 100%;
