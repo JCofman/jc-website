@@ -40,7 +40,7 @@ const Navigation = () => {
     {({ location }) =>(
   
   <StyledNavWrapper>
-      <StyledNavLogo display={location.pathname !== '/' ? true : false}>
+      <StyledNavLogo display={location.pathname !== '/' ? 'true' : 'false'}>
         <Logo />{' '}
       </StyledNavLogo>
       <StyledNav>

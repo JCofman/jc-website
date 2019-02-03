@@ -56,7 +56,7 @@ export const StyledNavLogo = styled.svg`
     display: inline-block;
   }
   ${props => props.theme.large} {
-    display: ${props => (props.display ? 'inline-block' : 'none')};
+    display: ${props => (props.display === 'true' ? 'inline-block' : 'none')};
     position: fixed;
   }
   svg {

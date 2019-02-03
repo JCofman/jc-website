@@ -1,11 +1,34 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 
 import SEO from '../../components/SEO';
 import Layout from '../../components/Layout';
 import { StyledSingleBlogPostArticle } from './StyledBlogPost';
+
+const StyledButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid ${props => props.theme.colors.primary};
+  color: ${props => props.theme.colors.white};
+  margin: 0.5em 1em;
+  padding: 0.25em 1em;
+ 
+  ${props => props.primary && css`
+    background: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.white};
+  `}
+  :hover{
+    cursor: pointer;
+  }
+ 
+`;
+
 
 const StyledHeader = styled.header`
   .gatsby-image-wrapper {
@@ -42,6 +65,7 @@ const StyledHeader = styled.header`
 const StyledBlogBottomNav = styled.div`
   display: grid;
   justify-content: center;
+  text-align: center;
   font-size: 2rem;
   a {
     color: ${props => props.theme.colors.primary};
@@ -85,16 +109,21 @@ export default function Template({ data, pageContext }) {
         />
         <StyledBlogBottomNav>
           {prev && (
-            <>
-              Previous Post:
-              <Link to={prev.frontmatter.path}>{prev.frontmatter.title}</Link>
-            </>
+          <Link to={prev.frontmatter.path}><small>{prev.frontmatter.title}</small>
+            <StyledButton>
+              <FaChevronLeft />
+              {' '} Previous Post
+            </StyledButton>
+            </Link>
           )}
           {next && (
-            <>
-              Next Post:
-              <Link to={next.frontmatter.path}>{next.frontmatter.title}</Link>
-            </>
+                          <Link to={next.frontmatter.path}><small>{next.frontmatter.title}</small>
+
+            <StyledButton>
+            <FaChevronRight />
+             {' '} Next Post
+            </StyledButton>
+            </Link>
           )}
         </StyledBlogBottomNav>
       </StyledSingleBlogPostArticle>

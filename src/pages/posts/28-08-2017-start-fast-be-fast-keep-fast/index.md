@@ -1,7 +1,7 @@
 ---
 path: '/performance'
 date: '2017-07-12T17:12:33.962Z'
-title: 'Start fast, be fast, keep fast!'
+title: '⚡️How to build a high-performance blog⚡️'
 featuredImage: './featured-image.jpg'
 headerImage: './header.jpg'
 tags: [performance, fast, web]

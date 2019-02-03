@@ -121,5 +121,6 @@ module.exports = {
       options: {
         //trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID",
       },
-  ],
+    },
+  ]
 };

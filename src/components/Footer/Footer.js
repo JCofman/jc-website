@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import styled from 'styled-components';
 import theme from 'styled-theming';
 
 import Social from '../../components/Social';
 import { NavLink } from '../../components/Navigation/Navigation';
-import WorldMap from '../WorldMap';
 
 const MapColor = theme('mode', {
   light: props => props.theme.colors.white,
@@ -83,11 +82,17 @@ const NavList = styled.ul`
   justify-content: center;
 `;
 
+const LazyWorldMap = React.lazy(() =>
+  import('../WorldMap' /* webpackChunkName: "WorldMap" */)
+);
+
 const Footer = () => {
   return (
     <StyledFooter>
       <Map>
-        <WorldMap />{' '}
+        <Suspense fallback={<div>Loading...</div>}>
+          <LazyWorldMap />{' '}
+        </Suspense>
       </Map>
       <NavListWrapper>
         <NavList>
