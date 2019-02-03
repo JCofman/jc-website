@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@octokit/rest": "^16.13.4",
+    "@octokit/rest": "^16.15.0",
     "@storybook/addon-actions": "^4.1.11",
     "@storybook/addon-links": "^4.1.11",
     "@storybook/addons": "^4.1.11",
@@ -67,7 +67,7 @@
     "lighthouse-ci": "1.4.1",
     "now": "^13.1.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^1.16.3",
+    "prettier": "^1.16.4",
     "size-limit": "^0.21.1",
     "start-server-and-test": "^1.7.11",
     "webpagetest": "^0.3.9"
@@ -97,6 +97,10 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "browserslist": [
+    ">0.25%",
+    "not dead"
+  ],
   "bundlesize": [
     {
       "path": "./public/component*.js",
