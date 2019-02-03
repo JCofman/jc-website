@@ -90,9 +90,11 @@ const Footer = () => {
   return (
     <StyledFooter>
       <Map>
-        <Suspense fallback={<div>Loading...</div>}>
-          <LazyWorldMap />{' '}
-        </Suspense>
+        {typeof window === 'undefined' ? null : (
+          <Suspense fallback={<div>Loading...</div>}>
+            <LazyWorldMap />{' '}
+          </Suspense>
+        )}
       </Map>
       <NavListWrapper>
         <NavList>
