@@ -30,7 +30,7 @@ after_success:
   # alias url only when deploying master branch
   - if [ $BRANCH = master ]; then yarn alias; fi
   # - $BRANCH=master && npm run alias
-  - yarn lighthouse $NOW_URL
+  - yarn lighthouse-ci $NOW_URL --score=90 --performance=85 --pwa=90 --accessibility=90 --best-practice=90 --seo=90
   - TEST_URL=$NOW_URL GIT_TOKEN=$GIT_TOKEN WEBPAGETEST_API_KEY=$WEBPAGETEST_API_KEY node webPageTest.js
 
 env:

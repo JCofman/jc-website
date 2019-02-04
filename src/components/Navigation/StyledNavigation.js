@@ -42,6 +42,8 @@ export const StyledNav = styled.nav`
 `;
 
 export const StyledNavLogo = styled.svg`
+  width: 80px;
+  height: 140px;
   transition: all 0.25s ease-out 0s;
   z-index: ${zIndexLogo};
 

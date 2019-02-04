@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
-import DarkHeaderBG from './homebg.jpg';
-import WhiteHeaderBG from './whiteHomeBg.jpg';
-import DarkHeaderBGWebP from './homebg.webp';
-import WhiteHeaderBGWebP from './whiteHomeBg.webp';
+import DarkHeaderBG from '../../assets/images/homebg.jpg';
+import WhiteHeaderBG from '../../assets/images/whiteHomeBg.jpg';
+import DarkHeaderBGWebP from '../../assets/images/homebg.webp';
+import WhiteHeaderBGWebP from '../../assets/images/whiteHomeBg.webp';
 import { zIndexLogo } from '../../components/Styles/zIndex';
 
 import theme from 'styled-theming';
@@ -147,18 +147,18 @@ export const Information = styled.div`
 const themedHeaderBG = theme('mode', {
   // touch action comes close to the webpp implementation usage now. It shows webp on most browsers but doesnt load on safari
   light: css`
-    @supports (display: touch-action) {
+    @supports (touch-action: manipulation) {
       background: url(${WhiteHeaderBG}) no-repeat center right fixed;
     }
-    @supports not (display: touch-action) {
+    @supports not (touch-action: manipulation) {
       background: url(${WhiteHeaderBGWebP}) no-repeat center right fixed;
     }
   `,
   dark: css`
-    @supports (display: touch-action) {
+    @supports (touch-action: manipulation) {
       background: url(${DarkHeaderBGWebP}) no-repeat center right fixed;
     }
-    @supports not (display: touch-action) {
+    @supports not (touch-action: manipulation) {
       background: url(${DarkHeaderBG}) no-repeat center right fixed;
     }
   `,
@@ -177,12 +177,12 @@ export const HeaderBG = styled.header`
   ${props => props.theme.medium} {
     height: 600px;
     height: 100vh;
-    background: url(${DarkHeaderBGWebP}) no-repeat center center fixed;
+    ${themedHeaderBG}
   }
   ${props => props.theme.large} {
     height: 800px;
     height: 100vh;
-    background: url(${DarkHeaderBGWebP}) no-repeat center center fixed;
+    ${themedHeaderBG}
   }
 `;
 

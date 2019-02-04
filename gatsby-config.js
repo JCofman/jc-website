@@ -30,7 +30,7 @@ module.exports = {
         },
       },
     },
-    
+
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-styled-components`,
@@ -38,11 +38,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-webpack-bundle-analyzer',
       options: {
-          analyzerPort: 3000,
-          production: true,
+        analyzerPort: 3000,
+        production: true,
       },
-  },    
-  'gatsby-plugin-eslint',
+    },
+    'gatsby-plugin-eslint',
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -63,7 +63,6 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
-        omitGoogleFont: true,
       },
     },
     'gatsby-plugin-offline',
@@ -122,5 +121,5 @@ module.exports = {
         //trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID",
       },
     },
-  ]
+  ],
 };

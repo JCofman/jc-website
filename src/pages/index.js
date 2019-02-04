@@ -54,7 +54,7 @@ export const BlogArtikelTextColor = theme('mode', {
 });
 
 const BaseArtikelHeader = styled.h2`
-  font-size: 5rem;
+  font-size: 3rem;
   margin-bottom: 2rem;
   color: ${BlogArtikelTextColor};
   transform: skew(-5deg) rotate(-1deg);
@@ -67,6 +67,15 @@ const BaseArtikelHeader = styled.h2`
   a:hover {
     color: ${props => props.theme.colors.primary};
     transition: none;
+  }
+  ${props => props.theme.xsmall} {
+    font-size: 3rem;
+  }
+  ${props => props.theme.small} {
+    font-size: 5rem;
+  }
+  ${props => props.theme.medium} {
+    font-size: 5rem;
   }
 `;
 
@@ -118,7 +127,6 @@ const BlogArtikelImageWrapper = styled.div`
   width: 250px;
   flex-direction: row;
   margin: 0 auto;
-
 
   ${props => props.theme.small} {
     margin: 0 auto;
