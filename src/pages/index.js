@@ -148,7 +148,7 @@ const BlogartikleSubInfo = styled.p`
 `;
 
 const BlogArtikelHeaderTime = styled.time`
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: ${BlogArtikelTextColor};
   transition: color ${props => props.theme.themeTransition};
   padding: 0.1rem 0.25rem;
@@ -156,7 +156,7 @@ const BlogArtikelHeaderTime = styled.time`
 `;
 
 const BlogArtikelHeaderTags = styled.span`
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   padding: 0.1rem 0.25rem;
   margin: 0.25rem 0;
   transition: color ${props => props.theme.themeTransition};
@@ -212,7 +212,13 @@ const IndexPage = ({ data }) => {
                       {frontmatter.date}
                     </BlogArtikelHeaderTime>
                     <BlogArtikelHeaderTags>
-                      {frontmatter.tags.map(tag => ` ${tag}`)}
+                      {post.frontmatter.tags.map((tag, index, allTags) => {
+                        if (allTags.length - 1 === index) {
+                          return ` ${tag}`;
+                        } else {
+                          return ` ${tag},`;
+                        }
+                      })}
                     </BlogArtikelHeaderTags>{' '}
                   </BlogartikleSubInfo>
 

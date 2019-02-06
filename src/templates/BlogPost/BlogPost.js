@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
@@ -18,17 +18,17 @@ const StyledButton = styled.button`
   color: ${props => props.theme.colors.white};
   margin: 0.5em 1em;
   padding: 0.25em 1em;
- 
-  ${props => props.primary && css`
-    background: ${props => props.theme.colors.primary};
-    color: ${props => props.theme.colors.white};
-  `}
-  :hover{
+
+  ${props =>
+    props.primary &&
+    css`
+      background: ${props => props.theme.colors.primary};
+      color: ${props => props.theme.colors.white};
+    `}
+  :hover {
     cursor: pointer;
   }
- 
 `;
-
 
 const StyledHeader = styled.header`
   .gatsby-image-wrapper {
@@ -77,6 +77,10 @@ const StyledInfo = styled.p`
   margin: 1rem;
 `;
 
+const StyledTags = styled.div`
+  font-style: italic;
+`;
+
 export default function Template({ data, pageContext }) {
   const { markdownRemark: post } = data;
   const { next, prev } = pageContext;
@@ -100,7 +104,16 @@ export default function Template({ data, pageContext }) {
         <h1>{post.frontmatter.title}</h1>
       </StyledHeader>
       <StyledInfo>
-        {post.frontmatter.date}, {post.frontmatter.tags.map(tag => ` ${tag}`)}
+        {post.frontmatter.date},{' '}
+        <StyledTags>
+          {post.frontmatter.tags.map((tag, index, allTags) => {
+            if (allTags.length - 1 === index) {
+              return ` ${tag}`;
+            } else {
+              return ` ${tag},`;
+            }
+          })}
+        </StyledTags>
       </StyledInfo>
       <StyledSingleBlogPostArticle className="blog-post">
         <div
@@ -109,20 +122,20 @@ export default function Template({ data, pageContext }) {
         />
         <StyledBlogBottomNav>
           {prev && (
-          <Link to={prev.frontmatter.path}><small>{prev.frontmatter.title}</small>
-            <StyledButton>
-              <FaChevronLeft />
-              {' '} Previous Post
-            </StyledButton>
+            <Link to={prev.frontmatter.path}>
+              <small>{prev.frontmatter.title}</small>
+              <StyledButton>
+                <FaChevronLeft /> Previous Post
+              </StyledButton>
             </Link>
           )}
           {next && (
-                          <Link to={next.frontmatter.path}><small>{next.frontmatter.title}</small>
+            <Link to={next.frontmatter.path}>
+              <small>{next.frontmatter.title}</small>
 
-            <StyledButton>
-            <FaChevronRight />
-             {' '} Next Post
-            </StyledButton>
+              <StyledButton>
+                <FaChevronRight /> Next Post
+              </StyledButton>
             </Link>
           )}
         </StyledBlogBottomNav>

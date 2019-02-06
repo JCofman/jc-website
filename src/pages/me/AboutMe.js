@@ -192,7 +192,7 @@ const AboutMe = () => (
   <StaticQuery
     query={graphql`
       {
-        profileImage: file(relativePath: { eq: "profilePicture.jpg" }) {
+        profileImage: file(relativePath: { eq: "profilePicture4.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 800) {
               ...GatsbyImageSharpFluid
@@ -226,7 +226,7 @@ const AboutMe = () => (
             {' '}
             <Img
               fluid={data.profileImage.childImageSharp.fluid}
-              alt="A picture of me"
+              alt="A picture of myself"
             />
           </StyledTriangle>
           <StyledMainInformation>

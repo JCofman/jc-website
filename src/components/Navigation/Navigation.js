@@ -37,29 +37,27 @@ const Navigation = () => {
   // } = props;
   return (
     <Location>
-    {({ location }) =>(
-  
-  <StyledNavWrapper>
-      <StyledNavLogo display={location.pathname !== '/' ? 'true' : 'false'}>
-        <Logo />{' '}
-      </StyledNavLogo>
-      <StyledNav>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <StyledNavList>
-          {/* <li>
+      {({ location }) => (
+        <StyledNavWrapper>
+          <StyledNavLogo display={location.pathname !== '/' ? 'true' : 'false'}>
+            <Logo />{' '}
+          </StyledNavLogo>
+          <StyledNav>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <StyledNavList>
+              {/* <li>
             <button disabled onClick={() => props.changeTheme()}>
               {mode === "light" ? <FaLightbulb /> : <FaMoon />}
             </button>
           </li> */}
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/me">About</NavLink>
-        </StyledNavList>
-      </StyledNav>
-    </StyledNavWrapper>
-    )
-  }
-  </Location>
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/me">About</NavLink>
+            </StyledNavList>
+          </StyledNav>
+        </StyledNavWrapper>
+      )}
+    </Location>
   );
 };
 

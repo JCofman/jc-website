@@ -2,7 +2,7 @@
 path: '/introduction'
 date: '2019-06-12T17:12:33.962Z'
 title: 'Hi Everyone! 👋✌️🙋'
-tags: [introduction, fun, blog, aboutme]
+tags: [introduction, fun, blog, about]
 featuredImage: './featured-image.jpg'
 headerImage: './header.jpg'
 excerpt: 'My name is Jacob Cofman, currently working at inovex . and I make things! I´m a frontend developer and I love turning exciting ideas into beautiful products.'

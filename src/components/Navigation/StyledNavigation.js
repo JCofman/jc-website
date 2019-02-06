@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import theme from 'styled-theming';
-
 import { zIndexLogo, zIndexNavigation } from '../../components/Styles/zIndex';
 
 const NavBackgroundColor = theme('mode', {
@@ -77,6 +76,7 @@ export const StyledNavList = styled.ul`
 `;
 
 export const StyledNavListLink = styled.li`
+  margin-bottom: 0px;
   a,
   button {
     font-size: 2rem;
