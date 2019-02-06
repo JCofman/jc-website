@@ -1,48 +1,19 @@
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
-import theme from 'styled-theming';
 
 import Social from '../../components/Social';
 import { NavLink } from '../../components/Navigation/Navigation';
 
-const MapColor = theme('mode', {
-  light: props => props.theme.colors.white,
-  dark: props => props.theme.colors.black,
-});
-
-const Map = styled.div`
-  display: flex;
-  max-width: ${props => props.theme.maxWidth};
-  width: 100%;
-  height: 500px;
-  justify-content: center;
-  align-items: center;
+const StyledMap = styled.div`
   margin: 5rem auto;
   transition: background-color ${props => props.theme.themeTransition};
-
+  width: 100%;
+  max-width: ${props => props.theme.maxWidth};
   ${props => props.theme.small} {
     margin: 0px;
   }
-
   ${props => props.theme.medium} {
     margin: 1rem auto;
-  }
-
-  svg {
-    width: 100%;
-    stroke: black;
-    svg g {
-      stroke: ${MapColor};
-    }
-    ${props => props.theme.small} {
-      width: 95%;
-    }
-    ${props => props.theme.medium} {
-      width: 90%;
-    }
-    ${props => props.theme.large} {
-      width: 80%;
-    }
   }
 `;
 
@@ -83,19 +54,19 @@ const NavList = styled.ul`
 `;
 
 const LazyWorldMap = React.lazy(() =>
-  import('../WorldMap' /* webpackChunkName: "WorldMap" */)
+  import('../ReactMap' /* webpackChunkName: "WorldMap" */)
 );
 
 const Footer = () => {
   return (
     <StyledFooter>
-      <Map>
+      <StyledMap>
         {typeof window === 'undefined' ? null : (
           <Suspense fallback={<div>Loading...</div>}>
             <LazyWorldMap />{' '}
           </Suspense>
         )}
-      </Map>
+      </StyledMap>
       <NavListWrapper>
         <NavList>
           <NavLink to="/">Home</NavLink>

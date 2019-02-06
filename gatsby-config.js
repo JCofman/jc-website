@@ -90,6 +90,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `map`,
+        path: `${__dirname}/src/assets/`,
+      },
+    },
+    {
       resolve: 'gatsby-transformer-remark',
 
       options: {
@@ -121,5 +128,6 @@ module.exports = {
         //trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID",
       },
     },
+    `gatsby-transformer-json`,
   ],
 };
