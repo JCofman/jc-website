@@ -60,7 +60,13 @@ const SEO = ({ description, lang, meta, keywords, title }) => {
                   : []
               )
               .concat(meta)}
-          />
+          >
+            <link
+              rel="preconnect"
+              href="https://fonts.gstatic.com/"
+              crossOrigin
+            />
+          </Helmet>
         );
       }}
     />
