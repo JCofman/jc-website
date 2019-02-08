@@ -132,7 +132,6 @@ export default function Template({ data, pageContext }) {
           {next && (
             <Link to={next.frontmatter.path}>
               <small>{next.frontmatter.title}</small>
-
               <StyledButton>
                 <FaChevronRight /> Next Post
               </StyledButton>

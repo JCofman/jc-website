@@ -15,10 +15,10 @@ export const useWindowScrollPosition = ({ throttleMs = 100 } = {}) => {
   }, throttleMs);
 
   React.useEffect(() => {
-    window.addEventListener('scroll', handle);
+    window.addEventListener('scroll', handle, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', handle);
+      window.removeEventListener('scroll', handle, { passive: true });
     };
   }, []);
 
