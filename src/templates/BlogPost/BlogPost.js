@@ -25,7 +25,7 @@ const StyledButton = styled.button`
       background: ${props => props.theme.colors.primary};
       color: ${props => props.theme.colors.white};
     `}
-  :hover {
+  &:hover, &:focus {
     cursor: pointer;
   }
 `;
@@ -72,7 +72,7 @@ const StyledBlogBottomNav = styled.div`
   }
 `;
 
-const StyledInfo = styled.p`
+const StyledInfo = styled.div`
   text-align: center;
   margin: 1rem;
 `;
@@ -104,7 +104,7 @@ export default function Template({ data, pageContext }) {
         <h1>{post.frontmatter.title}</h1>
       </StyledHeader>
       <StyledInfo>
-        {post.frontmatter.date},{' '}
+        {post.frontmatter.date}
         <StyledTags>
           {post.frontmatter.tags.map((tag, index, allTags) => {
             if (allTags.length - 1 === index) {

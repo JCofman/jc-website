@@ -48,10 +48,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Jacobs Personal site`,
-        short_name: `JCsite`,
+        name: `Jacob Cofman´s personal website`,
+        short_name: `JCofman`,
         start_url: `/`,
-        background_color: `#010101`,
+        background_color: `#F4F4F4`,
         theme_color: `#50E3C2`,
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
@@ -111,7 +111,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID",
+        trackingId: `UA-134206784-1`,
       },
     },
     `gatsby-transformer-json`,

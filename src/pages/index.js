@@ -62,8 +62,9 @@ const BaseArtikelHeader = styled.h2`
   text-shadow: ${BlogArtikelHeaderTextShadow};
   a {
     color: ${BlogArtikelTextColor};
-    transition: color ${props => props.theme.themeTransition};
+    /* transition: color ${props => props.theme.themeTransition}; */ 
   }
+  a:hover,
   a:hover {
     color: ${props => props.theme.colors.primary};
     transition: none;

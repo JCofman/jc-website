@@ -29,7 +29,7 @@ export const StyledNav = styled.nav`
   position: fixed;
   left: 0px;
   right: 0px;
-  border-top: 1px solid #201c29;
+  border-top: 2px solid ${props => props.theme.colors.primary};
   border-bottom: 1px solid #201c29;
   background-color: ${NavBackgroundColor};
   z-index: ${zIndexNavigation};

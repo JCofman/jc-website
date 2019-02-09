@@ -1,22 +1,18 @@
 ---
 path: '/performance'
-date: '2017-07-12T17:12:33.962Z'
+date: '2019-09-02T17:12:33.962Z'
 title: '⚡️How to build a high-performance blog⚡️'
 featuredImage: './featured-image.jpg'
 headerImage: './header.jpg'
 tags: [performance, fast, web]
-excerpt: 'This post will show you how you can leverage some basic and some more advanced tools when starting a web frontend project, so that your project will start fast, be fast and keep fast.'
+excerpt: 'This post will show you how to leverage some basic and some more advanced tools when starting a web frontend project to keep it performant.'
 ---
 
 tl;dr
 
-- try to embrace all OS performance tools
+- try to embrace some awesome OS performance tools
 - its much easier to run perf tools on public projects which are hosted on github ( which is often not the case for most a lot of sites.... maybe thats the reason why many popular sites are not as fast as they can be)
 - use the open-source tools and contribute back :)
-
-<blockquote>
-  <p>Let`s get things started.</p>
-</blockquote>
 
 I am a passionate web developer who had (not only) once bought a domain, a server and started a blog.
 But I did shut it down after usually some months or so.
@@ -28,7 +24,9 @@ I do man of them told me that they had started a blog while back ago and closed 
     <figcaption>Super Nice Photo</figcaption>
 </figure>
 
-In conclusion I think that happens to a lot of people 🙈. But I want to try it again and start this blog by also talking about topics which fascinate me it. The last time I have started to create a website I have lost the interessed and passion about the my own site pretty fast. I didn't have improve or develope it furthermore after I had finalized it. Now I want to start again and share some knowledge and my opinions on diffrerent topics since I have recognized that when I write things down I feel that I can keep the knowledge much better.
+In conclusion I think that happens to a lot of people 🙈. But I want to try it again and start this blog by also talking about topics which fascinate me it. The last time I have started to create a website I have lost the interessed and passion about the my own site pretty fast.
+I didn't have improve or develope it furthermore after I had finalized it.
+Now I want to start again and share some knowledge and my opinions on diffrerent topics since I have recognized that when I write things down I feel that I can keep the knowledge much better.
 
 <iframe
   width="560"
@@ -38,9 +36,12 @@ In conclusion I think that happens to a lot of people 🙈. But I want to try it
   allowfullscreen
 />
 
-## Okay so lets get it started
+<blockquote>
+  <p>Let`s get things started.</p>
+</blockquote>
 
-Its actually a pretty shinny era when you are a web developer especially in the JavaScript scene. There are a lot of things going on.
+Its actually a pretty shinny era when you are a web developer especially in the JavaScript scene.
+There are a lot of things going on.
 Use a fast base and embrace all the Open Source performance tools to not get slower
 
 Before I can get started creating the blog I want to make sure to setup all the web dev performance tools which I think are helpful to measure different aspects of web performance. I want to make sure that the blog is accessible to everyone so it should be fast, bulletprof, seo optimized so people can actually find it...

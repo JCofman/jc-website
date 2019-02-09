@@ -21,6 +21,7 @@ export const StyledSocial = styled.div`
   }
   svg {
     transition: all 0.5s ease;
+    &:hover,
     &:hover {
       color: ${SocialIconHoverColor};
       transform: scale(1.5);

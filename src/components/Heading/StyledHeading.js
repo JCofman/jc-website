@@ -21,7 +21,8 @@ const StyledHeadingH1 = styled.h1`
     color: ${HeadingTextColor};
     transition: color ${props => props.theme.themeTransition};
   }
-  a:hover {
+  a:hover,
+  a:focus {
     color: ${props => props.theme.colors.primary};
     transition: none;
   }
