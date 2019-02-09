@@ -24,9 +24,7 @@ const breakPoints = {
   xsmall: `@media (min-width: ${sizes.smallPhone}px)`,
   small: `@media (min-width: ${sizes.phone}px)`,
   medium: `@media (min-width: ${sizes.tablet}px)`,
-  large: `@media (min-width: ${
-    sizes.desktop
-  }px)`,
+  large: `@media (min-width: ${sizes.desktop}px)`,
   xlarge: `@media (min-width: ${sizes.giant}px)`,
 };
 
@@ -105,7 +103,7 @@ abbr[title] {
 b,
 strong {
   font-weight: inherit;
-  font-weight: bolder;
+  font-weight: 800;
 }
 dfn {
   font-style: italic;
@@ -284,8 +282,7 @@ h1 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-family: "Raleway", sans-serif;
-
-  font-weight: bold;
+  font-weight: 600;
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
   line-height: 1.1;
@@ -301,7 +298,7 @@ h2 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-family: "Raleway", sans-serif;
-  font-weight: bold;
+  font-weight: 600;
   text-rendering: optimizeLegibility;
   font-size: 1.62671rem;
   line-height: 1.1;
@@ -317,7 +314,7 @@ h3 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-family: "Raleway", sans-serif;
-  font-weight: bold;
+  font-weight: 600;
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
   line-height: 1.1;
@@ -333,8 +330,7 @@ h4 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-family: "Raleway", sans-serif;
-
-  font-weight: bold;
+  font-weight: 600;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
   line-height: 1.1;
@@ -350,8 +346,7 @@ h5 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-family: "Raleway", sans-serif;
-
-  font-weight: bold;
+  font-weight: 600;
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
   line-height: 1.1;
@@ -367,8 +362,7 @@ h6 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-family: "Raleway", sans-serif;
-
-  font-weight: bold;
+  font-weight: 600;
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;
   line-height: 1.1;
@@ -552,16 +546,16 @@ address {
   margin-bottom: 1.45rem;
 }
 b {
-  font-weight: bold;
+  font-weight: 600;
 }
 strong {
-  font-weight: bold;
+  font-weight: 600;
 }
 dt {
-  font-weight: bold;
+  font-weight: 600;
 }
 th {
-  font-weight: bold;
+  font-weight: 600;
 }
 li {
   margin-bottom: calc(1.45rem / 2);

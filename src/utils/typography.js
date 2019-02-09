@@ -12,12 +12,6 @@ const typography = new Typography({
     'sans-serif',
   ],
   bodyFontFamily: ['Raleway', 'serif'],
-  googleFonts: [
-    {
-      name: 'Raleway',
-      styles: ['400', '400i', '600', '600i'],
-    },
-  ],
 });
 
 export default typography;

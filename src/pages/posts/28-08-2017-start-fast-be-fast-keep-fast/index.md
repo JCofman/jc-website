@@ -12,13 +12,16 @@ tl;dr
 
 - try to embrace all OS performance tools
 - its much easier to run perf tools on public projects which are hosted on github ( which is often not the case for most a lot of sites.... maybe thats the reason why many popular sites are not as fast as they can be)
-- use the tools and contribute back :)
+- use the open-source tools and contribute back :)
 
 <blockquote>
-  <p>You’ve got a pain deep in your bones, son.</p>
+  <p>Let`s get things started.</p>
 </blockquote>
 
-I am a passionate web developer who had (not only) once bought a domain, a server and started a blog. But I shut it down after usually some months or so. When I asked several of my colleagues which work in the same industry as I do man of them told me that they had started a blog while back ago and closed it several months later (like me).
+I am a passionate web developer who had (not only) once bought a domain, a server and started a blog.
+But I did shut it down after usually some months or so.
+When I asked several of my colleagues which work in the same industry as
+I do man of them told me that they had started a blog while back ago and closed it several months later (like me).
 
 <figure>
     <img src="https://source.unsplash.com/1280x300" alt="Big Ass Image">

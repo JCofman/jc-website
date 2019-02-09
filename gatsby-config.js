@@ -59,12 +59,12 @@ module.exports = {
         icon: `src/assets/images/icon.png`, // This path is relative to the root of the site.
       },
     },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-typography`,
+    //   options: {
+    //     pathToConfigModule: `src/utils/typography`,
+    //   },
+    // },
     'gatsby-plugin-offline',
     'gatsby-plugin-svgr',
     {

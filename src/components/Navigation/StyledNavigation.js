@@ -80,7 +80,7 @@ export const StyledNavListLink = styled.li`
   a,
   button {
     font-size: 2rem;
-    font-weight: 800;
+    font-weight: 600;
     padding: 1rem 3rem;
     background: none;
     border: none;
