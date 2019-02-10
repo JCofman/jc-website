@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
+import theme from 'styled-theming';
 
 import Social from '../../components/Social';
 import { NavLink } from '../../components/Navigation/Navigation';
@@ -45,12 +46,52 @@ const NavListWrapper = styled.div`
   }
 `;
 
+const NavFontColor = theme('mode', {
+  light: props => props.theme.colors.black,
+  dark: props => props.theme.colors.white,
+});
+
 const NavList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
+  align-items: center;
+  a,
+  button {
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 1rem 3rem;
+    background: none;
+    border: none;
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    align-items: center;
+    text-transform: uppercase;
+    color: ${NavFontColor};
+
+    &:after {
+      height: 2px;
+      background: #50e3c2;
+      content: '';
+      width: 0;
+      position: absolute;
+      transform: translateX(-50%);
+      transition: width 0.4s;
+      transition-timing-function: cubic-bezier(1, -0.65, 0, 2.31);
+      left: 50%;
+      margin-top: 2rem;
+    }
+    &:hover,
+    &:focus {
+      outline: none;
+      &:after {
+        width: calc(100% - 60px);
+      }
+    }
+  }
 `;
 
 const LazyWorldMap = React.lazy(() =>
@@ -70,6 +111,12 @@ const Footer = () => {
       <NavListWrapper>
         <NavList>
           <NavLink to="/">Home</NavLink>
+          <a
+            href="https://www.iubenda.com/privacy-policy/83684129"
+            title="Privacy Policy "
+          >
+            Privacy Policy
+          </a>
         </NavList>
         <Social />
         <NavList>
