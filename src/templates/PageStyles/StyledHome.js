@@ -11,8 +11,8 @@ export const StyledLogo = styled.svg`
   display: none;
   position: ${props => (props.scrollPositionY > 0 ? 'fixed' : 'static')};
   top: -235px;
-
   left: -200px;
+  margin-top: 20px;
   align-self: flex-start;
   z-index: ${zIndexLogo};
   height: 60rem;
@@ -45,7 +45,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-items: center;
   height: 1028px;
-  height: 80vh;
+  height: 85vh;
 `;
 
 const InformationTextShadow = theme('mode', {
@@ -131,7 +131,7 @@ export const Information = styled.div`
   span {
     font-size: 1.5rem;
     /* color: ${props => props.theme.colors.secondary}; */
-    font-weight: 800;
+    font-weight: 400;
     ${props => props.theme.small} {
       font-size: 1.5rem;
     }

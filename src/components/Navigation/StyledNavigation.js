@@ -44,6 +44,7 @@ export const StyledNavLogo = styled.svg`
   width: 80px;
   height: 140px;
   transition: all 0.25s ease-out 0s;
+  margin-top: 3px; /* green top border margin */
   z-index: ${zIndexLogo};
 
   ${props => props.theme.xsmall} {

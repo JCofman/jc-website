@@ -16,7 +16,7 @@
     "gatsby": "2.0.118",
     "gatsby-cli": "2.4.9",
     "gatsby-image": "^2.0.29",
-    "gatsby-mdx": "^0.3.5",
+    "gatsby-mdx": "^0.3.6",
     "gatsby-plugin-feed": "^2.0.13",
     "gatsby-plugin-google-analytics": "^2.0.13",
     "gatsby-plugin-manifest": "^2.0.17",
@@ -96,7 +96,9 @@
     "cy:run": "cypress run",
     "cy:dev": "cypress open",
     "deploy": "now ./public --local-config=../now.json",
+    "deploy:prod": "now ./public --local-config=../now.prod.json",
     "alias": "now alias --token=$NOW_TOKEN",
+    "alias:prod": "now alias --token=$NOW_TOKEN --local-config=./now.prod.json",
     "lighthouse": "lighthouse-ci https://jcofman.now.sh --score=90 --performance=85 --pwa=90 --accessibility=90 --best-practice=90 --seo=90",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"

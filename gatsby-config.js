@@ -7,7 +7,7 @@ module.exports = {
     title: `Jacob Cofman Website`,
     description: `This is my website and blog`,
     author: `Jacob Cofman`,
-    siteUrl: `https//jcofman.de`,
+    siteUrl: `https://jcofman.de`,
     social: {
       twitter: `jcofman`,
     },
@@ -42,6 +42,7 @@ module.exports = {
         production: true,
       },
     },
+    `gatsby-plugin-sitemap`,
     'gatsby-plugin-eslint',
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
