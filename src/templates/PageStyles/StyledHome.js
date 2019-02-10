@@ -17,8 +17,6 @@ export const StyledLogo = styled.svg`
   z-index: ${zIndexLogo};
   height: 60rem;
   width: 40rem;
-
-  margin-left: 6rem;
   transition: all 0.25s ease-out 0s;
   transform: ${props =>
     props.scrollPositionY > 0 ? 'scale(0.2)' : 'scale(1.0)'};
@@ -34,8 +32,8 @@ export const StyledLogo = styled.svg`
   }
   ${props => props.theme.large} {
     display: flex;
-    top: -320px;
-    height: 81rem;
+    top: -293px;
+    height: 70rem;
     width: 60rem;
   }
 `;
@@ -45,7 +43,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-items: center;
   height: 1028px;
-  height: 85vh;
+  height: 75vh;
 `;
 
 const InformationTextShadow = theme('mode', {
@@ -83,7 +81,7 @@ export const Information = styled.div`
     position: absolute;
     padding-top: 10rem;
     padding-bottom: 10rem;
-    top: 15rem;
+    top: 12rem;
     left: 25rem;
   }
 
