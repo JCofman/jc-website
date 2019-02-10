@@ -52,7 +52,7 @@ module.exports = {
         name: `Jacob Cofman´s personal website`,
         short_name: `JCofman`,
         start_url: `/`,
-        background_color: `#F4F4F4`,
+        background_color: `#FFF`,
         theme_color: `#50E3C2`,
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
