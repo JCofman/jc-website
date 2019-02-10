@@ -1,6 +1,6 @@
 ---
 path: '/introduction'
-date: '2019-02-12T17:12:33.962Z'
+date: '2019-02-10T17:12:33.962Z'
 title: 'Hi Everyone! 👋✌️🙋'
 tags: [introduction, fun, blog, about]
 featuredImage: './featured-image.jpg'
