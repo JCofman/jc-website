@@ -60,7 +60,13 @@ const SEO = ({ description, lang, meta, keywords, title }) => {
                   : []
               )
               .concat(meta)}
-          />
+          >
+            <link
+              rel="preconnect"
+              href="https://www.google-analytics.com"
+              crossOrigin
+            />
+          </Helmet>
         );
       }}
     />
