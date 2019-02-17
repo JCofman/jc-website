@@ -188,6 +188,13 @@ export const StyledH3 = styled.h3`
   font-size: 3rem;
 `;
 
+const calculateAge = birthday => {
+  // birthday is a date
+  const ageDifMs = Date.now() - birthday.getTime();
+  const ageDate = new Date(ageDifMs); // miliseconds from epoch
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
+};
+
 const AboutMe = () => (
   <StaticQuery
     query={graphql`
@@ -233,7 +240,7 @@ const AboutMe = () => (
             <StyledH1>Jacob Cofman</StyledH1>
             <StyledSpan>That`s me 😏</StyledSpan>
             <StyledListTriangle>
-              <li> 27 years old</li>
+              <li> {calculateAge(new Date(1991, 8, 31))} years old</li>
               <li> Living in Karlsruhe Germany</li>
               <li> One twin brother</li>
               <li> A lovely girlfriend</li>

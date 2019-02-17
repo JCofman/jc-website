@@ -58,11 +58,13 @@ const NavList = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
+  li,
   a,
   button {
     font-size: 2rem;
     font-weight: 600;
     padding: 1rem 3rem;
+    margin-bottom: 0px;
     background: none;
     border: none;
     display: flex;
@@ -111,12 +113,14 @@ const Footer = () => {
       <NavListWrapper>
         <NavList>
           <NavLink to="/">Home</NavLink>
-          <a
-            href="https://www.iubenda.com/privacy-policy/83684129"
-            title="Privacy Policy "
-          >
-            Privacy Policy
-          </a>
+          <li>
+            <a
+              href="https://www.iubenda.com/privacy-policy/83684129"
+              title="Privacy Policy "
+            >
+              Privacy Policy
+            </a>
+          </li>
         </NavList>
         <Social />
         <NavList>
