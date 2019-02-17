@@ -41,7 +41,9 @@ wpt.runTest(
     lighthouse: true,
   },
   function(err, result) {
-    console.log(err || result);
+    if (err) {
+      console.log(err);
+    }
     if (result) {
       convertToMarkdown(result);
     }
