@@ -31,7 +31,7 @@ after_success:
   - if [ $BRANCH = master ]; then yarn alias; fi
   # - $BRANCH=master && npm run alias
   - yarn lighthouse-ci $NOW_URL --score=90 --performance=85 --pwa=90 --accessibility=90 --best-practice=90 --seo=90
-  - TEST_URL=$NOW_URL GIT_TOKEN=$GIT_TOKEN WEBPAGETEST_API_KEY=$WEBPAGETEST_API_KEY node webPageTest.js
+  - TEST_URL=$NOW_URL GIT_TOKEN=$GIT_TOKEN WEBPAGETEST_API_KEY=$WEBPAGETEST_API_KEY GIT_BRANCH=$BRANCH SLACK_HOOK_URL=$SLACK_HOOK_URL node webPageTest.js
 
 env:
   global:
