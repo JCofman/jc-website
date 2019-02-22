@@ -39,12 +39,14 @@ wpt.runTest(
     device: 'Motorola G (gen 4)',
     timeout: 1000,
     lighthouse: true,
+    reporter: 'markdown',
   },
   function(err, result) {
     if (err) {
       console.log(err);
     }
     if (result) {
+      console.log(result);
       convertToMarkdown(result);
     }
   }
