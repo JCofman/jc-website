@@ -4,7 +4,7 @@ workflow "Run WebPagetest Audit" {
 }
 
 action "WebPageTestAction" {
-  uses = "JCofman/webPagetestAction@v0.0.2-alpha"
+  uses = "JCofman/webPagetestAction@v0.0.3-alpha"
   env = {
     TEST_URL = "https://jcofman.de"
   }
