@@ -13,7 +13,9 @@ export const StyledSingleBlogPostArticle = styled.article`
     grid-gap: 10px 50px;
     word-break: break-word;
     font-size: 2rem;
-    grid-template-columns: 3fr 12fr 5fr;
+    line-height: 1.6;
+    font-weight: 300;
+    grid-template-columns: 3fr 12fr 3fr;
     transition: color ${props => props.theme.themeTransition};
     a {
       color: ${props => props.theme.colors.primary};
@@ -39,6 +41,11 @@ export const StyledSingleBlogPostArticle = styled.article`
       font-size: 8rem;
     }
   }
+
+  .blog-post-content p {
+    margin-bottom: 2rem;
+  }
+
   .blog-post-content pre {
     font-family: monospace;
   }
@@ -51,7 +58,6 @@ export const StyledSingleBlogPostArticle = styled.article`
   }
 
   .blog-post-content > blockquote {
-    grid-column: 1 / -1;
     font-style: italic;
     text-align: center;
     margin: 0;
