@@ -1,52 +1,61 @@
 ---
 path: '/webpagetest-github-action'
-date: '2019-02-24T17:12:33.962Z'
-title: 'Print webPagetest.org results as a GitHub action 🎬'
+date: '2019-03-14T17:12:33.962Z'
+title: 'Print WebPageTest.org results as an GitHub Action 🎬'
 featuredImage: './featured-image.jpg'
 headerImage: './header.jpg'
-tags: [performance, fast, web]
-excerpt: 'This post will show you how to leverage some basic and some more advanced tools when starting a web frontend project to keep it performant.'
+tags: [performance, fast, web, webpagetest, GitHub Actions]
+excerpt: 'This post will show you how to build an node.js based GitHub Action which prints WebPageTest.org results as a commit message.'
 ---
 
 tl;dr
 
 - Actions are still in <b>beta</b> and shouldn`t be used in production
 - You may dont need any external CI / CD providers for your GitHub projects in the near future
-- GitHub Actions make interacting with GitHub API much easier
+- GitHub Actions make interacting with the GitHub API much easier
 - They empower you to build new and better automation workflows
-- WebPageTest is amazing! :D
+- WebPageTest is amazing! You should check it out if you want to work on web performance stuff 😁
 
 [GitHub Actions](https://github.com/features/actions) were introduced several months ago and are still in
 beta. When I first heard about GitHub Actions I immediatly compared
 them with CI / CD features from GitLab. In my opinion that's exactly what they offer.
-The only additional feature but also the most powerfull is the ability to share Actions.
+The most exciting and the only additional feature but may also be the most powerfull one is the ability to share Actions.
 
 Before GitHub Actions were introduced you had to build automation workflows
 with tools like [Travis](https://travis-ci.org/) or [CircleCI](https://circleci.com/)
 but it was often not really convenient to react on different events i.e. push, issues or releases.
 
-With Actions you can build custom workflows and act in repsonse on GitHubs platform specific events.
+With Actions you can build custom workflows and act in repsonse on GitHub platform specific events.
+
 If you want a more detailed introduction about GitHub Actions
 you can checkout Sara Drasners post on [CSS-TRICKS](https://css-tricks.com/introducing-github-actions/)
 or a really good starter on building actions with node by [Jason Etcovitch](https://jasonet.co/posts/building-github-actions-in-node/).
-I used the package by Jason Etcovitch to build the following Action.
 
 In this post I will show you how to write a node.js based GitHub Action which prints
-[WebPageTest.org](https://www.webpagetest.org/) results on a pull-request. I saw something like
-this on a Chrome Dev Summit talk while back ago. I think that talk was by Addy Osmani but I wasn't able to find it aynmore.
+[WebPageTest.org](https://www.webpagetest.org/) results on a push-event. You can check it out [here](https://github.com/JCofman/webPagetestAction). I saw something like
+this on a Chrome Dev Summit talk while back ago. I think that talk was by Addy Osmani but I wasn't able to find it anymore.
 
 ⚠️ I won´t cover node fundamentals in this post so make sure you have some familarity with JavaScript and node ⚠️.
 
+<details>
+  <summary>Click here to see an example of what we gonna build</summary>
+  <small>WebPageTest Action comment example:</small>
+
+![WebPageTest example](./example.jpg)
+
+</details>
+
 # Create a new Action based on the actions-toolkit
 
-The [actions toolkit](https://github.com/JasonEtco/actions-toolkits) is a helper which provides some methods to work easier with GitHub Actions.
+The [actions toolkit](https://github.com/JasonEtco/actions-toolkits) is a helper which provides some methods to make it easier to work with GitHub Actions in the node.js context.
+
 You can bootstrap a new action by running
 
 ```shell
 npx actions-toolkit my-cool-action
 ```
 
-This step create three files which we need to create a action which runs a node application
+This step creates three files which we need to create an GitHub Action running in a node.js environment.
 
 ```
 ├── Dockerfile
@@ -54,9 +63,14 @@ This step create three files which we need to create a action which runs a node 
 └── package.json
 ```
 
-The Dockerfile is the basis
+The Dockerfile is the basis in which we declare a label, an icon and some other meta information about our action.
+We also make sure to run an entrypoint script at the end of the Dockerfile.
 
-```jsx
+⚠️ Please make sure you keep the Dockerfile as small as possible since otherwise the Action will run slower.
+
+```docker
+# Dockerfile
+
 FROM node:slim
 
 # A bunch of `LABEL` fields for GitHub to index
@@ -78,34 +92,46 @@ RUN npm install
 ENTRYPOINT ["node", "/entrypoint.js"]
 ```
 
-As you can see I don't pass down any environment, secrets or arguments but they will be available inside the`entrypoint.js` file.
+As you can see we don't need to pass down any environment variables, secrets or arguments but they will be available inside the `entrypoint.js` file.
 
-Now we need to customize the entrypoint.js entry file which runs the WebPageTest script.
-So this is the minimalistic setup If you would run these action you would get a basic hello world example.
+This is the minimalistic setup to run a node.js based Action.
+If you would now run the Action with the `entrypoint.js` file you see below you would get to see the following log message `Here we will print the webPagetest.org results` message.
 
 ```jsx
 // entrypoint.js
 console.log('Here we will print the webPagetest.org results');
 ```
 
-WebPageTest is a node wrapper to interact with the webpagetest.org API.
-To run WebPageTest we need to add it to our dependencies.
+Now we need to customize the `entrypoint.js` file which runs the WebPageTest audit.
+
+[WebPageTest-API](https://github.com/marcelduran/webpagetest-api) is a node wrapper which provides some helpers to interact with the WebPageTest API.
+
+To make requests against WebPageTest we first need to add it to our dependencies.
 
 ```zsh
+# install with npm
 npm install webpagetest
-# or
+# or yarn
 yarn add webpagetest
 ```
 
-Finally we need to write the script to run the audit and format the results. Since the code especially the formatting is a bit heavy I wont insert it header.jpg
-You can check it out on the github project if you want to. The basic idea is this
+Finally we need to write the script to run the audit and format the results as markdown.
+Since all the code especially the formatting is a bit long I wont insert it in here but you can check it out [here](https://github.com/JCofman/webPagetestAction/blob/master/entrypoint.js)
 
-- require dependencies
-- check wheter environment variables exist
-- run the script
+I wasn`t able to find an super easy way to convert the JSON output into markdown if you have any recommendation feel free to reach out to me 😃.
+
+Down below you see the basic idea of the whole Action:
+
+1. Require dependencies
+2. Check wheter all required environment variables do exist
+3. Run the script
+4. Save the results
+5. Convert them into markdown
+6. Send commit message with the results
 
 ```js
 // index.js
+// 1. require dependencies
 const { Toolkit } = require('actions-toolkit');
 const tools = new Toolkit();
 const webPageTest = require('webpagetest');
@@ -113,10 +139,10 @@ const argv = require('yargs').argv;
 
 const { event, payload, sha } = tools.context;
 
-// check pre-requirements
+// 2. check pre-requirements
 if (!checkForMissingEnv) tools.exit.failure('Failed!');
 
-// run the script
+// 3. run the script
 runAudit();
 
 async function runAudit() {
@@ -133,15 +159,15 @@ async function runAudit() {
         process.env.WEBPAGETEST_API_KEY
       );
 
-      // 2. run tests and save results
+      // 4. save results
       const webpagetestResults = await runWebPagetest(wpt);
 
-      // 3. convert results to markdown
+      // 5. convert results to markdown
       const finalResultsAsMarkdown = convertToMarkdown(webpagetestResults);
 
-      // 4. print results to as commit comment
       const { owner, repo } = tools.context.repo({ ref: `${payload.ref}` });
 
+      // 6. print the results as commit message
       await octokit.repos.createCommitComment({
         owner,
         repo,
@@ -157,6 +183,42 @@ async function runAudit() {
 }
 ```
 
-In conclusion I think that happens to a lot of people 🙈. But I want to try it again and start this blog by also talking about topics which fascinate me it. The last time I have started to create a website I have lost the interessed and passion about the my own site pretty fast.
-I didn't have improve or develope it furthermore after I had finalized it.
-Now I want to start again and share some knowledge and my opinions on diffrerent topics since I have recognized that when I write things down I feel that I can keep the knowledge much better.
+During the process of building the Action I messed up a lot of things and debugged most of the code by running the Action on the Git project I have worked on.
+I definetely wouldn`t recommend this kind of workflow 🙈.
+
+Later during the process of writing the Action I discovered [act](https://github.com/nektos/act) by browsing through the [Awesome-Actions](https://github.com/sdras/awesome-actions) repository which gives you a really nice wrapper to debug Actions locally.
+
+Finally if you would like to release an Action you can do so by manually creating a release.
+After you have pushed your project to GitHub you can switch over to the Releases Tab and GitHub will automatically recognize your Dockerfile and your are able to draft a new release.
+
+![GitHub Action release example](./release_example.jpg)
+
+Insert some information about your action and publish the release.
+
+If you marked "Publish this Action to the GitHub Marketplace" you can
+then either go to and search for your Action in the [GitHub Actions Marketplace](https://github.com/marketplace?type=actions)
+and manually configure a workflow over the GUI or create a workflow file in your
+.github folder with a reference to your published Action by configuring the action via some code.
+
+```
+workflow "Run Webpagetest" {
+  on = "push"
+  resolves = ["WebPageTestActions"]
+}
+
+action "WebPageTestActions" {
+  secrets = [
+    "GITHUB_TOKEN",
+    "WEBPAGETEST_API_KEY",
+  ]
+  env = {
+    TEST_URL = "YOUR URL TO TEST"
+  }
+}
+```
+
+In conclusion I would say that GitHub Actions will be used much more often in the near future to automate GitHub projects since it is a lot easier then going to another provider.
+Because of the ability to share Actions we will see a lot of more Actions that we can use easily without having to build them by ourselves.
+I think Actions are still kinda slow since they run inside a Docker container but this makes them also a lot more flexible.
+
+Feel free to use this Action it is available in the [GitHub marketplace](https://github.com/marketplace/actions/webpagetestaction) or build your own custom one 😊.
