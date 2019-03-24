@@ -8,7 +8,7 @@ export const StyledSingleBlogPostArticle = styled.article`
 
   .blog-post-content {
     display: grid;
-    max-width: 1280px;
+    max-width: 54em; /* not more then 75 characters in one line */
     margin: 5rem auto;
     grid-gap: 10px 50px;
     word-break: break-word;
