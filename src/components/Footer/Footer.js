@@ -46,7 +46,7 @@ const NavListWrapper = styled.div`
   }
 `;
 
-const NavFontColor = theme('mode', {
+const NavFontColor = theme(`mode`, {
   light: props => props.theme.colors.black,
   dark: props => props.theme.colors.white,
 });
@@ -97,16 +97,16 @@ const NavList = styled.ul`
 `;
 
 const LazyWorldMap = React.lazy(() =>
-  import('../ReactMap' /* webpackChunkName: "WorldMap" */)
+  import(`../ReactMap` /* webpackChunkName: "WorldMap" */)
 );
 
 const Footer = () => {
   return (
     <StyledFooter>
       <StyledMap>
-        {typeof window === 'undefined' ? null : (
+        {typeof window === `undefined` ? null : (
           <Suspense fallback={<div>Loading...</div>}>
-            <LazyWorldMap />{' '}
+            <LazyWorldMap />{` `}
           </Suspense>
         )}
       </StyledMap>

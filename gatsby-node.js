@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require(`path`);
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
@@ -36,8 +36,8 @@ exports.createPages = ({ actions, graphql }) => {
         component: blogPostTemplate,
         context: {
           prev: index === 0 ? null : posts[index - 1].node,
-          next: index === posts.length - 1 ? null : posts[index + 1].node
-        } // additional data can be passed via context,
+          next: index === posts.length - 1 ? null : posts[index + 1].node,
+        }, // additional data can be passed via context,
       });
     });
   });

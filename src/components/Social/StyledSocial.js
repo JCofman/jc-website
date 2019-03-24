@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import theme from 'styled-theming';
 
-const SocialIconColor = theme('mode', {
+const SocialIconColor = theme(`mode`, {
   light: props => props.theme.colors.black,
   dark: props => props.theme.colors.white,
 });
 
-const SocialIconHoverColor = theme('mode', {
+const SocialIconHoverColor = theme(`mode`, {
   light: props => props.theme.colors.primary,
   dark: props => props.theme.colors.primary,
 });

@@ -95,7 +95,7 @@ ENTRYPOINT ["node", "/entrypoint.js"]
 As you can see we don't need to pass down any environment variables, secrets or arguments but they will be available inside the `entrypoint.js` file.
 
 This is the minimalistic setup to run a node.js based Action.
-If you would now run the Action with the `entrypoint.js` file you see below you would get to see the following log message `Here we will print the webPagetest.org results` message.
+If you would now run the Action with the `entrypoint.js` file you see below you would get to see the following log message _"Here we will print the webPagetest.org results"_ message.
 
 ```jsx
 // entrypoint.js

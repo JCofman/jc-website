@@ -17,7 +17,8 @@
     "react/prop-types": 0,
     "no-unused-vars": "warn",
     "no-console": "warn",
-    "react-hooks/rules-of-hooks": "error"
+    "react-hooks/rules-of-hooks": "error",
+    "quotes": ["error", "backtick"]
   },
 
   "extends": ["eslint:recommended", "plugin:react/recommended"]

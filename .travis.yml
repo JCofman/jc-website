@@ -3,7 +3,7 @@ node_js:
   - node
 cache:
   directories:
-    - 'node_modules' # This will tell Travis CI to cache the dependencies
+    - "node_modules" # This will tell Travis CI to cache the dependencies
 services:
   - docker
 
@@ -19,6 +19,7 @@ before_script:
   - yarn test:size
 
 script:
+  - yarn build-deploy-and-alias-storybook # build and deploy storybook.jcofman.de
   - NOW_URL="$(now --token $NOW_TOKEN ./public  --local-config=../now.json)"
   # store deployment url from clipboard into the deployment url
   - echo $NOW_URL

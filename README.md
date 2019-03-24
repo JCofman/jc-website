@@ -27,15 +27,17 @@ Then run using Gatsby (you may need to install the `gatsby-cli` if you haven't a
 yarn develop
 ```
 
-## Used
+## Uses
 
 uses gatsby
+
+[![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://storybook.jcofman.de)
 
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
 
 hosted on Zeit
 
-jcofman.now.sh
+jcofman.de
 
 ## Dev
 

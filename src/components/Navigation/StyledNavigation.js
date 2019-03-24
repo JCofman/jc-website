@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import theme from 'styled-theming';
 import { zIndexLogo, zIndexNavigation } from '../../components/Styles/zIndex';
 
-const NavBackgroundColor = theme('mode', {
+const NavBackgroundColor = theme(`mode`, {
   light: props => props.theme.colors.white,
   dark: props => props.theme.colors.black,
 });
 
-const NavFontColor = theme('mode', {
+const NavFontColor = theme(`mode`, {
   light: props => props.theme.colors.black,
   dark: props => props.theme.colors.white,
 });
@@ -59,7 +59,7 @@ export const StyledNavLogo = styled.svg`
     display: inline-block;
   }
   ${props => props.theme.large} {
-    display: ${props => (props.display === 'true' ? 'inline-block' : 'none')};
+    display: ${props => (props.display === `true` ? `inline-block` : `none`)};
     position: fixed;
   }
   svg {

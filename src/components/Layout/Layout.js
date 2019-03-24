@@ -18,7 +18,7 @@ const sizes = {
   giant: 1200,
 };
 
-const maxWidth = '1024px';
+const maxWidth = `1024px`;
 
 const breakPoints = {
   xsmall: `@media (min-width: ${sizes.smallPhone}px)`,
@@ -28,30 +28,30 @@ const breakPoints = {
   xlarge: `@media (min-width: ${sizes.giant}px)`,
 };
 
-const themeTransition = '2s ease-in-out';
+const themeTransition = `2s ease-in-out`;
 
 const colors = {
-  white: '#F4F4F4',
-  black: '#010101',
-  primary: '#50E3C2',
-  secondary: '#4A90E2',
-  darkGrey: '#201c29',
-  lightGrey: '#535B68',
+  white: `#F4F4F4`,
+  black: `#010101`,
+  primary: `#50E3C2`,
+  secondary: `#4A90E2`,
+  darkGrey: `#201c29`,
+  lightGrey: `#535B68`,
 };
 
-const backgroundColor = theme('mode', {
+const backgroundColor = theme(`mode`, {
   light: colors.white,
   dark: colors.black,
 });
 
-const bodyTextColor = theme('mode', {
+const bodyTextColor = theme(`mode`, {
   light: colors.black,
   dark: colors.white,
 });
 
 const themes = {
-  dark: 'dark',
-  light: 'light',
+  dark: `dark`,
+  light: `light`,
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -849,10 +849,10 @@ pre {
 `;
 
 const Layout = ({ children, location }) => {
-  const [themeMode, setThemeMode] = useState('dark');
+  const [themeMode, setThemeMode] = useState(`dark`);
 
   const changeTheme = () => {
-    setThemeMode(prevState => (prevState === 'light' ? 'dark' : 'light'));
+    setThemeMode(prevState => (prevState === `light` ? `dark` : `light`));
   };
 
   return (

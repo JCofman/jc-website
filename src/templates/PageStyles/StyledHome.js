@@ -9,7 +9,7 @@ import theme from 'styled-theming';
 
 export const StyledLogo = styled.svg`
   display: none;
-  position: ${props => (props.scrollPositionY > 0 ? 'fixed' : 'static')};
+  position: ${props => (props.scrollPositionY > 0 ? `fixed` : `static`)};
   top: -235px;
   left: -200px;
   margin-top: 20px;
@@ -19,7 +19,7 @@ export const StyledLogo = styled.svg`
   width: 40rem;
   transition: all 0.25s ease-out 0s;
   transform: ${props =>
-    props.scrollPositionY > 0 ? 'scale(0.2)' : 'scale(1.0)'};
+    props.scrollPositionY > 0 ? `scale(0.2)` : `scale(1.0)`};
 
   ${props => props.theme.xsmall} {
     display: none;
@@ -46,9 +46,9 @@ export const Wrapper = styled.div`
   height: 75vh;
 `;
 
-const InformationTextShadow = theme('mode', {
-  light: '3px 3px 0 rgba(0, 0, 0, 0.2)',
-  dark: '3px 3px 0 rgba(255, 255, 255, 0.2)',
+const InformationTextShadow = theme(`mode`, {
+  light: `3px 3px 0 rgba(0, 0, 0, 0.2)`,
+  dark: `3px 3px 0 rgba(255, 255, 255, 0.2)`,
 });
 
 export const Information = styled.div`
@@ -142,7 +142,7 @@ export const Information = styled.div`
   }
 `;
 
-const themedHeaderBG = theme('mode', {
+const themedHeaderBG = theme(`mode`, {
   // touch action comes close to the webpp implementation usage now. It shows webp on most browsers but doesnt load on safari
   light: css`
     @supports (touch-action: manipulation) {

@@ -15,15 +15,15 @@ module.exports = {
 
   plugins: [
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: `gatsby-plugin-robots-txt`,
       options: {
         resolveEnv: () => PUBLISH_ON_NOW,
         env: {
           production: {
-            policy: [{ userAgent: '*' }],
+            policy: [{ userAgent: `*` }],
           },
           'branch-deploy': {
-            policy: [{ userAgent: '*', disallow: ['/'] }],
+            policy: [{ userAgent: `*`, disallow: [`/`] }],
             sitemap: null,
             host: null,
           },
@@ -31,19 +31,19 @@ module.exports = {
       },
     },
 
-    'gatsby-plugin-react-helmet',
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-styled-components`,
     },
     {
-      resolve: 'gatsby-plugin-webpack-bundle-analyzer',
+      resolve: `gatsby-plugin-webpack-bundle-analyzer`,
       options: {
         analyzerPort: 3000,
         production: true,
       },
     },
     `gatsby-plugin-sitemap`,
-    'gatsby-plugin-eslint',
+    `gatsby-plugin-eslint`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -60,10 +60,10 @@ module.exports = {
         icon: `src/assets/images/icon.png`, // This path is relative to the root of the site.
       },
     },
-    'gatsby-plugin-offline',
-    'gatsby-plugin-svgr',
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-svgr`,
     {
-      resolve: 'gatsby-plugin-react-svg',
+      resolve: `gatsby-plugin-react-svg`,
       options: {
         rule: {
           include: /assets/,
@@ -74,7 +74,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/pages`,
-        name: 'pages',
+        name: `pages`,
       },
     },
     {
@@ -85,7 +85,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
           {
@@ -99,7 +99,7 @@ module.exports = {
             },
           },
           {
-            resolve: 'gatsby-remark-embed-video',
+            resolve: `gatsby-remark-embed-video`,
             options: {
               width: 800,
               ratio: 1.77, // Optional: Defaults to 16/9 = 1.77

@@ -230,7 +230,7 @@ const AboutMe = () => (
         />
         <Wrapper>
           <StyledTriangle>
-            {' '}
+            {` `}
             <Img
               fluid={data.profileImage.childImageSharp.fluid}
               alt="A picture of myself"
@@ -248,8 +248,8 @@ const AboutMe = () => (
           </StyledMainInformation>
           <StyledInformationHobbies>
             <StyledBlogArtikelHeaderCircle>
-              {' '}
-              Hobbies{' '}
+              {` `}
+              Hobbies{` `}
             </StyledBlogArtikelHeaderCircle>
             <StyledSpan>This is what I love ❤️</StyledSpan>
             <StyledListDots>

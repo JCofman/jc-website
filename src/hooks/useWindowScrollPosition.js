@@ -3,8 +3,8 @@ import { throttle } from './utils';
 
 export const useWindowScrollPosition = ({ throttleMs = 100 } = {}) => {
   const [scroll, setScroll] = React.useState({
-    x: typeof window !== 'undefined' && window.pageXOffset,
-    y: typeof window !== 'undefined' && window.pageYOffset,
+    x: typeof window !== `undefined` && window.pageXOffset,
+    y: typeof window !== `undefined` && window.pageYOffset,
   });
 
   const handle = throttle(() => {
@@ -15,10 +15,10 @@ export const useWindowScrollPosition = ({ throttleMs = 100 } = {}) => {
   }, throttleMs);
 
   React.useEffect(() => {
-    window.addEventListener('scroll', handle, { passive: true });
+    window.addEventListener(`scroll`, handle, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', handle, { passive: true });
+      window.removeEventListener(`scroll`, handle, { passive: true });
     };
   }, []);
 

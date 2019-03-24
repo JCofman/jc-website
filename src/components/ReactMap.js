@@ -24,8 +24,8 @@ const ReactMaps = () => {
       width={980}
       height={551}
       style={{
-        width: '100%',
-        height: 'auto',
+        width: `100%`,
+        height: `auto`,
       }}
     >
       <ZoomableGroup center={[0, 20]} disablePanning>
@@ -38,19 +38,19 @@ const ReactMaps = () => {
                 projection={projection}
                 style={{
                   default: {
-                    stroke: '#F4F4F4',
+                    stroke: `#F4F4F4`,
                     strokeWidth: 0.5,
-                    outline: 'none',
+                    outline: `none`,
                   },
                   hover: {
-                    stroke: '#F4F4F4',
+                    stroke: `#F4F4F4`,
                     strokeWidth: 0.5,
-                    outline: 'none',
+                    outline: `none`,
                   },
                   pressed: {
-                    stroke: '#F4F4F4',
+                    stroke: `#F4F4F4`,
                     strokeWidth: 0.5,
-                    outline: 'none',
+                    outline: `none`,
                   },
                 }}
               />

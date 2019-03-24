@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import theme from "styled-theming";
+import styled from 'styled-components';
+import theme from 'styled-theming';
 
-const BackgroundColor = theme("mode", {
+const BackgroundColor = theme(`mode`, {
   light: props => props.theme.colors.white,
-  dark: props => props.theme.colors.black
+  dark: props => props.theme.colors.black,
 });
 
 const StyledLayout = styled.div`

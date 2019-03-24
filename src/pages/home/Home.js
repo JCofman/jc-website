@@ -26,20 +26,20 @@ const Home = () => {
           <h1>
             I LOVE WEB DEVELOPMENT
             <span role="img" aria-label="computer">
-              {' '}
+              {` `}
               💻
             </span>
             , VOLLEYBALL
             <span role="img" aria-label="computer">
               🏐
-            </span>{' '}
-            AND TRAVELLING{' '}
+            </span>{` `}
+            AND TRAVELLING{` `}
             <span role="img" aria-label="tent">
               ⛺️
-            </span>{' '}
+            </span>{` `}
             <span role="img" aria-label="nature tree">
               🌲
-            </span>{' '}
+            </span>{` `}
             <span role="img" aria-label="run">
               🏃
             </span>
