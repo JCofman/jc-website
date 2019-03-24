@@ -199,14 +199,14 @@ const AboutMe = () => (
   <StaticQuery
     query={graphql`
       {
-        profileImage: file(relativePath: { eq: "profilePicture4.jpg" }) {
+        profileImage: file(relativePath: { eq: "profilePicture.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 800) {
               ...GatsbyImageSharpFluid
             }
           }
         }
-        meJumpingImage: file(relativePath: { eq: "meJumping3.jpg" }) {
+        meJumpingImage: file(relativePath: { eq: "meJumping.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 800) {
               ...GatsbyImageSharpFluid
