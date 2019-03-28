@@ -89,9 +89,7 @@ export default function Template({ data, pageContext }) {
     <Layout>
       <SEO
         title={`JCofman - ${post.frontmatter.title}`}
-        description={
-          post.frontmatter.description || post.frontmatter.excerpt || `nothin’`
-        }
+        description={post.frontmatter.description || post.frontmatter.excerpt || `nothin’`}
         image={post.frontmatter.headerImage.childImageSharp.sizes.src}
         pathname={post.frontmatter.path}
         article
@@ -116,10 +114,7 @@ export default function Template({ data, pageContext }) {
         </StyledTags>
       </StyledInfo>
       <StyledSingleBlogPostArticle className="blog-post">
-        <div
-          className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
+        <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
         <StyledBlogBottomNav>
           {prev && (
             <Link to={prev.frontmatter.path}>
