@@ -96,9 +96,7 @@ const NavList = styled.ul`
   }
 `;
 
-const LazyWorldMap = React.lazy(() =>
-  import(`../ReactMap` /* webpackChunkName: "WorldMap" */)
-);
+const LazyWorldMap = React.lazy(() => import(`../ReactMap` /* webpackChunkName: "WorldMap" */));
 
 const Footer = () => {
   return (
@@ -106,7 +104,8 @@ const Footer = () => {
       <StyledMap>
         {typeof window === `undefined` ? null : (
           <Suspense fallback={<div>Loading...</div>}>
-            <LazyWorldMap />{` `}
+            <LazyWorldMap />
+            {` `}
           </Suspense>
         )}
       </StyledMap>
@@ -114,10 +113,7 @@ const Footer = () => {
         <NavList>
           <NavLink to="/">Home</NavLink>
           <li>
-            <a
-              href="https://www.iubenda.com/privacy-policy/83684129"
-              title="Privacy Policy "
-            >
+            <a href="https://www.iubenda.com/privacy-policy/83684129" title="Privacy Policy ">
               Privacy Policy
             </a>
           </li>

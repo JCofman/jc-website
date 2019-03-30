@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render a H1 header tags 1`] = `
+<h1>
+  I am a 
+  H1
+   headline
+</h1>
+`;
+
+exports[`should render a H2 header tags 1`] = `
+<h2>
+  I am a 
+  H2
+   headline
+</h2>
+`;
+
+exports[`should render a H3 header tags 1`] = `
+<h3>
+  I am a 
+  H3
+   headline
+</h3>
+`;
+
+exports[`should render a H4 header tags 1`] = `
+<h4>
+  I am a 
+  H4
+   headline
+</h4>
+`;
+
+exports[`should render a H5 header tags 1`] = `
+<h5>
+  I am a 
+  H5
+   headline
+</h5>
+`;
+
+exports[`should render a H6 header tags 1`] = `
+<h6>
+  I am a 
+  H6
+   headline
+</h6>
+`;
