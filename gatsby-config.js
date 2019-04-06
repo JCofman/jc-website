@@ -1,7 +1,5 @@
 const { PUBLISH_ON_NOW } = process.env;
 
-console.log(PUBLISH_ON_NOW);
-
 module.exports = {
   siteMetadata: {
     title: `Jacob Cofman Website`,

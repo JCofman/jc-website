@@ -5,13 +5,7 @@ import { withTheme } from 'styled-components';
 import Logo from '../Logo';
 import { Location } from '@reach/router';
 
-import {
-  StyledNav,
-  StyledNavLogo,
-  StyledNavList,
-  StyledNavWrapper,
-  StyledNavListLink,
-} from './StyledNavigation';
+import { StyledNav, StyledNavLogo, StyledNavList, StyledNavWrapper, StyledNavListLink } from './StyledNavigation';
 
 export const NavLink = props => (
   <StyledNavListLink>
@@ -39,10 +33,8 @@ const Navigation = () => {
     <Location>
       {({ location }) => (
         <StyledNavWrapper>
-          <Link to="/">
-            <StyledNavLogo
-              display={location.pathname !== `/` ? `true` : `false`}
-            >
+          <Link style={{ display: `flex` }} to="/">
+            <StyledNavLogo display={location.pathname !== `/` ? `true` : `false`}>
               <Logo />
               {` `}
             </StyledNavLogo>

@@ -14,7 +14,7 @@
     "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.10.0",
     "eslint-plugin-react-hooks": "^1.6.0",
-    "gatsby": "^2.3.4",
+    "gatsby": "^2.3.14",
     "gatsby-cli": "^2.5.5",
     "gatsby-image": "^2.0.37",
     "gatsby-mdx": "^0.4.4",
@@ -69,7 +69,9 @@
     "bundlesize": "^0.17.1",
     "cypress": "^3.2.0",
     "cypress-testing-library": "^2.4.0",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
+    "eslint-loader": "^2.1.2",
     "eslint-plugin-cypress": "^2.2.1",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
@@ -133,7 +135,10 @@
   ],
   "size-limit": [
     {
-      "path": "./public/*.js",
+      "path": [
+        "./public/app*.js",
+        "./public/component*.js"
+      ],
       "webpack": false,
       "limit": "500 KB"
     }

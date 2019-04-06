@@ -9,19 +9,20 @@ services:
 
 #check repo on vulnerabilities
 before_install:
+  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
   - docker run --rm --name=gitleaks zricethezav/gitleaks -v -r  https://github.com/JCofman/jc-website.git
 
 install:
   - yarn
 
 before_script:
-  - yarn build
-  - yarn test:size
+  - if [ $BRANCH = master ]; then yarn build:prod; else yarn build;fi
+  - yarn test 
+  - yarn test:size 
 
 script:
   - yarn build-deploy-and-alias-storybook # build and deploy storybook.jcofman.de
-  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
-  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
   # deploy to staging if not master and deploy to jcofman.de if master
   - if [ $BRANCH = master ]; then NOW_URL="$(now ./public --token=$NOW_TOKEN --target production --local-config=../now.json)"; else NOW_URL="$(now ./public --token=$NOW_TOKEN --target staging --local-config=../now.json);fi
   # store deployment url from clipboard into the deployment url
