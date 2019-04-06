@@ -20,18 +20,17 @@ before_script:
 
 script:
   - yarn build-deploy-and-alias-storybook # build and deploy storybook.jcofman.de
-  - NOW_URL="$(now --token $NOW_TOKEN ./public  --local-config=../now.json)"
+  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
+  # deploy to staging if not master and deploy to jcofman.de if master
+  - if [ $BRANCH = master ]; then NOW_URL="$(now ./public --token=$NOW_TOKEN --target production --local-config=../now.json)"; else NOW_URL="$(now ./public --token=$NOW_TOKEN --target staging --local-config=../now.json);fi
   # store deployment url from clipboard into the deployment url
   - echo $NOW_URL
 
 after_success:
-  # https://graysonkoonce.com/getting-the-current-branch-name-during-a-pull-request-in-travis-ci/
-  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
-  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
-  # alias url only when deploying master branch
-  - if [ $BRANCH = master ]; then yarn alias; fi
-  # - $BRANCH=master && npm run alias
+  # check lighthouse score
   - yarn lighthouse-ci $NOW_URL --score=90 --performance=85 --pwa=90 --accessibility=90 --best-practice=90 --seo=90
+  # run webpagetest 
   - TEST_URL=$NOW_URL GIT_TOKEN=$GIT_TOKEN WEBPAGETEST_API_KEY=$WEBPAGETEST_API_KEY GIT_BRANCH=$BRANCH SLACK_HOOK_URL=$SLACK_HOOK_URL node webPageTest.js
 
 env:

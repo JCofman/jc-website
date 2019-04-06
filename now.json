@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "jcofman",
-  "alias": "jcofman.now.sh",
+  "alias": "jcofman.de",
   "routes": [
     {
       "src": "^/static/(.*)",
