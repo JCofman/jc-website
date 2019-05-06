@@ -14,8 +14,7 @@ import Divider from '../components/Divider';
 
 const BlogArtikelWrapper = styled.div`
   background-color: ${props => props.theme.black};
-  transition: color ${props => props.theme.themeTransition},
-    background-color ${props => props.theme.themeTransition};
+  transition: color ${props => props.theme.themeTransition}, background-color ${props => props.theme.themeTransition};
   min-height: 300px;
   font-size: 1.6rem;
   display: flex;
@@ -172,10 +171,7 @@ const IndexPage = ({ data }) => {
   const { edges } = data.allMarkdownRemark;
   return (
     <Layout>
-      <SEO
-        title="All posts"
-        keywords={[`blog`, `gatsby`, `javascript`, `react`]}
-      />
+      <SEO title="All posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
       <Home />
       <StyledMain>
         {edges.map(({ node: post }, index) => {
@@ -186,9 +182,7 @@ const IndexPage = ({ data }) => {
               <BlogArtikel>
                 <BlogArtikelImageWrapper>
                   <Link to={frontmatter.path}>
-                    <Img
-                      sizes={frontmatter.featuredImage.childImageSharp.sizes}
-                    />
+                    <Img sizes={frontmatter.featuredImage.childImageSharp.sizes} />
                   </Link>
                 </BlogArtikelImageWrapper>
                 <BlogArtikelSingleWrapper>
@@ -209,9 +203,7 @@ const IndexPage = ({ data }) => {
                   )}
 
                   <BlogartikleSubInfo>
-                    <BlogArtikelHeaderTime>
-                      {frontmatter.date}
-                    </BlogArtikelHeaderTime>
+                    <BlogArtikelHeaderTime>{frontmatter.date}</BlogArtikelHeaderTime>
                     <BlogArtikelHeaderTags>
                       {post.frontmatter.tags.map((tag, index, allTags) => {
                         if (allTags.length - 1 === index) {
@@ -220,7 +212,8 @@ const IndexPage = ({ data }) => {
                           return ` ${tag},`;
                         }
                       })}
-                    </BlogArtikelHeaderTags>{` `}
+                    </BlogArtikelHeaderTags>
+                    {` `}
                   </BlogartikleSubInfo>
 
                   {frontmatter.excerpt}

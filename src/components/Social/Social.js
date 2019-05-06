@@ -13,7 +13,7 @@ const Social = () => {
       <a href="https://www.facebook.com/jac.cof" aria-label="Facebook">
         <FaFacebook size={24} />
       </a>
-      <a href="https://www.behance.net/cofmanjacob2a8" aria-label="Behance">
+      <a href="https://www.behance.net/jacobcofman" aria-label="Behance">
         <FaBehance size={24} />
       </a>
       <a href="https://github.com/JCofman" aria-label="Github">

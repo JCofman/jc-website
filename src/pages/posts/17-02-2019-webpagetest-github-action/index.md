@@ -154,10 +154,7 @@ async function runAudit() {
       const octokit = tools.github;
 
       // initialize webPagetest
-      const wpt = new webPageTest(
-        'www.webpagetest.org',
-        process.env.WEBPAGETEST_API_KEY
-      );
+      const wpt = new webPageTest('www.webpagetest.org', process.env.WEBPAGETEST_API_KEY);
 
       // 4. save results
       const webpagetestResults = await runWebPagetest(wpt);
