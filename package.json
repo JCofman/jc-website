@@ -52,7 +52,8 @@
     "styled-components": "^4.2.0",
     "styled-theming": "^2.2.0",
     "typeface-raleway": "^0.0.54",
-    "typography": "^0.16.19"
+    "typography": "^0.16.19",
+    "snyk": "^1.161.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
@@ -121,7 +122,9 @@
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook",
     "deploy:storybook": "now ./storybook-static --token=$NOW_TOKEN --target production --local-config=../now.storybook.json",
-    "build-deploy-and-alias-storybook": "npm-run-all -s build:storybook deploy:storybook"
+    "build-deploy-and-alias-storybook": "npm-run-all -s build:storybook deploy:storybook",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "bundlesize": [
     {
@@ -142,5 +145,6 @@
       "webpack": false,
       "limit": "500 KB"
     }
-  ]
+  ],
+  "snyk": true
 }
