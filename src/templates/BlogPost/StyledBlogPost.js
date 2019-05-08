@@ -14,7 +14,7 @@ export const StyledSingleBlogPostArticle = styled.article`
     word-break: break-word;
     font-size: 2rem;
     line-height: 1.6;
-    font-weight: 300;
+    font-weight: 400;
     grid-template-columns: 3fr 12fr 3fr;
     transition: color ${props => props.theme.themeTransition};
     a {

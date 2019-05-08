@@ -9,7 +9,7 @@
     "url": "https://github.com/JCofman/jc-website/issues"
   },
   "dependencies": {
-    "@mdx-js/mdx": "^1.0.16",
+    "@mdx-js/mdx": "^1.0.18",
     "@mdx-js/tag": "^0.20.3",
     "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.10.0",
