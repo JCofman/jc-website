@@ -104,6 +104,7 @@ export const StyledNavListLink = styled.li`
       transition-timing-function: cubic-bezier(1, -0.65, 0, 2.31);
       left: 50%;
       margin-top: 2rem;
+      bottom: 0.1em;
     }
     &:hover,
     &:focus {
