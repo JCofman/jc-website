@@ -26,12 +26,6 @@ script:
   # store deployment url from clipboard into the deployment url
   - echo $NOW_URL
 
-after_success:
-  # check lighthouse score
-  - yarn lighthouse-ci $NOW_URL --score=90 --performance=85 --pwa=90 --accessibility=90 --best-practice=90 --seo=90
-  # run webpagetest 
-  - TEST_URL=$NOW_URL GIT_TOKEN=$GIT_TOKEN WEBPAGETEST_API_KEY=$WEBPAGETEST_API_KEY GIT_BRANCH=$BRANCH SLACK_HOOK_URL=$SLACK_HOOK_URL node webPageTest.js
-
 env:
   global:
     - secure: fz3Aud9IxEtyZ6RYoMUXuXtF4VZMhiQRSXgivK1yxLpjSM/jjNWsbf8enOpegs33nxWu2tRH87WvqtG2Wn2vvrupzCA/9i4uurMgve6bunwGaIlKPgChb+bSJPwzhn7m15dyG34GYMOL8358QjwU/GFPV2yrEB88phRp6OCCHuFkFsGdTWn2NaHrl0v1VvGkRS8U/TzOjHhMwfWwIoSaStA8rDQrmxWwqxllnBIDWulVbSCP5Oy7/VbPAgZHt1BqNRvwAVxyGVLXtuTOOyFDlv4excRHFlxkmFKDcmod/4M+INPyIxiPsJzK/yLNd2iddyHzKhtLKmAM7ILrbVZwOgodHKyF0dRLOo0I3+fjLrVy9IOTHUabTEOESna8ErPeoqYbACWl5+MPjKSEbm2MOQFjKn4KnfN4tbzzu/Sp5yNwf6fXtPjbfHa9M/pDURGMFlECuV9rePilnEsyRccg1vR+SzRv4pT8wpGL8L2d3+o3boqTtC6w3fpS23nleLwE1tVn9NZYxE38MB3njI/k61VHkOo9R2SyiqHQTC/Z8hjmNuEbwiEypK+KJcjap4ytcpz1tQxXAFppyjtWxFOAY630pY6EkmKRAI8lgtArBwIqB5hIBBKUff6cMC/7lgtzysvv41hDGpdgU0U8gguGygFmUUwaQu156M+kVbTrwr4=
