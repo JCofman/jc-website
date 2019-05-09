@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { darken } from 'polished';
 export const StyledSingleBlogPostArticle = styled.article`
   .blog-post-header-image {
     display: grid;
@@ -18,7 +18,33 @@ export const StyledSingleBlogPostArticle = styled.article`
     grid-template-columns: 3fr 12fr 3fr;
     transition: color ${props => props.theme.themeTransition};
     a {
+      color: ${props => props.theme.colors.primary && darken(0.1, props.theme.colors.primary)};
+      position: relative;
+      transition: color 0.4s ease-out;
+    }
+    a:hover,
+    a:focus {
       color: ${props => props.theme.colors.primary};
+    }
+    a::after {
+      border-radius: 1em;
+      border-top: 0.1em solid ${props => props.theme.colors.primary && darken(0.5, props.theme.colors.primary)};
+      position: absolute;
+      content: '';
+      right: 100%;
+      left: 0;
+      bottom: 0.01em;
+      transition: right 0.4s cubic-bezier(0, 0.5, 0, 1), border-color 0.4s ease-out;
+    }
+    a:hover::after,
+    a:focus::after {
+      right: 0;
+      border-color: ${props => props.theme.colors.primary};
+    }
+    a:visited,
+    a:visited::after {
+      color: ${props => props.theme.colors.secondary};
+      border-color: ${props => props.theme.colors.secondary};
     }
   }
 
