@@ -30,7 +30,7 @@
     "gatsby-plugin-styled-components": "^3.0.7",
     "gatsby-plugin-svgr": "^2.0.2",
     "gatsby-plugin-typography": "^2.2.13",
-    "gatsby-plugin-webpack-bundle-analyzer": "^1.0.4",
+    "gatsby-plugin-webpack-bundle-analyzer": "^1.0.5",
     "gatsby-remark-embed-video": "^1.7.1",
     "gatsby-remark-images": "^3.0.11",
     "gatsby-remark-prismjs": "^3.2.9",
