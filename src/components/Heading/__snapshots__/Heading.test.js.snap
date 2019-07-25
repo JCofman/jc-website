@@ -1,7 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render a H1 header tags 1`] = `
-<h1>
+.c0 {
+  font-family: 'Raleway',sans-serif;
+  font-size: 8rem;
+  -webkit-transform: skew(-5deg) rotate(-1deg);
+  -ms-transform: skew(-5deg) rotate(-1deg);
+  transform: skew(-5deg) rotate(-1deg);
+  margin-bottom: 2rem;
+  color: #010101;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+.c0 a {
+  color: #010101;
+  -webkit-transition: color 2s ease-in-out;
+  transition: color 2s ease-in-out;
+}
+
+.c0 a:hover,
+.c0 a:focus {
+  color: #50E3C2;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.c0:before {
+  width: 0;
+  height: 0;
+  opacity: 0.2;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid #F4F4F4;
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  -webkit-transform: translateX(-0.5em) translateY(-1.5rem);
+  -ms-transform: translateX(-0.5em) translateY(-1.5rem);
+  transform: translateX(-0.5em) translateY(-1.5rem);
+}
+
+<h1
+  class="c0"
+>
   I am a 
   H1
    headline
@@ -9,41 +51,256 @@ exports[`should render a H1 header tags 1`] = `
 `;
 
 exports[`should render a H2 header tags 1`] = `
-<h2>
+.c0 {
+  font-family: 'Raleway',sans-serif;
+  font-size: 8rem;
+  -webkit-transform: skew(-5deg) rotate(-1deg);
+  -ms-transform: skew(-5deg) rotate(-1deg);
+  transform: skew(-5deg) rotate(-1deg);
+  margin-bottom: 2rem;
+  color: #010101;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  font-size: 5rem;
+}
+
+.c0 a {
+  color: #010101;
+  -webkit-transition: color 2s ease-in-out;
+  transition: color 2s ease-in-out;
+}
+
+.c0 a:hover,
+.c0 a:focus {
+  color: #50E3C2;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.c0:before {
+  width: 0;
+  height: 0;
+  opacity: 0.2;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid #F4F4F4;
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  -webkit-transform: translateX(-0.5em) translateY(-1.5rem);
+  -ms-transform: translateX(-0.5em) translateY(-1.5rem);
+  transform: translateX(-0.5em) translateY(-1.5rem);
+}
+
+<h1
+  class="c0"
+>
   I am a 
   H2
    headline
-</h2>
+</h1>
 `;
 
 exports[`should render a H3 header tags 1`] = `
-<h3>
+.c0 {
+  font-family: 'Raleway',sans-serif;
+  font-size: 8rem;
+  -webkit-transform: skew(-5deg) rotate(-1deg);
+  -ms-transform: skew(-5deg) rotate(-1deg);
+  transform: skew(-5deg) rotate(-1deg);
+  margin-bottom: 2rem;
+  color: #010101;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  font-size: 4rem;
+}
+
+.c0 a {
+  color: #010101;
+  -webkit-transition: color 2s ease-in-out;
+  transition: color 2s ease-in-out;
+}
+
+.c0 a:hover,
+.c0 a:focus {
+  color: #50E3C2;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.c0:before {
+  width: 0;
+  height: 0;
+  opacity: 0.2;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid #F4F4F4;
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  -webkit-transform: translateX(-0.5em) translateY(-1.5rem);
+  -ms-transform: translateX(-0.5em) translateY(-1.5rem);
+  transform: translateX(-0.5em) translateY(-1.5rem);
+}
+
+<h1
+  class="c0"
+>
   I am a 
   H3
    headline
-</h3>
+</h1>
 `;
 
 exports[`should render a H4 header tags 1`] = `
-<h4>
+.c0 {
+  font-family: 'Raleway',sans-serif;
+  font-size: 8rem;
+  -webkit-transform: skew(-5deg) rotate(-1deg);
+  -ms-transform: skew(-5deg) rotate(-1deg);
+  transform: skew(-5deg) rotate(-1deg);
+  margin-bottom: 2rem;
+  color: #010101;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  font-size: 3rem;
+}
+
+.c0 a {
+  color: #010101;
+  -webkit-transition: color 2s ease-in-out;
+  transition: color 2s ease-in-out;
+}
+
+.c0 a:hover,
+.c0 a:focus {
+  color: #50E3C2;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.c0:before {
+  width: 0;
+  height: 0;
+  opacity: 0.2;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid #F4F4F4;
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  -webkit-transform: translateX(-0.5em) translateY(-1.5rem);
+  -ms-transform: translateX(-0.5em) translateY(-1.5rem);
+  transform: translateX(-0.5em) translateY(-1.5rem);
+}
+
+<h1
+  class="c0"
+>
   I am a 
   H4
    headline
-</h4>
+</h1>
 `;
 
 exports[`should render a H5 header tags 1`] = `
-<h5>
+.c0 {
+  font-family: 'Raleway',sans-serif;
+  font-size: 8rem;
+  -webkit-transform: skew(-5deg) rotate(-1deg);
+  -ms-transform: skew(-5deg) rotate(-1deg);
+  transform: skew(-5deg) rotate(-1deg);
+  margin-bottom: 2rem;
+  color: #010101;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  font-size: 2.5rem;
+}
+
+.c0 a {
+  color: #010101;
+  -webkit-transition: color 2s ease-in-out;
+  transition: color 2s ease-in-out;
+}
+
+.c0 a:hover,
+.c0 a:focus {
+  color: #50E3C2;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.c0:before {
+  width: 0;
+  height: 0;
+  opacity: 0.2;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid #F4F4F4;
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  -webkit-transform: translateX(-0.5em) translateY(-1.5rem);
+  -ms-transform: translateX(-0.5em) translateY(-1.5rem);
+  transform: translateX(-0.5em) translateY(-1.5rem);
+}
+
+<h1
+  class="c0"
+>
   I am a 
   H5
    headline
-</h5>
+</h1>
 `;
 
 exports[`should render a H6 header tags 1`] = `
-<h6>
+.c0 {
+  font-family: 'Raleway',sans-serif;
+  font-size: 8rem;
+  -webkit-transform: skew(-5deg) rotate(-1deg);
+  -ms-transform: skew(-5deg) rotate(-1deg);
+  transform: skew(-5deg) rotate(-1deg);
+  margin-bottom: 2rem;
+  color: #010101;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  font-size: 2rem;
+}
+
+.c0 a {
+  color: #010101;
+  -webkit-transition: color 2s ease-in-out;
+  transition: color 2s ease-in-out;
+}
+
+.c0 a:hover,
+.c0 a:focus {
+  color: #50E3C2;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.c0:before {
+  width: 0;
+  height: 0;
+  opacity: 0.2;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid #F4F4F4;
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  -webkit-transform: translateX(-0.5em) translateY(-1.5rem);
+  -ms-transform: translateX(-0.5em) translateY(-1.5rem);
+  transform: translateX(-0.5em) translateY(-1.5rem);
+}
+
+<h1
+  class="c0"
+>
   I am a 
   H6
    headline
-</h6>
+</h1>
 `;

@@ -12,6 +12,7 @@ const HeadingTextColor = theme(`mode`, {
 });
 
 const StyledHeadingH1 = styled.h1`
+  font-family: 'Raleway', sans-serif;
   font-size: 8rem;
   transform: skew(-5deg) rotate(-1deg);
   margin-bottom: 2rem;
@@ -57,3 +58,5 @@ const StyledHeadingH5 = styled(StyledHeadingH1)`
 const StyledHeadingH6 = styled(StyledHeadingH1)`
   font-size: 2rem;
 `;
+
+export { StyledHeadingH1, StyledHeadingH2, StyledHeadingH3, StyledHeadingH4, StyledHeadingH5, StyledHeadingH6 };

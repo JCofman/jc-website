@@ -89,7 +89,7 @@ export default function Template({ data, pageContext }) {
     <Layout>
       <SEO
         title={`JCofman - ${post.frontmatter.title}`}
-        description={post.frontmatter.description || post.frontmatter.excerpt || `nothin’`}
+        description={post.frontmatter.description || post.frontmatter.excerpt || `nothing’`}
         image={post.frontmatter.headerImage.childImageSharp.sizes.src}
         pathname={post.frontmatter.path}
         article

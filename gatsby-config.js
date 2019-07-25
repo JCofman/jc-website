@@ -1,5 +1,31 @@
 const { PUBLISH_ON_NOW } = process.env;
 
+require(`dotenv`).config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
+const blogQuery = `{
+  allMarkdownRemark {
+    nodes {
+      frontmatter {
+        path
+        title
+        excerpt
+        tags
+      }
+    }
+  }
+}
+`;
+
+const queries = [
+  {
+    query: blogQuery,
+    transformer: ({ data }) => data.allMarkdownRemark.nodes, // optional
+    indexName: process.env.ALGOLIA_INDEX_NAME, // overrides main index name, optional
+  },
+];
+
 module.exports = {
   siteMetadata: {
     title: `Jacob Cofman Website`,
@@ -124,5 +150,15 @@ module.exports = {
       },
     },
     `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_API_KEY,
+        indexName: process.env.ALGOLIA_INDEX_NAME, // for all queries
+        queries,
+        chunkSize: 10000, // default: 1000
+      },
+    },
   ],
 };

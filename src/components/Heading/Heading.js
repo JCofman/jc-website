@@ -1,5 +1,13 @@
 import React from 'react';
 import { oneOf, any } from 'prop-types';
+import {
+  StyledHeadingH1,
+  StyledHeadingH2,
+  StyledHeadingH3,
+  StyledHeadingH4,
+  StyledHeadingH5,
+  StyledHeadingH6,
+} from './StyledHeading';
 
 export const APPEARANCES = {
   H1: `H1`,
@@ -12,13 +20,22 @@ export const APPEARANCES = {
 
 const Heading = ({ appearance, children, ...rest }) => {
   const { ...headingProps } = rest;
-  return React.createElement(
-    appearance.toLowerCase(),
-    {
-      ...headingProps,
-    },
-    children
-  );
+  switch (appearance) {
+    case `H1`:
+      return <StyledHeadingH1 {...headingProps}>{children}</StyledHeadingH1>;
+    case `H2`:
+      return <StyledHeadingH2 {...headingProps}>{children}</StyledHeadingH2>;
+    case `H3`:
+      return <StyledHeadingH3 {...headingProps}>{children}</StyledHeadingH3>;
+    case `H4`:
+      return <StyledHeadingH4 {...headingProps}>{children}</StyledHeadingH4>;
+    case `H5`:
+      return <StyledHeadingH5 {...headingProps}>{children}</StyledHeadingH5>;
+    case `H6`:
+      return <StyledHeadingH6 {...headingProps}>{children}</StyledHeadingH6>;
+    default:
+      return null;
+  }
 };
 
 Heading.displayName = `Heading`;

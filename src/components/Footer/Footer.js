@@ -58,9 +58,12 @@ const NavList = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  li,
-  a,
-  button {
+`;
+
+const FooterListLink = styled.li`
+  margin-bottom: 0px;
+
+   a {
     font-size: 2rem;
     font-weight: 600;
     padding: 1rem 3rem;
@@ -94,8 +97,7 @@ const NavList = styled.ul`
       }
     }
   }
-`;
-
+`
 const LazyWorldMap = React.lazy(() => import(`../ReactMap` /* webpackChunkName: "WorldMap" */));
 
 const Footer = () => {
@@ -112,11 +114,11 @@ const Footer = () => {
       <NavListWrapper>
         <NavList>
           <NavLink to="/">Home</NavLink>
-          <li>
+          <FooterListLink>
             <a href="https://www.iubenda.com/privacy-policy/83684129" title="Privacy Policy ">
               Privacy Policy
             </a>
-          </li>
+          </FooterListLink>
         </NavList>
         <Social />
         <NavList>

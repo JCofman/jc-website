@@ -1,12 +1,7 @@
 import React from 'react';
 // import theme from 'styled-theming';
 
-import {
-  ComposableMap,
-  ZoomableGroup,
-  Geographies,
-  Geography,
-} from 'react-simple-maps';
+import { ComposableMap, ZoomableGroup, Geographies, Geography } from 'react-simple-maps';
 import GeoWorldMap from './world-50m.json';
 
 // const MapColor = theme('mode', {
@@ -14,7 +9,7 @@ import GeoWorldMap from './world-50m.json';
 //   dark: props => props.theme.colors.black,
 // });
 
-const ReactMaps = () => {
+const ReactMap = () => {
   return (
     <ComposableMap
       projectionConfig={{
@@ -62,4 +57,4 @@ const ReactMaps = () => {
   );
 };
 
-export default ReactMaps;
+export default ReactMap;

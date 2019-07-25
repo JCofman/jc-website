@@ -1,12 +1,25 @@
 import React from 'react';
+import algoliasearch from 'algoliasearch/lite';
 import { Link } from 'gatsby';
 import { withTheme } from 'styled-components';
+import { InstantSearch } from 'react-instantsearch-dom';
+import SearchBar from '../SearchBar';
+import styled from 'styled-components';
+import Hits from '../Hits';
+import { Location } from '@reach/router';
+
 // import { FaMoon, FaLightbulb } from 'react-icons/fa';
 import Logo from '../Logo';
-import { Location } from '@reach/router';
 
 import { StyledNav, StyledNavLogo, StyledNavList, StyledNavWrapper, StyledNavListLink } from './StyledNavigation';
 
+const searchClient = algoliasearch(`8C28RWVQVQ`, `8bf43203e68ea1c9d485ccb865e18e99`);
+
+const StyledSearch = styled.div`
+  align-self: center;
+  justify-self: right;
+  justify-content: center;
+`;
 export const NavLink = props => (
   <StyledNavListLink>
     <Link
@@ -39,10 +52,15 @@ const Navigation = () => {
               {` `}
             </StyledNavLogo>
           </Link>
-
           <StyledNav>
             <div>&nbsp;</div>
-            <div>&nbsp;</div>
+            <StyledSearch>
+              <InstantSearch searchClient={searchClient} indexName="jacob-blog">
+                <SearchBar />
+                <Hits />
+              </InstantSearch>
+            </StyledSearch>
+
             <StyledNavList>
               {/* <li>
             <button disabled onClick={() => props.changeTheme()}>

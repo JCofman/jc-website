@@ -34,7 +34,6 @@ export const StyledNav = styled.nav`
   background-color: ${NavBackgroundColor};
   z-index: ${zIndexNavigation};
   float: right;
-  overflow: hidden;
   box-shadow: none;
   transition: height 0.25s ease-in-out 0s, box-shadow 0.2s ease-in-out 0.05s,
     background-color ${props => props.theme.themeTransition};

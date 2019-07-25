@@ -1,5 +1,4 @@
 <p align="center">
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
   <a href="https://jcofman.de">
     <img alt="Jays portfolio" src="https://github.com/JCofman/jc-website/blob/master/src/assets/images/icon.png" width="300" />
   </a>
@@ -35,6 +34,8 @@ uses gatsby
 [![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://storybook.jcofman.de)
 
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 hosted on Zeit
 
