@@ -1,5 +1,4 @@
 <p align="center">
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
   <a href="https://jcofman.de">
     <img alt="Jays portfolio" src="https://github.com/JCofman/jc-website/blob/master/src/assets/images/icon.png" width="300" />
   </a>
@@ -31,6 +30,8 @@ yarn develop
 ## Uses
 
 uses gatsby
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 [![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)](https://storybook.jcofman.de)
 
