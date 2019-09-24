@@ -1,5 +1,4 @@
 const { PUBLISH_ON_NOW } = process.env;
-// const algoliaQueries = require(`./src/utils/algolia`);
 
 require(`dotenv`).config({
   path: `.env.${process.env.NODE_ENV}`,

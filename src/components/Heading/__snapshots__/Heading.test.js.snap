@@ -2,8 +2,8 @@
 
 exports[`should render a H1 header tags 1`] = `
 .c0 {
-  font-family: 'Raleway',sans-serif;
   font-size: 8rem;
+  font-family: 'Raleway',sans-serif;
   -webkit-transform: skew(-5deg) rotate(-1deg);
   -ms-transform: skew(-5deg) rotate(-1deg);
   transform: skew(-5deg) rotate(-1deg);
@@ -29,9 +29,9 @@ exports[`should render a H1 header tags 1`] = `
   width: 0;
   height: 0;
   opacity: 0.2;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-bottom: 50px solid #F4F4F4;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+  border-bottom: 2em solid #F4F4F4;
   content: '';
   pointer-events: none;
   position: absolute;
@@ -53,7 +53,6 @@ exports[`should render a H1 header tags 1`] = `
 exports[`should render a H2 header tags 1`] = `
 .c0 {
   font-family: 'Raleway',sans-serif;
-  font-size: 8rem;
   -webkit-transform: skew(-5deg) rotate(-1deg);
   -ms-transform: skew(-5deg) rotate(-1deg);
   transform: skew(-5deg) rotate(-1deg);
@@ -80,9 +79,9 @@ exports[`should render a H2 header tags 1`] = `
   width: 0;
   height: 0;
   opacity: 0.2;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-bottom: 50px solid #F4F4F4;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+  border-bottom: 2em solid #F4F4F4;
   content: '';
   pointer-events: none;
   position: absolute;
@@ -92,19 +91,18 @@ exports[`should render a H2 header tags 1`] = `
   transform: translateX(-0.5em) translateY(-1.5rem);
 }
 
-<h1
+<h2
   class="c0"
 >
   I am a 
   H2
    headline
-</h1>
+</h2>
 `;
 
 exports[`should render a H3 header tags 1`] = `
 .c0 {
   font-family: 'Raleway',sans-serif;
-  font-size: 8rem;
   -webkit-transform: skew(-5deg) rotate(-1deg);
   -ms-transform: skew(-5deg) rotate(-1deg);
   transform: skew(-5deg) rotate(-1deg);
@@ -131,9 +129,9 @@ exports[`should render a H3 header tags 1`] = `
   width: 0;
   height: 0;
   opacity: 0.2;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-bottom: 50px solid #F4F4F4;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+  border-bottom: 2em solid #F4F4F4;
   content: '';
   pointer-events: none;
   position: absolute;
@@ -143,19 +141,18 @@ exports[`should render a H3 header tags 1`] = `
   transform: translateX(-0.5em) translateY(-1.5rem);
 }
 
-<h1
+<h3
   class="c0"
 >
   I am a 
   H3
    headline
-</h1>
+</h3>
 `;
 
 exports[`should render a H4 header tags 1`] = `
 .c0 {
   font-family: 'Raleway',sans-serif;
-  font-size: 8rem;
   -webkit-transform: skew(-5deg) rotate(-1deg);
   -ms-transform: skew(-5deg) rotate(-1deg);
   transform: skew(-5deg) rotate(-1deg);
@@ -182,9 +179,9 @@ exports[`should render a H4 header tags 1`] = `
   width: 0;
   height: 0;
   opacity: 0.2;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-bottom: 50px solid #F4F4F4;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+  border-bottom: 2em solid #F4F4F4;
   content: '';
   pointer-events: none;
   position: absolute;
@@ -194,19 +191,18 @@ exports[`should render a H4 header tags 1`] = `
   transform: translateX(-0.5em) translateY(-1.5rem);
 }
 
-<h1
+<h4
   class="c0"
 >
   I am a 
   H4
    headline
-</h1>
+</h4>
 `;
 
 exports[`should render a H5 header tags 1`] = `
 .c0 {
   font-family: 'Raleway',sans-serif;
-  font-size: 8rem;
   -webkit-transform: skew(-5deg) rotate(-1deg);
   -ms-transform: skew(-5deg) rotate(-1deg);
   transform: skew(-5deg) rotate(-1deg);
@@ -233,9 +229,9 @@ exports[`should render a H5 header tags 1`] = `
   width: 0;
   height: 0;
   opacity: 0.2;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-bottom: 50px solid #F4F4F4;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+  border-bottom: 2em solid #F4F4F4;
   content: '';
   pointer-events: none;
   position: absolute;
@@ -245,19 +241,18 @@ exports[`should render a H5 header tags 1`] = `
   transform: translateX(-0.5em) translateY(-1.5rem);
 }
 
-<h1
+<h5
   class="c0"
 >
   I am a 
   H5
    headline
-</h1>
+</h5>
 `;
 
 exports[`should render a H6 header tags 1`] = `
 .c0 {
   font-family: 'Raleway',sans-serif;
-  font-size: 8rem;
   -webkit-transform: skew(-5deg) rotate(-1deg);
   -ms-transform: skew(-5deg) rotate(-1deg);
   transform: skew(-5deg) rotate(-1deg);
@@ -284,9 +279,9 @@ exports[`should render a H6 header tags 1`] = `
   width: 0;
   height: 0;
   opacity: 0.2;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-bottom: 50px solid #F4F4F4;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+  border-bottom: 2em solid #F4F4F4;
   content: '';
   pointer-events: none;
   position: absolute;
@@ -296,11 +291,11 @@ exports[`should render a H6 header tags 1`] = `
   transform: translateX(-0.5em) translateY(-1.5rem);
 }
 
-<h1
+<h6
   class="c0"
 >
   I am a 
   H6
    headline
-</h1>
+</h6>
 `;
