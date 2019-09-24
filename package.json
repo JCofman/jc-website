@@ -141,9 +141,7 @@
     "build:storybook": "NODE_ENV=production build-storybook",
     "deploy:storybook": "now ./storybook-static --token=$NOW_TOKEN --target production --local-config=../now.storybook.json",
     "build-deploy-and-alias-storybook": "npm-run-all -s build:storybook deploy:storybook",
-    "clean": "gatsby clean",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "clean": "gatsby clean"
   },
   "bundlesize": [
     {
@@ -164,6 +162,5 @@
       "webpack": false,
       "limit": "500 KB"
     }
-  ],
-  "snyk": true
+  ]
 }
