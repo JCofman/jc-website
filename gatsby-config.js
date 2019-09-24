@@ -1,4 +1,5 @@
 const { PUBLISH_ON_NOW } = process.env;
+// const algoliaQueries = require(`./src/utils/algolia`);
 
 require(`dotenv`).config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -151,12 +152,18 @@ module.exports = {
     },
     `gatsby-transformer-json`,
     {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+      },
+    },
+    {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env.ALGOLIA_APP_ID,
         apiKey: process.env.ALGOLIA_API_KEY,
         indexName: process.env.ALGOLIA_INDEX_NAME, // for all queries
-        queries,
+        queries: queries,
         chunkSize: 10000, // default: 1000
       },
     },

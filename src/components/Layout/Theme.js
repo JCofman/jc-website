@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import theme from 'styled-theming';
 
-const sizes = {
+export const sizes = {
   smallPhone: 380,
   phone: 576,
   tablet: 768,

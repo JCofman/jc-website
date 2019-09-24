@@ -123,7 +123,7 @@ export const StyledBlogArtikelHeaderParallelogram = styled(BaseArtikelHeader)`
 `;
 
 const BlogArtikelImageWrapper = styled.div`
-  min-width: 200px;
+  min-width: 250px;
   width: 250px;
   flex-direction: row;
   margin: 0 auto;
@@ -186,17 +186,17 @@ const IndexPage = ({ data }) => {
                   </Link>
                 </BlogArtikelImageWrapper>
                 <BlogArtikelSingleWrapper>
-                  {index === 0 && (
+                  {index % 3 === 0 && (
                     <StyledBlogArtikelHeaderTriangle>
                       <Link to={frontmatter.path}>{frontmatter.title}</Link>
                     </StyledBlogArtikelHeaderTriangle>
                   )}
-                  {index === 1 && (
+                  {index % 3 === 1 && (
                     <StyledBlogArtikelHeaderCircle>
                       <Link to={frontmatter.path}>{frontmatter.title}</Link>
                     </StyledBlogArtikelHeaderCircle>
                   )}
-                  {index === 2 && (
+                  {index % 3 === 2 && (
                     <StyledBlogArtikelHeaderParallelogram>
                       <Link to={frontmatter.path}>{frontmatter.title}</Link>
                     </StyledBlogArtikelHeaderParallelogram>

@@ -15,13 +15,28 @@ It is used by all kinds of developers since it has a rich ecosystem where you ca
 
 ## First things first Keymaps
 
-### sublime keymaps
+To have a better switching experience more easilly switch you can install one of the official
+keymap plugins
+
+- sublime keymaps
+
+- atom keymaps
+
+asdas
 
 ## Most valuable shortcuts
 
-- CMD + D
-- CMP + (SHIFT) + P
--
+While there are a lot of shortcuts which you can use to navigate faster throughout the application
+But some of them I find using all the time really good
+
+- CMD + D // select line
+  gif
+
+- CMP + (SHIFT) + P // open quick run
+  gif
+
+- CMD + b // close panel
+  gif
 
 [link](https://link)
 

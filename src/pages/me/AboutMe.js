@@ -3,10 +3,7 @@ import styled from 'styled-components';
 import Layout from '../../components/Layout';
 import SEO from '../../components/SEO';
 
-import {
-  StyledBlogArtikelHeaderParallelogram,
-  StyledBlogArtikelHeaderCircle,
-} from '../';
+import { StyledBlogArtikelHeaderParallelogram, StyledBlogArtikelHeaderCircle } from '../';
 import { StaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 // import theme from 'styled-theming';
@@ -224,17 +221,11 @@ const AboutMe = () => (
     `}
     render={data => (
       <Layout>
-        <SEO
-          title="About Me"
-          keywords={[`about me`, `jacob cofman`, `frontend`, `engineer`]}
-        />
+        <SEO title="About Me" keywords={[`about me`, `jacob cofman`, `frontend`, `engineer`]} />
         <Wrapper>
           <StyledTriangle>
             {` `}
-            <Img
-              fluid={data.profileImage.childImageSharp.fluid}
-              alt="A picture of myself"
-            />
+            <Img fluid={data.profileImage.childImageSharp.fluid} alt="A picture of myself" />
           </StyledTriangle>
           <StyledMainInformation>
             <StyledH1>Jacob Cofman</StyledH1>
@@ -255,28 +246,17 @@ const AboutMe = () => (
             <StyledListDots>
               <li> I play volleyball since I am seven years old</li>
               <li> All the things especially frontend engineering stuff</li>
-              <li>
-                A lot of outdoor activities like snowboarding, hiking and just
-                enjoing the nature
-              </li>
+              <li>A lot of outdoor activities like snowboarding, hiking and just enjoing the nature</li>
             </StyledListDots>
           </StyledInformationHobbies>
           <StyledCircle>
-            <Img
-              fluid={data.meJumpingImage.childImageSharp.fluid}
-              alt="Picture of me in the nature"
-            />
+            <Img fluid={data.meJumpingImage.childImageSharp.fluid} alt="Picture of me in the nature" />
           </StyledCircle>
           <StyledParallelogram>
-            <Img
-              fluid={data.meHackingImage.childImageSharp.fluid}
-              alt="Coding"
-            />
+            <Img fluid={data.meHackingImage.childImageSharp.fluid} alt="Coding" />
           </StyledParallelogram>
           <StyledInformationSkills>
-            <StyledBlogArtikelHeaderParallelogram>
-              Skills
-            </StyledBlogArtikelHeaderParallelogram>
+            <StyledBlogArtikelHeaderParallelogram>Skills</StyledBlogArtikelHeaderParallelogram>
             <StyledSpan>Major skills 💪</StyledSpan>
             <StyledSkills>
               <StyledListParallelogram>

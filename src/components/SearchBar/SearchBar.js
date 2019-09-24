@@ -1,10 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Downshift from "downshift";
+import Downshift from 'downshift';
+import { navigate } from 'gatsby';
 
 import { FaSearch } from 'react-icons/fa';
-import { connectSearchBox } from 'react-instantsearch-dom';
+
+import { connectAutoComplete, connectHits } from 'react-instantsearch-dom';
+import Hits from '../Hits';
+import { sizes } from '../Layout/Theme';
+
+const ConnectedHits = connectHits(Hits);
 
 const StyledSearchIcon = styled(FaSearch)`
   position: absolute;
@@ -12,79 +18,102 @@ const StyledSearchIcon = styled(FaSearch)`
   color: ${props => props.theme.primary};
 `;
 
+const StyledForm = styled.form`
+  margin-bottom: 0px;
+  display: 'flex';
+  flex: '0 0 auto';
+  flex-direction: 'row';
+  align-items: 'center';
+  padding-left: '0.25rem';
+  padding-right: '0.25rem';
+  ${props => props.theme.small} {
+    justify-content: 'flex-end';
+    margin-right: 10;
+  }
+`;
+
 const StyledInput = styled.input`
   background-color: transparent;
   border: 0;
-  padding: 4px 4px 4px 29px;
   color: white;
+  appearance: 'none';
+  width: 100%;
+  font-size: 18px;
+  padding: 4px 4px 4px 29px;
 
   &:focus,
   &:active {
     border-radius: 0.25rem;
+    outline: 0;
   }
   &::placeholder {
     color: ${props => props.theme.primary};
   }
+
+  @media (max-width: ${sizes.phone}px) {
+    font-size: 16px;
+    width: 16px;
+    transition: width 0.2s ease padding 0.2s ease;
+    padding-left: 16px;
+    &:focus {
+      padding-left: 29px;
+      width: 12rem;
+      outline: none;
+    }
+  }
+
+
+  
 `;
 
-const StyledForm = styled.form`
-  margin-bottom: 0px;
-`
-    
-  </StyledForm>
-const SearchBar = ({ currentRefinement, isSearchStalled, refine }) => (
-  <Downshift
-  onChange={selection =>
-    alert(selection ? `You selected ${selection.value}` : "Selection Cleared")
-  }
-  itemToString={item => (item ? item.value : "")}
->
-  {({
-    getInputProps,
-    getItemProps,
-    getLabelProps,
-    getMenuProps,
-    isOpen,
-    inputValue,
-    highlightedIndex,
-    selectedItem
-  }) => (
-    <StyledForm noValidate action="" role="search">
-    <label {...getLabelProps()}><StyledSearchIcon /></label>
-      <StyledInput
-      placeholder="Search blog..."
-      type="search"
-      value={currentRefinement}
-      {...getInputProps()}
-      onChange={event => refine(event.currentTarget.value)}
-    />
-      <ul {...getMenuProps()}>
-        {isOpen
-          ? items
-              .filter(item => !inputValue || item.value.includes(inputValue))
-              .map((item, index) => (
-                <li
-                  {...getItemProps({
-                    key: item.value,
-                    index,
-                    item,
-                    style: {
-                      backgroundColor:
-                        highlightedIndex === index ? "lightgray" : "white",
-                      fontWeight: selectedItem === item ? "bold" : "normal"
-                    }
-                  })}
-                >
-                  {item.value}
-                </li>
-              ))
-          : null}
-      </ul>
-      {isSearchStalled ? `My search is stalled` : ``}
-    </StyledForm>
-  )}
-</Downshift>
-);
+const SearchBar = ({ isSearchStalled, refine, hits }) => {
+  return (
+    <Downshift
+      itemToString={i => (i ? i.frontmatter.title : i)}
+      onChange={item => navigate(item.frontmatter.path)}
+      defaultHighlightedIndex={0}
+    >
+      {({
+        getInputProps,
+        getItemProps,
+        getLabelProps,
+        getMenuProps,
+        isOpen,
+        highlightedIndex,
+        selectedItem,
+      }) => (
+        <div>
+          <StyledForm noValidate action="" role="search">
+            <label {...getLabelProps()}>
+              <StyledSearchIcon />
+            </label>
+            <StyledInput
+              placeholder="Search blog..."
+              type="search"
+              {...getInputProps({
+                onChange(e) {
+                  refine(e.target.value);
+                },
+              })}
+            />
+            {isOpen && (
+              <div>
+                <ConnectedHits
+                  getMenuProps={getMenuProps}
+                  hits={hits}
+                  getItemProps={getItemProps}
+                  highlightedIndex={highlightedIndex}
+                  selectedItem={selectedItem}
+                />
+              </div>
+            )}
+            {isSearchStalled ? `My search is stalled` : ``}
+          </StyledForm>
+        </div>
+      )}
+    </Downshift>
+  );
+};
 
 SearchBar.displayName = `SearchBar`;
 
@@ -97,4 +126,4 @@ SearchBar.propTypes = {
   refine: PropTypes.func,
 };
 
-export default connectSearchBox(SearchBar);
+export default connectAutoComplete(SearchBar);

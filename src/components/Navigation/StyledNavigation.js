@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import theme from 'styled-theming';
 import { zIndexLogo, zIndexNavigation } from '../../components/Styles/zIndex';
+import { sizes } from '../Layout/Theme';
 
 const NavBackgroundColor = theme(`mode`, {
   light: props => props.theme.colors.white,
@@ -37,6 +38,18 @@ export const StyledNav = styled.nav`
   box-shadow: none;
   transition: height 0.25s ease-in-out 0s, box-shadow 0.2s ease-in-out 0.05s,
     background-color ${props => props.theme.themeTransition};
+
+  @media (max-width: ${sizes.phone}px) {
+    mask-image: linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+    padding-left: 60px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
 `;
 
 export const StyledNavLogo = styled.svg`

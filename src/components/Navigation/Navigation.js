@@ -5,7 +5,6 @@ import { withTheme } from 'styled-components';
 import { InstantSearch } from 'react-instantsearch-dom';
 import SearchBar from '../SearchBar';
 import styled from 'styled-components';
-import Hits from '../Hits';
 import { Location } from '@reach/router';
 
 // import { FaMoon, FaLightbulb } from 'react-icons/fa';
@@ -19,7 +18,13 @@ const StyledSearch = styled.div`
   align-self: center;
   justify-self: right;
   justify-content: center;
+  display: none;
+
+  ${props => props.theme.medium} {
+    display: inline;
+  }
 `;
+
 export const NavLink = props => (
   <StyledNavListLink>
     <Link
@@ -52,15 +57,14 @@ const Navigation = () => {
               {` `}
             </StyledNavLogo>
           </Link>
+
           <StyledNav>
             <div>&nbsp;</div>
             <StyledSearch>
               <InstantSearch searchClient={searchClient} indexName="jacob-blog">
                 <SearchBar />
-                <Hits />
               </InstantSearch>
             </StyledSearch>
-
             <StyledNavList>
               {/* <li>
             <button disabled onClick={() => props.changeTheme()}>

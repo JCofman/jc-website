@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from 'styled-theming';
 
 const HeadingTextShadow = theme(`mode`, {
@@ -11,9 +11,8 @@ const HeadingTextColor = theme(`mode`, {
   dark: props => props.theme.colors.white,
 });
 
-const StyledHeadingH1 = styled.h1`
+const sharedHeadingStyles = css`
   font-family: 'Raleway', sans-serif;
-  font-size: 8rem;
   transform: skew(-5deg) rotate(-1deg);
   margin-bottom: 2rem;
   color: ${HeadingTextColor};
@@ -31,9 +30,9 @@ const StyledHeadingH1 = styled.h1`
     width: 0;
     height: 0;
     opacity: 0.2;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    border-bottom: 50px solid ${props => props.theme.colors.white};
+    border-left: 1em solid transparent;
+    border-right: 1em solid transparent;
+    border-bottom: 2em solid ${props => props.theme.colors.white};
     content: '';
     pointer-events: none;
     position: absolute;
@@ -42,20 +41,33 @@ const StyledHeadingH1 = styled.h1`
   }
 `;
 
-const StyledHeadingH2 = styled(StyledHeadingH1)`
+const StyledHeadingH1 = styled.h1`
+  font-size: 8rem;
+  ${sharedHeadingStyles}
+`;
+
+const StyledHeadingH2 = styled.h2`
+  ${sharedHeadingStyles}
   font-size: 5rem;
 `;
 
-const StyledHeadingH3 = styled(StyledHeadingH1)`
+const StyledHeadingH3 = styled.h3`
+  ${sharedHeadingStyles}
+
   font-size: 4rem;
 `;
-const StyledHeadingH4 = styled(StyledHeadingH1)`
+const StyledHeadingH4 = styled.h4`
+  ${sharedHeadingStyles}
+
   font-size: 3rem;
 `;
-const StyledHeadingH5 = styled(StyledHeadingH1)`
+const StyledHeadingH5 = styled.h5`
+  ${sharedHeadingStyles}
+
   font-size: 2.5rem;
 `;
-const StyledHeadingH6 = styled(StyledHeadingH1)`
+const StyledHeadingH6 = styled.h6`
+  ${sharedHeadingStyles}
   font-size: 2rem;
 `;
 
