@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-// Hook
 export const useMedia = (queries, values, defaultValue) => {
   // Array containing a media query list for each query
   const mediaQueryLists = queries.map(q => typeof window !== `undefined` && window.matchMedia(q));

@@ -44,7 +44,7 @@ const Layout = ({ children, location }) => {
 };
 
 function usePrefersDarkMode() {
-  return useMedia([`(prefers-color-scheme: dark)`], [true], false);
+  return useMedia([`(prefers-color-scheme: dark)`], [true], true);
 }
 
 export default Layout;

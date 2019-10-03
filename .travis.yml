@@ -16,13 +16,13 @@ install:
 
 before_script:
   - if [ $BRANCH = master ]; then yarn build:prod; else yarn build;fi
-  - yarn test 
-  - yarn test:size 
+  - yarn test
+  - yarn test:size
 
 script:
   - yarn build-deploy-and-alias-storybook # build and deploy storybook.jcofman.de
   # deploy to staging if not master and deploy to jcofman.de if master
-  - if [ $BRANCH = master ]; then NOW_URL="$(now ./public --token=$NOW_TOKEN --target production --local-config=../now.json)"; else NOW_URL="$(now ./public --token=$NOW_TOKEN --target staging --local-config=../now.json)";fi
+  - if [ $BRANCH = master ]; then NOW_URL="$(now ./public --token=$NOW_TOKEN --prod --local-config=../now.json)"; else NOW_URL="$(now ./public --token=$NOW_TOKEN --target staging --local-config=../now.json)";fi
   # store deployment url from clipboard into the deployment url
   - echo $NOW_URL
 

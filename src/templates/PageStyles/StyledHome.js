@@ -143,21 +143,21 @@ const themedHeaderBG = theme(`mode`, {
   // touch action comes close to the webpp implementation usage now. It shows webp on most browsers but doesnt load on safari
   light: css`
     @supports (touch-action: manipulation) {
-      background: linear-gradient(rgba(244, 244, 244, 0.7), rgba(244, 244, 244, 0.7)),
+      background: linear-gradient(rgba(244, 244, 244, 0.95), rgba(244, 244, 244, 0.95)),
         url(${WhiteHeaderBGWebP}) no-repeat center right fixed;
     }
     @supports not (touch-action: manipulation) {
-      background: linear-gradient(rgba(244, 244, 244, 0.7), rgba(244, 244, 244, 0.7)),
+      background: linear-gradient(rgba(244, 244, 244, 0.95), rgba(244, 244, 244, 0.95)),
         url(${WhiteHeaderBG}) no-repeat center right fixed;
     }
   `,
   dark: css`
     @supports (touch-action: manipulation) {
-      background: linear-gradient(rgba(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)),
+      background: linear-gradient(rgba(1, 1, 1, 0.95), rgba(1, 1, 1, 0.95)),
         url(${WhiteHeaderBGWebP}) no-repeat center right fixed;
     }
     @supports not (touch-action: manipulation) {
-      background: linear-gradient(rgba(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)),
+      background: linear-gradient(rgba(1, 1, 1, 0.95), rgba(1, 1, 1, 0.95)),
         url(${WhiteHeaderBG}) no-repeat center right fixed;
     }
   `,
