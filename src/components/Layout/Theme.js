@@ -836,6 +836,11 @@ export const GlobalStyle = createGlobalStyle`
     float: left;
     min-width: 100%;
   }
+
+  [aria-current] {
+    color: ${colors.primary} !important;
+  }
+
   `;
 
 const Theme = {
