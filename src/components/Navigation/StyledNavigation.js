@@ -13,37 +13,55 @@ const NavFontColor = theme(`mode`, {
   dark: props => props.theme.colors.white,
 });
 
-export const StyledNavWrapper = styled.div`
-  display: flex;
-  height: 70px;
-  z-index: ${zIndexNavigation};
-`;
+const NavLinkFontColor = NavFontColor;
 
-export const StyledNav = styled.nav`
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  height: 70px;
+export const StyledWrapper = styled.div`
   position: fixed;
-  left: 0px;
-  right: 0px;
-  border-top: 2px solid ${props => props.theme.colors.primary};
-  border-bottom: 1px solid #201c29;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: ${NavBackgroundColor};
   z-index: ${zIndexNavigation};
+  border-top: 2px solid ${props => props.theme.colors.primary};
+  border-bottom: 1px solid #201c29;
+`;
+
+export const StyledNavWrapper = styled.div`
+  display: grid;
+  width: 100%;
+  max-width: 1024px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 70px;
+  grid-gap: 20px;
+  height: 70px;
   float: right;
   box-shadow: none;
   transition: height 0.25s ease-in-out 0s, box-shadow 0.2s ease-in-out 0.05s,
     background-color ${props => props.theme.themeTransition};
+  a {
+    color: ${NavLinkFontColor};
+  }
+  a:hover,
+  a:focus {
+    color: ${props => props.theme.colors.primary};
+  }
+`;
+
+export const StyledNav = styled.nav`
+  display: flex;
+  align-items: center;
+  height: 70px;
 
   @media (max-width: ${sizes.phone}px) {
     mask-image: linear-gradient(to right, transparent, black 20px, black 90%, transparent);
-    padding-left: 60px;
+    margin-left: 200px;
+    width: 200px;
     overflow-x: auto;
     overflow-y: hidden;
+    position: absolute;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none;
     ::-webkit-scrollbar {
@@ -64,7 +82,6 @@ export const StyledNavLogo = styled.svg`
     height: 150px;
   }
   ${props => props.theme.medium} {
-    top: 3px;
     width: 120px;
     height: 140px;
     left: 70px;
@@ -87,6 +104,7 @@ export const StyledNavList = styled.ul`
   margin: 0;
   padding: 0;
   display: flex;
+  align-items: center;
 `;
 
 export const StyledNavListLink = styled.li`

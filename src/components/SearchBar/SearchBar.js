@@ -3,14 +3,29 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Downshift from 'downshift';
 import { navigate } from 'gatsby';
-
+import theme from 'styled-theming';
 import { FaSearch } from 'react-icons/fa';
-
 import { connectAutoComplete, connectHits } from 'react-instantsearch-dom';
+
 import Hits from '../Hits';
 import { sizes } from '../Layout/Theme';
 
 const ConnectedHits = connectHits(Hits);
+
+const InputBackgroundColor = theme(`mode`, {
+  light: props => props.theme.colors.black,
+  dark: props => props.theme.colors.white,
+});
+
+const InputColorSmall = theme(`mode`, {
+  light: props => props.theme.colors.white,
+  dark: props => props.theme.colors.black,
+});
+
+const InputColor = theme(`mode`, {
+  light: props => props.theme.colors.black,
+  dark: props => props.theme.colors.white,
+});
 
 const StyledSearchIcon = styled(FaSearch)`
   position: absolute;
@@ -35,7 +50,7 @@ const StyledForm = styled.form`
 const StyledInput = styled.input`
   background-color: transparent;
   border: 0;
-  color: white;
+  color: ${InputColor};
   appearance: 'none';
   width: 100%;
   font-size: 18px;
@@ -57,13 +72,12 @@ const StyledInput = styled.input`
     padding-left: 16px;
     &:focus {
       padding-left: 29px;
-      width: 12rem;
+      width: 15rem;
       outline: none;
+      background-color: ${InputBackgroundColor};
+      color: ${InputColorSmall};
     }
   }
-
-
-  
 `;
 
 const SearchBar = ({ isSearchStalled, refine, hits }) => {
@@ -73,15 +87,7 @@ const SearchBar = ({ isSearchStalled, refine, hits }) => {
       onChange={item => navigate(item.frontmatter.path)}
       defaultHighlightedIndex={0}
     >
-      {({
-        getInputProps,
-        getItemProps,
-        getLabelProps,
-        getMenuProps,
-        isOpen,
-        highlightedIndex,
-        selectedItem,
-      }) => (
+      {({ getInputProps, getItemProps, getLabelProps, getMenuProps, isOpen, highlightedIndex, selectedItem }) => (
         <div>
           <StyledForm noValidate action="" role="search">
             <label {...getLabelProps()}>
@@ -118,10 +124,7 @@ const SearchBar = ({ isSearchStalled, refine, hits }) => {
 SearchBar.displayName = `SearchBar`;
 
 SearchBar.propTypes = {
-  /** any nodes to be rendered (usually text nodes) */
   currentRefinement: PropTypes.string,
-
-  /** typography of the SearchBar */
   isSearchStalled: PropTypes.bool,
   refine: PropTypes.func,
 };

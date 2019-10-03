@@ -1,5 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import theme from 'styled-theming';
+
 import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
@@ -9,6 +11,11 @@ import SEO from '../../components/SEO';
 import Layout from '../../components/Layout';
 import { StyledSingleBlogPostArticle } from './StyledBlogPost';
 
+const StyledButtonColor = theme(`mode`, {
+  light: props => props.theme.colors.black,
+  dark: props => props.theme.colors.white,
+});
+
 const StyledButton = styled.button`
   display: flex;
   align-items: center;
@@ -16,7 +23,7 @@ const StyledButton = styled.button`
   background: transparent;
   border-radius: 3px;
   border: 2px solid ${props => props.theme.colors.primary};
-  color: ${props => props.theme.colors.white};
+  color: ${StyledButtonColor};
   margin: 0.5em 1em;
   padding: 0.25em 1em;
 
@@ -64,11 +71,12 @@ const StyledHeader = styled.header`
 `;
 
 const StyledBlogBottomNav = styled.div`
-  display: grid;
+  display: flex;
   justify-content: center;
   text-align: center;
   font-size: 2rem;
   a {
+    margin: 1rem 2rem;
     color: ${props => props.theme.colors.primary};
   }
 `;
@@ -139,6 +147,9 @@ export default function Template({ data, pageContext }) {
           <motion.path
             fill="none"
             strokeWidth="2"
+            css={`
+              stroke: ${StyledButtonColor};
+            `}
             stroke="white"
             strokeDasharray="0 1"
             d="M 0, 20 a 20, 20 0 1,0 40,0 a 20, 20 0 1,0 -40,0"
@@ -152,8 +163,10 @@ export default function Template({ data, pageContext }) {
           />
           <motion.path
             fill="none"
+            css={`
+              stroke: ${StyledButtonColor};
+            `}
             strokeWidth="2"
-            stroke="white"
             d="M14,26 L 22,33 L 35,16"
             initial={false}
             strokeDasharray="0 1"
@@ -165,7 +178,7 @@ export default function Template({ data, pageContext }) {
             <Link to={prev.frontmatter.path}>
               <small>{prev.frontmatter.title}</small>
               <StyledButton>
-                <FaChevronLeft /> Previous Post
+                <FaChevronLeft /> Prev Post
               </StyledButton>
             </Link>
           )}

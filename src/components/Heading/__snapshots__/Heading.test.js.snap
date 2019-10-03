@@ -14,8 +14,8 @@ exports[`should render a H1 header tags 1`] = `
 
 .c0 a {
   color: #010101;
-  -webkit-transition: color 2s ease-in-out;
-  transition: color 2s ease-in-out;
+  -webkit-transition: color 1s ease-in-out;
+  transition: color 1s ease-in-out;
 }
 
 .c0 a:hover,
@@ -64,8 +64,8 @@ exports[`should render a H2 header tags 1`] = `
 
 .c0 a {
   color: #010101;
-  -webkit-transition: color 2s ease-in-out;
-  transition: color 2s ease-in-out;
+  -webkit-transition: color 1s ease-in-out;
+  transition: color 1s ease-in-out;
 }
 
 .c0 a:hover,
@@ -114,8 +114,8 @@ exports[`should render a H3 header tags 1`] = `
 
 .c0 a {
   color: #010101;
-  -webkit-transition: color 2s ease-in-out;
-  transition: color 2s ease-in-out;
+  -webkit-transition: color 1s ease-in-out;
+  transition: color 1s ease-in-out;
 }
 
 .c0 a:hover,
@@ -164,8 +164,8 @@ exports[`should render a H4 header tags 1`] = `
 
 .c0 a {
   color: #010101;
-  -webkit-transition: color 2s ease-in-out;
-  transition: color 2s ease-in-out;
+  -webkit-transition: color 1s ease-in-out;
+  transition: color 1s ease-in-out;
 }
 
 .c0 a:hover,
@@ -214,8 +214,8 @@ exports[`should render a H5 header tags 1`] = `
 
 .c0 a {
   color: #010101;
-  -webkit-transition: color 2s ease-in-out;
-  transition: color 2s ease-in-out;
+  -webkit-transition: color 1s ease-in-out;
+  transition: color 1s ease-in-out;
 }
 
 .c0 a:hover,
@@ -264,8 +264,8 @@ exports[`should render a H6 header tags 1`] = `
 
 .c0 a {
   color: #010101;
-  -webkit-transition: color 2s ease-in-out;
-  transition: color 2s ease-in-out;
+  -webkit-transition: color 1s ease-in-out;
+  transition: color 1s ease-in-out;
 }
 
 .c0 a:hover,

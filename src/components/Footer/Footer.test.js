@@ -9,8 +9,8 @@ test(`Footer is rendered properly`, async () => {
   getByText(/Privacy Policy/i);
 });
 
-test(`Footer is rendered with async loaded map`, async () => {
-  const { container } = render(<Footer />);
-  await wait();
-  expect(container).toMatchSnapshot();
-});
+// test(`Footer is rendered with async loaded map`, async () => {
+//   const { container } = render(<Footer />);
+//   await wait();
+//   expect(container).toMatchSnapshot();
+// });

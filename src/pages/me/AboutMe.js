@@ -59,7 +59,7 @@ export const Wrapper = styled.div`
   }
 
   ${props => props.theme.large} {
-    margin: 5rem auto;
+    margin: 8rem auto;
     align-items: center;
     justify-content: center;
     grid-template-columns: 1fr 1fr;

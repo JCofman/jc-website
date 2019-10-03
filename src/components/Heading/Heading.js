@@ -1,5 +1,5 @@
 import React from 'react';
-import { oneOf, any } from 'prop-types';
+import PropTypes from 'prop-types';
 import {
   StyledHeadingH1,
   StyledHeadingH2,
@@ -42,10 +42,10 @@ Heading.displayName = `Heading`;
 
 Heading.propTypes = {
   /** any nodes to be rendered (usually text nodes) */
-  children: any,
+  children: PropTypes.any,
 
   /** typography of the heading */
-  appearance: oneOf(Object.keys(APPEARANCES)),
+  appearance: PropTypes.oneOf(Object.keys(APPEARANCES)),
 };
 
 Heading.defaultProps = {
