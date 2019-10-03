@@ -6,6 +6,7 @@ import { action } from '@storybook/addon-actions';
 import { ThemeProvider } from 'styled-components';
 import Theme from '../src/components/Layout/Theme';
 import { addParameters } from '@storybook/react'; // <- or your storybook framework
+import { withKnobs } from '@storybook/addon-knobs';
 
 // automatically import all files ending in *.stories.js
 const req = require.context('../src', true, /.stories.js$/);
@@ -15,6 +16,10 @@ function loadStories() {
 
 addDecorator(story => <ThemeProvider theme={Theme}>{story()}</ThemeProvider>);
 addDecorator(withA11y);
+
+// Add the `withKnobs` decorator to add knobs support to your stories.
+// You can also configure `withKnobs` as a global decorator.
+addDecorator(withKnobs);
 
 addParameters({
   backgrounds: [
