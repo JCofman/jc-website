@@ -1,7 +1,7 @@
 ---
 path: '/pratical-type-coercion'
 date: '2019-09-24T17:12:33.962Z'
-title: 'Practical type coercion/conversion and type checks in JavaScript'
+title: 'Practical type coercion / conversion and type checks in JavaScript'
 featuredImage: './featured-image.jpg'
 headerImage: './header.jpg'
 tags: [coercion, JS, web, conversion, JavaScript, type checks]
@@ -39,14 +39,15 @@ Keep in mind with more information you usually end up with a better result. This
 // 1.
 // You can avoid checking for undefined and null by using the == operator instead
 // of === so here you can actually make use of the implicit equality operator conversion
+if (a !== undefined && a !== null) {
+}
 
-If(a !== undefined && a !== null);
+// checks for both undefined and null
+if (a != null) {
+}
 
-if (a != null)
-  // checks for both undefined and null
-  // 2.
-  // If you want to check whether an array is an array use the built in method
-  Array.isArray(MyArray);
+// 2. If you want to check whether an array is an array use the built in method
+Array.isArray(MyArray);
 
 // 3.
 // Use Number.isNaN(value) to check for NaN

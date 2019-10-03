@@ -19,16 +19,20 @@ const StyledHits = styled.ul`
   list-style: none;
 `;
 
+const StyledHitColor = theme(`mode`, {
+  light: props => props.theme.colors.black,
+  dark: props => props.theme.colors.white,
+});
+
 const StyledHit = styled.li`
   background-color: ${StyledHitsBackgroundColor};
-  color: white;
+  color: ${StyledHitColor};
   padding: 0.8rem;
   letter-spacing: 0.05px;
   font-size: 18px;
-
-  color: ${props => (props.highlightedIndex === props.index ? props.theme.colors.primary : props.theme.colors.white)};
+  color: ${props => (props.highlightedIndex === props.index ? props.theme.colors.primary : StyledHitColor)};
   a {
-    color: ${props => (props.highlightedIndex === props.index ? props.theme.colors.primary : props.theme.colors.white)};
+    color: ${props => (props.highlightedIndex === props.index ? props.theme.colors.primary : StyledHitColor)};
   }
 `;
 

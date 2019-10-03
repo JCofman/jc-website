@@ -64,7 +64,7 @@ const BaseArtikelHeader = styled.h2`
     /* transition: color ${props => props.theme.themeTransition}; */ 
   }
   a:hover,
-  a:hover {
+  a:focus {
     color: ${props => props.theme.colors.primary};
     transition: none;
   }
@@ -176,7 +176,6 @@ const IndexPage = ({ data }) => {
       <StyledMain>
         {edges.map(({ node: post }, index) => {
           const { frontmatter } = post;
-
           return (
             <BlogArtikelWrapper key={frontmatter.title}>
               <BlogArtikel>
@@ -243,7 +242,7 @@ export const query = graphql`
             excerpt
             featuredImage {
               childImageSharp {
-                sizes(maxWidth: 250) {
+                sizes(maxWidth: 250, maxHeight: 250) {
                   ...GatsbyImageSharpSizes
                 }
               }

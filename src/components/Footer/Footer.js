@@ -18,6 +18,13 @@ const StyledMap = styled.div`
   }
 `;
 
+export const StyledFooterWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
@@ -63,7 +70,7 @@ const NavList = styled.ul`
 const FooterListLink = styled.li`
   margin-bottom: 0px;
 
-   a {
+  a {
     font-size: 2rem;
     font-weight: 600;
     padding: 1rem 3rem;
@@ -97,35 +104,37 @@ const FooterListLink = styled.li`
       }
     }
   }
-`
+`;
 const LazyWorldMap = React.lazy(() => import(`../ReactMap` /* webpackChunkName: "WorldMap" */));
 
 const Footer = () => {
   return (
-    <StyledFooter>
-      <StyledMap>
-        {typeof window === `undefined` ? null : (
-          <Suspense fallback={<div>Loading...</div>}>
-            <LazyWorldMap />
-            {` `}
-          </Suspense>
-        )}
-      </StyledMap>
-      <NavListWrapper>
-        <NavList>
-          <NavLink to="/">Home</NavLink>
-          <FooterListLink>
-            <a href="https://www.iubenda.com/privacy-policy/83684129" title="Privacy Policy ">
-              Privacy Policy
-            </a>
-          </FooterListLink>
-        </NavList>
-        <Social />
-        <NavList>
-          <NavLink to="/me">About</NavLink>
-        </NavList>
-      </NavListWrapper>
-    </StyledFooter>
+    <StyledFooterWrapper>
+      <StyledFooter>
+        <StyledMap>
+          {typeof window === `undefined` ? null : (
+            <Suspense fallback={<div>Loading...</div>}>
+              <LazyWorldMap />
+              {` `}
+            </Suspense>
+          )}
+        </StyledMap>
+        <NavListWrapper>
+          <NavList>
+            <NavLink to="/">Home</NavLink>
+            <FooterListLink>
+              <a href="https://www.iubenda.com/privacy-policy/83684129" title="Privacy Policy ">
+                Privacy Policy
+              </a>
+            </FooterListLink>
+          </NavList>
+          <Social />
+          <NavList>
+            <NavLink to="/me">About</NavLink>
+          </NavList>
+        </NavListWrapper>
+      </StyledFooter>
+    </StyledFooterWrapper>
   );
 };
 

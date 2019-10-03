@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
-import DarkHeaderBG from '../../assets/images/homebg.jpg';
 import WhiteHeaderBG from '../../assets/images/whiteHomeBg.jpg';
-import DarkHeaderBGWebP from '../../assets/images/homebg.webp';
 import WhiteHeaderBGWebP from '../../assets/images/whiteHomeBg.webp';
 import { zIndexLogo } from '../../components/Styles/zIndex';
 
@@ -18,8 +16,7 @@ export const StyledLogo = styled.svg`
   height: 60rem;
   width: 40rem;
   transition: all 0.25s ease-out 0s;
-  transform: ${props =>
-    props.scrollPositionY > 0 ? `scale(0.2)` : `scale(1.0)`};
+  transform: ${props => (props.scrollPositionY > 0 ? `scale(0.2)` : `scale(1.0)`)};
 
   ${props => props.theme.xsmall} {
     display: none;
@@ -32,9 +29,9 @@ export const StyledLogo = styled.svg`
   }
   ${props => props.theme.large} {
     display: flex;
-    top: -293px;
-    height: 70rem;
-    width: 60rem;
+    top: -350px;
+    left: -100px;
+    height: 80rem;
   }
 `;
 
@@ -146,18 +143,22 @@ const themedHeaderBG = theme(`mode`, {
   // touch action comes close to the webpp implementation usage now. It shows webp on most browsers but doesnt load on safari
   light: css`
     @supports (touch-action: manipulation) {
-      background: url(${WhiteHeaderBG}) no-repeat center right fixed;
+      background: linear-gradient(rgba(244, 244, 244, 0.7), rgba(244, 244, 244, 0.7)),
+        url(${WhiteHeaderBGWebP}) no-repeat center right fixed;
     }
     @supports not (touch-action: manipulation) {
-      background: url(${WhiteHeaderBGWebP}) no-repeat center right fixed;
+      background: linear-gradient(rgba(244, 244, 244, 0.7), rgba(244, 244, 244, 0.7)),
+        url(${WhiteHeaderBG}) no-repeat center right fixed;
     }
   `,
   dark: css`
     @supports (touch-action: manipulation) {
-      background: url(${DarkHeaderBGWebP}) no-repeat center right fixed;
+      background: linear-gradient(rgba(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)),
+        url(${WhiteHeaderBGWebP}) no-repeat center right fixed;
     }
     @supports not (touch-action: manipulation) {
-      background: url(${DarkHeaderBG}) no-repeat center right fixed;
+      background: linear-gradient(rgba(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)),
+        url(${WhiteHeaderBG}) no-repeat center right fixed;
     }
   `,
 });

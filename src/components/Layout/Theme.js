@@ -19,7 +19,7 @@ export const breakPoints = {
   xlarge: `@media (min-width: ${sizes.giant}px)`,
 };
 
-export const themeTransition = `2s ease-in-out`;
+export const themeTransition = `1s ease-in-out`;
 
 export const colors = {
   white: `#F4F4F4`,

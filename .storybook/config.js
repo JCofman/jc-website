@@ -5,6 +5,8 @@ import { withA11y } from '@storybook/addon-a11y';
 import { action } from '@storybook/addon-actions';
 import { ThemeProvider } from 'styled-components';
 import Theme from '../src/components/Layout/Theme';
+import { addParameters } from '@storybook/react'; // <- or your storybook framework
+
 // automatically import all files ending in *.stories.js
 const req = require.context('../src', true, /.stories.js$/);
 function loadStories() {
@@ -14,6 +16,19 @@ function loadStories() {
 addDecorator(story => <ThemeProvider theme={Theme}>{story()}</ThemeProvider>);
 addDecorator(withA11y);
 
+addParameters({
+  backgrounds: [
+    {
+      name: 'white',
+      value: `#F4F4F4`,
+      default: true,
+    },
+    {
+      name: `black`,
+      value: `#010101`,
+    },
+  ],
+});
 // Gatsby's Link overrides:
 // Gatsby defines a global called ___loader to prevent its method calls from creating console errors you override it here
 global.___loader = {
