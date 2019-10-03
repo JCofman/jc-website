@@ -19,7 +19,7 @@ exports[`Divider is rendered properly 1`] = `
       stroke-width="1"
     >
       <g
-        fill="#D8D8D8"
+        class=""
         transform="translate(-483.000000, -1059.000000)"
       >
         <g

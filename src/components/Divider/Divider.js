@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 import theme from 'styled-theming';
+import PropTypes from 'prop-types';
 
 const DividerFillColor = theme(`mode`, {
   light: props => props.theme.colors.black,
@@ -35,14 +35,5 @@ const Divider = props => (
 );
 
 PropTypes.displayName = `Divider`;
-
-Divider.propTypes = {
-  /** typography of the heading */
-  fillColor: PropTypes.string,
-};
-
-Divider.defaultProps = {
-  fillColor: `#D8D8D8`,
-};
 
 export default Divider;
