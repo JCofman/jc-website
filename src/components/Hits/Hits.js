@@ -30,10 +30,6 @@ const StyledHit = styled.li`
   padding: 0.8rem;
   letter-spacing: 0.05px;
   font-size: 18px;
-  color: ${props => (props.highlightedIndex === props.index ? props.theme.colors.primary : StyledHitColor)};
-  a {
-    color: ${props => (props.highlightedIndex === props.index ? props.theme.colors.primary : StyledHitColor)};
-  }
 `;
 
 const Hits = ({ getMenuProps, hits, getItemProps, highlightedIndex }) => {
@@ -54,21 +50,25 @@ const Hits = ({ getMenuProps, hits, getItemProps, highlightedIndex }) => {
         }}
       ></Divider>
       {hits.length > 0 ? (
-        hits.map((hit, index) => (
-          <StyledHit
-            highlightedIndex={highlightedIndex}
-            index={index}
-            key={hit.objectID}
-            {...getItemProps({
-              item: hit,
-              index,
-            })}
-          >
-            <Link to={hit.frontmatter.path}>
-              <Highlight hit={hit} attribute="frontmatter.title" tagName="mark" />
-            </Link>
-          </StyledHit>
-        ))
+        hits.map((hit, index) => {
+          return (
+            <StyledHit
+              key={hit.objectID}
+              {...getItemProps({
+                item: hit,
+                key: hit.objectID,
+                index,
+                style: {
+                  fontWeight: highlightedIndex === index ? `bold` : `normal`,
+                },
+              })}
+            >
+              <Link to={hit.frontmatter.path}>
+                <Highlight hit={hit} attribute="frontmatter.title" tagName="mark" />
+              </Link>
+            </StyledHit>
+          );
+        })
       ) : (
         <StyledHit>😢 Sorry no search results found</StyledHit>
       )}

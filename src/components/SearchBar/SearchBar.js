@@ -81,11 +81,15 @@ const StyledInput = styled.input`
 `;
 
 const SearchBar = ({ isSearchStalled, refine, hits }) => {
+  const [inputValue, setState] = React.useState({ inputValue: `` });
+
   return (
     <Downshift
       itemToString={i => (i ? i.frontmatter.title : i)}
       onChange={item => navigate(item.frontmatter.path)}
       defaultHighlightedIndex={0}
+      initialInputValue=""
+      inputValue={inputValue.inputValue}
     >
       {({ getInputProps, getItemProps, getLabelProps, getMenuProps, isOpen, highlightedIndex, selectedItem }) => (
         <div>
@@ -98,6 +102,7 @@ const SearchBar = ({ isSearchStalled, refine, hits }) => {
               type="search"
               {...getInputProps({
                 onChange(e) {
+                  setState({ inputValue: e.target.value });
                   refine(e.target.value);
                 },
               })}
