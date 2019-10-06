@@ -30,6 +30,10 @@ const StyledHit = styled.li`
   padding: 0.8rem;
   letter-spacing: 0.05px;
   font-size: 18px;
+  color: ${props => (props.highlightedIndex === props.index ? props.theme.colors.primary : StyledHitColor)};
+  a {
+    color: ${props => (props.highlightedIndex === props.index ? props.theme.colors.primary : StyledHitColor)};
+  }
 `;
 
 const Hits = ({ getMenuProps, hits, getItemProps, highlightedIndex }) => {
@@ -53,6 +57,8 @@ const Hits = ({ getMenuProps, hits, getItemProps, highlightedIndex }) => {
         hits.map((hit, index) => {
           return (
             <StyledHit
+              index={index}
+              highlightedIndex={highlightedIndex}
               key={hit.objectID}
               {...getItemProps({
                 item: hit,
@@ -70,7 +76,14 @@ const Hits = ({ getMenuProps, hits, getItemProps, highlightedIndex }) => {
           );
         })
       ) : (
-        <StyledHit>😢 Sorry no search results found</StyledHit>
+        <StyledHit
+          key={`nothing-found`}
+          {...getItemProps({
+            index: 1,
+          })}
+        >
+          😢 Sorry no search results found
+        </StyledHit>
       )}
     </StyledHits>
   );

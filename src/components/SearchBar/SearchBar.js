@@ -100,6 +100,7 @@ const SearchBar = ({ isSearchStalled, refine, hits }) => {
             <StyledInput
               placeholder="Search blog..."
               type="search"
+              aria-label="Search"
               {...getInputProps({
                 onChange(e) {
                   setState({ inputValue: e.target.value });

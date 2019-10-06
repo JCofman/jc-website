@@ -180,7 +180,7 @@ const IndexPage = ({ data }) => {
             <BlogArtikelWrapper key={frontmatter.title}>
               <BlogArtikel>
                 <BlogArtikelImageWrapper>
-                  <Link to={frontmatter.path}>
+                  <Link aria-label={`Go to ${frontmatter.path}`} to={frontmatter.path}>
                     <Img sizes={frontmatter.featuredImage.childImageSharp.sizes} />
                   </Link>
                 </BlogArtikelImageWrapper>

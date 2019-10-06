@@ -98,7 +98,10 @@ const Navigation = props => {
                     margin-bottom: 0;
                   `}
                 >
-                  <StyledDarkLightModeSwitcherButton onClick={() => props.changeTheme()}>
+                  <StyledDarkLightModeSwitcherButton
+                    onClick={() => props.changeTheme()}
+                    aria-label="Switch dark and light mode"
+                  >
                     {mode === `light` ? <FaSun /> : <FaMoon />}
                   </StyledDarkLightModeSwitcherButton>
                 </li>
