@@ -79,6 +79,7 @@ const Hits = ({ getMenuProps, hits, getItemProps, highlightedIndex }) => {
         <StyledHit
           key={`nothing-found`}
           {...getItemProps({
+            item: `nothing-found`,
             index: 1,
           })}
         >

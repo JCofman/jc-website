@@ -8,19 +8,8 @@ import { FaSearch } from 'react-icons/fa';
 import { connectAutoComplete, connectHits } from 'react-instantsearch-dom';
 
 import Hits from '../Hits';
-import { sizes } from '../Layout/Theme';
 
 const ConnectedHits = connectHits(Hits);
-
-const InputBackgroundColor = theme(`mode`, {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white,
-});
-
-const InputColorSmall = theme(`mode`, {
-  light: props => props.theme.colors.white,
-  dark: props => props.theme.colors.black,
-});
 
 const InputColor = theme(`mode`, {
   light: props => props.theme.colors.black,
@@ -29,8 +18,11 @@ const InputColor = theme(`mode`, {
 
 const StyledSearchIcon = styled(FaSearch)`
   position: absolute;
-  top: 27px;
+  top: 14px;
   color: ${props => props.theme.primary};
+  ${props => props.theme.small} {
+    top: 26px;
+  }
 `;
 
 const StyledForm = styled.form`
@@ -63,20 +55,6 @@ const StyledInput = styled.input`
   }
   &::placeholder {
     color: ${props => props.theme.primary};
-  }
-
-  @media (max-width: ${sizes.phone}px) {
-    font-size: 16px;
-    width: 16px;
-    transition: width 0.2s ease padding 0.2s ease;
-    padding-left: 16px;
-    &:focus {
-      padding-left: 29px;
-      width: 15rem;
-      outline: none;
-      background-color: ${InputBackgroundColor};
-      color: ${InputColorSmall};
-    }
   }
 `;
 

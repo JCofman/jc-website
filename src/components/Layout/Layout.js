@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { setConfig } from 'react-hot-loader';
 
 import { useMedia } from '../../hooks/useMedia';
 import Navigation from '../Navigation';
@@ -9,18 +8,28 @@ import StyledLayout from './StyledLayout';
 import { themes, breakPoints, maxWidth, themeTransition, colors, GlobalStyle } from './Theme';
 
 // gatsby react hooks alpha fix
-setConfig({ pureSFC: true });
+
+const getInitialTheme = preferedTheme => {
+  const savedTheme = localStorage.getItem(`theme`);
+  return savedTheme ? savedTheme : preferedTheme;
+};
 
 const Layout = ({ children, location }) => {
   const prefersDarkMode = usePrefersDarkMode();
-
-  const defaultThemeMode = prefersDarkMode ? `dark` : `light`;
+  let defaultThemeMode;
+  if (typeof window !== `undefined`) {
+    defaultThemeMode = getInitialTheme(prefersDarkMode ? `dark` : `light`);
+  }
 
   const [themeMode, setThemeMode] = useState(`${defaultThemeMode}`);
 
   const changeTheme = () => {
     setThemeMode(prevState => (prevState === `light` ? `dark` : `light`));
   };
+
+  React.useEffect(() => {
+    localStorage.setItem(`theme`, themeMode);
+  }, [themeMode]);
 
   return (
     <ThemeProvider
