@@ -1,38 +1,32 @@
 const path = require(`path`);
 
-exports.createPages = ({ actions, graphql }) => {
+exports.createPages = ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
   const blogPostTemplate = path.resolve(`src/templates/BlogPost/BlogPost.js`);
 
   return graphql(`
     {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 1000
-      ) {
-        edges {
-          node {
-            excerpt(pruneLength: 250)
-            html
-            id
-            frontmatter {
-              date
-              path
-              title
-            }
+      allMdx(sort: { order: DESC, fields: [frontmatter___date] }, limit: 1000) {
+        nodes {
+          frontmatter {
+            date
+            path
+            title
           }
         }
       }
     }
   `).then(result => {
     if (result.errors) {
-      return Promise.reject(result.errors);
+      reporter.panic(`failed to create posts`, result.errors);
     }
-    const posts = result.data.allMarkdownRemark.edges;
-    result.data.allMarkdownRemark.edges.forEach(({ node }, index) => {
+
+    const posts = result.data.allMdx.nodes;
+
+    posts.forEach(({ frontmatter }, index) => {
       createPage({
-        path: node.frontmatter.path,
+        path: frontmatter.path,
         component: blogPostTemplate,
         context: {
           prev: index === 0 ? null : posts[index - 1].node,

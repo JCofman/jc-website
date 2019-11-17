@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import theme from 'styled-theming';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
@@ -91,13 +92,12 @@ const StyledTags = styled.div`
 `;
 
 export default function Template({ data, pageContext }) {
-  const { markdownRemark: post } = data;
+  const { mdx: post } = data;
   const { next, prev } = pageContext;
   const [isComplete, setIsComplete] = useState(false);
   const { scrollYProgress } = useViewportScroll();
   const yRange = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
   const pathLength = useSpring(yRange, { stiffness: 400, damping: 90 });
-
   useEffect(() => yRange.onChange(v => setIsComplete(v >= 1)), [yRange]);
 
   return (
@@ -129,7 +129,10 @@ export default function Template({ data, pageContext }) {
         </StyledTags>
       </StyledInfo>
       <StyledSingleBlogPostArticle className="blog-post">
-        <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div className="blog-post-content">
+          <MDXRenderer>{post.body}</MDXRenderer>
+        </div>
+
         <svg
           css={`
             display: none;
@@ -198,22 +201,28 @@ export default function Template({ data, pageContext }) {
 
 export const pageQuery = graphql`
   query BlogPostByPath($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
-      html
+    mdx(frontmatter: { path: { eq: $path } }) {
       frontmatter {
+        title
         date(formatString: "MMMM DD, YYYY")
         path
-        title
         tags
         excerpt
         headerImage {
           childImageSharp {
             sizes(maxWidth: 2024) {
-              ...GatsbyImageSharpSizes
+              sizes
+              src
+              aspectRatio
+              srcSet
+              srcSetWebp
+              srcWebp
+              tracedSVG
             }
           }
         }
       }
+      body
     }
   }
 `;

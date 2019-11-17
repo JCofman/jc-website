@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import theme from 'styled-theming';
 
 import SEO from '../components/SEO';
+import { usePosts } from '../hooks/usePosts';
 
 import { zIndexbackGroundAfterElements } from '../components/Styles/zIndex';
 
@@ -12,7 +13,7 @@ import Layout from '../components/Layout';
 import Home from './home';
 import Divider from '../components/Divider';
 
-const BlogArtikelWrapper = styled.div`
+const BlogArtikelWrapper = styled.article`
   background-color: ${props => props.theme.black};
   transition: color ${props => props.theme.themeTransition}, background-color ${props => props.theme.themeTransition};
   min-height: 300px;
@@ -167,55 +168,55 @@ const StyledMain = styled.main`
   border-top: 1px solid #201c29;
 `;
 
-const IndexPage = ({ data }) => {
-  const { edges } = data.allMarkdownRemark;
+const IndexPage = () => {
+  const { posts } = usePosts();
   return (
     <Layout>
       <SEO title="All posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
       <Home />
       <StyledMain>
-        {edges.map(({ node: post }, index) => {
-          const { frontmatter } = post;
+        {posts.map((post, index) => {
           return (
-            <BlogArtikelWrapper key={frontmatter.title}>
+            <BlogArtikelWrapper key={post.title}>
               <BlogArtikel>
                 <BlogArtikelImageWrapper>
-                  <Link aria-label={`Go to ${frontmatter.path}`} to={frontmatter.path}>
-                    <Img sizes={frontmatter.featuredImage.childImageSharp.sizes} />
+                  <Link aria-label={`Go to ${post.path}`} to={post.path}>
+                    <Img sizes={post.featuredImageSizes} />
                   </Link>
                 </BlogArtikelImageWrapper>
                 <BlogArtikelSingleWrapper>
                   {index % 3 === 0 && (
                     <StyledBlogArtikelHeaderTriangle>
-                      <Link to={frontmatter.path}>{frontmatter.title}</Link>
+                      <Link to={post.path}>{post.title}</Link>
                     </StyledBlogArtikelHeaderTriangle>
                   )}
                   {index % 3 === 1 && (
                     <StyledBlogArtikelHeaderCircle>
-                      <Link to={frontmatter.path}>{frontmatter.title}</Link>
+                      <Link to={post.path}>{post.title}</Link>
                     </StyledBlogArtikelHeaderCircle>
                   )}
                   {index % 3 === 2 && (
                     <StyledBlogArtikelHeaderParallelogram>
-                      <Link to={frontmatter.path}>{frontmatter.title}</Link>
+                      <Link to={post.path}>{post.title}</Link>
                     </StyledBlogArtikelHeaderParallelogram>
                   )}
 
                   <BlogartikleSubInfo>
-                    <BlogArtikelHeaderTime>{frontmatter.date}</BlogArtikelHeaderTime>
+                    <BlogArtikelHeaderTime>{post.date}</BlogArtikelHeaderTime>
                     <BlogArtikelHeaderTags>
-                      {post.frontmatter.tags.map((tag, index, allTags) => {
-                        if (allTags.length - 1 === index) {
-                          return ` ${tag}`;
-                        } else {
-                          return ` ${tag},`;
-                        }
-                      })}
+                      {post.tags != null &&
+                        post.tags.map((tag, index, allTags) => {
+                          if (allTags.length - 1 === index) {
+                            return ` ${tag}`;
+                          } else {
+                            return ` ${tag},`;
+                          }
+                        })}
                     </BlogArtikelHeaderTags>
                     {` `}
                   </BlogartikleSubInfo>
 
-                  {frontmatter.excerpt}
+                  {post.excerpt}
                 </BlogArtikelSingleWrapper>
               </BlogArtikel>
               <Divider />
@@ -226,32 +227,5 @@ const IndexPage = ({ data }) => {
     </Layout>
   );
 };
-
-export const query = graphql`
-  query IndexQuery {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
-      totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
-            path
-            tags
-            excerpt
-            featuredImage {
-              childImageSharp {
-                sizes(maxWidth: 250, maxHeight: 250) {
-                  ...GatsbyImageSharpSizes
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
 
 export default IndexPage;
