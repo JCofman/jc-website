@@ -16,15 +16,15 @@ export const usePosts = () => {
               excerpt
               featuredImage {
                 childImageSharp {
-                  sizes(maxWidth: 250, maxHeight: 250) {  
+                  sizes(maxWidth: 250, maxHeight: 250) {
                     sizes
                     src
                     aspectRatio
                     srcSet
                     srcSetWebp
                     srcWebp
-                    tracedSVG       
-                  } 
+                    tracedSVG
+                  }
                 }
               }
             }
@@ -36,7 +36,7 @@ export const usePosts = () => {
 
   return {
     totalCount: data.allMdx.totalCount,
-    posts: data.allMdx.edges.map(post => console.log(post) || ({
+    posts: data.allMdx.edges.map(post => ({
       title: post.node.frontmatter.title,
       tags: post.node.frontmatter.tags,
       path: post.node.frontmatter.path,

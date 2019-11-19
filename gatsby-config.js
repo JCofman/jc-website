@@ -153,6 +153,36 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 2024,
+              withWebp: true,
+            },
+          },
+          {
+            resolve: `gatsby-remark-embed-video`,
+            options: {
+              width: 800,
+              ratio: 1.77, // Optional: Defaults to 16/9 = 1.77
+              height: 400, // Optional: Overrides optional.ratio
+              related: false, //Optional: Will remove related videos from the end of an embedded YouTube video.
+              noIframeBorder: true, //Optional: Disable insertion of <style> border: 0
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-smartypants`,
+        ],
         extensions: [`.mdx`, `.md`],
         default: require.resolve(`./src/components/Layout/Layout.js`),
       },

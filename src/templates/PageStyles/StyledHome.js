@@ -1,6 +1,5 @@
-import styled, { css } from 'styled-components';
-import WhiteHeaderBG from '../../assets/images/whiteHomeBg.jpg';
-import WhiteHeaderBGWebP from '../../assets/images/whiteHomeBg.webp';
+import styled from 'styled-components';
+import BackgroundImage from 'gatsby-background-image';
 import { zIndexLogo } from '../../components/Styles/zIndex';
 
 import theme from 'styled-theming';
@@ -139,35 +138,10 @@ export const Information = styled.div`
   }
 `;
 
-const themedHeaderBG = theme(`mode`, {
-  // touch action comes close to the webpp implementation usage now. It shows webp on most browsers but doesnt load on safari
-  light: css`
-    @supports (touch-action: manipulation) {
-      background: linear-gradient(rgba(244, 244, 244, 0.95), rgba(244, 244, 244, 0.95)),
-        url(${WhiteHeaderBGWebP}) no-repeat center right fixed;
-    }
-    @supports not (touch-action: manipulation) {
-      background: linear-gradient(rgba(244, 244, 244, 0.95), rgba(244, 244, 244, 0.95)),
-        url(${WhiteHeaderBG}) no-repeat center right fixed;
-    }
-  `,
-  dark: css`
-    @supports (touch-action: manipulation) {
-      background: linear-gradient(rgba(1, 1, 1, 0.95), rgba(1, 1, 1, 0.95)),
-        url(${WhiteHeaderBGWebP}) no-repeat center right fixed;
-    }
-    @supports not (touch-action: manipulation) {
-      background: linear-gradient(rgba(1, 1, 1, 0.95), rgba(1, 1, 1, 0.95)),
-        url(${WhiteHeaderBG}) no-repeat center right fixed;
-    }
-  `,
-});
-
-export const HeaderBG = styled.header`
+export const HeaderBG = styled(BackgroundImage)`
   /* Full height */
   display: flex;
   flex-direction: column;
-  ${themedHeaderBG}
   background-size: auto;
   background-repeat: no-repeat;
   height: 1024px;
@@ -176,12 +150,10 @@ export const HeaderBG = styled.header`
   ${props => props.theme.medium} {
     height: 600px;
     height: 100vh;
-    ${themedHeaderBG}
   }
   ${props => props.theme.large} {
     height: 800px;
     height: 100vh;
-    ${themedHeaderBG}
   }
 `;
 
