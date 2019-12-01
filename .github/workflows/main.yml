@@ -30,7 +30,7 @@ jobs:
       - name: Deploy prod
         run: yarn deploy:prod
         env:
-          NOW_TOKEN: ${{now_token}}
+          NOW_TOKEN: ${{secrets.NOW_TOKEN}}
 
   build-and-deploy-feature:
     needs: test
@@ -45,7 +45,18 @@ jobs:
         run: echo running on branch ${GITHUB_REF##*/}
       - name: Build feature
         run: yarn build
-      - name: Deploy prod
-        run: yarn deploy:prod
+      - name: Deploy feature
+        run: yarn deploy
         env:
-          NOW_TOKEN: ${{now_token}}
+          NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
+
+  webPageTestActions:
+    name: WebPageTestActions
+    needs: build-and-deploy-prod
+    runs-on: ubuntu-latest
+    steps:
+      - uses: JCofman/webPagetestAction@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TEST_URL: https://jcofman.com
+          WEBPAGETEST_API_KEY: ${{ secrets.WEBPAGETEST_API_KEY }}
