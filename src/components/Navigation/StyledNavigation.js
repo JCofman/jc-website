@@ -88,7 +88,7 @@ export const StyledNavLogo = styled.svg`
     display: inline-block;
   }
   ${props => props.theme.large} {
-    display: ${props => (props.display === `true` ? `inline-block` : `none`)};
+    display: ${props => (props.scrollPositionY > 0 ? `visible` : `none`)};
     position: fixed;
   }
   svg {

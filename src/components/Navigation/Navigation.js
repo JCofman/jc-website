@@ -11,6 +11,7 @@ import { FaMoon, FaSun, FaSearch, FaWindowClose } from 'react-icons/fa';
 
 import useModal from '../../hooks/useModal';
 import { useMedia } from '../../hooks/useMedia';
+import { useWindowScrollPosition } from '../../hooks/useWindowScrollPosition';
 
 import Logo from '../Logo';
 import SearchBar from '../SearchBar';
@@ -127,6 +128,8 @@ const Navigation = props => {
     logoFillColor = colors.white;
   }
   const { closeModal, isOpen, Modal, toggleModal } = useModal();
+  const { y } = useWindowScrollPosition();
+
   const searchBarRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -152,11 +155,11 @@ const Navigation = props => {
 
   return (
     <Location>
-      {({ location }) => (
+      {() => (
         <StyledWrapper>
           <StyledNavWrapper>
             <Link to="/" aria-label="Go to home">
-              <StyledNavLogo display={location.pathname !== `/` ? `true` : `false`}>
+              <StyledNavLogo scrollPositionY={y}>
                 <Logo fillColor={logoFillColor} />
               </StyledNavLogo>
             </Link>

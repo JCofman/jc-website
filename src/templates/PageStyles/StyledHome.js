@@ -31,6 +31,7 @@ export const StyledLogo = styled.svg`
     top: -350px;
     left: -100px;
     height: 80rem;
+    display: ${props => (props.scrollPositionY > 0 ? `none` : `visible`)};
   }
 `;
 
@@ -57,7 +58,6 @@ export const Information = styled.div`
   margin-right: 2rem;
   text-shadow: ${InformationTextShadow};
 
-  
   ${props => props.theme.small} {
     position: initial;
     padding-top: 18rem;
@@ -141,8 +141,8 @@ export const Information = styled.div`
 export const HeaderBG = styled(BackgroundImage)`
   /* Full height */
   display: flex;
+  background-size: cover;
   flex-direction: column;
-  background-size: auto;
   background-repeat: no-repeat;
   height: 1024px;
   height: 100vh;

@@ -12,7 +12,7 @@ const Home = () => {
   const { y } = useWindowScrollPosition();
   const { image } = useStaticQuery(graphql`
     query {
-      image: file(relativePath: { eq: "whiteHomeBg.jpg" }) {
+      image: file(relativePath: { eq: "background.jpg" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid_withWebp
@@ -34,42 +34,44 @@ const Home = () => {
   ].reverse();
 
   return (
-    <HeaderBG tag={`header`} fluid={backgroundFluidImage}>
-      <Wrapper>
-        <StyledLogo key="logo" scrollPositionY={y}>
-          <Logo />
-        </StyledLogo>
-        <Information>
-          <span>HEY EVERYONE MY NAME IS JACOB COFMAN</span>
-          <h1>
-            I LOVE WEB DEVELOPMENT
-            <span role="img" aria-label="computer">
+    <>
+      <HeaderBG tag={`header`} fluid={backgroundFluidImage}>
+        <Wrapper>
+          <StyledLogo key="logo" scrollPositionY={y}>
+            <Logo />
+          </StyledLogo>
+          <Information>
+            <span>HEY EVERYONE MY NAME IS JACOB COFMAN</span>
+            <h1>
+              I LOVE WEB DEVELOPMENT
+              <span role="img" aria-label="computer">
+                {` `}
+                💻
+              </span>
+              , VOLLEYBALL
+              <span role="img" aria-label="computer">
+                🏐
+              </span>
               {` `}
-              💻
-            </span>
-            , VOLLEYBALL
-            <span role="img" aria-label="computer">
-              🏐
-            </span>
-            {` `}
-            AND TRAVELLING{` `}
-            <span role="img" aria-label="tent">
-              ⛺️
-            </span>
-            {` `}
-            <span role="img" aria-label="nature tree">
-              🌲
-            </span>
-            {` `}
-            <span role="img" aria-label="run">
-              🏃
-            </span>
-          </h1>
-        </Information>
-      </Wrapper>
-      <Social />
-      <StyledName>Jacob Cofman</StyledName>
-    </HeaderBG>
+              AND TRAVELLING{` `}
+              <span role="img" aria-label="tent">
+                ⛺️
+              </span>
+              {` `}
+              <span role="img" aria-label="nature tree">
+                🌲
+              </span>
+              {` `}
+              <span role="img" aria-label="run">
+                🏃
+              </span>
+            </h1>
+          </Information>
+        </Wrapper>
+        <Social />
+        <StyledName>Jacob Cofman</StyledName>
+      </HeaderBG>
+    </>
   );
 };
 
