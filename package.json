@@ -150,8 +150,8 @@
   },
   "bundlesize": [
     {
-      "path": "./public/component*.js",
-      "maxSize": "10 kB"
+      "path": "./public/component---src-pages*.js",
+      "maxSize": "150 kB"
     },
     {
       "path": "./public/app*.js",
