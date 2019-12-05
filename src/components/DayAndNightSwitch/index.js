@@ -1,3 +1,3 @@
-import DayAndNightSwitch from "./DayAndNightSwitch";
+import DayAndNightSwitch from './DayAndNightSwitch';
 
 export default DayAndNightSwitch;

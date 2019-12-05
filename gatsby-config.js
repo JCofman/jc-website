@@ -4,25 +4,36 @@ require(`dotenv`).config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const blogQuery = `{
-  allMarkdownRemark {
-    nodes {
-      frontmatter {
-        path
-        title
-        excerpt
-        tags
+const postQuery = `{
+  posts: allMdx(
+    filter: { fileAbsolutePath: { regex: "/posts/" } }
+  ) {
+    edges {
+      node {
+        objectID: id
+        frontmatter {
+          title
+          path
+          excerpt
+          date(formatString: "MMM D, YYYY")
+          tags
+        }
       }
     }
   }
-}
-`;
-
+}`;
+const flatten = arr =>
+  arr.map(({ node: { frontmatter, ...rest } }) => ({
+    ...frontmatter,
+    ...rest,
+  }));
+const settings = { attributesToSnippet: [`excerpt:20`] };
 const queries = [
   {
-    query: blogQuery,
-    transformer: ({ data }) => data.allMarkdownRemark.nodes, // optional
-    indexName: process.env.ALGOLIA_INDEX_NAME, // overrides main index name, optional
+    query: postQuery,
+    transformer: ({ data }) => flatten(data.posts.edges),
+    indexName: process.env.ALGOLIA_INDEX_NAME,
+    settings,
   },
 ];
 

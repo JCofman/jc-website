@@ -178,16 +178,16 @@ export default function Template({ data, pageContext }) {
         </svg>
         <StyledBlogBottomNav>
           {prev && (
-            <Link to={prev.frontmatter.path}>
-              <small>{prev.frontmatter.title}</small>
+            <Link to={prev.path}>
+              <small>{prev.title}</small>
               <StyledButton>
                 <FaChevronLeft /> Prev Post
               </StyledButton>
             </Link>
           )}
           {next && (
-            <Link to={next.frontmatter.path}>
-              <small>{next.frontmatter.title}</small>
+            <Link to={next.path}>
+              <small>{next.title}</small>
               <StyledButton>
                 <FaChevronRight /> Next Post
               </StyledButton>

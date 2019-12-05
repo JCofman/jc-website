@@ -8,8 +8,7 @@ const SEO = ({ description, lang, meta, keywords, title }) => {
     <StaticQuery
       query={detailsQuery}
       render={data => {
-        const metaDescription =
-          description || data.site.siteMetadata.description;
+        const metaDescription = description || data.site.siteMetadata.description;
         return (
           <Helmet
             htmlAttributes={{
@@ -61,11 +60,7 @@ const SEO = ({ description, lang, meta, keywords, title }) => {
               )
               .concat(meta)}
           >
-            <link
-              rel="preconnect"
-              href="https://www.google-analytics.com"
-              crossOrigin
-            />
+            <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin />
           </Helmet>
         );
       }}

@@ -48,14 +48,14 @@ export const Wrapper = styled.div`
 
   ${props => props.theme.small} {
     grid-template-columns: 1fr;
-    margin: 5rem 5rem;
+    margin: 10rem 5rem;
   }
 
   ${props => props.theme.medium} {
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: center;
-    margin: 5rem 3rem;
+    margin: 10rem 3rem;
   }
 
   ${props => props.theme.large} {

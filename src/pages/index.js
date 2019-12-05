@@ -79,6 +79,10 @@ const BaseArtikelHeader = styled.h2`
     font-size: 5rem;
   }
 `;
+const StyledBlogArtikelHeaderBorder = theme(`mode`, {
+  light: `black`,
+  dark: `white`,
+});
 
 export const StyledBlogArtikelHeaderTriangle = styled(BaseArtikelHeader)`
   :before {
@@ -87,7 +91,7 @@ export const StyledBlogArtikelHeaderTriangle = styled(BaseArtikelHeader)`
     opacity: 0.2;
     border-left: 25px solid transparent;
     border-right: 25px solid transparent;
-    border-bottom: 50px solid ${props => props.theme.colors.white};
+    border-bottom: 50px solid ${StyledBlogArtikelHeaderBorder};
     content: '';
     pointer-events: none;
     position: absolute;
@@ -102,7 +106,7 @@ export const StyledBlogArtikelHeaderCircle = styled(BaseArtikelHeader)`
     height: 50px;
     border-radius: 50%;
     opacity: 0.2;
-    background-color: ${props => props.theme.colors.white};
+    background-color: ${StyledBlogArtikelHeaderBorder};
     content: '';
     pointer-events: none;
     position: absolute;
@@ -114,7 +118,7 @@ export const StyledBlogArtikelHeaderParallelogram = styled(BaseArtikelHeader)`
   :before {
     width: 50px;
     height: 40px;
-    background: ${props => props.theme.colors.white};
+    background: ${StyledBlogArtikelHeaderBorder};
     opacity: 0.2;
     content: '';
     pointer-events: none;

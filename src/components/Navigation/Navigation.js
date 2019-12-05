@@ -155,14 +155,15 @@ const Navigation = props => {
 
   return (
     <Location>
-      {() => (
+      {({ location: { pathname } }) => (
         <StyledWrapper>
           <StyledNavWrapper>
             <Link to="/" aria-label="Go to home">
-              <StyledNavLogo scrollPositionY={y}>
+              <StyledNavLogo scrollPositionY={pathname === `/` ? y : 1}>
                 <Logo fillColor={logoFillColor} />
               </StyledNavLogo>
             </Link>
+
             {!Array.isArray(isMobile) && isMobile ? (
               <>
                 <StyledSearchIconButton aria-label="search button" aria-haspopup="true" onClick={toggleModal}>

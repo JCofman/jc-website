@@ -63,8 +63,8 @@ const SearchBar = ({ isSearchStalled, refine, hits }) => {
 
   return (
     <Downshift
-      itemToString={i => (i ? i.frontmatter.title : i)}
-      onChange={item => navigate(item.frontmatter.path)}
+      itemToString={i => (i ? i.title : i)}
+      onChange={item => navigate(item.path)}
       defaultHighlightedIndex={0}
       initialInputValue=""
       inputValue={inputValue.inputValue}

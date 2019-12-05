@@ -27,7 +27,7 @@ const Home = () => {
   const backgroundFluidImage = [
     image.childImageSharp.fluid,
     `${
-      themeContext.mode === `dark`
+      themeContext && themeContext.mode === `dark`
         ? `linear-gradient(rgba(1, 1, 1, 0.95), rgba(1, 1, 1, 0.95))`
         : `linear-gradient(rgba(244, 244, 244, 0.95), rgba(244, 244, 244, 0.95))`
     }`,

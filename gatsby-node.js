@@ -23,14 +23,13 @@ exports.createPages = ({ actions, graphql, reporter }) => {
     }
 
     const posts = result.data.allMdx.nodes;
-
     posts.forEach(({ frontmatter }, index) => {
       createPage({
         path: frontmatter.path,
         component: blogPostTemplate,
         context: {
-          prev: index === 0 ? null : posts[index - 1].node,
-          next: index === posts.length - 1 ? null : posts[index + 1].node,
+          prev: index === 0 ? null : posts[index - 1].frontmatter,
+          next: index === posts.length - 1 ? null : posts[index + 1].frontmatter,
         }, // additional data can be passed via context,
       });
     });

@@ -69,8 +69,8 @@ const Hits = ({ getMenuProps, hits, getItemProps, highlightedIndex }) => {
                 },
               })}
             >
-              <Link to={hit.frontmatter.path}>
-                <Highlight hit={hit} attribute="frontmatter.title" tagName="mark" />
+              <Link to={hit.path}>
+                <Highlight hit={hit} attribute="title" tagName="mark" />
               </Link>
             </StyledHit>
           );
