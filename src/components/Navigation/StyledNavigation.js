@@ -14,7 +14,6 @@ const NavFontColor = theme(`mode`, {
 });
 
 const NavLinkFontColor = NavFontColor;
-
 export const StyledWrapper = styled.div`
   position: fixed;
   top: 0;

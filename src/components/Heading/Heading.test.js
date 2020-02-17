@@ -1,5 +1,4 @@
 import React from 'react';
-import '@testing-library/jest-dom/extend-expect';
 
 import { renderWithTheme } from '../../../utils/jest-utils';
 import Heading, { APPEARANCES } from './Heading';

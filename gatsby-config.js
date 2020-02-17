@@ -45,10 +45,14 @@ module.exports = {
     siteUrl: `https://jcofman.de`,
     social: {
       twitter: `jcofman`,
+      github: `jcofman`,
     },
   },
 
   plugins: [
+    {
+      resolve: `gatsby-plugin-offline`,
+    },
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
@@ -65,11 +69,8 @@ module.exports = {
         },
       },
     },
-
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-styled-components`,
-    },
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-webpack-bundle-analyzer`,
       options: {
@@ -83,6 +84,7 @@ module.exports = {
     `gatsby-plugin-eslint`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -97,7 +99,7 @@ module.exports = {
         icon: `src/assets/images/icon.png`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-offline`,
+
     `gatsby-plugin-svgr`,
     {
       resolve: `gatsby-plugin-react-svg`,

@@ -1,6 +1,5 @@
 import React from 'react';
 import { cleanup } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 
 import { renderWithTheme } from '../../../utils/jest-utils';
 import Hits from './Hits';
