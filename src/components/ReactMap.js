@@ -23,14 +23,13 @@ const ReactMap = () => {
         height: `auto`,
       }}
     >
-      <ZoomableGroup center={[0, 20]} disablePanning>
+      <ZoomableGroup center={[0, 20]} disablePanning disableZooming>
         <Geographies geography={GeoWorldMap}>
-          {(geographies, projection) =>
-            geographies.map((geography, index) => (
+          {({ geographies }) =>
+            geographies.map((geo) => (
               <Geography
-                key={index}
-                geography={geography}
-                projection={projection}
+                key={geo.rsmKey}
+                geography={geo}
                 style={{
                   default: {
                     stroke: `#F4F4F4`,
