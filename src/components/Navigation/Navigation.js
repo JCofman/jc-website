@@ -28,13 +28,13 @@ import {
 const searchClient = algoliasearch(`8C28RWVQVQ`, `8bf43203e68ea1c9d485ccb865e18e99`);
 
 const StyledSearchIcon = styled(FaSearch)`
-  color: ${props => props.theme.primary};
+  color: ${(props) => props.theme.primary};
   align-self: center;
 `;
 
 const StyledModalCloseButtonColor = theme(`mode`, {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white,
+  light: (props) => props.theme.colors.black,
+  dark: (props) => props.theme.colors.white,
 });
 
 const StyledModalCloseButton = styled.button`
@@ -48,8 +48,8 @@ const StyledModalCloseButton = styled.button`
 `;
 
 const StyledSearchIconButtonColor = theme(`mode`, {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white,
+  light: (props) => props.theme.colors.black,
+  dark: (props) => props.theme.colors.white,
 });
 
 const StyledSearchIconButton = styled.button`
@@ -69,8 +69,8 @@ const StyledSearch = styled.div`
 `;
 
 const StyledModalBackgroundColor = theme(`mode`, {
-  light: props => props.theme.colors.white,
-  dark: props => props.theme.colors.black,
+  light: (props) => props.theme.colors.white,
+  dark: (props) => props.theme.colors.black,
 });
 
 const StyledModal = styled.div`
@@ -86,8 +86,8 @@ const StyledModal = styled.div`
 `;
 
 const StyledDarkLightModeSwitcherButtonColor = theme(`mode`, {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white,
+  light: (props) => props.theme.colors.black,
+  dark: (props) => props.theme.colors.white,
 });
 
 const StyledDarkLightModeSwitcherButton = styled.button`
@@ -98,26 +98,26 @@ const StyledDarkLightModeSwitcherButton = styled.button`
   border-radius: 3px;
   color: ${StyledDarkLightModeSwitcherButtonColor};
   border: 2px solid transparent;
-  ${props =>
+  ${(props) =>
     props.primary &&
     css`
-      background: ${props => props.theme.colors.primary};
-      color: ${props => props.theme.colors.white};
+      background: ${(props) => props.theme.colors.primary};
+      color: ${(props) => props.theme.colors.white};
     `}
   &:hover, &:focus {
-    border: 2px solid ${props => props.theme.colors.primary};
+    border: 2px solid ${(props) => props.theme.colors.primary};
 
     cursor: pointer;
   }
 `;
 
-export const NavLink = props => (
+export const NavLink = (props) => (
   <StyledNavListLink>
     <Link {...props} />
   </StyledNavListLink>
 );
 
-const Navigation = props => {
+const Navigation = (props) => {
   const {
     theme: { mode },
   } = props;

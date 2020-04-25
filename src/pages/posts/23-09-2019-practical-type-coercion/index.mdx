@@ -2,7 +2,7 @@
 path: '/pratical-type-coercion'
 date: '2019-09-24T17:12:33.962Z'
 title: 'Practical type coercion / conversion and type checks in JavaScript'
-featuredImage: './featured-image.jpg'
+featuredImage: './header.jpg'
 headerImage: './header.jpg'
 tags: [coercion, JS, web, conversion, JavaScript, type checks]
 excerpt: 'One of the most discussed topics of JS is the types system in context with the equality operator and explicit and implicit type coercion.'
@@ -121,7 +121,7 @@ But until it will officially be merged into the browsers I will end up using idx
 import idx from 'idx';
 // let date = {date: { year: { month: { day }}
 // you can access the nested day property like this
-const day = idx(date, _ => _.year.month.day);
+const day = idx(date, (_) => _.year.month.day);
 ```
 
 Finally, a program is much more reasonable when you know the types. It is then much easier to use the appropriate built-in language tools to check for the corner cases.
