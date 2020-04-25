@@ -16,3 +16,5 @@ setup-improvmx.sh
 .yarn
 .pnp.js
 .pnp
+
+.now
