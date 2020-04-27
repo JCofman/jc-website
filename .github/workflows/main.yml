@@ -10,10 +10,10 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: yarn
-      - run: yarn build
-      - run: yarn test
-      - run: yarn test:size
+      - run: npm ci
+      - run: npm build
+      - run: npm test
+      - run: npm test:size
 
   build-and-deploy-prod:
     needs: test
@@ -27,9 +27,9 @@ jobs:
       - name: Branch name
         run: echo running on branch ${GITHUB_REF##*/}
       - name: Build prod
-        run: yarn build:prod
+        run: npm build:prod
       - name: Deploy prod
-        run: yarn deploy:prod
+        run: npm deploy:prod
         env:
           NOW_TOKEN: ${{secrets.NOW_TOKEN}}
 
@@ -45,9 +45,9 @@ jobs:
       - name: Branch name
         run: echo running on branch ${GITHUB_REF##*/}
       - name: Build feature
-        run: yarn build
+        run: npm build
       - name: Deploy feature
-        run: yarn deploy
+        run: npm deploy
         env:
           NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
 
