@@ -20,3 +20,6 @@ setup-improvmx.sh
 .now
 
 .idea
+
+cypress/videos
+cypress/screenshots
