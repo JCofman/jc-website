@@ -36,7 +36,7 @@ export const usePosts = () => {
 
   return {
     totalCount: data.allMdx.totalCount,
-    posts: data.allMdx.edges.map(post => ({
+    posts: data.allMdx.edges.map((post) => ({
       title: post.node.frontmatter.title,
       tags: post.node.frontmatter.tags,
       path: post.node.frontmatter.path,

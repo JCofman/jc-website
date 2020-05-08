@@ -1,22 +1,9 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import theme from 'styled-theming';
 
 import Social from '../../components/Social';
-import { NavLink } from '../../components/Navigation/Navigation';
-
-const StyledMap = styled.div`
-  margin: 5rem auto;
-  transition: background-color ${props => props.theme.themeTransition};
-  width: 100%;
-  max-width: ${props => props.theme.maxWidth};
-  ${props => props.theme.small} {
-    margin: 0px;
-  }
-  ${props => props.theme.medium} {
-    margin: 1rem auto;
-  }
-`;
+import { StyledName } from '../../templates/PageStyles/StyledHome';
 
 export const StyledFooterWrapper = styled.div`
   width: 100%;
@@ -27,7 +14,6 @@ export const StyledFooterWrapper = styled.div`
 
 const StyledFooter = styled.footer`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -39,23 +25,23 @@ const NavListWrapper = styled.div`
   width: 100%;
   display: grid;
   grid-gap: 20px;
-  ${props => props.theme.small} {
+  ${(props) => props.theme.small} {
     grid-template-columns: 1 1fr;
   }
-  ${props => props.theme.medium} {
+  ${(props) => props.theme.medium} {
     grid-template-columns: repeat(3, 1fr);
   }
-  ${props => props.theme.large} {
+  ${(props) => props.theme.large} {
     grid-template-columns: repeat(3, 1fr);
   }
-  ${props => props.theme.xlarge} {
+  ${(props) => props.theme.xlarge} {
     grid-template-columns: repeat(3, 1fr);
   }
 `;
 
 const NavFontColor = theme(`mode`, {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white,
+  light: (props) => props.theme.colors.black,
+  dark: (props) => props.theme.colors.white,
 });
 
 const NavList = styled.ul`
@@ -86,7 +72,7 @@ const FooterListLink = styled.li`
 
     &:after {
       height: 2px;
-      background: #50e3c2;
+      background: #651fff;
       content: '';
       width: 0;
       position: absolute;
@@ -105,33 +91,20 @@ const FooterListLink = styled.li`
     }
   }
 `;
-const LazyWorldMap = React.lazy(() => import(`../ReactMap` /* webpackChunkName: "WorldMap" */));
 
 const Footer = () => {
   return (
     <StyledFooterWrapper>
       <StyledFooter>
-        <StyledMap>
-          {typeof window === `undefined` ? null : (
-            <Suspense fallback={<div>Loading...</div>}>
-              <LazyWorldMap />
-              {` `}
-            </Suspense>
-          )}
-        </StyledMap>
         <NavListWrapper>
-          <NavList>
-            <NavLink to="/">Home</NavLink>
-            <FooterListLink>
-              <a href="https://www.iubenda.com/privacy-policy/83684129" title="Privacy Policy ">
-                Privacy Policy
-              </a>
-            </FooterListLink>
-          </NavList>
           <Social />
-          <NavList>
-            <NavLink to="/me">About</NavLink>
-          </NavList>
+          <StyledName>
+            Layout made by
+            <a href="https://github.com/JCofman" style={{ marginLeft: `5px` }}>
+              Jacob Cofman
+            </a>
+            .
+          </StyledName>
         </NavListWrapper>
       </StyledFooter>
     </StyledFooterWrapper>

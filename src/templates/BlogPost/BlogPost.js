@@ -13,8 +13,8 @@ import Layout from '../../components/Layout';
 import { StyledSingleBlogPostArticle } from './StyledBlogPost';
 
 const StyledButtonColor = theme(`mode`, {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white,
+  light: (props) => props.theme.colors.black,
+  dark: (props) => props.theme.colors.white,
 });
 
 const StyledButton = styled.button`
@@ -23,16 +23,16 @@ const StyledButton = styled.button`
   justify-content: center;
   background: transparent;
   border-radius: 3px;
-  border: 2px solid ${props => props.theme.colors.primary};
+  border: 2px solid ${(props) => props.theme.colors.primary};
   color: ${StyledButtonColor};
   margin: 0.5em 1em;
   padding: 0.25em 1em;
 
-  ${props =>
+  ${(props) =>
     props.primary &&
     css`
-      background: ${props => props.theme.colors.primary};
-      color: ${props => props.theme.colors.white};
+      background: ${(props) => props.theme.colors.primary};
+      color: ${(props) => props.theme.colors.white};
     `}
   &:hover, &:focus {
     cursor: pointer;
@@ -56,16 +56,16 @@ const StyledHeader = styled.header`
     margin-right: auto;
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
     width: 80%;
-    background-color: ${props => props.theme.colors.primary};
-    transition: color ${props => props.theme.themeTransition};
+    background-color: ${(props) => props.theme.colors.primary};
+    transition: color ${(props) => props.theme.themeTransition};
     line-height: 1.1em;
     font-size: 4rem;
 
     text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
-    ${props => props.theme.small} {
+    ${(props) => props.theme.small} {
       font-size: 6rem;
     }
-    ${props => props.theme.medium} {
+    ${(props) => props.theme.medium} {
       font-size: 8rem;
     }
   }
@@ -78,7 +78,7 @@ const StyledBlogBottomNav = styled.div`
   font-size: 2rem;
   a {
     margin: 1rem 2rem;
-    color: ${props => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.primary};
   }
 `;
 
@@ -98,12 +98,12 @@ export default function Template({ data, pageContext }) {
   const { scrollYProgress } = useViewportScroll();
   const yRange = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
   const pathLength = useSpring(yRange, { stiffness: 400, damping: 90 });
-  useEffect(() => yRange.onChange(v => setIsComplete(v >= 1)), [yRange]);
+  useEffect(() => yRange.onChange((v) => setIsComplete(v >= 1)), [yRange]);
 
   return (
     <Layout>
       <SEO
-        title={`JCofman - ${post.frontmatter.title}`}
+        title={`Rodolfo Olivieri - ${post.frontmatter.title}`}
         description={post.frontmatter.description || post.frontmatter.excerpt || `nothing’`}
         image={post.frontmatter.headerImage.childImageSharp.sizes.src}
         pathname={post.frontmatter.path}
@@ -136,7 +136,7 @@ export default function Template({ data, pageContext }) {
         <svg
           css={`
             display: none;
-            ${props => props.theme.large} {
+            ${(props) => props.theme.large} {
               display: block;
               position: fixed;
               bottom: 30px;

@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "name": "jcofman storybook",
-  "alias": "storybook.jcofman.de",
+  "name": "nicht storybook",
+  "alias": "storybook.nicht.rocks",
   "routes": [
     {
       "src": "^/static/(.*)",

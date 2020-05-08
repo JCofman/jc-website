@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "name": "jcofman",
-  "alias": "jcofman.de",
+  "name": "nicht",
+  "alias": "nicht.rocks",
   "routes": [
     {
       "src": "^/static/(.*)",

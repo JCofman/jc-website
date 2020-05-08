@@ -6,6 +6,7 @@ import SEO from '../../components/SEO';
 import { StyledBlogArtikelHeaderParallelogram, StyledBlogArtikelHeaderCircle } from '../';
 import { StaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
+// import theme from 'styled-theming';
 
 const StyledH1 = styled.h1`
   color: ${(props) => props.theme.colors.primary};
@@ -154,9 +155,9 @@ const StyledCircle = styled.div`
   clip-path: circle(35% at 50% 50%);
   align-self: center;
   width: 100%;
-  order: 1;
+  order: 3;
   ${(props) => props.theme.medium} {
-    order: 1;
+    order: 4;
   }
 `;
 
@@ -220,95 +221,69 @@ const AboutMe = () => (
     `}
     render={(data) => (
       <Layout>
-        <SEO
-          title="About Me"
-          keywords={[`about me`, `rodolfo olivieri`, `software`, `architect`, `security`, `specialist`]}
-        />
+        <SEO title="About Me" keywords={[`about me`, `jacob cofman`, `frontend`, `engineer`]} />
         <Wrapper>
-          <StyledCircle>
+          <StyledTriangle>
             {` `}
             <Img fluid={data.profileImage.childImageSharp.fluid} alt="A picture of myself" />
-          </StyledCircle>
+          </StyledTriangle>
           <StyledMainInformation>
-            <StyledH1>Rodolfo Olivieri</StyledH1>
+            <StyledH1>Jacob Cofman</StyledH1>
             <StyledSpan>That`s me 😏</StyledSpan>
             <StyledListTriangle>
-              <li> {calculateAge(new Date(1996, 9, 5))} years old</li>
-              <li> Living in Bauru, São Paulo</li>
-              <li> Almost a Specialist in Distributed Software Architecture</li>
-              <li> Information Security Specialist</li>
-              <li> OSS lover</li>
+              <li> {calculateAge(new Date(1991, 8, 31))} years old</li>
+              <li> Living in Karlsruhe Germany</li>
+              <li> One twin brother</li>
+              <li> A lovely girlfriend</li>
             </StyledListTriangle>
           </StyledMainInformation>
-          <StyledInformationSkills>
+          <StyledInformationHobbies>
             <StyledBlogArtikelHeaderCircle>
               {` `}
-              Skills{` `}
+              Hobbies{` `}
             </StyledBlogArtikelHeaderCircle>
             <StyledSpan>This is what I love ❤️</StyledSpan>
+            <StyledListDots>
+              <li> I play volleyball since I am seven years old</li>
+              <li> All the things especially frontend engineering stuff</li>
+              <li>A lot of outdoor activities like snowboarding, hiking and just enjoing the nature</li>
+            </StyledListDots>
+          </StyledInformationHobbies>
+          <StyledCircle>
+            <Img fluid={data.meJumpingImage.childImageSharp.fluid} alt="Picture of me in the nature" />
+          </StyledCircle>
+          <StyledParallelogram>
+            <Img fluid={data.meHackingImage.childImageSharp.fluid} alt="Coding" />
+          </StyledParallelogram>
+          <StyledInformationSkills>
+            <StyledBlogArtikelHeaderParallelogram>Skills</StyledBlogArtikelHeaderParallelogram>
+            <StyledSpan>Major skills 💪</StyledSpan>
             <StyledSkills>
+              <StyledListParallelogram>
+                <StyledH3>💅 Frontend</StyledH3>
+
+                <li>JavaScript</li>
+                <li>CSS</li>
+                <li>GraphQL</li>
+                <li>React</li>
+                <li>Sketch</li>
+              </StyledListParallelogram>
               <StyledListParallelogram>
                 <StyledH3>💻 Backend</StyledH3>
 
-                <li>Python</li>
-                <li>JavaScript / TypeScript</li>
-                <li>Java</li>
-                <li>C#</li>
-                <li>Go</li>
-                <li>Microservices</li>
-              </StyledListParallelogram>
-              <StyledListParallelogram>
-                <StyledH3>☁️ DevOps</StyledH3>
-
-                <li>AWS</li>
-                <li>DigitalOcean</li>
-                <li>CI/CD Pipelines</li>
+                <li>GraphQL</li>
+                <li>Kubernetes</li>
+                <li>Node</li>
               </StyledListParallelogram>
               <StyledListParallelogram>
                 <StyledH3>🤓 Things I am currently learning</StyledH3>
 
-                <li>Pentest</li>
-                <li>Networking</li>
+                <li>Web-Security</li>
+                <li>Vue</li>
                 <li>Go</li>
               </StyledListParallelogram>
             </StyledSkills>
           </StyledInformationSkills>
-          {/*<StyledCircle>*/}
-          {/*  <Img fluid={data.meJumpingImage.childImageSharp.fluid} alt="Picture of me in the nature"/>*/}
-          {/*</StyledCircle>*/}
-          {/*<StyledParallelogram>*/}
-          {/*  <Img fluid={data.meHackingImage.childImageSharp.fluid} alt="Coding"/>*/}
-          {/*</StyledParallelogram>*/}
-
-          {/*<StyledInformationSkills>*/}
-          {/*  <StyledBlogArtikelHeaderParallelogram>Skills</StyledBlogArtikelHeaderParallelogram>*/}
-          {/*  <StyledSpan>Major skills 💪</StyledSpan>*/}
-          {/*  <StyledSkills>*/}
-          {/*    <StyledListParallelogram>*/}
-          {/*      <StyledH3>💅 Frontend</StyledH3>*/}
-
-          {/*      <li>JavaScript</li>*/}
-          {/*      <li>CSS</li>*/}
-          {/*      <li>GraphQL</li>*/}
-          {/*      <li>React</li>*/}
-          {/*      <li>Sketch</li>*/}
-          {/*    </StyledListParallelogram>*/}
-          {/*    <StyledListParallelogram>*/}
-          {/*      <StyledH3>💻 Backend</StyledH3>*/}
-
-          {/*      <li>GraphQL</li>*/}
-          {/*      <li>Kubernetes</li>*/}
-          {/*      <li>Node</li>*/}
-          {/*    </StyledListParallelogram>*/}
-          {/*    <StyledListParallelogram>*/}
-          {/*      <StyledH3>🤓 Things I am currently learning</StyledH3>*/}
-
-          {/*      <li>Web-Security</li>*/}
-          {/*      <li>Vue</li>*/}
-          {/*      <li>Go</li>*/}
-          {/*    </StyledListParallelogram>*/}
-          {/*  </StyledSkills>*/}
-          {/*</StyledInformationSkills>*/}
         </Wrapper>
       </Layout>
     )}

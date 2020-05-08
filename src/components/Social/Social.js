@@ -2,21 +2,18 @@ import React from 'react';
 
 import { StyledSocial } from './StyledSocial';
 
-import { FaTwitter, FaFacebook, FaBehance, FaGithub } from 'react-icons/fa';
+import { FaTwitter, FaGithub, FaLinkedinIn } from 'react-icons/fa';
 
 const Social = () => {
   return (
     <StyledSocial>
-      <a href="https://twitter.com/JCofman" aria-label="Twitter">
+      <a href="https://twitter.com/nichtthat" aria-label="Twitter">
         <FaTwitter size={24} />
       </a>
-      <a href="https://www.facebook.com/jac.cof" aria-label="Facebook">
-        <FaFacebook size={24} />
+      <a href="https://www.linkedin.com/in/rodolfo-olivieri-1628a4158" aria-label="Behance">
+        <FaLinkedinIn size={24} />
       </a>
-      <a href="https://www.behance.net/jacobcofman" aria-label="Behance">
-        <FaBehance size={24} />
-      </a>
-      <a href="https://github.com/JCofman" aria-label="Github">
+      <a href="https://github.com/nicht" aria-label="Github">
         <FaGithub size={24} />
       </a>
     </StyledSocial>

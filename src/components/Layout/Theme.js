@@ -21,7 +21,7 @@ export const themeTransition = `1s ease-in-out`;
 export const colors = {
   white: `#F4F4F4`,
   black: `#010101`,
-  primary: `#50E3C2`,
+  primary: `#651FFF`,
   secondary: `#4A90E2`,
   darkGrey: `#201c29`,
   lightGrey: `#535B68`,

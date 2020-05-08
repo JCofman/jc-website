@@ -4,13 +4,13 @@ import { zIndexLogo, zIndexNavigation } from '../../components/Styles/zIndex';
 import { sizes } from '../Layout/Theme';
 
 const NavBackgroundColor = theme(`mode`, {
-  light: props => props.theme.colors.white,
-  dark: props => props.theme.colors.black,
+  light: (props) => props.theme.colors.white,
+  dark: (props) => props.theme.colors.black,
 });
 
 const NavFontColor = theme(`mode`, {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white,
+  light: (props) => props.theme.colors.black,
+  dark: (props) => props.theme.colors.white,
 });
 
 const NavLinkFontColor = NavFontColor;
@@ -24,7 +24,7 @@ export const StyledWrapper = styled.div`
   align-items: center;
   background-color: ${NavBackgroundColor};
   z-index: ${zIndexNavigation};
-  border-top: 2px solid ${props => props.theme.colors.primary};
+  border-top: 2px solid ${(props) => props.theme.colors.primary};
   border-bottom: 1px solid #201c29;
 `;
 
@@ -32,20 +32,19 @@ export const StyledNavWrapper = styled.div`
   display: grid;
   width: 100%;
   max-width: 1024px;
-  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 70px;
   grid-gap: 20px;
   height: 70px;
   float: right;
   box-shadow: none;
   transition: height 0.25s ease-in-out 0s, box-shadow 0.2s ease-in-out 0.05s,
-    background-color ${props => props.theme.themeTransition};
+    background-color ${(props) => props.theme.themeTransition};
   a {
     color: ${NavLinkFontColor};
   }
   a:hover,
   a:focus {
-    color: ${props => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.primary};
   }
 `;
 
@@ -53,6 +52,8 @@ export const StyledNav = styled.nav`
   display: flex;
   align-items: center;
   height: 70px;
+  width: 100%;
+  max-width: 100%;
 
   @media (max-width: ${sizes.phone}px) {
     mask-image: linear-gradient(to right, transparent, black 20px, black 90%, transparent);
@@ -69,34 +70,34 @@ export const StyledNav = styled.nav`
   }
 `;
 
-export const StyledNavLogo = styled.svg`
-  width: 80px;
-  height: 140px;
-  transition: all 0.25s ease-out 0s;
-  margin-top: 5px; /* green top border margin */
-  z-index: ${zIndexLogo};
-
-  ${props => props.theme.xsmall} {
-    width: 150px;
-    height: 150px;
-  }
-  ${props => props.theme.medium} {
-    width: 120px;
-    height: 140px;
-    left: 70px;
-    display: inline-block;
-  }
-  ${props => props.theme.large} {
-    display: ${props => (props.scrollPositionY > 0 ? `visible` : `none`)};
-    position: fixed;
-  }
-  svg {
-    width: 100%;
-    display: inline-block;
-    transition: all 0.25s ease-out 0s;
-    z-index: ${zIndexLogo};
-  }
-`;
+// export const StyledNavLogo = styled.svg`
+//   width: 80px;
+//   height: 140px;
+//   transition: all 0.25s ease-out 0s;
+//   margin-top: 5px; /* green top border margin */
+//   z-index: ${zIndexLogo};
+//
+//   ${props => props.theme.xsmall} {
+//     width: 150px;
+//     height: 150px;
+//   }
+//   ${props => props.theme.medium} {
+//     width: 120px;
+//     height: 140px;
+//     left: 70px;
+//     display: inline-block;
+//   }
+//   ${props => props.theme.large} {
+//     display: ${props => (props.scrollPositionY > 0 ? `visible` : `none`)};
+//     position: fixed;
+//   }
+//   svg {
+//     width: 100%;
+//     display: inline-block;
+//     transition: all 0.25s ease-out 0s;
+//     z-index: ${zIndexLogo};
+//   }
+// `;
 
 export const StyledNavList = styled.ul`
   list-style: none;
@@ -104,6 +105,9 @@ export const StyledNavList = styled.ul`
   padding: 0;
   display: flex;
   align-items: center;
+  width: 100%;
+  max-width: 100%;
+  justify-content: center;
 `;
 
 export const StyledNavListLink = styled.li`
@@ -124,7 +128,7 @@ export const StyledNavListLink = styled.li`
 
     &:after {
       height: 2px;
-      background: #50e3c2;
+      background: #651fff;
       content: '';
       width: 0;
       position: absolute;

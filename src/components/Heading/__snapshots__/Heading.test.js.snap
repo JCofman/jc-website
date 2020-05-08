@@ -20,7 +20,7 @@ exports[`should render a H1 header tags 1`] = `
 
 .c0 a:hover,
 .c0 a:focus {
-  color: #50E3C2;
+  color: #651FFF;
   -webkit-transition: none;
   transition: none;
 }
@@ -70,7 +70,7 @@ exports[`should render a H2 header tags 1`] = `
 
 .c0 a:hover,
 .c0 a:focus {
-  color: #50E3C2;
+  color: #651FFF;
   -webkit-transition: none;
   transition: none;
 }
@@ -120,7 +120,7 @@ exports[`should render a H3 header tags 1`] = `
 
 .c0 a:hover,
 .c0 a:focus {
-  color: #50E3C2;
+  color: #651FFF;
   -webkit-transition: none;
   transition: none;
 }
@@ -170,7 +170,7 @@ exports[`should render a H4 header tags 1`] = `
 
 .c0 a:hover,
 .c0 a:focus {
-  color: #50E3C2;
+  color: #651FFF;
   -webkit-transition: none;
   transition: none;
 }
@@ -220,7 +220,7 @@ exports[`should render a H5 header tags 1`] = `
 
 .c0 a:hover,
 .c0 a:focus {
-  color: #50E3C2;
+  color: #651FFF;
   -webkit-transition: none;
   transition: none;
 }
@@ -270,7 +270,7 @@ exports[`should render a H6 header tags 1`] = `
 
 .c0 a:hover,
 .c0 a:focus {
-  color: #50E3C2;
+  color: #651FFF;
   -webkit-transition: none;
   transition: none;
 }

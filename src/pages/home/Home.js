@@ -2,14 +2,13 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { ThemeContext } from 'styled-components';
 
-import { HeaderBG, Wrapper, StyledLogo, Information, StyledName } from '../../templates/PageStyles/StyledHome';
+import { HeaderBG, Wrapper, Information, StyledName } from '../../templates/PageStyles/StyledHome';
 import { useWindowScrollPosition } from '../../hooks/useWindowScrollPosition';
 
 import Social from '../../components/Social';
-import Logo from '../../components/Logo';
 
 const Home = () => {
-  const { y } = useWindowScrollPosition();
+  useWindowScrollPosition();
   const { image } = useStaticQuery(graphql`
     query {
       image: file(relativePath: { eq: "background.jpg" }) {
@@ -37,39 +36,30 @@ const Home = () => {
     <>
       <HeaderBG tag={`header`} fluid={backgroundFluidImage}>
         <Wrapper>
-          <StyledLogo key="logo" scrollPositionY={y}>
-            <Logo />
-          </StyledLogo>
           <Information>
-            <span>HEY EVERYONE MY NAME IS JACOB COFMAN</span>
+            <span>HEY PEOPLE! MY NAME IS RODOLFO OLIVIERI A.K.A NICHT</span>
             <h1>
-              I LOVE WEB DEVELOPMENT
+              I LOVE SOFTWARE ARCHITECTURE
               <span role="img" aria-label="computer">
                 {` `}
                 💻
               </span>
-              , VOLLEYBALL
-              <span role="img" aria-label="computer">
-                🏐
+              , GAMES
+              <span role="img" aria-label="games">
+                {` `}
+                🎮
               </span>
               {` `}
-              AND TRAVELLING{` `}
-              <span role="img" aria-label="tent">
-                ⛺️
-              </span>
-              {` `}
-              <span role="img" aria-label="nature tree">
-                🌲
-              </span>
-              {` `}
-              <span role="img" aria-label="run">
-                🏃
+              AND CYBER SECURITY
+              <span role="img" aria-label="cyber-security">
+                {` `}
+                🔑
               </span>
             </h1>
           </Information>
         </Wrapper>
         <Social />
-        <StyledName>Jacob Cofman</StyledName>
+        <StyledName>Rodolfo Olivieri</StyledName>
       </HeaderBG>
     </>
   );

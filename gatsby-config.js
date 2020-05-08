@@ -1,58 +1,56 @@
-const { PUBLISH_ON_NOW } = process.env;
+// const { PUBLISH_ON_NOW } = process.env;
 
 require(`dotenv`).config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const postQuery = `{
-  posts: allMdx(
-    filter: { fileAbsolutePath: { regex: "/posts/" } }
-  ) {
-    edges {
-      node {
-        objectID: id
-        frontmatter {
-          title
-          path
-          excerpt
-          date(formatString: "MMM D, YYYY")
-          tags
-        }
-      }
-    }
-  }
-}`;
-const flatten = (arr) =>
-  arr.map(({ node: { frontmatter, ...rest } }) => ({
-    ...frontmatter,
-    ...rest,
-  }));
-const settings = { attributesToSnippet: [`excerpt:20`] };
-const queries = [
-  {
-    query: postQuery,
-    transformer: ({ data }) => flatten(data.posts.edges),
-    indexName: process.env.ALGOLIA_INDEX_NAME,
-    settings,
-  },
-];
+// const postQuery = `{
+//   posts: allMdx(filter: {fileAbsolutePath: {regex: "/posts/"}}) {
+//     edges {
+//       node {
+//         objectID: id
+//         frontmatter {
+//           title
+//           path
+//           excerpt
+//           date(formatString: "MMM D, YYYY")
+//           tags
+//         }
+//       }
+//     }
+//   }
+// }`;
+
+// const flatten = (arr) =>
+//   arr.map(({ node: { frontmatter, ...rest } }) => ({
+//     ...frontmatter,
+//     ...rest,
+//   }));
+// const settings = { attributesToSnippet: [`excerpt:20`] };
+// const queries = [
+//   {
+//     query: postQuery,
+//     transformer: ({ data }) => flatten(data.posts.edges),
+//     indexName: process.env.ALGOLIA_INDEX_NAME,
+//     settings,
+//   },
+// ];
 
 module.exports = {
   siteMetadata: {
-    title: `Jacob Cofman Website`,
-    description: `This is my website and blog`,
-    author: `Jacob Cofman`,
-    siteUrl: `https://jcofman.de`,
+    title: `Rodolfo Olivieri Blog`,
+    description: `My personal blog`,
+    author: `Rodolfo Olivieri`,
+    siteUrl: `https://nicht.rocks`,
     social: {
-      twitter: `jcofman`,
-      github: `jcofman`,
+      twitter: `nichtthat`,
+      github: `nicht`,
     },
   },
   plugins: [
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        resolveEnv: () => PUBLISH_ON_NOW,
         env: {
           production: {
             policy: [{ userAgent: `*` }],
@@ -83,11 +81,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Jacob Cofman´s personal website`,
-        short_name: `JCofman`,
+        name: `Rodolfo Olivieri personal website`,
+        short_name: `nicht`,
         start_url: `/`,
         background_color: `#FFF`,
-        theme_color: `#50E3C2`,
+        theme_color: `#651FFF`,
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: `standalone`,
@@ -201,15 +199,15 @@ module.exports = {
         default: require.resolve(`./src/components/Layout/Layout.js`),
       },
     },
-    {
-      resolve: `gatsby-plugin-algolia`,
-      options: {
-        appId: process.env.ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_API_KEY,
-        indexName: process.env.ALGOLIA_INDEX_NAME, // for all queries
-        queries: queries,
-        chunkSize: 10000, // default: 1000
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-algolia`,
+    //   options: {
+    //     appId: process.env.ALGOLIA_APP_ID,
+    //     apiKey: process.env.ALGOLIA_API_KEY,
+    //     indexName: process.env.ALGOLIA_INDEX_NAME, // for all queries
+    //     queries: queries,
+    //     chunkSize: 10000, // default: 1000
+    //   },
+    // },
   ],
 };

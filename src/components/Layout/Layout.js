@@ -633,7 +633,7 @@ const GlobalStyle = createGlobalStyle`
   pre tt:after {
     content: "";
   }
-  ::selection { background: ${props => props.theme.colors.primary}; }
+  ::selection { background: ${(props) => props.theme.colors.primary}; }
   code[class*='language-'],
   pre[class*='language-'] {
     font-size: 1.4rem;
@@ -791,7 +791,7 @@ const GlobalStyle = createGlobalStyle`
     margin-left: -1.3125rem;
     padding-right: 1em;
     padding-left: 0.75em;
-    border-left: 0.25em solid #50E3C2;
+    border-left: 0.25em solid #651FFF;
   }
   
   .gatsby-highlight {
@@ -821,7 +821,7 @@ const GlobalStyle = createGlobalStyle`
 
   `;
 
-const getInitialTheme = preferedTheme => {
+const getInitialTheme = (preferedTheme) => {
   const savedTheme = localStorage.getItem(`theme`);
   return savedTheme ? savedTheme : preferedTheme;
 };
@@ -836,7 +836,7 @@ const Layout = ({ children, location }) => {
   const [themeMode, setThemeMode] = useState(`${defaultThemeMode}`);
 
   const changeTheme = () => {
-    setThemeMode(prevState => (prevState === `light` ? `dark` : `light`));
+    setThemeMode((prevState) => (prevState === `light` ? `dark` : `light`));
   };
 
   React.useEffect(() => {

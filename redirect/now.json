@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "alias": ["www.jcofman.de"],
+  "alias": ["www.nicht.rocks"],
   "routes": [
     {
       "src": "/(.*)",
       "status": 301,
-      "headers": { "Location": "https://jcofman.de/$1" }
+      "headers": { "Location": "https://nicht.rocks/$1" }
     }
   ]
 }
