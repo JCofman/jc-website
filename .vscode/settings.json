@@ -20,7 +20,5 @@
   "files.associations": {
     "*.md": "mdx"
   },
-  "peacock.color": "#4A90E2",
-  "eslint.nodePath": ".vscode/pnpify",
-  "prettier.prettierPath": ".vscode/pnpify/prettier/index.js"
+  "peacock.color": "#4A90E2"
 }
