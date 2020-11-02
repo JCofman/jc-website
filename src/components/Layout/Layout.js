@@ -3,6 +3,7 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import theme from 'styled-theming';
 
 import { useMedia } from '../../hooks/useMedia';
+import { useLocalStorageState } from '../../hooks/useLocalStorage';
 import Navigation from '../Navigation';
 import Footer from '../Footer';
 import StyledLayout from './StyledLayout';
@@ -17,12 +18,28 @@ const bodyTextColor = theme(`mode`, {
   light: colors.black,
   dark: colors.white,
 });
+
 const aTagTextColor = theme(`mode`, {
   light: colors.black,
   dark: colors.white,
 });
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
+   :root {
+    --color-text: ${colors.white};
+    --color-background: ${colors.black};
+    --color-primary: ${colors.primary};
+    --color-secondary: ${colors.secondary};
+    
+    --font-size-small: 1.6rem;
+    --font-size-medium: 2.2rem;
+
+    @media (min-width: 1024px) {
+      --font-size-small: 2.1rem;
+      --font-size-medium: 2.4rem;
+    }
+  }
+
   article,
   aside,
   details,
@@ -633,7 +650,7 @@ const GlobalStyle = createGlobalStyle`
   pre tt:after {
     content: "";
   }
-  ::selection { background: ${props => props.theme.colors.primary}; }
+  ::selection { background: ${(props) => props.theme.colors.primary}; }
   code[class*='language-'],
   pre[class*='language-'] {
     font-size: 1.4rem;
@@ -818,10 +835,13 @@ const GlobalStyle = createGlobalStyle`
   [aria-current] {
     color: ${colors.primary} !important;
   }
+  * {
+  box-sizing: border-box;
+}
 
   `;
 
-const getInitialTheme = preferedTheme => {
+const getInitialTheme = (preferedTheme) => {
   const savedTheme = localStorage.getItem(`theme`);
   return savedTheme ? savedTheme : preferedTheme;
 };
@@ -833,15 +853,12 @@ const Layout = ({ children, location }) => {
     defaultThemeMode = getInitialTheme(prefersDarkMode ? `dark` : `light`);
   }
 
-  const [themeMode, setThemeMode] = useState(`${defaultThemeMode}`);
+  const [themeMode, setThemeMode] = useLocalStorageState('theme', defaultThemeMode);
 
   const changeTheme = () => {
-    setThemeMode(prevState => (prevState === `light` ? `dark` : `light`));
+    setThemeMode((prevState) => (prevState === `light` ? `dark` : `light`));
   };
 
-  React.useEffect(() => {
-    localStorage.setItem(`theme`, themeMode);
-  });
   return (
     <ThemeProvider
       theme={{
@@ -862,8 +879,8 @@ const Layout = ({ children, location }) => {
   );
 };
 
-function usePrefersDarkMode() {
+const usePrefersDarkMode = () => {
   return useMedia([`(prefers-color-scheme: dark)`], [true], true);
-}
+};
 
 export default Layout;

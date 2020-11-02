@@ -13,9 +13,7 @@
     "titleBar.inactiveForeground": "#15202b99",
     "statusBar.background": "#4a90e2",
     "statusBarItem.hoverBackground": "#2275d7",
-    "statusBar.foreground": "#15202b",
-    "statusBar.border": "#4a90e2",
-    "titleBar.border": "#4a90e2"
+    "statusBar.foreground": "#15202b"
   },
   "files.associations": {
     "*.md": "mdx"

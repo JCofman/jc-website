@@ -6,7 +6,7 @@ import theme from 'styled-theming';
 
 export const StyledLogo = styled.svg`
   display: none;
-  position: ${props => (props.scrollPositionY > 0 ? `fixed` : `static`)};
+  position: ${(props) => (props.scrollPositionY > 0 ? `fixed` : `static`)};
   top: -235px;
   left: -200px;
   margin-top: 20px;
@@ -15,31 +15,37 @@ export const StyledLogo = styled.svg`
   height: 60rem;
   width: 40rem;
   transition: all 0.25s ease-out 0s;
-  transform: ${props => (props.scrollPositionY > 0 ? `scale(0.2)` : `scale(1.0)`)};
+  transform: ${(props) => (props.scrollPositionY > 0 ? `scale(0.2)` : `scale(1.0)`)};
 
-  ${props => props.theme.xsmall} {
+  ${(props) => props.theme.xsmall} {
     display: none;
   }
-  ${props => props.theme.small} {
+  ${(props) => props.theme.small} {
     display: none;
   }
-  ${props => props.theme.medium} {
+  ${(props) => props.theme.medium} {
     display: none;
   }
-  ${props => props.theme.large} {
-    display: flex;
-    top: -350px;
-    left: -100px;
+  ${(props) => props.theme.large} {
+    display: none;
+  }
+  ${(props) => props.theme.large} {
+    display: none;
+  }
+  @media (min-width: 2000px) {
+    display: block;
+    position: absolute;
+    top: 100px;
+    left: 80px;
     height: 80rem;
-    display: ${props => (props.scrollPositionY > 0 ? `none` : `visible`)};
+    display: ${(props) => (props.scrollPositionY > 0 ? `none` : `visible`)};
   }
 `;
 
-export const Wrapper = styled.div`
+export const StyledWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-items: center;
-  height: 1028px;
+  justify-content: center;
   height: 75vh;
 `;
 
@@ -48,9 +54,12 @@ const InformationTextShadow = theme(`mode`, {
   dark: `3px 3px 0 rgba(255, 255, 255, 0.2)`,
 });
 
-export const Information = styled.div`
+export const StyledInformation = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: ${(props) => props.theme.maxWidth};
+  align-items: center;
+  justify-content: center;
   position: initial;
   padding-top: 18rem;
   padding-bottom: 3rem;
@@ -58,22 +67,21 @@ export const Information = styled.div`
   margin-right: 2rem;
   text-shadow: ${InformationTextShadow};
 
-  ${props => props.theme.small} {
+  ${(props) => props.theme.small} {
     position: initial;
     padding-top: 18rem;
     padding-bottom: 3rem;
     margin-left: 2rem;
     margin-right: 2rem;
   }
-  ${props => props.theme.medium} {
+  ${(props) => props.theme.medium} {
     position: initial;
     padding-top: 25rem;
     padding-bottom: 3rem;
     margin-left: 2rem;
     margin-right: 2rem;
-  
   }
-  ${props => props.theme.large} {
+  ${(props) => props.theme.large} {
     position: absolute;
     padding-top: 10rem;
     padding-bottom: 10rem;
@@ -81,7 +89,7 @@ export const Information = styled.div`
     left: 25rem;
   }
 
-  ${props => props.theme.xlarge} {
+  ${(props) => props.theme.xlarge} {
     position: absolute;
     top: 15rem;
     left: 30rem;
@@ -92,53 +100,56 @@ export const Information = styled.div`
 
   h1 {
     font-size: 3rem;
-    transition: color ${props => props.theme.themeTransition};
-    ${props => props.theme.xsmall} {
+    transition: color ${(props) => props.theme.themeTransition};
+    ${(props) => props.theme.xsmall} {
       font-size: 3rem;
     }
-    ${props => props.theme.small} {
+    ${(props) => props.theme.small} {
       font-size: 4rem;
     }
-    ${props => props.theme.medium} {
+    ${(props) => props.theme.medium} {
       font-size: 4rem;
     }
-    ${props => props.theme.large} {
+    ${(props) => props.theme.large} {
       font-size: 5rem;
     }
     span {
       font-size: 3rem;
-    ${props => props.theme.xsmall} {
-      font-size: 3rem;
-    }
-    ${props => props.theme.small} {
+      align-self: flex-start;
+
+      ${(props) => props.theme.xsmall} {
+        font-size: 3rem;
+      }
+      ${(props) => props.theme.small} {
         font-size: 4rem;
-    }
-    ${props => props.theme.medium} {
-      font-size: 4rem;
-    }
-    ${props => props.theme.large} {
-      font-size: 5rem;
-    }
+      }
+      ${(props) => props.theme.medium} {
+        font-size: 4rem;
+      }
+      ${(props) => props.theme.large} {
+        font-size: 5rem;
+      }
     }
   }
 
   span {
     font-size: 1.5rem;
-    /* color: ${props => props.theme.colors.secondary}; */
     font-weight: 400;
-    ${props => props.theme.small} {
+    align-self: flex-start;
+
+    ${(props) => props.theme.small} {
       font-size: 1.5rem;
     }
-    ${props => props.theme.medium} {
+    ${(props) => props.theme.medium} {
       font-size: 2rem;
     }
-    ${props => props.theme.large} {
+    ${(props) => props.theme.large} {
       font-size: 2rem;
     }
   }
 `;
 
-export const HeaderBG = styled(BackgroundImage)`
+export const StyledHeaderBG = styled(BackgroundImage)`
   /* Full height */
   display: flex;
   background-size: cover;
@@ -147,11 +158,11 @@ export const HeaderBG = styled(BackgroundImage)`
   height: 1024px;
   height: 100vh;
   width: 100%;
-  ${props => props.theme.medium} {
+  ${(props) => props.theme.medium} {
     height: 600px;
     height: 100vh;
   }
-  ${props => props.theme.large} {
+  ${(props) => props.theme.large} {
     height: 800px;
     height: 100vh;
   }

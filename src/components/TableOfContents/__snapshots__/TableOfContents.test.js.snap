@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider is rendered properly 1`] = `
+.c1 {
+  display: block;
+  width: 55px;
+  height: 12px;
+  margin: 0 auto;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  max-width: 400px;
+  font-family: 'Raleway',sans-serif;
+  color: var(--color-text);
+}
+
+.c0 h2 {
+  font-size: 1.6rem;
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  -webkit-letter-spacing: 0.2rem;
+  -moz-letter-spacing: 0.2rem;
+  -ms-letter-spacing: 0.2rem;
+  letter-spacing: 0.2rem;
+  text-rendering: optimizelegibility;
+  color: hsl(210deg,25%,88%);
+  margin-bottom: 16px;
+}
+
+.c0 a {
+  display: block;
+  opacity: 0.7;
+  color: var(--color-gray-800);
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: opacity 500ms ease 0s;
+  transition: opacity 500ms ease 0s;
+  margin-top: 1rem;
+  color: black;
+  text-align: left;
+}
+
+.c0 a:hover,
+.c0 a:focus {
+  color: var(--color-text);
+}
+
+<div>
+  <nav
+    class="c0"
+  >
+    <h2>
+      Table of contents
+    </h2>
+    <svg
+      class="c1"
+    >
+      <g
+        fill="none"
+        fill-rule="evenodd"
+        stroke="none"
+        stroke-width="1"
+      >
+        <g
+          class=""
+          transform="translate(-483.000000, -1059.000000)"
+        >
+          <g
+            transform="translate(182.000000, 936.000000)"
+          >
+            <g
+              transform="translate(301.000000, 123.000000)"
+            >
+              <rect
+                fill-opacity="0.3"
+                height="12"
+                width="35"
+                x="0"
+                y="0"
+              />
+              <rect
+                fill-opacity="0.1"
+                height="12"
+                width="35"
+                x="20"
+                y="0"
+              />
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+    <a
+      href="#exciting-stuff"
+    >
+      Exciting Stuff
+    </a>
+    <a
+      href="#what-i-have-learned-in-a-nutshell"
+    >
+      What I have learned in a nutshell
+    </a>
+    <a
+      href="#some-improvement-ideas"
+    >
+      Some improvement ideas
+    </a>
+  </nav>
+</div>
+`;
