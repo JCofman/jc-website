@@ -1,6 +1,6 @@
 import React from 'react';
 import { Canvas } from 'react-three-fiber';
-import { Html } from 'drei';
+import { Html } from '@react-three/drei';
 import { useStaticQuery, graphql } from 'gatsby';
 import { ThemeContext } from 'styled-components';
 

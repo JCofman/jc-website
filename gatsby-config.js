@@ -161,12 +161,6 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-134206784-1`,
-      },
-    },
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-plugin-mdx`,
@@ -198,7 +192,6 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
@@ -209,7 +202,6 @@ module.exports = {
           `gatsby-remark-smartypants`,
         ],
         extensions: [`.mdx`, `.md`],
-        default: require.resolve(`./src/components/Layout/Layout.js`),
       },
     },
     {
