@@ -4,6 +4,7 @@ import theme from 'styled-theming';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { FaListUl } from 'react-icons/fa';
+import { AnchorLink } from 'gatsby-plugin-anchor-links';
 
 import Divider from '../Divider';
 import Heading from '../Heading';
@@ -63,9 +64,8 @@ const StyledTableOfContentsNavigation = styled.nav`
 
 const TableOfContents = (props) => {
   const { items } = props;
-
   return (
-    <>
+    <div>
       {items && items.length > 0 ? (
         <StyledTableOfContentsNavigation>
           <Heading appearance={`H2`}>
@@ -73,18 +73,17 @@ const TableOfContents = (props) => {
           </Heading>
 
           <Divider></Divider>
-          <a>Introduction</a>
           {items.map((item) => {
             const { url, title } = item;
             return (
-              <a key={title} href={url}>
+              <AnchorLink key={title} to={`./${url}`}>
                 {title}
-              </a>
+              </AnchorLink>
             );
           })}
         </StyledTableOfContentsNavigation>
       ) : null}
-    </>
+    </div>
   );
 };
 

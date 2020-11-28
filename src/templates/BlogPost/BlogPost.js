@@ -122,30 +122,32 @@ export default function Template({ data, pageContext }) {
         </StyledTags>
       </StyledInfo>
       <StyledSingleBlogPostArticle className="blog-post">
-        {typeof post.tableOfContents.items === 'undefined' ? null : (
-          <TableOfContents items={post.tableOfContents.items}></TableOfContents>
+        {typeof post.tableOfContents.items === 'undefined' ? (
+          <div></div>
+        ) : (
+          <TableOfContents className="blog-post-toc" items={post.tableOfContents.items}></TableOfContents>
         )}
         <div className="blog-post-content">
           <MDXRenderer>{post.body}</MDXRenderer>
+          <StyledBlogBottomNav>
+            {prev && (
+              <Link to={prev.path}>
+                <small>{prev.title}</small>
+                <StyledButton>
+                  <FaChevronLeft /> Prev Post
+                </StyledButton>
+              </Link>
+            )}
+            {next && (
+              <Link to={next.path}>
+                <small>{next.title}</small>
+                <StyledButton>
+                  <FaChevronRight /> Next Post
+                </StyledButton>
+              </Link>
+            )}
+          </StyledBlogBottomNav>
         </div>
-        <StyledBlogBottomNav>
-          {prev && (
-            <Link to={prev.path}>
-              <small>{prev.title}</small>
-              <StyledButton>
-                <FaChevronLeft /> Prev Post
-              </StyledButton>
-            </Link>
-          )}
-          {next && (
-            <Link to={next.path}>
-              <small>{next.title}</small>
-              <StyledButton>
-                <FaChevronRight /> Next Post
-              </StyledButton>
-            </Link>
-          )}
-        </StyledBlogBottomNav>
       </StyledSingleBlogPostArticle>
     </Layout>
   );

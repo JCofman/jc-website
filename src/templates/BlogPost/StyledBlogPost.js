@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
 export const StyledSingleBlogPostArticle = styled.article`
+  ${(props) => props.theme.large} {
+    display: grid;
+    grid-template-columns: 3fr 12fr 3fr;
+  }
+  .blog-post-toc {
+    position: sticky;
+    top: 0;
+  }
+
   .blog-post-header-image {
     display: grid;
     grid-column: 1 / -1;
@@ -15,7 +24,7 @@ export const StyledSingleBlogPostArticle = styled.article`
     font-size: 2rem;
     font-weight: 400;
     line-height: 1.6;
-    grid-template-columns: 3fr 12fr 3fr;
+    grid-template-columns: minmax(1.2rem, 1fr) minmax(auto, 57ch) minmax(1.2rem, 1fr);
     transition: color ${(props) => props.theme.themeTransition};
     a {
       color: ${(props) => props.theme.colors.primary && darken(0.1, props.theme.colors.primary)};
@@ -62,20 +71,21 @@ export const StyledSingleBlogPostArticle = styled.article`
     margin-top: 48px;
     margin-bottom: 16px;
   }
-  /* .blog-post-content h1,
-  h2 {
-    font-size: 4rem;
-    font-style: italic;
-    font-weight: 100;
-    margin: 0;
-    ${(props) => props.theme.small} {
-      display: inline-block;
-      font-size: 8rem;
-    }
-  } */
 
-  .blog-post-content p {
+  .blog-post-content p,
+  ul,
+  ol {
     margin-bottom: 2rem;
+    grid-column: 2;
+  }
+  .blog-post-content ul,
+  ol {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 4rem;
   }
 
   .blog-post-content pre {
@@ -83,7 +93,16 @@ export const StyledSingleBlogPostArticle = styled.article`
   }
 
   .blog-post-content figure {
-    grid-column: 1 / -1;
+    grid-column: 1 / 4;
+    width: 100%;
+    max-width: 100ch;
+    justify-self: center;
+  }
+  .blog-post-content > img {
+    grid-column: 1 / 4;
+    width: 100%;
+    max-width: 100ch;
+    justify-self: center;
   }
   .blog-post-content figcaption {
     font-size: 1rem;
