@@ -18,5 +18,10 @@
   "files.associations": {
     "*.md": "mdx"
   },
-  "peacock.color": "#4A90E2"
+  "peacock.color": "#4A90E2",
+  "cSpell.words": [
+    "Artikel",
+    "Cofman",
+    "frontmatter"
+  ]
 }

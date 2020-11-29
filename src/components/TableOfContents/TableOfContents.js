@@ -76,7 +76,7 @@ const TableOfContents = (props) => {
           {items.map((item) => {
             const { url, title } = item;
             return (
-              <AnchorLink key={title} to={`./${url}`}>
+              <AnchorLink key={title} to={`.${url}`}>
                 {title}
               </AnchorLink>
             );

@@ -8,8 +8,10 @@ const removeAllSideEffectsFalseFromReactSpringPackages = async () => {
       to: `"sideEffects": true`,
     });
 
+    // eslint-disable-next-line no-console
     console.log(results); // uncomment to log changed files
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.log('error while trying to remove string "sideEffects:false" from react-spring packages', e);
   }
 };

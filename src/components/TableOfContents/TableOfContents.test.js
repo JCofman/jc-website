@@ -24,12 +24,17 @@ test(`Divider is rendered properly`, () => {
   expect(container).toMatchSnapshot();
 });
 
-test(`TableOfContents can render multiple items`, () => {
-  const { getByRole } = renderWithTheme(<TableOfContents items={items} />);
-  getByRole(`link`, { name: /some improvement ideas/i });
-  getByRole(`link`, { name: /what I have learned in a nutshell/i });
-  getByRole(`link`, { name: /exciting Stuff/i });
-});
+test.todo(
+  `TableOfContents can render multiple items`
+
+  // () => {
+  //   const { getByRole } = renderWithTheme(<TableOfContents items={items} />);
+  //   getByRole(`link`, { name: /some improvement ideas/i });
+  //   getByRole(`link`, { name: /what I have learned in a nutshell/i });
+  //   getByRole(`link`, { name: /exciting Stuff/i });
+  // }
+);
+
 test(`TableOfContents can render no items`, () => {
   const { queryByRole } = renderWithTheme(<TableOfContents items={[]} />);
   expect(queryByRole(`link`)).not.toBeInTheDocument();
