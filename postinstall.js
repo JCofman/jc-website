@@ -8,7 +8,7 @@ const removeAllSideEffectsFalseFromReactSpringPackages = async () => {
       to: `"sideEffects": true`,
     });
 
-    // console.log(results); // uncomment to log changed files
+    console.log(results); // uncomment to log changed files
   } catch (e) {
     console.log('error while trying to remove string "sideEffects:false" from react-spring packages', e);
   }

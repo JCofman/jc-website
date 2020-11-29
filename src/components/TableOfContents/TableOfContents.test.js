@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { renderWithTheme } from '../../../utils/jest-utils';
 
 import TableOfContents from './TableOfContents';
 
@@ -19,18 +19,18 @@ const items = [
 ];
 
 test(`Divider is rendered properly`, () => {
-  const { container } = render(<TableOfContents items={items} />);
+  const { container } = renderWithTheme(<TableOfContents items={items} />);
 
   expect(container).toMatchSnapshot();
 });
 
 test(`TableOfContents can render multiple items`, () => {
-  const { getByRole } = render(<TableOfContents items={items} />);
+  const { getByRole } = renderWithTheme(<TableOfContents items={items} />);
   getByRole(`link`, { name: /some improvement ideas/i });
   getByRole(`link`, { name: /what I have learned in a nutshell/i });
   getByRole(`link`, { name: /exciting Stuff/i });
 });
 test(`TableOfContents can render no items`, () => {
-  const { queryByRole } = render(<TableOfContents items={[]} />);
+  const { queryByRole } = renderWithTheme(<TableOfContents items={[]} />);
   expect(queryByRole(`link`)).not.toBeInTheDocument();
 });
