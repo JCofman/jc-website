@@ -6,50 +6,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
         with:
-          node-version: 12
+          node-version: 14
       - run: npm ci
       - run: npm build
       - run: npm test
       - run: npm test:size
-
-  build-and-deploy-prod:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - name: Branch name
-        run: echo running on branch ${GITHUB_REF##*/}
-      - name: Build prod
-        run: npm build:prod
-      - name: Deploy prod
-        run: npm deploy:prod
-        env:
-          NOW_TOKEN: ${{secrets.NOW_TOKEN}}
-
-  build-and-deploy-feature:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.ref != 'refs/heads/master'
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - name: Branch name
-        run: echo running on branch ${GITHUB_REF##*/}
-      - name: Build feature
-        run: npm build
-      - name: Deploy feature
-        run: npm deploy
-        env:
-          NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
 
   webPageTestActions:
     name: WebPageTestActions
