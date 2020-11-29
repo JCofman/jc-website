@@ -6,15 +6,14 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
-import { motion, useViewportScroll, useSpring, useTransform } from 'framer-motion';
 import SEO from '../../components/SEO';
 import Layout from '../../components/Layout';
+import TableOfContents from '../../components/TableOfContents';
 import { StyledSingleBlogPostArticle } from './StyledBlogPost';
 
 const StyledButtonColor = theme(`mode`, {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white,
+  light: (props) => props.theme.colors.black,
+  dark: (props) => props.theme.colors.white,
 });
 
 const StyledButton = styled.button`
@@ -23,16 +22,16 @@ const StyledButton = styled.button`
   justify-content: center;
   background: transparent;
   border-radius: 3px;
-  border: 2px solid ${props => props.theme.colors.primary};
+  border: 2px solid ${(props) => props.theme.colors.primary};
   color: ${StyledButtonColor};
   margin: 0.5em 1em;
   padding: 0.25em 1em;
 
-  ${props =>
+  ${(props) =>
     props.primary &&
     css`
-      background: ${props => props.theme.colors.primary};
-      color: ${props => props.theme.colors.white};
+      background: ${(props) => props.theme.colors.primary};
+      color: ${(props) => props.theme.colors.white};
     `}
   &:hover, &:focus {
     cursor: pointer;
@@ -56,16 +55,16 @@ const StyledHeader = styled.header`
     margin-right: auto;
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
     width: 80%;
-    background-color: ${props => props.theme.colors.primary};
-    transition: color ${props => props.theme.themeTransition};
+    background-color: ${(props) => props.theme.colors.primary};
+    transition: color ${(props) => props.theme.themeTransition};
     line-height: 1.1em;
     font-size: 4rem;
 
     text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
-    ${props => props.theme.small} {
+    ${(props) => props.theme.small} {
       font-size: 6rem;
     }
-    ${props => props.theme.medium} {
+    ${(props) => props.theme.medium} {
       font-size: 8rem;
     }
   }
@@ -78,7 +77,7 @@ const StyledBlogBottomNav = styled.div`
   font-size: 2rem;
   a {
     margin: 1rem 2rem;
-    color: ${props => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.primary};
   }
 `;
 
@@ -94,12 +93,6 @@ const StyledTags = styled.div`
 export default function Template({ data, pageContext }) {
   const { mdx: post } = data;
   const { next, prev } = pageContext;
-  const [isComplete, setIsComplete] = useState(false);
-  const { scrollYProgress } = useViewportScroll();
-  const yRange = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
-  const pathLength = useSpring(yRange, { stiffness: 400, damping: 90 });
-  useEffect(() => yRange.onChange(v => setIsComplete(v >= 1)), [yRange]);
-
   return (
     <Layout>
       <SEO
@@ -111,7 +104,7 @@ export default function Template({ data, pageContext }) {
       />
       <StyledHeader>
         <Img
-          sizes={post.frontmatter.headerImage.childImageSharp.sizes}
+          fluid={post.frontmatter.headerImage.childImageSharp.sizes}
           alt={`background image which represents - ${post.frontmatter.title}`}
         />
         <h1>{post.frontmatter.title}</h1>
@@ -129,71 +122,32 @@ export default function Template({ data, pageContext }) {
         </StyledTags>
       </StyledInfo>
       <StyledSingleBlogPostArticle className="blog-post">
+        {typeof post.tableOfContents.items === 'undefined' ? (
+          <div></div>
+        ) : (
+          <TableOfContents className="blog-post-toc" items={post.tableOfContents.items}></TableOfContents>
+        )}
         <div className="blog-post-content">
           <MDXRenderer>{post.body}</MDXRenderer>
+          <StyledBlogBottomNav>
+            {prev && (
+              <Link to={prev.path}>
+                <small>{prev.title}</small>
+                <StyledButton>
+                  <FaChevronLeft /> Prev Post
+                </StyledButton>
+              </Link>
+            )}
+            {next && (
+              <Link to={next.path}>
+                <small>{next.title}</small>
+                <StyledButton>
+                  <FaChevronRight /> Next Post
+                </StyledButton>
+              </Link>
+            )}
+          </StyledBlogBottomNav>
         </div>
-
-        <svg
-          css={`
-            display: none;
-            ${props => props.theme.large} {
-              display: block;
-              position: fixed;
-              bottom: 30px;
-              left: 70px;
-              width: 120px;
-              height: 120px;
-            }
-          `}
-          viewBox="0 0 60 60"
-        >
-          <motion.path
-            fill="none"
-            strokeWidth="2"
-            css={`
-              stroke: ${StyledButtonColor};
-            `}
-            stroke="white"
-            strokeDasharray="0 1"
-            d="M 0, 20 a 20, 20 0 1,0 40,0 a 20, 20 0 1,0 -40,0"
-            style={{
-              pathLength,
-              rotate: 90,
-              translateX: 5,
-              translateY: 5,
-              scaleX: -1, // Reverse direction of line animation
-            }}
-          />
-          <motion.path
-            fill="none"
-            css={`
-              stroke: ${StyledButtonColor};
-            `}
-            strokeWidth="2"
-            d="M14,26 L 22,33 L 35,16"
-            initial={false}
-            strokeDasharray="0 1"
-            animate={{ pathLength: isComplete ? 1 : 0 }}
-          />
-        </svg>
-        <StyledBlogBottomNav>
-          {prev && (
-            <Link to={prev.path}>
-              <small>{prev.title}</small>
-              <StyledButton>
-                <FaChevronLeft /> Prev Post
-              </StyledButton>
-            </Link>
-          )}
-          {next && (
-            <Link to={next.path}>
-              <small>{next.title}</small>
-              <StyledButton>
-                <FaChevronRight /> Next Post
-              </StyledButton>
-            </Link>
-          )}
-        </StyledBlogBottomNav>
       </StyledSingleBlogPostArticle>
     </Layout>
   );
@@ -202,6 +156,7 @@ export default function Template({ data, pageContext }) {
 export const pageQuery = graphql`
   query BlogPostByPath($path: String!) {
     mdx(frontmatter: { path: { eq: $path } }) {
+      tableOfContents
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")

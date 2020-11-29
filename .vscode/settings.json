@@ -13,12 +13,15 @@
     "titleBar.inactiveForeground": "#15202b99",
     "statusBar.background": "#4a90e2",
     "statusBarItem.hoverBackground": "#2275d7",
-    "statusBar.foreground": "#15202b",
-    "statusBar.border": "#4a90e2",
-    "titleBar.border": "#4a90e2"
+    "statusBar.foreground": "#15202b"
   },
   "files.associations": {
     "*.md": "mdx"
   },
-  "peacock.color": "#4A90E2"
+  "peacock.color": "#4A90E2",
+  "cSpell.words": [
+    "Artikel",
+    "Cofman",
+    "frontmatter"
+  ]
 }

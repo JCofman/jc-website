@@ -150,17 +150,15 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: `300`,
+            },
+          },
           `gatsby-remark-prismjs`,
           `gatsby-remark-smartypants`,
-          `gatsby-remark-autolink-headers`,
         ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-134206784-1`,
       },
     },
     `gatsby-transformer-json`,
@@ -194,11 +192,22 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: `300`,
+            },
+          },
           `gatsby-remark-prismjs`,
           `gatsby-remark-smartypants`,
         ],
         extensions: [`.mdx`, `.md`],
-        default: require.resolve(`./src/components/Layout/Layout.js`),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-anchor-links`,
+      options: {
+        offset: -70,
       },
     },
     {

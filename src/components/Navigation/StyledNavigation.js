@@ -4,13 +4,13 @@ import { zIndexLogo, zIndexNavigation } from '../../components/Styles/zIndex';
 import { sizes } from '../Layout/Theme';
 
 const NavBackgroundColor = theme(`mode`, {
-  light: props => props.theme.colors.white,
-  dark: props => props.theme.colors.black,
+  light: (props) => props.theme.colors.white,
+  dark: (props) => props.theme.colors.black,
 });
 
 const NavFontColor = theme(`mode`, {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white,
+  light: (props) => props.theme.colors.black,
+  dark: (props) => props.theme.colors.white,
 });
 
 const NavLinkFontColor = NavFontColor;
@@ -24,7 +24,7 @@ export const StyledWrapper = styled.div`
   align-items: center;
   background-color: ${NavBackgroundColor};
   z-index: ${zIndexNavigation};
-  border-top: 2px solid ${props => props.theme.colors.primary};
+  border-top: 2px solid ${(props) => props.theme.colors.primary};
   border-bottom: 1px solid #201c29;
 `;
 
@@ -39,13 +39,13 @@ export const StyledNavWrapper = styled.div`
   float: right;
   box-shadow: none;
   transition: height 0.25s ease-in-out 0s, box-shadow 0.2s ease-in-out 0.05s,
-    background-color ${props => props.theme.themeTransition};
+    background-color ${(props) => props.theme.themeTransition};
   a {
     color: ${NavLinkFontColor};
   }
   a:hover,
   a:focus {
-    color: ${props => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.primary};
   }
 `;
 
@@ -70,26 +70,37 @@ export const StyledNav = styled.nav`
 `;
 
 export const StyledNavLogo = styled.svg`
-  width: 80px;
+  width: 140px;
   height: 140px;
   transition: all 0.25s ease-out 0s;
   margin-top: 5px; /* green top border margin */
   z-index: ${zIndexLogo};
+  background: ${NavBackgroundColor};
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
-  ${props => props.theme.xsmall} {
+  ${(props) => props.theme.xsmall} {
     width: 150px;
     height: 150px;
   }
-  ${props => props.theme.medium} {
-    width: 120px;
+
+  ${(props) => props.theme.medium} {
+    width: 140px;
     height: 140px;
     left: 70px;
     display: inline-block;
   }
-  ${props => props.theme.large} {
-    display: ${props => (props.scrollPositionY > 0 ? `visible` : `none`)};
+  ${(props) => props.theme.large} {
+    width: 140px;
+    height: 140px;
+    left: 70px;
+    display: inline-block;
+  }
+
+  @media (min-width: 2000px) {
+    display: ${(props) => (props.scrollPositionY > 0 ? `visible` : `none`)};
     position: fixed;
   }
+
   svg {
     width: 100%;
     display: inline-block;

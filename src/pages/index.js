@@ -14,8 +14,8 @@ import Home from './home';
 import Divider from '../components/Divider';
 
 const BlogArtikelWrapper = styled.article`
-  background-color: ${props => props.theme.black};
-  transition: color ${props => props.theme.themeTransition}, background-color ${props => props.theme.themeTransition};
+  background-color: ${(props) => props.theme.black};
+  transition: color ${(props) => props.theme.themeTransition};
   min-height: 300px;
   font-size: 1.6rem;
   display: flex;
@@ -25,20 +25,22 @@ const BlogArtikelWrapper = styled.article`
 
 const BlogArtikel = styled.div`
   display: flex;
+  max-width: ${(props) => props.theme.maxWidth};
+
   margin: 2rem auto;
   flex-direction: column;
 
-  ${props => props.theme.small} {
+  ${(props) => props.theme.small} {
     flex-direction: column;
     width: 80%;
   }
 
-  ${props => props.theme.large} {
+  ${(props) => props.theme.large} {
     width: 60%;
     flex-direction: row;
   }
 
-  ${props => props.theme.xlarge} {
+  ${(props) => props.theme.xlarge} {
     flex-direction: row;
   }
 `;
@@ -49,8 +51,8 @@ export const BlogArtikelHeaderTextShadow = theme(`mode`, {
 });
 
 export const BlogArtikelTextColor = theme(`mode`, {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white,
+  light: (props) => props.theme.colors.black,
+  dark: (props) => props.theme.colors.white,
 });
 
 const BaseArtikelHeader = styled.h2`
@@ -62,20 +64,20 @@ const BaseArtikelHeader = styled.h2`
   text-shadow: ${BlogArtikelHeaderTextShadow};
   a {
     color: ${BlogArtikelTextColor};
-    /* transition: color ${props => props.theme.themeTransition}; */ 
+    /* transition: color ${(props) => props.theme.themeTransition}; */ 
   }
   a:hover,
   a:focus {
-    color: ${props => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.primary};
     transition: none;
   }
-  ${props => props.theme.xsmall} {
+  ${(props) => props.theme.xsmall} {
     font-size: 3rem;
   }
-  ${props => props.theme.small} {
+  ${(props) => props.theme.small} {
     font-size: 5rem;
   }
-  ${props => props.theme.medium} {
+  ${(props) => props.theme.medium} {
     font-size: 5rem;
   }
 `;
@@ -133,10 +135,10 @@ const BlogArtikelImageWrapper = styled.div`
   flex-direction: row;
   margin: 0 auto;
 
-  ${props => props.theme.small} {
+  ${(props) => props.theme.small} {
     margin: 0 auto;
   }
-  ${props => props.theme.medium} {
+  ${(props) => props.theme.medium} {
     margin: 1rem 2rem;
   }
 `;
@@ -155,7 +157,7 @@ const BlogartikleSubInfo = styled.p`
 const BlogArtikelHeaderTime = styled.time`
   font-size: 2rem;
   color: ${BlogArtikelTextColor};
-  transition: color ${props => props.theme.themeTransition};
+  transition: color ${(props) => props.theme.themeTransition};
   padding: 0.1rem 0.25rem;
   margin: 0.25rem 0;
 `;
@@ -164,7 +166,7 @@ const BlogArtikelHeaderTags = styled.span`
   font-size: 1.5rem;
   padding: 0.1rem 0.25rem;
   margin: 0.25rem 0;
-  transition: color ${props => props.theme.themeTransition};
+  transition: color ${(props) => props.theme.themeTransition};
   color: ${BlogArtikelTextColor};
 `;
 
@@ -185,7 +187,7 @@ const IndexPage = () => {
               <BlogArtikel>
                 <BlogArtikelImageWrapper>
                   <Link aria-label={`Go to ${post.path}`} to={post.path}>
-                    <Img sizes={post.featuredImageSizes} />
+                    <Img fluid={post.featuredImageSizes} />
                   </Link>
                 </BlogArtikelImageWrapper>
                 <BlogArtikelSingleWrapper>
