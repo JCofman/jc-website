@@ -69,7 +69,7 @@
     "react-instantsearch-dom": "^6.8.2",
     "react-is": "^17.0.1",
     "react-simple-maps": "^2.3.0",
-    "react-spring": "^8.0.27",
+    "react-spring": "^9.0.0-rc.3",
     "react-three-fiber": "^5.3.3",
     "react-typography": "^0.16.19",
     "react-useportal": "^1.0.13",
