@@ -70,6 +70,7 @@ export const StyledSingleBlogPostArticle = styled.article`
     color: var(--text-color);
     margin-top: 48px;
     margin-bottom: 16px;
+    scroll-margin-top: 70px;
   }
 
   .blog-post-content p,

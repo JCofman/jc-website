@@ -178,17 +178,17 @@ exports[`Divider is rendered properly 1`] = `
         </g>
       </svg>
       <a
-        href="//.#exciting-stuff"
+        href="#exciting-stuff"
       >
         Exciting Stuff
       </a>
       <a
-        href="//.#what-i-have-learned-in-a-nutshell"
+        href="#what-i-have-learned-in-a-nutshell"
       >
         What I have learned in a nutshell
       </a>
       <a
-        href="//.#some-improvement-ideas"
+        href="#some-improvement-ideas"
       >
         Some improvement ideas
       </a>

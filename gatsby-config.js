@@ -205,12 +205,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-anchor-links`,
-      options: {
-        offset: -70,
-      },
-    },
-    {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env.ALGOLIA_APP_ID,
