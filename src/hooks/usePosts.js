@@ -46,7 +46,6 @@ export const usePosts = () => {
       }
     }
   `);
-  console.log(data.allMdx.edges);
   return {
     totalCount: data.allMdx.totalCount,
     posts: data.allMdx.edges.map(({ node: { frontmatter } }) => ({
