@@ -14,6 +14,19 @@ export const usePosts = () => {
               path
               tags
               excerpt
+              headerImage {
+                childImageSharp {
+                  sizes(maxWidth: 250, maxHeight: 250) {
+                    sizes
+                    src
+                    aspectRatio
+                    srcSet
+                    srcSetWebp
+                    srcWebp
+                    tracedSVG
+                  }
+                }
+              }
               featuredImage {
                 childImageSharp {
                   sizes(maxWidth: 250, maxHeight: 250) {
@@ -33,17 +46,20 @@ export const usePosts = () => {
       }
     }
   `);
-
+  console.log(data.allMdx.edges);
   return {
     totalCount: data.allMdx.totalCount,
-    posts: data.allMdx.edges.map(post => ({
-      title: post.node.frontmatter.title,
-      tags: post.node.frontmatter.tags,
-      path: post.node.frontmatter.path,
-      excerpt: post.node.frontmatter.excerpt,
-      date: post.node.frontmatter.date,
-      id: post.node.id,
-      featuredImageSizes: post.node.frontmatter.featuredImage.childImageSharp.sizes,
+    posts: data.allMdx.edges.map(({ node: { frontmatter } }) => ({
+      title: frontmatter.title,
+      tags: frontmatter.tags,
+      path: frontmatter.path,
+      excerpt: frontmatter.excerpt,
+      date: frontmatter.date,
+      id: frontmatter.id,
+      featuredImageSizes:
+        frontmatter.featuredImage !== null
+          ? frontmatter.featuredImage.childImageSharp.sizes
+          : frontmatter.headerImage.childImageSharp.sizes,
     })),
   };
 };
