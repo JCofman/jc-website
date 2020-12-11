@@ -132,6 +132,8 @@ module.exports = {
               // base for generating different widths of each image.
               maxWidth: 2024,
               withWebp: true,
+              linkImagesToOriginal: false,
+              markdownCaptions: true,
             },
           },
           {
@@ -174,6 +176,8 @@ module.exports = {
               // base for generating different widths of each image.
               maxWidth: 2024,
               withWebp: true,
+              linkImagesToOriginal: false,
+              markdownCaptions: true,
             },
           },
           {
