@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import theme from 'styled-theming';
+import { Helmet } from 'react-helmet';
 
 import { useMedia } from '../../hooks/useMedia';
 import { useLocalStorageState } from '../../hooks/useLocalStorage';
@@ -869,6 +870,13 @@ const Layout = ({ children, location }) => {
         colors: { ...colors },
       }}
     >
+      <Helmet>
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "27f1e6ab8f5743bd8e1e770722db344b"}'
+        ></script>
+      </Helmet>
       <StyledLayout>
         <Navigation location={location} changeTheme={changeTheme} />
         {children}
