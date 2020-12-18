@@ -20,7 +20,13 @@ export const useLocalStorageState = (
       valueInLocalStorage = window.localStorage.getItem(key);
     }
     if (valueInLocalStorage) {
-      return deserialize(valueInLocalStorage);
+      // avoids deserializing a not safe JSON value eg "dark" is valid but the string dark without ampersand should
+      // not get deserialized which was used in the first version
+      try {
+        return deserialize(valueInLocalStorage);
+      } catch (e) {
+        return valueInLocalStorage;
+      }
     }
     return typeof defaultValue === 'function' ? defaultValue() : defaultValue;
   });
