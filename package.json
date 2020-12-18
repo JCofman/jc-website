@@ -75,7 +75,8 @@
     "styled-theming": "^2.2.0",
     "three": "^0.123.0",
     "typeface-raleway": "^1.1.13",
-    "typography": "^0.16.19"
+    "typography": "^0.16.19",
+    "snyk": "^1.437.2"
   },
   "devDependencies": {
     "serve": "^11.3.2",
@@ -169,7 +170,9 @@
     "build-deploy-and-alias-storybook": "npm-run-all -s build:storybook deploy:storybook",
     "clean": "gatsby clean",
     "update": "ncu -u",
-    "validate": "npm-run-all --parallel lint test test:size:bundlesize"
+    "validate": "npm-run-all --parallel lint test test:size:bundlesize",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "bundlesize": [
     {
@@ -185,5 +188,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "snyk": true
 }
