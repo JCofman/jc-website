@@ -1,15 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../../components/Layout';
-import SEO from '../../components/SEO';
+import Layout from '../components/Layout';
+import SEO from '../components/SEO';
 
-import { StyledBlogArtikelHeaderParallelogram, StyledBlogArtikelHeaderCircle } from '../';
+import { StyledBlogArtikelHeaderParallelogram, StyledBlogArtikelHeaderCircle } from '.';
 import { StaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
-// import theme from 'styled-theming';
 
 const StyledH1 = styled.h1`
-  color: ${props => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.primary};
   transform: skew(-5deg) rotate(-1deg);
   font-size: 6rem;
   :before {
@@ -18,16 +17,16 @@ const StyledH1 = styled.h1`
     opacity: 0.2;
     border-left: 25px solid transparent;
     border-right: 25px solid transparent;
-    border-bottom: 50px solid ${props => props.theme.colors.white};
+    border-bottom: 50px solid ${(props) => props.theme.colors.white};
     content: '';
     pointer-events: none;
     position: absolute;
     transform: translateX(-0.5em) translateY(-1.5rem);
   }
-  ${props => props.theme.xsmall} {
+  ${(props) => props.theme.xsmall} {
     font-size: 6rem;
   }
-  ${props => props.theme.small} {
+  ${(props) => props.theme.small} {
     font-size: 8rem;
   }
 `;
@@ -41,24 +40,24 @@ export const Wrapper = styled.div`
   margin: 5rem 5rem;
   min-height: 50vh;
   align-items: center;
-  max-width: ${props => props.theme.maxWidth};
+  max-width: ${(props) => props.theme.maxWidth};
   grid-template-columns: 1fr;
   grid-gap: 2rem;
   grid-row-gap: 10rem;
 
-  ${props => props.theme.small} {
+  ${(props) => props.theme.small} {
     grid-template-columns: 1fr;
     margin: 10rem 5rem;
   }
 
-  ${props => props.theme.medium} {
+  ${(props) => props.theme.medium} {
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: center;
     margin: 10rem 3rem;
   }
 
-  ${props => props.theme.large} {
+  ${(props) => props.theme.large} {
     margin: 8rem auto;
     align-items: center;
     justify-content: center;
@@ -78,7 +77,7 @@ const StyledListTriangle = styled.ul`
     opacity: 0.5;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 10px solid ${props => props.theme.colors.white};
+    border-bottom: 10px solid ${(props) => props.theme.colors.white};
     left: -1em;
     top: 0.9em;
     position: relative;
@@ -97,7 +96,7 @@ const StyledListDots = styled.ul`
     height: 1rem;
     opacity: 0.5;
     border-radius: 50%;
-    background-color: ${props => props.theme.colors.white};
+    background-color: ${(props) => props.theme.colors.white};
     left: -1em;
     top: 0.9em;
     position: relative;
@@ -115,7 +114,7 @@ const StyledListParallelogram = styled.ul`
     width: 1.2rem;
     height: 0.9rem;
     opacity: 0.5;
-    background-color: ${props => props.theme.colors.white};
+    background-color: ${(props) => props.theme.colors.white};
     left: -1em;
     top: 0.9em;
     position: relative;
@@ -130,7 +129,7 @@ const StyledSkills = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
   order: 3;
-  ${props => props.theme.small} {
+  ${(props) => props.theme.small} {
     grid-template-columns: 1fr 1fr;
   }
 `;
@@ -156,7 +155,7 @@ const StyledCircle = styled.div`
   align-self: center;
   width: 100%;
   order: 3;
-  ${props => props.theme.medium} {
+  ${(props) => props.theme.medium} {
     order: 4;
   }
 `;
@@ -167,7 +166,7 @@ const StyledMainInformation = styled.div`
 
 const StyledInformationHobbies = styled.div`
   order: 4;
-  ${props => props.theme.medium} {
+  ${(props) => props.theme.medium} {
     order: 3;
   }
 `;
@@ -185,7 +184,7 @@ export const StyledH3 = styled.h3`
   font-size: 3rem;
 `;
 
-const calculateAge = birthday => {
+const calculateAge = (birthday) => {
   // birthday is a date
   const ageDifMs = Date.now() - birthday.getTime();
   const ageDate = new Date(ageDifMs); // miliseconds from epoch
@@ -219,7 +218,7 @@ const AboutMe = () => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <Layout>
         <SEO title="About Me" keywords={[`about me`, `jacob cofman`, `frontend`, `engineer`]} />
         <Wrapper>
@@ -232,7 +231,7 @@ const AboutMe = () => (
             <StyledSpan>That`s me 😏</StyledSpan>
             <StyledListTriangle>
               <li> {calculateAge(new Date(1991, 8, 31))} years old</li>
-              <li> Living in Karlsruhe Germany</li>
+              <li> Living in Lörrach Germany</li>
               <li> One twin brother</li>
               <li> A lovely girlfriend</li>
             </StyledListTriangle>
@@ -244,9 +243,9 @@ const AboutMe = () => (
             </StyledBlogArtikelHeaderCircle>
             <StyledSpan>This is what I love ❤️</StyledSpan>
             <StyledListDots>
-              <li> I play volleyball since I am seven years old</li>
-              <li> All the things especially frontend engineering stuff</li>
-              <li>A lot of outdoor activities like snowboarding, hiking and just enjoing the nature</li>
+              <li>I play volleyball since I am seven years old</li>
+              <li>Home automation things and especially frontend engineering stuff</li>
+              <li>A lot of outdoor activities like snowboarding, hiking and just enjoying the nature</li>
             </StyledListDots>
           </StyledInformationHobbies>
           <StyledCircle>
@@ -262,18 +261,18 @@ const AboutMe = () => (
               <StyledListParallelogram>
                 <StyledH3>💅 Frontend</StyledH3>
 
-                <li>JavaScript</li>
-                <li>CSS</li>
-                <li>GraphQL</li>
-                <li>React</li>
-                <li>Sketch</li>
+                <li>TypeScript - JavaScript</li>
+                <li>Styled-Components - SCSS - CSS</li>
+                <li>REST - GraphQL</li>
+                <li>React - Angular</li>
+                <li>Figma - Sketch</li>
               </StyledListParallelogram>
               <StyledListParallelogram>
                 <StyledH3>💻 Backend</StyledH3>
-
+                <li>Node - Express - NestJS</li>
+                <li>REST</li>
                 <li>GraphQL</li>
                 <li>Kubernetes</li>
-                <li>Node</li>
               </StyledListParallelogram>
               <StyledListParallelogram>
                 <StyledH3>🤓 Things I am currently learning</StyledH3>

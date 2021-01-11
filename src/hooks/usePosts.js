@@ -8,6 +8,9 @@ export const usePosts = () => {
         edges {
           node {
             id
+            fields {
+              slug
+            }
             frontmatter {
               title
               date(formatString: "MMMM DD, YYYY")
@@ -48,13 +51,14 @@ export const usePosts = () => {
   `);
   return {
     totalCount: data.allMdx.totalCount,
-    posts: data.allMdx.edges.map(({ node: { frontmatter } }) => ({
+    posts: data.allMdx.edges.map(({ node: { frontmatter, id, fields } }) => ({
       title: frontmatter.title,
       tags: frontmatter.tags,
       path: frontmatter.path,
       excerpt: frontmatter.excerpt,
       date: frontmatter.date,
-      id: frontmatter.id,
+      id: id,
+      slug: fields.slug,
       featuredImageSizes:
         frontmatter.featuredImage !== null
           ? frontmatter.featuredImage.childImageSharp.sizes

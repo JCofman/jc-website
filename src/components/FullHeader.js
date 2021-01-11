@@ -4,10 +4,10 @@ import { Html } from '@react-three/drei';
 import { useStaticQuery, graphql } from 'gatsby';
 import { ThemeContext } from 'styled-components';
 
-import { StyledInformation, StyledName, StyledHeaderBG } from '../../templates/PageStyles/StyledHome';
-import { Block } from '../../components/SwarmThree/Block';
-import Social from '../../components/Social';
-import { Shapes } from '../../components/SwarmThree/HomeShapes';
+import { StyledInformation, StyledName, StyledHeaderBG } from '../templates/PageStyles/StyledHome';
+import { Block } from './SwarmThree/Block';
+import Social from './Social';
+import { Shapes } from './SwarmThree/HomeShapes';
 
 const HtmlContent = ({ className, style, children, portal }) => {
   return (

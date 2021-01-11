@@ -3,11 +3,13 @@ import styled, { css } from 'styled-components';
 import theme from 'styled-theming';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import SEO from '../../components/SEO';
 import Layout from '../../components/Layout';
+import Link from '../../components/Link';
+
 import TableOfContents from '../../components/TableOfContents';
 import { StyledSingleBlogPostArticle } from './StyledBlogPost';
 
@@ -93,6 +95,7 @@ const StyledTags = styled.div`
 export default function Template({ data, pageContext }) {
   const { mdx: post } = data;
   const { next, prev } = pageContext;
+
   return (
     <Layout>
       <SEO
@@ -154,9 +157,11 @@ export default function Template({ data, pageContext }) {
 }
 
 export const pageQuery = graphql`
-  query BlogPostByPath($path: String!) {
-    mdx(frontmatter: { path: { eq: $path } }) {
+  query BlogPostByPath($id: String) {
+    mdx(id: { eq: $id }) {
       tableOfContents
+      id
+      body
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
@@ -177,7 +182,6 @@ export const pageQuery = graphql`
           }
         }
       }
-      body
     }
   }
 `;

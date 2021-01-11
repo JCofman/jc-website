@@ -10,7 +10,7 @@ import { usePosts } from '../hooks/usePosts';
 import { zIndexbackGroundAfterElements } from '../components/Styles/zIndex';
 
 import Layout from '../components/Layout';
-import Home from './home';
+import Header from '../components/Header';
 import Divider from '../components/Divider';
 
 const BlogArtikelWrapper = styled.article`
@@ -64,7 +64,6 @@ const BaseArtikelHeader = styled.h2`
   text-shadow: ${BlogArtikelHeaderTextShadow};
   a {
     color: ${BlogArtikelTextColor};
-    /* transition: color ${(props) => props.theme.themeTransition}; */ 
   }
   a:hover,
   a:focus {
@@ -175,35 +174,37 @@ const StyledMain = styled.main`
 `;
 
 const IndexPage = () => {
-  const { posts } = usePosts();
+  let { posts } = usePosts();
+  // only render most recent 5 posts;
+  posts = posts.slice(0, 5);
   return (
     <Layout>
       <SEO title="All posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
-      <Home />
+      <Header />
       <StyledMain>
         {posts.map((post, index) => {
           return (
             <BlogArtikelWrapper key={post.title}>
               <BlogArtikel>
                 <BlogArtikelImageWrapper>
-                  <Link aria-label={`Go to ${post.path}`} to={post.path}>
+                  <Link aria-label={`Go to ${post.slug}`} to={post.slug}>
                     <Img fluid={post.featuredImageSizes} />
                   </Link>
                 </BlogArtikelImageWrapper>
                 <BlogArtikelSingleWrapper>
                   {index % 3 === 0 && (
                     <StyledBlogArtikelHeaderTriangle>
-                      <Link to={post.path}>{post.title}</Link>
+                      <Link to={post.slug}>{post.title}</Link>
                     </StyledBlogArtikelHeaderTriangle>
                   )}
                   {index % 3 === 1 && (
                     <StyledBlogArtikelHeaderCircle>
-                      <Link to={post.path}>{post.title}</Link>
+                      <Link to={post.slug}>{post.title}</Link>
                     </StyledBlogArtikelHeaderCircle>
                   )}
                   {index % 3 === 2 && (
                     <StyledBlogArtikelHeaderParallelogram>
-                      <Link to={post.path}>{post.title}</Link>
+                      <Link to={post.slug}>{post.title}</Link>
                     </StyledBlogArtikelHeaderParallelogram>
                   )}
 

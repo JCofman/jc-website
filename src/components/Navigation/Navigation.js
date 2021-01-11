@@ -196,7 +196,8 @@ const Navigation = (props) => {
               <div>&nbsp;</div>
               <StyledNavList>
                 <NavLink to="/">Home</NavLink>
-                <NavLink to="/me">About</NavLink>
+                <NavLink to="/blog">Blog</NavLink>
+                <NavLink to="/about">About</NavLink>
                 <li
                   css={`
                     padding: 1rem 1rem;

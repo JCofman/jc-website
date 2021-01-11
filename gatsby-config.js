@@ -1,16 +1,17 @@
-const { PUBLISH_ON_NOW } = process.env;
-
 require(`dotenv`).config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
 const postQuery = `{
   posts: allMdx(
-    filter: { fileAbsolutePath: { regex: "/posts/" } }
+    filter: { fileAbsolutePath: { regex: "/blog/" } }
   ) {
     edges {
       node {
         objectID: id
+        fields {
+          slug
+        }
         frontmatter {
           title
           path
@@ -22,11 +23,13 @@ const postQuery = `{
     }
   }
 }`;
+
 const flatten = (arr) =>
   arr.map(({ node: { frontmatter, ...rest } }) => ({
     ...frontmatter,
     ...rest,
   }));
+
 const settings = { attributesToSnippet: [`excerpt:20`] };
 const queries = [
   {
@@ -41,7 +44,10 @@ module.exports = {
   siteMetadata: {
     title: `Jacob Cofman Website`,
     description: `This is my website and blog`,
-    author: `Jacob Cofman`,
+    author: {
+      name: `Jacob Cofman`,
+      summary: `who lives and works in Lörrach building useful things.`,
+    },
     siteUrl: `https://jcofman.de`,
     social: {
       twitter: `jcofman`,
@@ -52,17 +58,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        resolveEnv: () => PUBLISH_ON_NOW,
-        env: {
-          production: {
-            policy: [{ userAgent: `*` }],
-          },
-          'branch-deploy': {
-            policy: [{ userAgent: `*`, disallow: [`/`] }],
-            sitemap: null,
-            host: null,
-          },
-        },
+        host: 'https://www.jcofman.de',
+        sitemap: 'https://www.jcofman.de/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }],
       },
     },
     `gatsby-plugin-react-helmet`,
@@ -109,8 +107,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/pages`,
-        name: `pages`,
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
       },
     },
     {

@@ -12,15 +12,15 @@ import Hits from '../Hits';
 const ConnectedHits = connectHits(Hits);
 
 const InputColor = theme(`mode`, {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white,
+  light: (props) => props.theme.colors.black,
+  dark: (props) => props.theme.colors.white,
 });
 
 const StyledSearchIcon = styled(FaSearch)`
   position: absolute;
   top: 14px;
-  color: ${props => props.theme.primary};
-  ${props => props.theme.small} {
+  color: ${(props) => props.theme.primary};
+  ${(props) => props.theme.small} {
     top: 26px;
   }
 `;
@@ -33,7 +33,7 @@ const StyledForm = styled.form`
   align-items: 'center';
   padding-left: '0.25rem';
   padding-right: '0.25rem';
-  ${props => props.theme.small} {
+  ${(props) => props.theme.small} {
     justify-content: 'flex-end';
     margin-right: 10;
   }
@@ -54,7 +54,7 @@ const StyledInput = styled.input`
     outline: 0;
   }
   &::placeholder {
-    color: ${props => props.theme.primary};
+    color: ${(props) => props.theme.primary};
   }
 `;
 
@@ -63,8 +63,8 @@ const SearchBar = ({ isSearchStalled, refine, hits }) => {
 
   return (
     <Downshift
-      itemToString={i => (i ? i.title : i)}
-      onChange={item => navigate(item.path)}
+      itemToString={(i) => (i ? i.title : i)}
+      onChange={(item) => navigate(item.fields.slug)}
       defaultHighlightedIndex={0}
       initialInputValue=""
       inputValue={inputValue.inputValue}

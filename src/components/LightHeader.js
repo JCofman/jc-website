@@ -3,9 +3,9 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { ThemeContext } from 'styled-components';
 
-import { StyledHeaderBG, StyledWrapper, StyledInformation, StyledName } from '../../templates/PageStyles/StyledHome';
+import { StyledHeaderBG, StyledWrapper, StyledInformation, StyledName } from '../templates/PageStyles/StyledHome';
 
-import Social from '../../components/Social';
+import Social from './Social';
 
 const LightHeader = () => {
   const themeContext = React.useContext(ThemeContext);

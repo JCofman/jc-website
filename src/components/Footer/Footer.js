@@ -7,13 +7,13 @@ import { NavLink } from '../../components/Navigation/Navigation';
 
 const StyledMap = styled.div`
   margin: 5rem auto;
-  transition: background-color ${props => props.theme.themeTransition};
+  transition: background-color ${(props) => props.theme.themeTransition};
   width: 100%;
-  max-width: ${props => props.theme.maxWidth};
-  ${props => props.theme.small} {
+  max-width: ${(props) => props.theme.maxWidth};
+  ${(props) => props.theme.small} {
     margin: 0px;
   }
-  ${props => props.theme.medium} {
+  ${(props) => props.theme.medium} {
     margin: 1rem auto;
   }
 `;
@@ -39,23 +39,23 @@ const NavListWrapper = styled.div`
   width: 100%;
   display: grid;
   grid-gap: 20px;
-  ${props => props.theme.small} {
+  ${(props) => props.theme.small} {
     grid-template-columns: 1 1fr;
   }
-  ${props => props.theme.medium} {
+  ${(props) => props.theme.medium} {
     grid-template-columns: repeat(3, 1fr);
   }
-  ${props => props.theme.large} {
+  ${(props) => props.theme.large} {
     grid-template-columns: repeat(3, 1fr);
   }
-  ${props => props.theme.xlarge} {
+  ${(props) => props.theme.xlarge} {
     grid-template-columns: repeat(3, 1fr);
   }
 `;
 
 const NavFontColor = theme(`mode`, {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white,
+  light: (props) => props.theme.colors.black,
+  dark: (props) => props.theme.colors.white,
 });
 
 const NavList = styled.ul`
@@ -130,7 +130,7 @@ const Footer = () => {
           </NavList>
           <Social />
           <NavList>
-            <NavLink to="/me">About</NavLink>
+            <NavLink to="/about">About</NavLink>
           </NavList>
         </NavListWrapper>
       </StyledFooter>

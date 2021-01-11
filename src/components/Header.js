@@ -5,7 +5,7 @@ import { useMemoryStatus } from 'react-adaptive-hooks/memory';
 const FullHeader = React.lazy(() => import(/* webpackChunkName: "fullhome" */ './FullHeader.js'));
 const LightHeader = React.lazy(() => import(/* webpackChunkName: "lighthome" */ './LightHeader.js'));
 
-const Home = () => {
+const Header = () => {
   const { effectiveConnectionType } = useNetworkStatus();
   const { deviceMemory } = useMemoryStatus();
   const isSSR = typeof window === 'undefined';
@@ -23,4 +23,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Header;
