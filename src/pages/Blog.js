@@ -104,7 +104,7 @@ const Blog = () => {
           <span> {posts.length} posts </span>
         </StyledGradientBox>
         <StyledGrid>
-          {posts.map((post, index) => {
+          {posts.map((post) => {
             return (
               <StyledBlogPost key={post.title}>
                 <GatsbyLink aria-label={`Go to ${post.slug}`} to={post.slug}>
