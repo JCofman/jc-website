@@ -1,6 +1,6 @@
 const path = require(`path`);
 
-const BLOG_POST_FILENAME_REGEX = /([0-9]+)\-([0-9]+)\-([0-9]+)\-(.*?)\/index\.mdx$/;
+const BLOG_POST_FILENAME_REGEX = /([0-9]+)-([0-9]+)-([0-9]+)-(.*?)\/index\.mdx$/;
 
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
