@@ -41,6 +41,7 @@ const queries = [
 ];
 
 module.exports = {
+  flags: { PRESERVE_WEBPACK_CACHE: true, FAST_DEV: true, FAST_REFRESH: true, DEV_SSR: true },
   siteMetadata: {
     title: `Jacob Cofman Website`,
     description: `This is my website and blog`,

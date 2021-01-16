@@ -246,6 +246,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
     font-feature-settings: "kern", "liga", "clig", "calt";
     margin: 0;
+    overflow: hidden;
   }
   img {
     max-width: 100%;
