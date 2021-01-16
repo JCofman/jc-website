@@ -84,7 +84,7 @@ const StyledBlogPost = styled.div`
   }
 `;
 
-const Blog = () => {
+const MyBlog = () => {
   const { posts } = usePosts();
   return (
     <Layout>
@@ -183,4 +183,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default MyBlog;
