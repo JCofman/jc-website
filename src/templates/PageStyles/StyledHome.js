@@ -81,22 +81,6 @@ export const StyledInformation = styled.div`
     margin-left: 2rem;
     margin-right: 2rem;
   }
-  ${(props) => props.theme.large} {
-    position: absolute;
-    padding-top: 10rem;
-    padding-bottom: 10rem;
-    top: 12rem;
-    left: 25rem;
-  }
-
-  ${(props) => props.theme.xlarge} {
-    position: absolute;
-    top: 15rem;
-    left: 30rem;
-    margin-left: 2rem;
-    margin-right: 6rem;
-    text-shadow: ${InformationTextShadow};
-  }
 
   h1 {
     font-size: 3rem;

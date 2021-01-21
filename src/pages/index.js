@@ -85,7 +85,7 @@ const StyledBlogArtikelHeaderBorder = theme(`mode`, {
   dark: `white`,
 });
 
-export const StyledBlogArtikelHeaderTriangle = styled(BaseArtikelHeader)`
+const StyledBlogArtikelHeaderTriangle = styled(BaseArtikelHeader)`
   :before {
     width: 0;
     height: 0;
@@ -101,7 +101,7 @@ export const StyledBlogArtikelHeaderTriangle = styled(BaseArtikelHeader)`
   }
 `;
 
-export const StyledBlogArtikelHeaderCircle = styled(BaseArtikelHeader)`
+const StyledBlogArtikelHeaderCircle = styled(BaseArtikelHeader)`
   :before {
     width: 50px;
     height: 50px;
@@ -115,7 +115,7 @@ export const StyledBlogArtikelHeaderCircle = styled(BaseArtikelHeader)`
   }
 `;
 
-export const StyledBlogArtikelHeaderParallelogram = styled(BaseArtikelHeader)`
+const StyledBlogArtikelHeaderParallelogram = styled(BaseArtikelHeader)`
   :before {
     width: 50px;
     height: 40px;
