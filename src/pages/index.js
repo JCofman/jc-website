@@ -55,7 +55,7 @@ export const BlogArtikelTextColor = theme(`mode`, {
   dark: (props) => props.theme.colors.white,
 });
 
-const BaseArtikelHeader = styled.h2`
+export const BaseArtikelHeader = styled.h2`
   font-size: 3rem;
   margin-bottom: 2rem;
   color: ${BlogArtikelTextColor};
@@ -80,12 +80,12 @@ const BaseArtikelHeader = styled.h2`
     font-size: 5rem;
   }
 `;
-const StyledBlogArtikelHeaderBorder = theme(`mode`, {
+export const StyledBlogArtikelHeaderBorder = theme(`mode`, {
   light: `black`,
   dark: `white`,
 });
 
-const StyledBlogArtikelHeaderTriangle = styled(BaseArtikelHeader)`
+export const StyledBlogArtikelHeaderTriangle = styled(BaseArtikelHeader)`
   :before {
     width: 0;
     height: 0;
@@ -101,7 +101,7 @@ const StyledBlogArtikelHeaderTriangle = styled(BaseArtikelHeader)`
   }
 `;
 
-const StyledBlogArtikelHeaderCircle = styled(BaseArtikelHeader)`
+export const StyledBlogArtikelHeaderCircle = styled(BaseArtikelHeader)`
   :before {
     width: 50px;
     height: 50px;
@@ -115,7 +115,7 @@ const StyledBlogArtikelHeaderCircle = styled(BaseArtikelHeader)`
   }
 `;
 
-const StyledBlogArtikelHeaderParallelogram = styled(BaseArtikelHeader)`
+export const StyledBlogArtikelHeaderParallelogram = styled(BaseArtikelHeader)`
   :before {
     width: 50px;
     height: 40px;
