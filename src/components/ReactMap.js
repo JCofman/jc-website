@@ -1,13 +1,7 @@
 import React from 'react';
-// import theme from 'styled-theming';
 
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import GeoWorldMap from './world-50m.json';
-
-// const MapColor = theme('mode', {
-//   light: props => props.theme.colors.white,
-//   dark: props => props.theme.colors.black,
-// });
 
 const ReactMap = () => {
   return (

@@ -45,17 +45,17 @@ const BlogArtikel = styled.div`
   }
 `;
 
-export const BlogArtikelHeaderTextShadow = theme(`mode`, {
+const BlogArtikelHeaderTextShadow = theme(`mode`, {
   light: `2px 2px 0 rgba(0,0, 0,0.3)`,
   dark: `2px 2px 0 rgba(255,255, 255,0.3)`,
 });
 
-export const BlogArtikelTextColor = theme(`mode`, {
+const BlogArtikelTextColor = theme(`mode`, {
   light: (props) => props.theme.colors.black,
   dark: (props) => props.theme.colors.white,
 });
 
-export const BaseArtikelHeader = styled.h2`
+const BaseArtikelHeader = styled.h2`
   font-size: 3rem;
   margin-bottom: 2rem;
   color: ${BlogArtikelTextColor};
@@ -80,12 +80,12 @@ export const BaseArtikelHeader = styled.h2`
     font-size: 5rem;
   }
 `;
-export const StyledBlogArtikelHeaderBorder = theme(`mode`, {
+const StyledBlogArtikelHeaderBorder = theme(`mode`, {
   light: `black`,
   dark: `white`,
 });
 
-export const StyledBlogArtikelHeaderTriangle = styled(BaseArtikelHeader)`
+const StyledBlogArtikelHeaderTriangle = styled(BaseArtikelHeader)`
   :before {
     width: 0;
     height: 0;

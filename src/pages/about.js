@@ -35,7 +35,7 @@ const StyledSpan = styled.span`
   text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.2);
 `;
 
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   display: grid;
   margin: 5rem 5rem;
   min-height: 50vh;
@@ -175,12 +175,7 @@ const StyledInformationSkills = styled.div`
   order: 6;
 `;
 
-export const StyledHeader = styled.h1`
-  display: flex;
-  align-items: left;
-`;
-
-export const StyledH3 = styled.h3`
+const StyledH3 = styled.h3`
   font-size: 3rem;
 `;
 
