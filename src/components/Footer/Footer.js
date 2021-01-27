@@ -122,11 +122,7 @@ const Footer = () => {
         <NavListWrapper>
           <NavList>
             <NavLink to="/">Home</NavLink>
-            <FooterListLink>
-              <a href="https://www.iubenda.com/privacy-policy/83684129" title="Privacy Policy ">
-                Privacy Policy
-              </a>
-            </FooterListLink>
+            <FooterListLink></FooterListLink>
           </NavList>
           <Social />
           <NavList>

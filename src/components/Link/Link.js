@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 
 const StyledLink = styled((props) => <GatsbyLink {...props} />)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 200px;
   font-size: 1.6rem;
   font-weight: 600;
@@ -29,11 +32,6 @@ const StyledLink = styled((props) => <GatsbyLink {...props} />)`
     background-position: 100% 0;
     transition: all 0.4s ease-in-out;
     background-image: linear-gradient(19deg, #4a90e2 0%, #3eecac 100%);
-  }
-
-  & span {
-    position: relative;
-    top: 16px;
   }
 `;
 

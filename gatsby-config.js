@@ -217,13 +217,6 @@ module.exports = {
         chunkSize: 10000, // default: 1000
       },
     },
-    {
-      resolve: '@sentry/gatsby',
-      options: {
-        dsn: 'https://89fb7db8e9c544918d2c03f506b66177@o493065.ingest.sentry.io/5561469',
-        autoSessionTracking: true,
-        sampleRate: 0.7,
-      },
-    },
+    `gatsby-plugin-preact`,
   ],
 };
