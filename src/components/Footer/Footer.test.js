@@ -6,5 +6,6 @@ import Footer from './Footer';
 test(`Footer is rendered properly`, async () => {
   const { getByText } = render(<Footer />);
 
-  getByText(/Privacy Policy/i);
+  getByText(/Home/i);
+  getByText(/About/i);
 });
