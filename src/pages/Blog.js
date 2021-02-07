@@ -160,7 +160,7 @@ const MyBlog = () => {
                         align-items: center;
                       `}
                     >
-                      <Link aria-label={`Go to ${post.slu}`} to={post.slu}>
+                      <Link aria-label={`Go to ${post.slug}`} to={post.slug}>
                         Read
                       </Link>
                     </div>

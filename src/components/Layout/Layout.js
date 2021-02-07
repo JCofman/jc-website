@@ -2,6 +2,8 @@ import React from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import theme from 'styled-theming';
 import { Helmet } from 'react-helmet';
+import '@fontsource/raleway';
+import '@fontsource/raleway/600.css';
 
 import { useMedia } from '../../hooks/useMedia';
 import { useLocalStorageState } from '../../hooks/useLocalStorage';
@@ -246,8 +248,8 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
     font-feature-settings: "kern", "liga", "clig", "calt";
     margin: 0;
-    overflow: hidden;
   }
+
   img {
     max-width: 100%;
     margin-left: 0;
