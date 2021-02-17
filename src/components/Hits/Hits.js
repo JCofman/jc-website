@@ -1,38 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import theme from 'styled-theming';
 import { Link } from 'gatsby';
 import { Highlight } from 'react-instantsearch-dom';
 
 import Divider from '../Divider';
 import Heading from '../Heading';
 
-const StyledHitsBackgroundColor = theme(`mode`, {
-  light: props => props.theme.colors.white,
-  dark: props => props.theme.colors.black,
-});
-
 const StyledHits = styled.ul`
-  background-color: ${StyledHitsBackgroundColor};
+  background-color: var(--color-background);
   position: absolute;
   list-style: none;
 `;
 
-const StyledHitColor = theme(`mode`, {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white,
-});
-
 const StyledHit = styled.li`
-  background-color: ${StyledHitsBackgroundColor};
-  color: ${StyledHitColor};
+  background-color: var(--color-background);
+  color: var(--color-text);
   padding: 0.8rem;
   letter-spacing: 0.05px;
   font-size: 18px;
-  color: ${props => (props.highlightedIndex === props.index ? props.theme.colors.primary : StyledHitColor)};
+  color: ${(props) => (props.highlightedIndex === props.index ? `var(--color-primary)` : `var(--color-text)`)};
   a {
-    color: ${props => (props.highlightedIndex === props.index ? props.theme.colors.primary : StyledHitColor)};
+    color: ${(props) => (props.highlightedIndex === props.index ? `var(--color-primary)` : `var(--color-text)`)};
   }
 `;
 

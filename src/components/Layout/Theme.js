@@ -27,6 +27,16 @@ export const colors = {
   lightGrey: `#535B68`,
 };
 
+export const textShadows = {
+  light: `2px 2px 0 rgba(0,0, 0,0.3)`,
+  dark: `2px 2px 0 rgba(255,255, 255,0.3)`,
+};
+
+export const linearGradients = {
+  dark: `linear-gradient(rgba(1, 1, 1, 0.95), rgba(1, 1, 1, 0.95))`,
+  light: `linear-gradient(rgba(244, 244, 244, 0.95), rgba(244, 244, 244, 0.95))`,
+};
+
 export const themes = {
   dark: `dark`,
   light: `light`,

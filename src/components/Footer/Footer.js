@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
-import theme from 'styled-theming';
 
 import Social from '../../components/Social';
 import { NavLink } from '../../components/Navigation/Navigation';
@@ -9,6 +8,7 @@ const StyledMap = styled.div`
   margin: 5rem auto;
   transition: background-color ${(props) => props.theme.themeTransition};
   width: 100%;
+
   max-width: ${(props) => props.theme.maxWidth};
   ${(props) => props.theme.small} {
     margin: 0px;
@@ -19,7 +19,7 @@ const StyledMap = styled.div`
 `;
 
 export const StyledFooterWrapper = styled.div`
-  width: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,12 +27,15 @@ export const StyledFooterWrapper = styled.div`
 
 const StyledFooter = styled.footer`
   display: flex;
+  flex-shrink: 0;
+  flex-grow: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   margin-top: 2rem;
   border-top: 1px solid #201c29;
+  max-width: ${(props) => props.theme.maxWidth};
 `;
 
 const NavListWrapper = styled.div`
@@ -52,11 +55,6 @@ const NavListWrapper = styled.div`
     grid-template-columns: repeat(3, 1fr);
   }
 `;
-
-const NavFontColor = theme(`mode`, {
-  light: (props) => props.theme.colors.black,
-  dark: (props) => props.theme.colors.white,
-});
 
 const NavList = styled.ul`
   list-style: none;
@@ -82,11 +80,11 @@ const FooterListLink = styled.li`
     cursor: pointer;
     align-items: center;
     text-transform: uppercase;
-    color: ${NavFontColor};
+    color: var(--color-text);
 
     &:after {
       height: 2px;
-      background: #50e3c2;
+      background: var(--color-primary);
       content: '';
       width: 0;
       position: absolute;
@@ -105,7 +103,7 @@ const FooterListLink = styled.li`
     }
   }
 `;
-const LazyWorldMap = React.lazy(() => import(`../ReactMap` /* webpackChunkName: "WorldMap" */));
+const LazyWorldMap = React.lazy(() => import(`../Map/ReactMap` /* webpackChunkName: "WorldMap" */));
 
 const Footer = () => {
   return (

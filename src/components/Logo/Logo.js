@@ -1,18 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import theme from 'styled-theming';
-
-const LogoFillColor = theme(`mode`, {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white,
-});
 
 const StyledSVG = styled.svg`
-  fill: ${LogoFillColor};
+  fill: var(--color-background);
 `;
 
-export const Logo = props => (
+export const Logo = (props) => (
   <StyledSVG viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/StyledSVG" {...props}>
     <g transform="translate(-10 -332)">
       <path

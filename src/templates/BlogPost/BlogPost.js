@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import theme from 'styled-theming';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import { graphql } from 'gatsby';
@@ -13,27 +12,22 @@ import Link from '../../components/Link';
 import TableOfContents from '../../components/TableOfContents';
 import { StyledSingleBlogPostArticle } from './StyledBlogPost';
 
-const StyledButtonColor = theme(`mode`, {
-  light: (props) => props.theme.colors.black,
-  dark: (props) => props.theme.colors.white,
-});
-
 const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
   border-radius: 3px;
-  border: 2px solid ${(props) => props.theme.colors.primary};
-  color: ${StyledButtonColor};
+  border: 2px solid var(--color-primary);
+  color: var(--color-text);
   margin: 0.5em 1em;
   padding: 0.25em 1em;
 
   ${(props) =>
     props.primary &&
     css`
-      background: ${(props) => props.theme.colors.primary};
-      color: ${(props) => props.theme.colors.white};
+      background: var(--color-primary);
+      color: var(--color-white);
     `}
   &:hover, &:focus {
     cursor: pointer;

@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import BackgroundImage from 'gatsby-background-image';
 import { zIndexLogo } from '../../components/Styles/zIndex';
 
-import theme from 'styled-theming';
-
 export const StyledLogo = styled.svg`
   display: none;
   position: ${(props) => (props.scrollPositionY > 0 ? `fixed` : `static`)};
@@ -49,11 +47,6 @@ export const StyledWrapper = styled.div`
   height: 75vh;
 `;
 
-const InformationTextShadow = theme(`mode`, {
-  light: `3px 3px 0 rgba(0, 0, 0, 0.2)`,
-  dark: `3px 3px 0 rgba(255, 255, 255, 0.2)`,
-});
-
 export const StyledInformation = styled.div`
   display: flex;
   flex-direction: column;
@@ -65,7 +58,7 @@ export const StyledInformation = styled.div`
   padding-bottom: 3rem;
   margin-left: 2rem;
   margin-right: 2rem;
-  text-shadow: ${InformationTextShadow};
+  text-shadow: var(--text-shadow);
 
   ${(props) => props.theme.small} {
     position: initial;

@@ -2,7 +2,6 @@ import { Link } from 'gatsby';
 import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-import theme from 'styled-theming';
 
 import SEO from '../components/SEO';
 import { usePosts } from '../hooks/usePosts';
@@ -45,25 +44,19 @@ const BlogArtikel = styled.div`
   }
 `;
 
-const BlogArtikelHeaderTextShadow = theme(`mode`, {
-  light: `2px 2px 0 rgba(0,0, 0,0.3)`,
-  dark: `2px 2px 0 rgba(255,255, 255,0.3)`,
-});
-
-const BlogArtikelTextColor = theme(`mode`, {
-  light: (props) => props.theme.colors.black,
-  dark: (props) => props.theme.colors.white,
-});
+// const BlogArtikelHeaderTextShadow = theme(`mode`, {
+//   light: `2px 2px 0 rgba(0,0, 0,0.3)`,
+//   dark: `2px 2px 0 rgba(255,255, 255,0.3)`,
+// });
 
 const BaseArtikelHeader = styled.h2`
   font-size: 3rem;
   margin-bottom: 2rem;
-  color: ${BlogArtikelTextColor};
+  color: var(--color-text);
   transform: skew(-5deg) rotate(-1deg);
-  color: ${BlogArtikelTextColor};
-  text-shadow: ${BlogArtikelHeaderTextShadow};
+  text-shadow: var(--text-shadow);
   a {
-    color: ${BlogArtikelTextColor};
+    color: var(--color-text);
   }
   a:hover,
   a:focus {
@@ -80,10 +73,6 @@ const BaseArtikelHeader = styled.h2`
     font-size: 5rem;
   }
 `;
-const StyledBlogArtikelHeaderBorder = theme(`mode`, {
-  light: `black`,
-  dark: `white`,
-});
 
 const StyledBlogArtikelHeaderTriangle = styled(BaseArtikelHeader)`
   :before {
@@ -92,7 +81,7 @@ const StyledBlogArtikelHeaderTriangle = styled(BaseArtikelHeader)`
     opacity: 0.2;
     border-left: 25px solid transparent;
     border-right: 25px solid transparent;
-    border-bottom: 50px solid ${StyledBlogArtikelHeaderBorder};
+    border-bottom: 50px solid var(--color-text);
     content: '';
     pointer-events: none;
     position: absolute;
@@ -107,7 +96,7 @@ export const StyledBlogArtikelHeaderCircle = styled(BaseArtikelHeader)`
     height: 50px;
     border-radius: 50%;
     opacity: 0.2;
-    background-color: ${StyledBlogArtikelHeaderBorder};
+    background-color: var(--color-text);
     content: '';
     pointer-events: none;
     position: absolute;
@@ -119,7 +108,7 @@ export const StyledBlogArtikelHeaderParallelogram = styled(BaseArtikelHeader)`
   :before {
     width: 50px;
     height: 40px;
-    background: ${StyledBlogArtikelHeaderBorder};
+    background: var(--color-text);
     opacity: 0.2;
     content: '';
     pointer-events: none;
@@ -155,7 +144,7 @@ const BlogartikleSubInfo = styled.p`
 
 const BlogArtikelHeaderTime = styled.time`
   font-size: 2rem;
-  color: ${BlogArtikelTextColor};
+  color: var(--color-text);
   transition: color ${(props) => props.theme.themeTransition};
   padding: 0.1rem 0.25rem;
   margin: 0.25rem 0;
@@ -166,7 +155,7 @@ const BlogArtikelHeaderTags = styled.span`
   padding: 0.1rem 0.25rem;
   margin: 0.25rem 0;
   transition: color ${(props) => props.theme.themeTransition};
-  color: ${BlogArtikelTextColor};
+  color: var(--color-text);
 `;
 
 const StyledMain = styled.main`

@@ -3,18 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Downshift from 'downshift';
 import { navigate } from 'gatsby';
-import theme from 'styled-theming';
 import { FaSearch } from 'react-icons/fa';
 import { connectAutoComplete, connectHits } from 'react-instantsearch-dom';
 
 import Hits from '../Hits';
 
 const ConnectedHits = connectHits(Hits);
-
-const InputColor = theme(`mode`, {
-  light: (props) => props.theme.colors.black,
-  dark: (props) => props.theme.colors.white,
-});
 
 const StyledSearchIcon = styled(FaSearch)`
   position: absolute;
@@ -42,7 +36,7 @@ const StyledForm = styled.form`
 const StyledInput = styled.input`
   background-color: transparent;
   border: 0;
-  color: ${InputColor};
+  color: var(--color-text);
   appearance: 'none';
   width: 100%;
   font-size: 18px;

@@ -3,15 +3,14 @@ import algoliasearch from 'algoliasearch/lite';
 import { Link } from 'gatsby';
 import { withTheme, css } from 'styled-components';
 import { InstantSearch } from 'react-instantsearch-dom';
-import { colors } from '../Layout/Theme';
 import styled from 'styled-components';
-import theme from 'styled-theming';
 import { Location } from '@reach/router';
 import { FaMoon, FaSun, FaSearch, FaWindowClose } from 'react-icons/fa';
 
 import useModal from '../../hooks/useModal';
 import { useMedia } from '../../hooks/useMedia';
 import { useWindowScrollPosition } from '../../hooks/useWindowScrollPosition';
+import { colors } from '../Layout/Theme';
 
 import Logo from '../Logo';
 import SearchBar from '../SearchBar';
@@ -32,32 +31,22 @@ const StyledSearchIcon = styled(FaSearch)`
   align-self: center;
 `;
 
-const StyledModalCloseButtonColor = theme(`mode`, {
-  light: (props) => props.theme.colors.black,
-  dark: (props) => props.theme.colors.white,
-});
-
 const StyledModalCloseButton = styled.button`
   position: absolute;
   top: 14px;
   right: 12px;
   background-color: transparent;
-  color: ${StyledModalCloseButtonColor};
+  color: var(--color-text);
   cursor: pointer;
   border: none;
 `;
-
-const StyledSearchIconButtonColor = theme(`mode`, {
-  light: (props) => props.theme.colors.black,
-  dark: (props) => props.theme.colors.white,
-});
 
 const StyledSearchIconButton = styled.button`
   display: flex;
   width: 40px;
   height: 70px;
   background-color: transparent;
-  color: ${StyledSearchIconButtonColor};
+  color: var(--color-text);
   cursor: pointer;
   border: none;
 `;
@@ -68,27 +57,17 @@ const StyledSearch = styled.div`
   z-index: 1000;
 `;
 
-const StyledModalBackgroundColor = theme(`mode`, {
-  light: (props) => props.theme.colors.white,
-  dark: (props) => props.theme.colors.black,
-});
-
 const StyledModal = styled.div`
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: ${StyledModalBackgroundColor};
+  background-color: var(--color-background);
   z-index: 100;
   width: 80%;
   height: 80vh;
   padding: 8px;
 `;
-
-const StyledDarkLightModeSwitcherButtonColor = theme(`mode`, {
-  light: (props) => props.theme.colors.black,
-  dark: (props) => props.theme.colors.white,
-});
 
 const StyledDarkLightModeSwitcherButton = styled.button`
   display: flex;
@@ -96,7 +75,7 @@ const StyledDarkLightModeSwitcherButton = styled.button`
   justify-content: center;
   background: transparent;
   border-radius: 3px;
-  color: ${StyledDarkLightModeSwitcherButtonColor};
+  color: var(--color-text);
   border: 2px solid transparent;
   ${(props) =>
     props.primary &&
@@ -205,7 +184,10 @@ const Navigation = (props) => {
                   `}
                 >
                   <StyledDarkLightModeSwitcherButton
-                    onClick={() => props.changeTheme()}
+                    onClick={() => {
+                      props.changeTheme();
+                      props.setColorMode('dark');
+                    }}
                     aria-label="Switch dark and light mode"
                   >
                     {mode === `light` ? <FaSun /> : <FaMoon />}

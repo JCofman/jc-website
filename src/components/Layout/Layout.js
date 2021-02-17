@@ -1,6 +1,5 @@
 import React from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
-import theme from 'styled-theming';
 import { Helmet } from 'react-helmet';
 import '@fontsource/raleway';
 import '@fontsource/raleway/600.css';
@@ -10,22 +9,7 @@ import { useLocalStorageState } from '../../hooks/useLocalStorage';
 import Navigation from '../Navigation';
 import Footer from '../Footer';
 import StyledLayout from './StyledLayout';
-import { themes, breakPoints, maxWidth, themeTransition, colors } from './Theme';
-
-const backgroundColor = theme(`mode`, {
-  light: colors.white,
-  dark: colors.black,
-});
-
-const bodyTextColor = theme(`mode`, {
-  light: colors.black,
-  dark: colors.white,
-});
-
-const aTagTextColor = theme(`mode`, {
-  light: colors.black,
-  dark: colors.white,
-});
+import { themes, breakPoints, maxWidth, themeTransition, colors, textShadows } from './Theme';
 
 export const GlobalStyle = createGlobalStyle`
    :root {
@@ -34,14 +18,24 @@ export const GlobalStyle = createGlobalStyle`
     --color-primary: ${colors.primary};
     --color-secondary: ${colors.secondary};
     
+    --color-lightGrey: ${colors.lightGrey};
+    --color-darkGrey: ${colors.darkGrey};
+
     --font-size-small: 1.6rem;
-    --font-size-medium: 2.2rem;
+    --font-size-medium: 2.5rem;
+    --font-size-large: 3.12rem;
+    --font-size-xlarge: 3.9rem;
+    --font-size-xxlarge: 4.88rem;
+    --font-size-xxxlarge: 6.1rem;
+
+    --theme-transition: 1s ease-in-out;
+    --text-shadow: ${textShadows.dark};
+    
 
     @media (min-width: 1024px) {
       --font-size-small: 2.1rem;
       --font-size-medium: 2.4rem;
-    }
-  }
+    } 
 
   article,
   aside,
@@ -75,7 +69,7 @@ export const GlobalStyle = createGlobalStyle`
     display: none;
   }
   a {
-    color: ${aTagTextColor};
+    color: var(--color-text);
     background-color: transparent;
     text-decoration: none;
     -webkit-text-decoration-skip: objects;
@@ -236,8 +230,8 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
   body {
-    color: ${bodyTextColor};
-    background-color: ${backgroundColor};
+    color: var(--color-text);
+    background-color:  var(--color-background);
     font-size: 1.5rem;
     font-family: "Raleway", sans-serif;
     font-weight: normal;
@@ -856,11 +850,32 @@ const Layout = ({ children, location }) => {
   if (typeof window !== `undefined`) {
     defaultThemeMode = getInitialTheme(prefersDarkMode ? `dark` : `light`);
   }
+  const [colorMode, rawSetColorMode] = React.useState(undefined);
 
   const [themeMode, setThemeMode] = useLocalStorageState('theme', defaultThemeMode);
 
   const changeTheme = () => {
     setThemeMode((prevState) => (prevState === `light` ? `dark` : `light`));
+  };
+
+  React.useEffect(() => {
+    const root = window.document.documentElement;
+    const initialColorValue = root.style.getPropertyValue('--initial-color-mode');
+    rawSetColorMode(initialColorValue);
+  }, []);
+
+  const setColorMode = (newValue) => {
+    const root = window.document.documentElement;
+    // 1. Update React color-mode state
+    rawSetColorMode(newValue);
+    // 2. Update localStorage
+    localStorage.setItem('color-mode', newValue);
+    // 3. Update each color
+    root.style.setProperty('--color-text', newValue === 'light' ? colors.dark : colors.light);
+    root.style.setProperty('--color-background', newValue === 'light' ? colors.dark : colors.light);
+    root.style.setProperty('--color-primary', newValue === 'light' ? colors.primary : colors.primary);
+    root.style.setProperty('--text-shadow', newValue === 'light' ? textShadows.dark : textShadows.light);
+    root.style.setProperty('--color-primary', newValue === 'light' ? colors.primary : colors.primary);
   };
 
   return (
@@ -881,7 +896,7 @@ const Layout = ({ children, location }) => {
         ></script>
       </Helmet>
       <StyledLayout>
-        <Navigation location={location} changeTheme={changeTheme} />
+        <Navigation location={location} changeTheme={changeTheme} setColorMode={setColorMode} />
         {children}
         <Footer />
       </StyledLayout>
