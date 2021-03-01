@@ -76,7 +76,7 @@
     "react-useportal": "^1.0.13",
     "styled-components": "^5.2.1",
     "styled-theming": "^2.2.0",
-    "three": "^0.124.0",
+    "three": "^0.125.0",
     "typeface-raleway": "^1.1.13",
     "typography": "^0.16.19"
   },
