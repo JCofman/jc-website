@@ -926,10 +926,11 @@ const Layout = ({ children, location }) => {
   const changeTheme = () => {
     if (themeMode === 'light') {
       setThemeMode('dark');
+      updateCSSProperties('dark');
     } else {
       setThemeMode('light');
+      updateCSSProperties('light');
     }
-    updateCSSProperties();
   };
 
   React.useEffect(() => {
@@ -938,7 +939,7 @@ const Layout = ({ children, location }) => {
     updateCSSProperties(initialTheme);
   }, []);
 
-  const updateCSSProperties = () => {
+  const updateCSSProperties = (themeMode) => {
     const root = window.document.documentElement;
     // 3. Update each color
     root.style.setProperty('--color-text', themeMode === 'light' ? colors.black : colors.white);
