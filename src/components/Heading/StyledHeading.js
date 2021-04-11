@@ -1,44 +1,60 @@
 import styled, { css } from 'styled-components';
-import theme from 'styled-theming';
-
-const HeadingTextShadow = theme(`mode`, {
-  light: `2px 2px 0 rgba(0,0, 0,0.3)`,
-  dark: `2px 2px 0 rgba(255,255, 255,0.3)`,
-});
-
-const HeadingTextColor = theme(`mode`, {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white,
-});
 
 const sharedHeadingStyles = css`
   font-family: 'Raleway', sans-serif;
   transform: skew(-5deg) rotate(-1deg);
   margin-bottom: 2rem;
-  color: ${HeadingTextColor};
-  text-shadow: ${HeadingTextShadow};
+  color: var(--color-text);
+  text-shadow: var(--text-shadow);
   a {
-    color: ${HeadingTextColor};
-    transition: color ${props => props.theme.themeTransition};
+    color: var(--color-text);
+    transition: color var(--theme-transition);
   }
   a:hover,
   a:focus {
-    color: ${props => props.theme.colors.primary};
+    color: var(--color-primary);
     transition: none;
   }
-  :before {
+  ${(props) =>
+    props.backgroundStyle === 'TRIANGLE' &&
+    `:before {
     width: 0;
     height: 0;
     opacity: 0.2;
     border-left: 1em solid transparent;
     border-right: 1em solid transparent;
-    border-bottom: 2em solid ${props => props.theme.colors.white};
+    border-bottom: 2em solid var(--color-text);
     content: '';
     pointer-events: none;
     position: absolute;
     z-index: -1;
     transform: translateX(-0.5em) translateY(-1.5rem);
-  }
+  }`}
+  ${(props) =>
+    props.backgroundStyle === 'PARALLELOGRAM' &&
+    `:before {
+    width: 50px;
+    height: 40px;
+    background: var(--color-text);
+    opacity: 0.2;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    transform: translateX(-0.5em) translateY(-1.5rem) skew(20deg);
+  }`}
+  ${(props) =>
+    props.backgroundStyle === 'CIRCLE' &&
+    `:before {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    opacity: 0.2;
+    background-color: var(--color-text);
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    transform: translateX(-0.5em) translateY(-1.5rem);
+  }`}
 `;
 
 const StyledHeadingH1 = styled.h1`

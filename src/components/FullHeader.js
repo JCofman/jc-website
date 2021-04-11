@@ -23,18 +23,16 @@ const FullHeader = () => {
   const domContent = React.useRef();
   const themeContext = React.useContext(ThemeContext);
   const { image } = useStaticQuery(graphql`
-    query {
+    {
       image: file(relativePath: { eq: "background.jpg" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
     }
   `);
   const backgroundFluidImage = [
-    image.childImageSharp.fluid,
+    image.childImageSharp.gatsbyImageData,
     `${
       themeContext && themeContext.mode === `dark`
         ? `linear-gradient(rgba(1, 1, 1, 0.95), rgba(1, 1, 1, 0.95))`

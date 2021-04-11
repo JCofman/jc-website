@@ -41,7 +41,7 @@ const queries = [
 ];
 
 module.exports = {
-  flags: { PRESERVE_WEBPACK_CACHE: true, FAST_DEV: true, FAST_REFRESH: true, DEV_SSR: true },
+  // flags: { PRESERVE_WEBPACK_CACHE: true, FAST_DEV: true, FAST_REFRESH: true, DEV_SSR: true },
   siteMetadata: {
     title: `Jacob Cofman Website`,
     description: `This is my website and blog`,
@@ -64,21 +64,14 @@ module.exports = {
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
+    `gatsby-plugin-optimize-svgs`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
-    {
-      resolve: `gatsby-plugin-webpack-bundle-analyzer`,
-      options: {
-        production: true,
-        disable: !process.env.ANALYZE_BUNDLE_SIZE,
-        generateStaticFile: true,
-        analyzerMode: `static`,
-      },
-    },
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-eslint`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -96,12 +89,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-offline`,
     },
-    `gatsby-plugin-svgr`,
     {
       resolve: `gatsby-plugin-react-svg`,
       options: {
         rule: {
-          include: /assets/,
+          include: /\.inline\.svg$/,
         },
       },
     },
@@ -180,6 +172,9 @@ module.exports = {
             },
           },
           {
+            resolve: `gatsby-remark-static-images`,
+          },
+          {
             resolve: `gatsby-remark-embed-video`,
             options: {
               width: 800,
@@ -217,6 +212,5 @@ module.exports = {
         chunkSize: 10000, // default: 1000
       },
     },
-    `gatsby-plugin-preact`,
   ],
 };

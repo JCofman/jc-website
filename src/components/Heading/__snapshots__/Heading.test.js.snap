@@ -8,19 +8,19 @@ exports[`should render a H1 header tags 1`] = `
   -ms-transform: skew(-5deg) rotate(-1deg);
   transform: skew(-5deg) rotate(-1deg);
   margin-bottom: 2rem;
-  color: #010101;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  color: var(--color-text);
+  text-shadow: var(--text-shadow);
 }
 
 .c0 a {
-  color: #010101;
-  -webkit-transition: color 1s ease-in-out;
-  transition: color 1s ease-in-out;
+  color: var(--color-text);
+  -webkit-transition: color var(--theme-transition);
+  transition: color var(--theme-transition);
 }
 
 .c0 a:hover,
 .c0 a:focus {
-  color: #50E3C2;
+  color: var(--color-primary);
   -webkit-transition: none;
   transition: none;
 }
@@ -31,7 +31,7 @@ exports[`should render a H1 header tags 1`] = `
   opacity: 0.2;
   border-left: 1em solid transparent;
   border-right: 1em solid transparent;
-  border-bottom: 2em solid #F4F4F4;
+  border-bottom: 2em solid var(--color-text);
   content: '';
   pointer-events: none;
   position: absolute;
@@ -57,20 +57,20 @@ exports[`should render a H2 header tags 1`] = `
   -ms-transform: skew(-5deg) rotate(-1deg);
   transform: skew(-5deg) rotate(-1deg);
   margin-bottom: 2rem;
-  color: #010101;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  color: var(--color-text);
+  text-shadow: var(--text-shadow);
   font-size: 5rem;
 }
 
 .c0 a {
-  color: #010101;
-  -webkit-transition: color 1s ease-in-out;
-  transition: color 1s ease-in-out;
+  color: var(--color-text);
+  -webkit-transition: color var(--theme-transition);
+  transition: color var(--theme-transition);
 }
 
 .c0 a:hover,
 .c0 a:focus {
-  color: #50E3C2;
+  color: var(--color-primary);
   -webkit-transition: none;
   transition: none;
 }
@@ -81,7 +81,7 @@ exports[`should render a H2 header tags 1`] = `
   opacity: 0.2;
   border-left: 1em solid transparent;
   border-right: 1em solid transparent;
-  border-bottom: 2em solid #F4F4F4;
+  border-bottom: 2em solid var(--color-text);
   content: '';
   pointer-events: none;
   position: absolute;
@@ -107,20 +107,20 @@ exports[`should render a H3 header tags 1`] = `
   -ms-transform: skew(-5deg) rotate(-1deg);
   transform: skew(-5deg) rotate(-1deg);
   margin-bottom: 2rem;
-  color: #010101;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  color: var(--color-text);
+  text-shadow: var(--text-shadow);
   font-size: 4rem;
 }
 
 .c0 a {
-  color: #010101;
-  -webkit-transition: color 1s ease-in-out;
-  transition: color 1s ease-in-out;
+  color: var(--color-text);
+  -webkit-transition: color var(--theme-transition);
+  transition: color var(--theme-transition);
 }
 
 .c0 a:hover,
 .c0 a:focus {
-  color: #50E3C2;
+  color: var(--color-primary);
   -webkit-transition: none;
   transition: none;
 }
@@ -131,7 +131,7 @@ exports[`should render a H3 header tags 1`] = `
   opacity: 0.2;
   border-left: 1em solid transparent;
   border-right: 1em solid transparent;
-  border-bottom: 2em solid #F4F4F4;
+  border-bottom: 2em solid var(--color-text);
   content: '';
   pointer-events: none;
   position: absolute;
@@ -157,20 +157,20 @@ exports[`should render a H4 header tags 1`] = `
   -ms-transform: skew(-5deg) rotate(-1deg);
   transform: skew(-5deg) rotate(-1deg);
   margin-bottom: 2rem;
-  color: #010101;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  color: var(--color-text);
+  text-shadow: var(--text-shadow);
   font-size: 3rem;
 }
 
 .c0 a {
-  color: #010101;
-  -webkit-transition: color 1s ease-in-out;
-  transition: color 1s ease-in-out;
+  color: var(--color-text);
+  -webkit-transition: color var(--theme-transition);
+  transition: color var(--theme-transition);
 }
 
 .c0 a:hover,
 .c0 a:focus {
-  color: #50E3C2;
+  color: var(--color-primary);
   -webkit-transition: none;
   transition: none;
 }
@@ -181,7 +181,7 @@ exports[`should render a H4 header tags 1`] = `
   opacity: 0.2;
   border-left: 1em solid transparent;
   border-right: 1em solid transparent;
-  border-bottom: 2em solid #F4F4F4;
+  border-bottom: 2em solid var(--color-text);
   content: '';
   pointer-events: none;
   position: absolute;
@@ -207,38 +207,22 @@ exports[`should render a H5 header tags 1`] = `
   -ms-transform: skew(-5deg) rotate(-1deg);
   transform: skew(-5deg) rotate(-1deg);
   margin-bottom: 2rem;
-  color: #010101;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  color: var(--color-text);
+  text-shadow: var(--text-shadow);
   font-size: 2.5rem;
 }
 
 .c0 a {
-  color: #010101;
-  -webkit-transition: color 1s ease-in-out;
-  transition: color 1s ease-in-out;
+  color: var(--color-text);
+  -webkit-transition: color var(--theme-transition);
+  transition: color var(--theme-transition);
 }
 
 .c0 a:hover,
 .c0 a:focus {
-  color: #50E3C2;
+  color: var(--color-primary);
   -webkit-transition: none;
   transition: none;
-}
-
-.c0:before {
-  width: 0;
-  height: 0;
-  opacity: 0.2;
-  border-left: 1em solid transparent;
-  border-right: 1em solid transparent;
-  border-bottom: 2em solid #F4F4F4;
-  content: '';
-  pointer-events: none;
-  position: absolute;
-  z-index: -1;
-  -webkit-transform: translateX(-0.5em) translateY(-1.5rem);
-  -ms-transform: translateX(-0.5em) translateY(-1.5rem);
-  transform: translateX(-0.5em) translateY(-1.5rem);
 }
 
 <h5
@@ -257,38 +241,22 @@ exports[`should render a H6 header tags 1`] = `
   -ms-transform: skew(-5deg) rotate(-1deg);
   transform: skew(-5deg) rotate(-1deg);
   margin-bottom: 2rem;
-  color: #010101;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  color: var(--color-text);
+  text-shadow: var(--text-shadow);
   font-size: 2rem;
 }
 
 .c0 a {
-  color: #010101;
-  -webkit-transition: color 1s ease-in-out;
-  transition: color 1s ease-in-out;
+  color: var(--color-text);
+  -webkit-transition: color var(--theme-transition);
+  transition: color var(--theme-transition);
 }
 
 .c0 a:hover,
 .c0 a:focus {
-  color: #50E3C2;
+  color: var(--color-primary);
   -webkit-transition: none;
   transition: none;
-}
-
-.c0:before {
-  width: 0;
-  height: 0;
-  opacity: 0.2;
-  border-left: 1em solid transparent;
-  border-right: 1em solid transparent;
-  border-bottom: 2em solid #F4F4F4;
-  content: '';
-  pointer-events: none;
-  position: absolute;
-  z-index: -1;
-  -webkit-transform: translateX(-0.5em) translateY(-1.5rem);
-  -ms-transform: translateX(-0.5em) translateY(-1.5rem);
-  transform: translateX(-0.5em) translateY(-1.5rem);
 }
 
 <h6

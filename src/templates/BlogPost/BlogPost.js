@@ -1,10 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import theme from 'styled-theming';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import SEO from '../../components/SEO';
 import Layout from '../../components/Layout';
@@ -13,27 +12,22 @@ import Link from '../../components/Link';
 import TableOfContents from '../../components/TableOfContents';
 import { StyledSingleBlogPostArticle } from './StyledBlogPost';
 
-const StyledButtonColor = theme(`mode`, {
-  light: (props) => props.theme.colors.black,
-  dark: (props) => props.theme.colors.white,
-});
-
 const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
   border-radius: 3px;
-  border: 2px solid ${(props) => props.theme.colors.primary};
-  color: ${StyledButtonColor};
+  border: 2px solid var(--color-primary);
+  color: var(--color-text);
   margin: 0.5em 1em;
   padding: 0.25em 1em;
 
   ${(props) =>
     props.primary &&
     css`
-      background: ${(props) => props.theme.colors.primary};
-      color: ${(props) => props.theme.colors.white};
+      background: var(--color-primary);
+      color: var(--color-white);
     `}
   &:hover, &:focus {
     cursor: pointer;
@@ -49,20 +43,18 @@ const StyledHeader = styled.header`
   h1 {
     margin: 0 1rem;
     text-align: center;
-    -webkit-transform: skew(-5deg) rotate(-1deg);
-    -ms-transform: skew(-5deg) rotate(-1deg);
+
     transform: skew(-5deg) rotate(-1deg);
     margin-top: -6rem;
     margin-left: auto;
     margin-right: auto;
-    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
     width: 80%;
     background-color: ${(props) => props.theme.colors.primary};
     transition: color ${(props) => props.theme.themeTransition};
     line-height: 1.1em;
     font-size: 4rem;
 
-    text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
     ${(props) => props.theme.small} {
       font-size: 6rem;
     }
@@ -95,21 +87,18 @@ const StyledTags = styled.div`
 export default function Template({ data, pageContext }) {
   const { mdx: post } = data;
   const { next, prev } = pageContext;
-
+  const image = getImage(post.frontmatter.headerImage);
   return (
     <Layout>
       <SEO
         title={`JCofman - ${post.frontmatter.title}`}
         description={post.frontmatter.description || post.frontmatter.excerpt || `nothing’`}
-        image={post.frontmatter.headerImage.childImageSharp.sizes.src}
+        image={image}
         pathname={post.frontmatter.path}
         article
       />
       <StyledHeader>
-        <Img
-          fluid={post.frontmatter.headerImage.childImageSharp.sizes}
-          alt={`background image which represents - ${post.frontmatter.title}`}
-        />
+        <GatsbyImage image={image} alt={`background image which represents - ${post.frontmatter.title}`} />
         <h1>{post.frontmatter.title}</h1>
       </StyledHeader>
       <StyledInfo>
@@ -170,15 +159,7 @@ export const pageQuery = graphql`
         excerpt
         headerImage {
           childImageSharp {
-            sizes(maxWidth: 2024) {
-              sizes
-              src
-              aspectRatio
-              srcSet
-              srcSetWebp
-              srcWebp
-              tracedSVG
-            }
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
           }
         }
       }

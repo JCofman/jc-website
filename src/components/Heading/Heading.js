@@ -18,21 +18,51 @@ export const APPEARANCES = {
   H6: `H6`,
 };
 
-const Heading = ({ appearance, children, ...rest }) => {
+export const BACKGROUND_STYLES = {
+  PARALLELOGRAM: 'PARALLELOGRAM',
+  TRIANGLE: 'TRIANGLE',
+  CIRCLE: 'CIRCLE',
+};
+
+const Heading = ({ appearance, children, backgroundStyle = 'TRIANGLE', ...rest }) => {
   const { ...headingProps } = rest;
   switch (appearance) {
     case `H1`:
-      return <StyledHeadingH1 {...headingProps}>{children}</StyledHeadingH1>;
+      return (
+        <StyledHeadingH1 backgroundStyle={backgroundStyle} {...headingProps}>
+          {children}
+        </StyledHeadingH1>
+      );
     case `H2`:
-      return <StyledHeadingH2 {...headingProps}>{children}</StyledHeadingH2>;
+      return (
+        <StyledHeadingH2 backgroundStyle={backgroundStyle} {...headingProps}>
+          {children}
+        </StyledHeadingH2>
+      );
     case `H3`:
-      return <StyledHeadingH3 {...headingProps}>{children}</StyledHeadingH3>;
+      return (
+        <StyledHeadingH3 backgroundStyle={backgroundStyle} {...headingProps}>
+          {children}
+        </StyledHeadingH3>
+      );
     case `H4`:
-      return <StyledHeadingH4 {...headingProps}>{children}</StyledHeadingH4>;
+      return (
+        <StyledHeadingH4 backgroundStyle={backgroundStyle} {...headingProps}>
+          {children}
+        </StyledHeadingH4>
+      );
     case `H5`:
-      return <StyledHeadingH5 {...headingProps}>{children}</StyledHeadingH5>;
+      return (
+        <StyledHeadingH5 backgroundStyle {...headingProps}>
+          {children}
+        </StyledHeadingH5>
+      );
     case `H6`:
-      return <StyledHeadingH6 {...headingProps}>{children}</StyledHeadingH6>;
+      return (
+        <StyledHeadingH6 backgroundStyle {...headingProps}>
+          {children}
+        </StyledHeadingH6>
+      );
     default:
       return null;
   }

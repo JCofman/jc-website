@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Divider is rendered properly 1`] = `
+.c1 {
+  fill: var(--color-text);
+}
+
 .c0 {
   display: block;
   width: 55px;
@@ -19,7 +23,7 @@ exports[`Divider is rendered properly 1`] = `
       stroke-width="1"
     >
       <g
-        class=""
+        class="c1"
         transform="translate(-483.000000, -1059.000000)"
       >
         <g

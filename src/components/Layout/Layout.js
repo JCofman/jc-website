@@ -1,46 +1,112 @@
 import React from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
-import theme from 'styled-theming';
 import { Helmet } from 'react-helmet';
+import '@fontsource/raleway';
+import '@fontsource/raleway/600.css';
 
 import { useMedia } from '../../hooks/useMedia';
 import { useLocalStorageState } from '../../hooks/useLocalStorage';
 import Navigation from '../Navigation';
 import Footer from '../Footer';
 import StyledLayout from './StyledLayout';
-import { themes, breakPoints, maxWidth, themeTransition, colors } from './Theme';
-
-const backgroundColor = theme(`mode`, {
-  light: colors.white,
-  dark: colors.black,
-});
-
-const bodyTextColor = theme(`mode`, {
-  light: colors.black,
-  dark: colors.white,
-});
-
-const aTagTextColor = theme(`mode`, {
-  light: colors.black,
-  dark: colors.white,
-});
+import {
+  themes,
+  breakPoints,
+  maxWidth,
+  themeTransition,
+  colors,
+  textShadows,
+  fontSizes,
+  lineHeights,
+  borders,
+  borderRadius,
+  linearGradients,
+} from './Theme';
 
 export const GlobalStyle = createGlobalStyle`
    :root {
+    /** COLOR */
     --color-text: ${colors.white};
     --color-background: ${colors.black};
     --color-primary: ${colors.primary};
     --color-secondary: ${colors.secondary};
     
-    --font-size-small: 1.6rem;
-    --font-size-medium: 2.2rem;
+    --color-lightGrey: ${colors.lightGrey};
+    --color-darkGrey: ${colors.darkGrey};
+    --color-grey-100: ${colors.grey100};
+    --color-grey-200: ${colors.grey200};
+    --color-grey-300: ${colors.grey300};
+    --color-grey-400: ${colors.grey400};
+    --color-grey-500: ${colors.grey500};
+    --color-grey-600: ${colors.grey600};
+    --color-grey-700: ${colors.grey700};
+    --color-grey-800: ${colors.grey800};
 
-    @media (min-width: 1024px) {
-      --font-size-small: 2.1rem;
-      --font-size-medium: 2.4rem;
-    }
+    /** FONTSIZE */
+    --font-size-xs: ${fontSizes.fontSizeXs};
+    --font-size-sm: ${fontSizes.fontSizeSm};
+    --font-size-base: ${fontSizes.fontSizeBase};
+    --font-size-lg: ${fontSizes.fontSizeLg};
+    --font-size-xl: ${fontSizes.fontSizeLg};
+    --font-size-2xl: ${fontSizes.fontSize2Xl};
+    --font-size-3xl: ${fontSizes.fontSize3Xl};
+    --font-size-4xl: ${fontSizes.fontSize4Xl};
+    --font-size-5xl: ${fontSizes.fontSize5Xl};
+    --font-size-6xl: ${fontSizes.fontSize6Xl};
+    --font-size-7xl: ${fontSizes.fontSize7Xl};
+    --font-size-8xl: ${fontSizes.fontSize8Xl};
+    
+    --line-height-xs: ${lineHeights.lineHeightXs};
+    --line-height-sm: ${lineHeights.lineHeightSm};
+    --line-height-base: ${lineHeights.lineHeightBase};
+    --line-height-lg: ${lineHeights.lineHeightLg};
+    --line-height-xl: ${lineHeights.lineHeightXl};
+
+    --border-0: ${borders.border0};
+    --border-1: ${borders.border1};
+    --border-2: ${borders.border2};
+    --border-3: ${borders.border3};
+    --border-4: ${borders.border4};
+    
+    --border: ${borders.border};
+
+    --rounded-sm: ${borderRadius.roundedSm};
+    --rounded-md: ${borderRadius.roundedMd};
+    --rounded-lg: ${borderRadius.roundedLg};
+    --rounded: ${borderRadius.rounded};
+
+
+    --theme-transition: 1s ease-in-out;
+    --text-shadow: ${textShadows.dark};
+   
+    --linear-gradient: ${linearGradients.dark};
+
+    --margin-0: 0;
+    --margin-1: 0.8rem;
+    --margin-2: 1.6rem;
+    --margin-3: 2.4rem;
+    --margin-4: 3.2rem;
+    --margin-5: 4.0rem;
+    --margin-6: 4.8rem;
+    
+    --padding-0: 0;
+    --padding-1: 0.8rem;
+    --padding-2: 1.6rem;
+    --padding-3: 2.4rem;
+    --padding-4: 3.2rem;
+    --padding-5: 4.0rem;
+
+    //BREAKPOINTS 
+    --br-x-small: ${breakPoints.xsmall};
+    --br-small: ${breakPoints.small};
+    --br-medium: ${breakPoints.medium};
+    --br-large: ${breakPoints.large};
+    --br-x-large: ${breakPoints.xlarge};
+
+
+    --max-width: ${maxWidth};
+
   }
-
   article,
   aside,
   details,
@@ -73,7 +139,7 @@ export const GlobalStyle = createGlobalStyle`
     display: none;
   }
   a {
-    color: ${aTagTextColor};
+    color: var(--color-text);
     background-color: transparent;
     text-decoration: none;
     -webkit-text-decoration-skip: objects;
@@ -218,9 +284,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   html {  
     font-family: "Raleway", sans-serif;
-    font-size: 10px;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
+    font-size: 62.5%;
     box-sizing: border-box;
     overflow-y: scroll;
   }
@@ -234,9 +298,9 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
   body {
-    color: ${bodyTextColor};
-    background-color: ${backgroundColor};
-    font-size: 1.5rem;
+    color: var(--color-text);
+    background-color:  var(--color-background);
+    font-size: var(--font-size-base);
     font-family: "Raleway", sans-serif;
     font-weight: normal;
     word-wrap: break-word;
@@ -246,8 +310,8 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
     font-feature-settings: "kern", "liga", "clig", "calt";
     margin: 0;
-    overflow: hidden;
   }
+
   img {
     max-width: 100%;
     margin-left: 0;
@@ -844,9 +908,11 @@ export const GlobalStyle = createGlobalStyle`
   `;
 
 const getInitialTheme = (preferedTheme) => {
-  const savedTheme = localStorage.getItem(`theme`);
+  const savedTheme = JSON.parse(localStorage.getItem(`theme`));
   return savedTheme ? savedTheme : preferedTheme;
 };
+
+const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
 
 const Layout = ({ children, location }) => {
   const prefersDarkMode = usePrefersDarkMode();
@@ -858,7 +924,30 @@ const Layout = ({ children, location }) => {
   const [themeMode, setThemeMode] = useLocalStorageState('theme', defaultThemeMode);
 
   const changeTheme = () => {
-    setThemeMode((prevState) => (prevState === `light` ? `dark` : `light`));
+    if (themeMode === 'light') {
+      setThemeMode('dark');
+      updateCSSProperties('dark');
+    } else {
+      setThemeMode('light');
+      updateCSSProperties('light');
+    }
+  };
+
+  React.useEffect(() => {
+    const root = window.document.documentElement;
+    const initialTheme = root.style.getPropertyValue('--initial-color-mode');
+    updateCSSProperties(initialTheme);
+  }, []);
+
+  const updateCSSProperties = (themeMode) => {
+    const root = window.document.documentElement;
+    // 3. Update each color
+    root.style.setProperty('--color-text', themeMode === 'light' ? colors.black : colors.white);
+    root.style.setProperty('--color-background', themeMode === 'light' ? colors.white : colors.black);
+    root.style.setProperty('--color-primary', themeMode === 'light' ? colors.primary : colors.primary);
+    root.style.setProperty('--text-shadow', themeMode === 'light' ? textShadows.dark : textShadows.white);
+    root.style.setProperty('--color-primary', themeMode === 'light' ? colors.primary : colors.primary);
+    root.style.setProperty('--linear-gradient', themeMode === 'light' ? linearGradients.light : linearGradients.dark);
   };
 
   return (
@@ -872,11 +961,13 @@ const Layout = ({ children, location }) => {
       }}
     >
       <Helmet>
-        <script
-          defer
-          src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon='{"token": "27f1e6ab8f5743bd8e1e770722db344b"}'
-        ></script>
+        {activeEnv !== 'development' ? (
+          <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon='{"token": "27f1e6ab8f5743bd8e1e770722db344b"}'
+          ></script>
+        ) : null}
       </Helmet>
       <StyledLayout>
         <Navigation location={location} changeTheme={changeTheme} />

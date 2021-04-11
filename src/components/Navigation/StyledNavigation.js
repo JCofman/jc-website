@@ -1,19 +1,7 @@
 import styled from 'styled-components';
-import theme from 'styled-theming';
 import { zIndexLogo, zIndexNavigation } from '../../components/Styles/zIndex';
 import { sizes } from '../Layout/Theme';
 
-const NavBackgroundColor = theme(`mode`, {
-  light: (props) => props.theme.colors.white,
-  dark: (props) => props.theme.colors.black,
-});
-
-const NavFontColor = theme(`mode`, {
-  light: (props) => props.theme.colors.black,
-  dark: (props) => props.theme.colors.white,
-});
-
-const NavLinkFontColor = NavFontColor;
 export const StyledWrapper = styled.div`
   position: fixed;
   top: 0;
@@ -22,7 +10,7 @@ export const StyledWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${NavBackgroundColor};
+  background-color: var(--color-background);
   z-index: ${zIndexNavigation};
   border-top: 2px solid ${(props) => props.theme.colors.primary};
   border-bottom: 1px solid #201c29;
@@ -38,14 +26,13 @@ export const StyledNavWrapper = styled.div`
   height: 70px;
   float: right;
   box-shadow: none;
-  transition: height 0.25s ease-in-out 0s, box-shadow 0.2s ease-in-out 0.05s,
-    background-color ${(props) => props.theme.themeTransition};
+  transition: height 0.25s ease-in-out 0s, box-shadow 0.2s ease-in-out 0.05s, background-color var(--theme-transition);
   a {
-    color: ${NavLinkFontColor};
+    color: var(--color-text);
   }
   a:hover,
   a:focus {
-    color: ${(props) => props.theme.colors.primary};
+    color: var(--color-primary);
   }
 `;
 
@@ -57,7 +44,7 @@ export const StyledNav = styled.nav`
   @media (max-width: ${sizes.phone}px) {
     mask-image: linear-gradient(to right, transparent, black 20px, black 90%, transparent);
     margin-left: 200px;
-    width: 200px;
+    width: 250px;
     overflow-x: auto;
     overflow-y: hidden;
     position: absolute;
@@ -75,7 +62,7 @@ export const StyledNavLogo = styled.svg`
   transition: all 0.25s ease-out 0s;
   margin-top: 5px; /* green top border margin */
   z-index: ${zIndexLogo};
-  background: ${NavBackgroundColor};
+  background: var(--color-background);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
   ${(props) => props.theme.xsmall} {
@@ -119,9 +106,10 @@ export const StyledNavList = styled.ul`
 
 export const StyledNavListLink = styled.li`
   margin-bottom: 0px;
+
   a,
   button {
-    font-size: 2rem;
+    font-size: var(--font-size-xl);
     font-weight: 600;
     padding: 1rem 3rem;
     background: none;
@@ -131,11 +119,11 @@ export const StyledNavListLink = styled.li`
     cursor: pointer;
     align-items: center;
     text-transform: uppercase;
-    color: ${NavFontColor};
+    color: var(--color-text);
 
     &:after {
       height: 2px;
-      background: #50e3c2;
+      background: var(--color-primary);
       content: '';
       width: 0;
       position: absolute;

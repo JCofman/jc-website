@@ -1,5 +1,4 @@
 import React from 'react';
-import theme from 'styled-theming';
 
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -8,29 +7,18 @@ import { FaListUl } from 'react-icons/fa';
 import Divider from '../Divider';
 import Heading from '../Heading';
 
-const TableOfContentsColor = theme(`mode`, {
-  light: (props) => props.theme.colors.black,
-  dark: (props) => props.theme.colors.white,
-});
-
-const TableOfContentsBackgroundColor = theme(`mode`, {
-  light: (props) => props.theme.colors.light,
-  dark: (props) => props.theme.colors.dark,
-});
-
 const StyledTableOfContentsNavigation = styled.nav`
   display: none;
   padding: 1.6rem;
   margin-left: 1rem;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
   align-items: flex-start;
 
   max-width: 300px;
   font-family: 'Raleway', sans-serif;
-  color: ${TableOfContentsColor};
-  background: ${TableOfContentsBackgroundColor};
+  color: var(--color-text);
+  background: var(--color-background);
   position: sticky;
   top: 70px;
 

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import BackgroundImage from 'gatsby-background-image';
 import { zIndexLogo } from '../../components/Styles/zIndex';
-
-import theme from 'styled-theming';
+import { BgImage } from 'gbimage-bridge';
 
 export const StyledLogo = styled.svg`
   display: none;
@@ -33,7 +31,6 @@ export const StyledLogo = styled.svg`
     display: none;
   }
   @media (min-width: 2000px) {
-    display: block;
     position: absolute;
     top: 100px;
     left: 80px;
@@ -49,14 +46,10 @@ export const StyledWrapper = styled.div`
   height: 75vh;
 `;
 
-const InformationTextShadow = theme(`mode`, {
-  light: `3px 3px 0 rgba(0, 0, 0, 0.2)`,
-  dark: `3px 3px 0 rgba(255, 255, 255, 0.2)`,
-});
-
 export const StyledInformation = styled.div`
   display: flex;
   flex-direction: column;
+  color: var(--color-text);
   max-width: ${(props) => props.theme.maxWidth};
   align-items: center;
   justify-content: center;
@@ -65,7 +58,7 @@ export const StyledInformation = styled.div`
   padding-bottom: 3rem;
   margin-left: 2rem;
   margin-right: 2rem;
-  text-shadow: ${InformationTextShadow};
+  text-shadow: var(--text-shadow);
 
   ${(props) => props.theme.small} {
     position: initial;
@@ -80,6 +73,22 @@ export const StyledInformation = styled.div`
     padding-bottom: 3rem;
     margin-left: 2rem;
     margin-right: 2rem;
+  }
+
+  span {
+    font-size: 1.5rem;
+    font-weight: 400;
+    align-self: flex-start;
+
+    ${(props) => props.theme.small} {
+      font-size: 1.5rem;
+    }
+    ${(props) => props.theme.medium} {
+      font-size: 2rem;
+    }
+    ${(props) => props.theme.large} {
+      font-size: 2rem;
+    }
   }
 
   h1 {
@@ -115,25 +124,9 @@ export const StyledInformation = styled.div`
       }
     }
   }
-
-  span {
-    font-size: 1.5rem;
-    font-weight: 400;
-    align-self: flex-start;
-
-    ${(props) => props.theme.small} {
-      font-size: 1.5rem;
-    }
-    ${(props) => props.theme.medium} {
-      font-size: 2rem;
-    }
-    ${(props) => props.theme.large} {
-      font-size: 2rem;
-    }
-  }
 `;
 
-export const StyledHeaderBG = styled(BackgroundImage)`
+export const StyledHeaderBG = styled(BgImage)`
   /* Full height */
   display: flex;
   background-size: cover;

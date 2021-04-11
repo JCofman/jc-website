@@ -1,17 +1,12 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import theme from 'styled-theming';
 import PropTypes from 'prop-types';
 
-const DividerFillColor = theme(`mode`, {
-  light: props => props.theme.colors.black,
-  dark: props => props.theme.colors.white,
-});
-
 const StyledG = styled.g`
-  fill: ${DividerFillColor};
+  fill: var(--color-text);
 `;
+
 const StyledDivider = styled.svg`
   display: block;
   width: 55px;
@@ -19,7 +14,7 @@ const StyledDivider = styled.svg`
   margin: 0 auto;
 `;
 
-const Divider = props => (
+const Divider = (props) => (
   <StyledDivider>
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" {...props}>
       <StyledG transform="translate(-483.000000, -1059.000000)">

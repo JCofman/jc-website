@@ -17,7 +17,6 @@ jobs:
 
   webPageTestActions:
     name: WebPageTestActions
-    needs: build-and-deploy-prod
     runs-on: ubuntu-latest
     steps:
       - uses: JCofman/webPagetestAction@master

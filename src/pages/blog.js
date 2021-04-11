@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
-import theme from 'styled-theming';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
@@ -11,23 +10,13 @@ import Heading from '../components/Heading';
 
 import { usePosts } from '../hooks/usePosts';
 
-const FontColor = theme(`mode`, {
-  light: (props) => props.theme.colors.black,
-  dark: (props) => props.theme.colors.white,
-});
-
 const StyledGrid = styled.main`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 3.2rem;
-  color: ${FontColor};
+  color: var(--color-text);
 `;
-
-const BlogPostBackgroundColor = theme(`mode`, {
-  light: (props) => props.theme.colors.white,
-  dark: (props) => props.theme.colors.black,
-});
 
 const StyledGradientBox = styled.div`
   box-sizing: border-box;
@@ -35,7 +24,7 @@ const StyledGradientBox = styled.div`
   padding: 0.5rem;
   width: 200%;
   max-width: 25rem;
-  background: linear-gradient(${BlogPostBackgroundColor}, ${BlogPostBackgroundColor}),
+  background: linear-gradient(var(--color-background), var(--color-background)),
     linear-gradient(to right, #3eecac, #4a90e2);
   border: 5px solid transparent;
   background-repeat: no-repeat;
@@ -51,7 +40,7 @@ const StyledGradientBox = styled.div`
     bottom: -5px;
     left: -5px;
     right: -5px;
-    border: 6px solid ${BlogPostBackgroundColor};
+    border: 6px solid var(--color-background);
     border-radius: 0.8rem;
   }
 `;
@@ -63,29 +52,34 @@ const BlogArtikelImageWrapper = styled.div`
   margin: 0 auto;
 `;
 
+const StyledArticle = styled.article`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--padding-6);
+  padding-bottom: var(--padding-6);
+  padding-left: var(--padding-3);
+  padding-right: var(--padding-3);
+  background: var(--color-background);
+  flex-grow: 1;
+`;
+
 const StyledBlogPost = styled.div`
   max-width: 30rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  background: ${BlogPostBackgroundColor};
-
-  .post-container {
-    padding: 1rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
+  background: var(--color-background);
+  display: flex;
 
   img {
     object-position: center;
     object-fit: cover;
-    height: 12rem;
     width: 100%;
   }
 `;
 
 const MyBlog = () => {
   const { posts } = usePosts();
+
   return (
     <Layout>
       <SEO title="All posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
@@ -107,24 +101,34 @@ const MyBlog = () => {
           {posts.map((post) => {
             return (
               <StyledBlogPost key={post.title}>
-                <GatsbyLink aria-label={`Go to ${post.slug}`} to={post.slug}>
+                <GatsbyLink
+                  aria-label={`Go to ${post.slug}`}
+                  to={post.slug}
+                  css={`
+                    display: flex;
+                    flex-direction: column;
+                  `}
+                >
                   <BlogArtikelImageWrapper>
-                    <Img fluid={post.featuredImageSizes} />
+                    <GatsbyImage
+                      alt={`unsplash cover image to article ${post.title}`}
+                      image={getImage(post.featuredImage)}
+                    />
                   </BlogArtikelImageWrapper>
 
-                  <div
+                  <StyledArticle
                     className="post-container"
                     css={`
                       padding: 1.5rem;
                     `}
                   >
-                    <h3
+                    <span
                       css={`
                         letter-spacing: 0.1em;
                       `}
                     >
                       Tags
-                    </h3>
+                    </span>
                     <span>
                       {' '}
                       {post.tags != null &&
@@ -138,7 +142,7 @@ const MyBlog = () => {
                     </span>
                     <Heading
                       css={`
-                        color: ${FontColor};
+                        color: var(--color-text);
                         font-size: 3rem;
                       `}
                       appearance="H3"
@@ -158,18 +162,20 @@ const MyBlog = () => {
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
+                        margin-top: auto;
                       `}
                     >
-                      <Link aria-label={`Go to ${post.slu}`} to={post.slu}>
+                      <Link aria-label={`Go to ${post.slug}`} to={post.slug}>
                         Read
                       </Link>
                     </div>
-                  </div>
+                  </StyledArticle>
                 </GatsbyLink>
               </StyledBlogPost>
             );
           })}
         </StyledGrid>
+
         <Link
           css={`
             margin-top: 12.8rem;

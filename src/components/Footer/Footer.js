@@ -1,25 +1,27 @@
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
-import theme from 'styled-theming';
 
 import Social from '../../components/Social';
+import Heading from '../../components/Heading';
+import Stack from '../../components/Stack';
 import { NavLink } from '../../components/Navigation/Navigation';
+import { useBreakpoint } from '../../hooks/useBreakpoint';
 
 const StyledMap = styled.div`
-  margin: 5rem auto;
+  margin: var(--margin-6) auto;
   transition: background-color ${(props) => props.theme.themeTransition};
   width: 100%;
-  max-width: ${(props) => props.theme.maxWidth};
+  max-width: var(--max-width);
   ${(props) => props.theme.small} {
-    margin: 0px;
+    margin: var(--margin-0);
   }
   ${(props) => props.theme.medium} {
-    margin: 1rem auto;
+    margin: var(--margin-1) auto;
   }
 `;
 
 export const StyledFooterWrapper = styled.div`
-  width: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,18 +29,21 @@ export const StyledFooterWrapper = styled.div`
 
 const StyledFooter = styled.footer`
   display: flex;
+  flex-shrink: 0;
+  flex-grow: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  margin-top: 2rem;
+  margin-top: var(--margin-3);
   border-top: 1px solid #201c29;
+  max-width: var(--max-width);
 `;
 
 const NavListWrapper = styled.div`
   width: 100%;
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 2rem;
   ${(props) => props.theme.small} {
     grid-template-columns: 1 1fr;
   }
@@ -53,11 +58,6 @@ const NavListWrapper = styled.div`
   }
 `;
 
-const NavFontColor = theme(`mode`, {
-  light: (props) => props.theme.colors.black,
-  dark: (props) => props.theme.colors.white,
-});
-
 const NavList = styled.ul`
   list-style: none;
   margin: 0;
@@ -68,13 +68,13 @@ const NavList = styled.ul`
 `;
 
 const FooterListLink = styled.li`
-  margin-bottom: 0px;
+  margin-bottom: var(--margin-0);
 
   a {
     font-size: 2rem;
     font-weight: 600;
-    padding: 1rem 3rem;
-    margin-bottom: 0px;
+    padding: var(--padding-1) var(--padding-3);
+    margin-bottom: var(--margin-0);
     background: none;
     border: none;
     display: flex;
@@ -82,11 +82,11 @@ const FooterListLink = styled.li`
     cursor: pointer;
     align-items: center;
     text-transform: uppercase;
-    color: ${NavFontColor};
+    color: var(--color-text);
 
     &:after {
       height: 2px;
-      background: #50e3c2;
+      background: var(--color-primary);
       content: '';
       width: 0;
       position: absolute;
@@ -94,7 +94,7 @@ const FooterListLink = styled.li`
       transition: width 0.4s;
       transition-timing-function: cubic-bezier(1, -0.65, 0, 2.31);
       left: 50%;
-      margin-top: 2rem;
+      margin-top: var(--margin-3);
     }
     &:hover,
     &:focus {
@@ -105,30 +105,47 @@ const FooterListLink = styled.li`
     }
   }
 `;
-const LazyWorldMap = React.lazy(() => import(`../ReactMap` /* webpackChunkName: "WorldMap" */));
+const LazyWorldMap = React.lazy(() => import(`../Map/ReactMap` /* webpackChunkName: "ReactMap" */));
 
 const Footer = () => {
+  const breakpoint = useBreakpoint();
   return (
     <StyledFooterWrapper>
       <StyledFooter>
-        <StyledMap>
-          {typeof window === `undefined` ? null : (
-            <Suspense fallback={<div>Loading...</div>}>
-              <LazyWorldMap />
-              {` `}
-            </Suspense>
+        <Stack>
+          {breakpoint.name === 'xsmall' || breakpoint.name === 'small' ? null : (
+            <>
+              <Heading
+                appearance={`H3`}
+                css={`
+                  padding-top: var(--padding-4);
+                  text-align: ${breakpoint.name === 'medium' ? 'center' : 'left'};
+                `}
+              >
+                Countries I have traveled
+              </Heading>
+              <StyledMap>
+                {typeof window === `undefined` ? null : (
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <LazyWorldMap />
+                    {` `}
+                  </Suspense>
+                )}
+              </StyledMap>
+            </>
           )}
-        </StyledMap>
-        <NavListWrapper>
-          <NavList>
-            <NavLink to="/">Home</NavLink>
-            <FooterListLink></FooterListLink>
-          </NavList>
-          <Social />
-          <NavList>
-            <NavLink to="/about">About</NavLink>
-          </NavList>
-        </NavListWrapper>
+
+          <NavListWrapper>
+            <NavList>
+              <NavLink to="/">Home</NavLink>
+              <FooterListLink></FooterListLink>
+            </NavList>
+            <Social />
+            <NavList>
+              <NavLink to="/about">About</NavLink>
+            </NavList>
+          </NavListWrapper>
+        </Stack>
       </StyledFooter>
     </StyledFooterWrapper>
   );
