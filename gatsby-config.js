@@ -212,6 +212,6 @@ module.exports = {
         chunkSize: 10000, // default: 1000
       },
     },
-    // `gatsby-plugin-preact`,
+    `gatsby-plugin-preact`,
   ],
 };

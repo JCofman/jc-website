@@ -17,7 +17,7 @@ const StyledH1 = styled.h1`
     opacity: 0.2;
     border-left: 25px solid transparent;
     border-right: 25px solid transparent;
-    border-bottom: 50px solid ${(props) => props.theme.colors.white};
+    border-bottom: 50px solid var(--color-text);
     content: '';
     pointer-events: none;
     position: absolute;
