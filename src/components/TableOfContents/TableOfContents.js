@@ -12,7 +12,6 @@ const StyledTableOfContentsNavigation = styled.nav`
   padding: 1.6rem;
   margin-left: 1rem;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
   align-items: flex-start;
 

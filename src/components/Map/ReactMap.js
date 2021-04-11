@@ -4,16 +4,18 @@ import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 
 import Marker from './Marker';
 import GeoWorldMap from '../world-50m.json';
-
 const placesIHaveVisited = [
   {
     name: 'North America',
     coordinates: [-100.1667, 48.1667],
+    visitDate: new Date('December 17, 1995 03:24:00'),
   },
-  { name: 'Germany', coordinates: [10.45412, 51.45412] },
-  { name: 'New Zealand', coordinates: [174.885971, -40.90055] },
-  { name: 'Oman', coordinates: [55.923255, 21.512583] },
-  { name: 'Switzerland', coordinates: [8.227512, 46.818188] },
+  { name: 'Germany', coordinates: [10.45412, 51.45412], visitDate: new Date() },
+  { name: 'New Zealand', coordinates: [174.885971, -40.90055], visitDate: new Date() },
+  { name: 'Oman', coordinates: [55.923255, 21.512583], visitDate: new Date() },
+  { name: 'Switzerland', coordinates: [8.227512, 46.818188], visitDate: new Date() },
+  { name: 'Australia', coordinates: [133.775136, -25.274398], visitDate: new Date() },
+  { name: 'Russia', coordinates: [105.3188, 61.524], visitDate: new Date() },
 ];
 
 const variants = {
@@ -24,6 +26,7 @@ const variants = {
     transition: { staggerChildren: 1 },
   },
 };
+
 const ReactMap = () => {
   const item = {
     start: { opacity: 0 },
@@ -47,20 +50,22 @@ const ReactMap = () => {
                 geography={geo}
                 style={{
                   default: {
-                    stroke: `#F4F4F4`,
+                    stroke: `var(--color-text)`,
                     strokeWidth: 0.5,
                     outline: `none`,
-                    fill: `var(color-)`,
+                    fill: `var(--color-background)`,
                   },
                   hover: {
-                    stroke: `#F4F4F4`,
+                    stroke: `var(--color-text)`,
                     strokeWidth: 0.5,
                     outline: `none`,
+                    fill: `var(--color-background)`,
                   },
                   pressed: {
-                    stroke: `#F4F4F4`,
+                    stroke: `var(--color-text)`,
                     strokeWidth: 0.5,
                     outline: `none`,
+                    fill: `var(--color-background)`,
                   },
                 }}
               />
@@ -68,7 +73,7 @@ const ReactMap = () => {
           }
         </Geographies>
         <motion.g variants={variants} initial={'start'} animate={'end'}>
-          {placesIHaveVisited.map(({ name, coordinates, markerOffset }, index) => (
+          {placesIHaveVisited.map(({ name, coordinates, markerOffset }) => (
             <Marker
               key={name}
               coordinates={coordinates}

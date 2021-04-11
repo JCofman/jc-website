@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../components/Layout';
-import SEO from '../components/SEO';
-
-import { StyledBlogArtikelHeaderParallelogram, StyledBlogArtikelHeaderCircle } from '.';
 import { StaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
+
+import Layout from '../components/Layout';
+import Heading from '../components/Heading';
+import SEO from '../components/SEO';
 
 const StyledH1 = styled.h1`
   color: ${(props) => props.theme.colors.primary};
@@ -77,7 +77,7 @@ const StyledListTriangle = styled.ul`
     opacity: 0.5;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 10px solid ${(props) => props.theme.colors.white};
+    border-bottom: 10px solid var(--color-text);
     left: -1em;
     top: 0.9em;
     position: relative;
@@ -192,23 +192,17 @@ const AboutMe = () => (
       {
         profileImage: file(relativePath: { eq: "profilePicture.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 800) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 800, layout: CONSTRAINED)
           }
         }
         meJumpingImage: file(relativePath: { eq: "meJumping.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 800) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 800, layout: CONSTRAINED)
           }
         }
         meHackingImage: file(relativePath: { eq: "meHacking.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 800) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 800, layout: CONSTRAINED)
           }
         }
       }
@@ -219,7 +213,7 @@ const AboutMe = () => (
         <Wrapper>
           <StyledTriangle>
             {` `}
-            <Img fluid={data.profileImage.childImageSharp.fluid} alt="A picture of myself" />
+            <GatsbyImage image={data.profileImage.childImageSharp.gatsbyImageData} alt="A picture of myself" />
           </StyledTriangle>
           <StyledMainInformation>
             <StyledH1>Jacob Cofman</StyledH1>
@@ -232,10 +226,9 @@ const AboutMe = () => (
             </StyledListTriangle>
           </StyledMainInformation>
           <StyledInformationHobbies>
-            <StyledBlogArtikelHeaderCircle>
-              {` `}
+            <Heading appearance="H2" backgroundStyle="CIRCLE">
               Hobbies{` `}
-            </StyledBlogArtikelHeaderCircle>
+            </Heading>
             <StyledSpan>This is what I love ❤️</StyledSpan>
             <StyledListDots>
               <li>I play volleyball since I am seven years old</li>
@@ -244,13 +237,21 @@ const AboutMe = () => (
             </StyledListDots>
           </StyledInformationHobbies>
           <StyledCircle>
-            <Img fluid={data.meJumpingImage.childImageSharp.fluid} alt="Picture of me in the nature" />
+            <GatsbyImage
+              image={data.meJumpingImage.childImageSharp.gatsbyImageData}
+              alt="Picture of me in the nature"
+            />
           </StyledCircle>
           <StyledParallelogram>
-            <Img fluid={data.meHackingImage.childImageSharp.fluid} alt="Coding" />
+            <GatsbyImage
+              image={data.meHackingImage.childImageSharp.gatsbyImageData}
+              alt="picture coding in the dark event"
+            />
           </StyledParallelogram>
           <StyledInformationSkills>
-            <StyledBlogArtikelHeaderParallelogram>Skills</StyledBlogArtikelHeaderParallelogram>
+            <Heading appearance="H2" backgroundStyle="PARALLELOGRAM">
+              Skills
+            </Heading>
             <StyledSpan>Major skills 💪</StyledSpan>
             <StyledSkills>
               <StyledListParallelogram>

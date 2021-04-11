@@ -1,60 +1,53 @@
 import React from 'react';
 
 import { useStaticQuery, graphql } from 'gatsby';
-import { ThemeContext } from 'styled-components';
 
 import { StyledHeaderBG, StyledWrapper, StyledInformation, StyledName } from '../templates/PageStyles/StyledHome';
+import { getImage } from 'gatsby-plugin-image';
 
 import Social from './Social';
 
 const LightHeader = () => {
-  const themeContext = React.useContext(ThemeContext);
-  const { image } = useStaticQuery(graphql`
-    query {
-      image: file(relativePath: { eq: "background.jpg" }) {
+  const { placeholderImage } = useStaticQuery(graphql`
+    {
+      placeholderImage: file(relativePath: { eq: "background.jpg" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
         }
       }
     }
   `);
 
-  const backgroundFluidImage = [
-    image.childImageSharp.fluid,
-    `${
-      themeContext && themeContext.mode === `dark`
-        ? `linear-gradient(rgba(1, 1, 1, 0.95), rgba(1, 1, 1, 0.95))`
-        : `linear-gradient(rgba(244, 244, 244, 0.95), rgba(244, 244, 244, 0.95))`
-    }`,
-  ].reverse();
+  const pluginImage = getImage(placeholderImage);
+
+  const backgroundFluidImage = [pluginImage, `var(--linear-gradient)`].reverse();
+
   return (
-    <StyledHeaderBG tag={`header`} fluid={backgroundFluidImage}>
+    <StyledHeaderBG tag={`header`} image={backgroundFluidImage}>
       <StyledWrapper>
         <StyledInformation>
           <span>HEY EVERYONE MY NAME IS JACOB COFMAN</span>
           <h1>
             I LOVE WEB DEVELOPMENT
-            <span role="img" aria-label="computer">
+            <span role="img" aria-label="a computer emoji">
               {` `}
               💻
             </span>
             , VOLLEYBALL
-            <span role="img" aria-label="computer">
+            <span role="img" aria-label="a volleyball emoji">
               🏐
             </span>
             {` `}
             AND TRAVELLING{` `}
-            <span role="img" aria-label="tent">
+            <span role="img" aria-label="a tent emoji">
               ⛺️
             </span>
             {` `}
-            <span role="img" aria-label="nature tree">
+            <span role="img" aria-label="a nature tree emoji">
               🌲
             </span>
             {` `}
-            <span role="img" aria-label="run">
+            <span role="img" aria-label="a run emoji">
               🏃
             </span>
           </h1>

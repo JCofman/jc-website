@@ -44,7 +44,7 @@ export const StyledNav = styled.nav`
   @media (max-width: ${sizes.phone}px) {
     mask-image: linear-gradient(to right, transparent, black 20px, black 90%, transparent);
     margin-left: 200px;
-    width: 200px;
+    width: 250px;
     overflow-x: auto;
     overflow-y: hidden;
     position: absolute;
@@ -106,9 +106,10 @@ export const StyledNavList = styled.ul`
 
 export const StyledNavListLink = styled.li`
   margin-bottom: 0px;
+
   a,
   button {
-    font-size: 2rem;
+    font-size: var(--font-size-xl);
     font-weight: 600;
     padding: 1rem 3rem;
     background: none;

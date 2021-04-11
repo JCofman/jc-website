@@ -15,7 +15,6 @@ const StyledHits = styled.ul`
 
 const StyledHit = styled.li`
   background-color: var(--color-background);
-  color: var(--color-text);
   padding: 0.8rem;
   letter-spacing: 0.05px;
   font-size: 18px;

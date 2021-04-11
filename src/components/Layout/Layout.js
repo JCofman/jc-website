@@ -9,10 +9,23 @@ import { useLocalStorageState } from '../../hooks/useLocalStorage';
 import Navigation from '../Navigation';
 import Footer from '../Footer';
 import StyledLayout from './StyledLayout';
-import { themes, breakPoints, maxWidth, themeTransition, colors, textShadows } from './Theme';
+import {
+  themes,
+  breakPoints,
+  maxWidth,
+  themeTransition,
+  colors,
+  textShadows,
+  fontSizes,
+  lineHeights,
+  borders,
+  borderRadius,
+  linearGradients,
+} from './Theme';
 
 export const GlobalStyle = createGlobalStyle`
    :root {
+    /** COLOR */
     --color-text: ${colors.white};
     --color-background: ${colors.black};
     --color-primary: ${colors.primary};
@@ -20,23 +33,80 @@ export const GlobalStyle = createGlobalStyle`
     
     --color-lightGrey: ${colors.lightGrey};
     --color-darkGrey: ${colors.darkGrey};
+    --color-grey-100: ${colors.grey100};
+    --color-grey-200: ${colors.grey200};
+    --color-grey-300: ${colors.grey300};
+    --color-grey-400: ${colors.grey400};
+    --color-grey-500: ${colors.grey500};
+    --color-grey-600: ${colors.grey600};
+    --color-grey-700: ${colors.grey700};
+    --color-grey-800: ${colors.grey800};
 
-    --font-size-small: 1.6rem;
-    --font-size-medium: 2.5rem;
-    --font-size-large: 3.12rem;
-    --font-size-xlarge: 3.9rem;
-    --font-size-xxlarge: 4.88rem;
-    --font-size-xxxlarge: 6.1rem;
+    /** FONTSIZE */
+    --font-size-xs: ${fontSizes.fontSizeXs};
+    --font-size-sm: ${fontSizes.fontSizeSm};
+    --font-size-base: ${fontSizes.fontSizeBase};
+    --font-size-lg: ${fontSizes.fontSizeLg};
+    --font-size-xl: ${fontSizes.fontSizeLg};
+    --font-size-2xl: ${fontSizes.fontSize2Xl};
+    --font-size-3xl: ${fontSizes.fontSize3Xl};
+    --font-size-4xl: ${fontSizes.fontSize4Xl};
+    --font-size-5xl: ${fontSizes.fontSize5Xl};
+    --font-size-6xl: ${fontSizes.fontSize6Xl};
+    --font-size-7xl: ${fontSizes.fontSize7Xl};
+    --font-size-8xl: ${fontSizes.fontSize8Xl};
+    
+    --line-height-xs: ${lineHeights.lineHeightXs};
+    --line-height-sm: ${lineHeights.lineHeightSm};
+    --line-height-base: ${lineHeights.lineHeightBase};
+    --line-height-lg: ${lineHeights.lineHeightLg};
+    --line-height-xl: ${lineHeights.lineHeightXl};
+
+    --border-0: ${borders.border0};
+    --border-1: ${borders.border1};
+    --border-2: ${borders.border2};
+    --border-3: ${borders.border3};
+    --border-4: ${borders.border4};
+    
+    --border: ${borders.border};
+
+    --rounded-sm: ${borderRadius.roundedSm};
+    --rounded-md: ${borderRadius.roundedMd};
+    --rounded-lg: ${borderRadius.roundedLg};
+    --rounded: ${borderRadius.rounded};
+
 
     --theme-transition: 1s ease-in-out;
     --text-shadow: ${textShadows.dark};
+   
+    --linear-gradient: ${linearGradients.dark};
+
+    --margin-0: 0;
+    --margin-1: 0.8rem;
+    --margin-2: 1.6rem;
+    --margin-3: 2.4rem;
+    --margin-4: 3.2rem;
+    --margin-5: 4.0rem;
+    --margin-6: 4.8rem;
     
+    --padding-0: 0;
+    --padding-1: 0.8rem;
+    --padding-2: 1.6rem;
+    --padding-3: 2.4rem;
+    --padding-4: 3.2rem;
+    --padding-5: 4.0rem;
 
-    @media (min-width: 1024px) {
-      --font-size-small: 2.1rem;
-      --font-size-medium: 2.4rem;
-    } 
+    //BREAKPOINTS 
+    --br-x-small: ${breakPoints.xsmall};
+    --br-small: ${breakPoints.small};
+    --br-medium: ${breakPoints.medium};
+    --br-large: ${breakPoints.large};
+    --br-x-large: ${breakPoints.xlarge};
 
+
+    --max-width: ${maxWidth};
+
+  }
   article,
   aside,
   details,
@@ -214,9 +284,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   html {  
     font-family: "Raleway", sans-serif;
-    font-size: 10px;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
+    font-size: 62.5%;
     box-sizing: border-box;
     overflow-y: scroll;
   }
@@ -232,7 +300,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     color: var(--color-text);
     background-color:  var(--color-background);
-    font-size: 1.5rem;
+    font-size: var(--font-size-base);
     font-family: "Raleway", sans-serif;
     font-weight: normal;
     word-wrap: break-word;
@@ -840,9 +908,11 @@ export const GlobalStyle = createGlobalStyle`
   `;
 
 const getInitialTheme = (preferedTheme) => {
-  const savedTheme = localStorage.getItem(`theme`);
+  const savedTheme = JSON.parse(localStorage.getItem(`theme`));
   return savedTheme ? savedTheme : preferedTheme;
 };
+
+const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
 
 const Layout = ({ children, location }) => {
   const prefersDarkMode = usePrefersDarkMode();
@@ -850,32 +920,33 @@ const Layout = ({ children, location }) => {
   if (typeof window !== `undefined`) {
     defaultThemeMode = getInitialTheme(prefersDarkMode ? `dark` : `light`);
   }
-  const [colorMode, rawSetColorMode] = React.useState(undefined);
 
   const [themeMode, setThemeMode] = useLocalStorageState('theme', defaultThemeMode);
 
   const changeTheme = () => {
-    setThemeMode((prevState) => (prevState === `light` ? `dark` : `light`));
+    if (themeMode === 'light') {
+      setThemeMode('dark');
+    } else {
+      setThemeMode('light');
+    }
+    updateCSSProperties();
   };
 
   React.useEffect(() => {
     const root = window.document.documentElement;
-    const initialColorValue = root.style.getPropertyValue('--initial-color-mode');
-    rawSetColorMode(initialColorValue);
+    const initialTheme = root.style.getPropertyValue('--initial-color-mode');
+    updateCSSProperties(initialTheme);
   }, []);
 
-  const setColorMode = (newValue) => {
+  const updateCSSProperties = () => {
     const root = window.document.documentElement;
-    // 1. Update React color-mode state
-    rawSetColorMode(newValue);
-    // 2. Update localStorage
-    localStorage.setItem('color-mode', newValue);
     // 3. Update each color
-    root.style.setProperty('--color-text', newValue === 'light' ? colors.dark : colors.light);
-    root.style.setProperty('--color-background', newValue === 'light' ? colors.dark : colors.light);
-    root.style.setProperty('--color-primary', newValue === 'light' ? colors.primary : colors.primary);
-    root.style.setProperty('--text-shadow', newValue === 'light' ? textShadows.dark : textShadows.light);
-    root.style.setProperty('--color-primary', newValue === 'light' ? colors.primary : colors.primary);
+    root.style.setProperty('--color-text', themeMode === 'light' ? colors.black : colors.white);
+    root.style.setProperty('--color-background', themeMode === 'light' ? colors.white : colors.black);
+    root.style.setProperty('--color-primary', themeMode === 'light' ? colors.primary : colors.primary);
+    root.style.setProperty('--text-shadow', themeMode === 'light' ? textShadows.dark : textShadows.white);
+    root.style.setProperty('--color-primary', themeMode === 'light' ? colors.primary : colors.primary);
+    root.style.setProperty('--linear-gradient', themeMode === 'light' ? linearGradients.light : linearGradients.dark);
   };
 
   return (
@@ -889,14 +960,16 @@ const Layout = ({ children, location }) => {
       }}
     >
       <Helmet>
-        <script
-          defer
-          src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon='{"token": "27f1e6ab8f5743bd8e1e770722db344b"}'
-        ></script>
+        {activeEnv !== 'development' ? (
+          <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon='{"token": "27f1e6ab8f5743bd8e1e770722db344b"}'
+          ></script>
+        ) : null}
       </Helmet>
       <StyledLayout>
-        <Navigation location={location} changeTheme={changeTheme} setColorMode={setColorMode} />
+        <Navigation location={location} changeTheme={changeTheme} />
         {children}
         <Footer />
       </StyledLayout>

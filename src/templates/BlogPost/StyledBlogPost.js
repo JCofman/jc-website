@@ -26,6 +26,12 @@ export const StyledSingleBlogPostArticle = styled.article`
     line-height: 1.6;
     grid-template-columns: minmax(1.2rem, 1fr) minmax(auto, 57ch) minmax(1.2rem, 1fr);
     transition: color ${(props) => props.theme.themeTransition};
+
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+
     a {
       color: ${(props) => props.theme.colors.primary && darken(0.1, props.theme.colors.primary)};
       position: relative;
@@ -54,6 +60,10 @@ export const StyledSingleBlogPostArticle = styled.article`
     a:visited::after {
       color: ${(props) => props.theme.colors.secondary};
       border-color: ${(props) => props.theme.colors.secondary};
+    }
+    a svg {
+      text-decoration: none;
+      fill: #24dcb3;
     }
   }
 

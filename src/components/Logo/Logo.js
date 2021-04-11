@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledSVG = styled.svg`
-  fill: var(--color-background);
+  fill: var(--color-text);
 `;
 
 export const Logo = (props) => (

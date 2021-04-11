@@ -15,7 +15,9 @@ const sharedHeadingStyles = css`
     color: var(--color-primary);
     transition: none;
   }
-  :before {
+  ${(props) =>
+    props.backgroundStyle === 'TRIANGLE' &&
+    `:before {
     width: 0;
     height: 0;
     opacity: 0.2;
@@ -27,7 +29,32 @@ const sharedHeadingStyles = css`
     position: absolute;
     z-index: -1;
     transform: translateX(-0.5em) translateY(-1.5rem);
-  }
+  }`}
+  ${(props) =>
+    props.backgroundStyle === 'PARALLELOGRAM' &&
+    `:before {
+    width: 50px;
+    height: 40px;
+    background: var(--color-text);
+    opacity: 0.2;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    transform: translateX(-0.5em) translateY(-1.5rem) skew(20deg);
+  }`}
+  ${(props) =>
+    props.backgroundStyle === 'CIRCLE' &&
+    `:before {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    opacity: 0.2;
+    background-color: var(--color-text);
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    transform: translateX(-0.5em) translateY(-1.5rem);
+  }`}
 `;
 
 const StyledHeadingH1 = styled.h1`

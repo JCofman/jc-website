@@ -1,6 +1,6 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 
 import SEO from '../components/SEO';
@@ -90,7 +90,7 @@ const StyledBlogArtikelHeaderTriangle = styled(BaseArtikelHeader)`
   }
 `;
 
-export const StyledBlogArtikelHeaderCircle = styled(BaseArtikelHeader)`
+const StyledBlogArtikelHeaderCircle = styled(BaseArtikelHeader)`
   :before {
     width: 50px;
     height: 50px;
@@ -104,7 +104,7 @@ export const StyledBlogArtikelHeaderCircle = styled(BaseArtikelHeader)`
   }
 `;
 
-export const StyledBlogArtikelHeaderParallelogram = styled(BaseArtikelHeader)`
+const StyledBlogArtikelHeaderParallelogram = styled(BaseArtikelHeader)`
   :before {
     width: 50px;
     height: 40px;
@@ -177,7 +177,10 @@ const IndexPage = () => {
               <BlogArtikel>
                 <BlogArtikelImageWrapper>
                   <Link aria-label={`Go to ${post.slug}`} to={post.slug}>
-                    <Img fluid={post.featuredImageSizes} />
+                    <GatsbyImage
+                      image={post.featuredImage.childImageSharp.gatsbyImageData}
+                      alt={`article featured image for ${post.title}`}
+                    />
                   </Link>
                 </BlogArtikelImageWrapper>
                 <BlogArtikelSingleWrapper>

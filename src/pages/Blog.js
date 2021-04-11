@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
@@ -52,33 +52,34 @@ const BlogArtikelImageWrapper = styled.div`
   margin: 0 auto;
 `;
 
+const StyledArticle = styled.article`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--padding-6);
+  padding-bottom: var(--padding-6);
+  padding-left: var(--padding-3);
+  padding-right: var(--padding-3);
+  background: var(--color-background);
+  flex-grow: 1;
+`;
+
 const StyledBlogPost = styled.div`
   max-width: 30rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   background: var(--color-background);
   display: flex;
-  .post-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    flex-grow: 1;
-  }
 
   img {
     object-position: center;
     object-fit: cover;
-    height: 12rem;
     width: 100%;
   }
 `;
 
 const MyBlog = () => {
   const { posts } = usePosts();
+
   return (
     <Layout>
       <SEO title="All posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
@@ -109,10 +110,13 @@ const MyBlog = () => {
                   `}
                 >
                   <BlogArtikelImageWrapper>
-                    <Img fluid={post.featuredImageSizes} />
+                    <GatsbyImage
+                      alt={`unsplash cover image to article ${post.title}`}
+                      image={getImage(post.featuredImage)}
+                    />
                   </BlogArtikelImageWrapper>
 
-                  <article
+                  <StyledArticle
                     className="post-container"
                     css={`
                       padding: 1.5rem;
@@ -165,7 +169,7 @@ const MyBlog = () => {
                         Read
                       </Link>
                     </div>
-                  </article>
+                  </StyledArticle>
                 </GatsbyLink>
               </StyledBlogPost>
             );

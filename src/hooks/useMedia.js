@@ -2,12 +2,11 @@ import { useState, useEffect } from 'react';
 
 export const useMedia = (queries, values, defaultValue) => {
   // Array containing a media query list for each query
-  const mediaQueryLists = queries.map(q => typeof window !== `undefined` && window.matchMedia(q));
-
+  const mediaQueryLists = queries.map((q) => typeof window !== `undefined` && window.matchMedia(q));
   // Function that gets value based on matching media query
   const getValue = () => {
     // Get index of first media query that matches
-    const index = mediaQueryLists.findIndex(mql => mql.matches);
+    const index = mediaQueryLists.findIndex((mql) => mql.matches);
     // Return related value or defaultValue if none
     return typeof values[index] !== `undefined` ? values[index] : defaultValue;
   };
@@ -22,9 +21,9 @@ export const useMedia = (queries, values, defaultValue) => {
       // ... current values of hook args (as this hook callback is created once on mount).
       const handler = () => setValue(getValue);
       // Set a listener for each media query with above handler as callback.
-      mediaQueryLists.forEach(mql => mql.addListener(handler));
+      mediaQueryLists.forEach((mql) => mql.addListener(handler));
       // Remove listeners on cleanup
-      return () => mediaQueryLists.forEach(mql => mql.removeListener(handler));
+      return () => mediaQueryLists.forEach((mql) => mql.removeListener(handler));
     },
     [] // Empty array ensures effect is only run on mount and unmount
   );

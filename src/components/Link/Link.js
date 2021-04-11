@@ -12,12 +12,11 @@ const StyledLink = styled((props) => <GatsbyLink {...props} />)`
   font-weight: 600;
   color: #fff;
   text-transform: uppercase;
-
   cursor: pointer;
   margin: 20px;
   height: 55px;
   text-align: center;
-  border: none;
+  border-radius: var(--rounded-lg);
   background-size: 300% 100%;
   background-color: #3eecac;
   background-image: linear-gradient(19deg, #3eecac 0%, #4a90e2 100%);

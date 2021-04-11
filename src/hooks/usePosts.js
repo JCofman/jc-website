@@ -19,28 +19,12 @@ export const usePosts = () => {
               excerpt
               headerImage {
                 childImageSharp {
-                  sizes(maxWidth: 250, maxHeight: 250) {
-                    sizes
-                    src
-                    aspectRatio
-                    srcSet
-                    srcSetWebp
-                    srcWebp
-                    tracedSVG
-                  }
+                  gatsbyImageData(width: 300, height: 300, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                 }
               }
               featuredImage {
                 childImageSharp {
-                  sizes(maxWidth: 250, maxHeight: 250) {
-                    sizes
-                    src
-                    aspectRatio
-                    srcSet
-                    srcSetWebp
-                    srcWebp
-                    tracedSVG
-                  }
+                  gatsbyImageData(width: 300, height: 300, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                 }
               }
             }
@@ -59,10 +43,7 @@ export const usePosts = () => {
       date: frontmatter.date,
       id: id,
       slug: fields.slug,
-      featuredImageSizes:
-        frontmatter.featuredImage !== null
-          ? frontmatter.featuredImage.childImageSharp.sizes
-          : frontmatter.headerImage.childImageSharp.sizes,
+      featuredImage: frontmatter.featuredImage,
     })),
   };
 };

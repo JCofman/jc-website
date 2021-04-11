@@ -10,7 +10,6 @@ import { FaMoon, FaSun, FaSearch, FaWindowClose } from 'react-icons/fa';
 import useModal from '../../hooks/useModal';
 import { useMedia } from '../../hooks/useMedia';
 import { useWindowScrollPosition } from '../../hooks/useWindowScrollPosition';
-import { colors } from '../Layout/Theme';
 
 import Logo from '../Logo';
 import SearchBar from '../SearchBar';
@@ -43,8 +42,8 @@ const StyledModalCloseButton = styled.button`
 
 const StyledSearchIconButton = styled.button`
   display: flex;
-  width: 40px;
-  height: 70px;
+  width: 4rem;
+  height: 7rem;
   background-color: transparent;
   color: var(--color-text);
   cursor: pointer;
@@ -74,9 +73,9 @@ const StyledDarkLightModeSwitcherButton = styled.button`
   align-items: center;
   justify-content: center;
   background: transparent;
-  border-radius: 3px;
+  border-radius: var(--border-4);
   color: var(--color-text);
-  border: 2px solid transparent;
+  border: var(--border-2) solid transparent;
   ${(props) =>
     props.primary &&
     css`
@@ -84,7 +83,7 @@ const StyledDarkLightModeSwitcherButton = styled.button`
       color: ${(props) => props.theme.colors.white};
     `}
   &:hover, &:focus {
-    border: 2px solid ${(props) => props.theme.colors.primary};
+    border: var(--border-2) solid ${(props) => props.theme.colors.primary};
 
     cursor: pointer;
   }
@@ -100,12 +99,6 @@ const Navigation = (props) => {
   const {
     theme: { mode },
   } = props;
-  let logoFillColor;
-  if (mode === `light`) {
-    logoFillColor = colors.black;
-  } else {
-    logoFillColor = colors.white;
-  }
   const { closeModal, isOpen, Modal, toggleModal } = useModal();
   const { y } = useWindowScrollPosition();
 
@@ -139,7 +132,7 @@ const Navigation = (props) => {
           <StyledNavWrapper>
             <Link to="/" aria-label="Go to home">
               <StyledNavLogo scrollPositionY={pathname === `/` ? y : 1}>
-                <Logo fillColor={logoFillColor} />
+                <Logo />
               </StyledNavLogo>
             </Link>
 
@@ -186,7 +179,6 @@ const Navigation = (props) => {
                   <StyledDarkLightModeSwitcherButton
                     onClick={() => {
                       props.changeTheme();
-                      props.setColorMode('dark');
                     }}
                     aria-label="Switch dark and light mode"
                   >

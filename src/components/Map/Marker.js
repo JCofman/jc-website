@@ -1,9 +1,9 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Marker as ReactSimpleMarker } from 'react-simple-maps';
-import { css } from 'styled-components';
 
-const MotionMarker = motion.custom(ReactSimpleMarker);
+const MotionMarker = motion(ReactSimpleMarker);
 
 const circleTransition = {
   repeatDelay: 1,
@@ -12,6 +12,7 @@ const circleTransition = {
   type: 'tween',
   ease: [0, 0.55, 0.75, 1],
 };
+
 const firstCircle = {
   duration: 3,
   delay: 0.3,
@@ -23,29 +24,19 @@ const secondCircle = {
   delay: 0.9,
   ...circleTransition,
 };
+
 const thirdCircle = {
   duration: 3,
   delay: 1.5,
   ...circleTransition,
 };
 
-// const triangleTransition = {
-//   duration: 3,
-//   delay: 0,
-//   ...circleTransition,
-// };
-
-// const triangleAnimate = {
-//   scale: [0, 0.9, 1.1, 0],
-//   opacity: [1, 0.9, 0.5, 0.1, 0],
-// };
-
 const styleThinHalo = {
   width: 20,
   height: 20,
   top: 0,
   left: 0,
-  border: '1px solid white',
+  border: '1px solid var(--color-text)',
   overflow: 'visible',
   borderRadius: 100,
   position: 'absolute',
@@ -110,18 +101,5 @@ export const Marker = ({ coordinates, name, markerOffset }) => {
     </motion.g>
   );
 };
-
-// const Triangle = (props) => {
-//   return (
-//     <motion.svg
-//       animate={triangleAnimate}
-//       transition={triangleTransition}
-//       height="20px"
-//       xmlns="http://www.w3.org/2000/svg"
-//     >
-//       <motion.path d="M 50,5 95,97.5 5,97.5 z" fill="white"></motion.path>
-//     </motion.svg>
-//   );
-// };
 
 export default Marker;

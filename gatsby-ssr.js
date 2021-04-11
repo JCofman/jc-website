@@ -5,7 +5,7 @@ const MagicScriptTag = () => {
   let codeToRunOnClient = `
 (function() {
   function getInitialColorMode() {
-    const persistedColorPreference = window.localStorage.getItem('color-mode');
+    const persistedColorPreference = JSON.parse(window.localStorage.getItem('theme'));
     const hasPersistedPreference = typeof persistedColorPreference === 'string';
   // If the user has explicitly chosen light or dark,
   // let's use it. Otherwise, this value will be null.

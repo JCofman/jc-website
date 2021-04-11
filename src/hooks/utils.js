@@ -1,6 +1,6 @@
-export function throttle(func, threshold = 250, scope) {
+const throttle = (func, threshold = 250, scope) => {
   let last, deferTimer;
-  return function() {
+  return function () {
     let context = scope || this;
 
     let now = Date.now(),
@@ -8,7 +8,7 @@ export function throttle(func, threshold = 250, scope) {
     if (last && now < last + threshold) {
       // hold on to it
       clearTimeout(deferTimer);
-      deferTimer = setTimeout(function() {
+      deferTimer = setTimeout(function () {
         last = now;
         func.apply(context, args);
       }, threshold);
@@ -17,4 +17,6 @@ export function throttle(func, threshold = 250, scope) {
       func.apply(context, args);
     }
   };
-}
+};
+
+export { throttle };
