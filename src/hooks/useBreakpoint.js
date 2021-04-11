@@ -10,6 +10,7 @@ export const useBreakpoint = () => {
       `(min-width: ${sizes.tablet}px)`,
       `(min-width: ${sizes.phone}px)`,
       `(min-width: ${sizes.smallPhone}px)`,
+      `(min-width: ${0}px)`,
     ],
     // Column counts (relates to above media queries by array index)
     [
@@ -18,9 +19,10 @@ export const useBreakpoint = () => {
       { minWidth: sizes.tablet, name: 'medium' },
       { minWidth: sizes.phone, name: 'small' },
       { minWidth: sizes.smallPhone, name: 'xsmall' },
+      { minWidth: sizes.smallPhone, name: 'xsmall' },
     ],
     // default
-    { minWidth: sizes.desktop, breakpoint: 'large' }
+    { minWidth: sizes.smallPhone, breakpoint: 'xsmall' }
   );
 
   return breakpoint;

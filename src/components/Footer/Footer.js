@@ -109,6 +109,7 @@ const LazyWorldMap = React.lazy(() => import(`../Map/ReactMap` /* webpackChunkNa
 
 const Footer = () => {
   const breakpoint = useBreakpoint();
+  console.log(breakpoint.name);
   return (
     <StyledFooterWrapper>
       <StyledFooter>

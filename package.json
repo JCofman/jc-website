@@ -121,6 +121,7 @@
     "eslint-webpack-plugin": "^2.5.3",
     "gatsby-plugin-eslint": "^3.0.0",
     "gatsby-remark-static-images": "^1.2.1",
+    "html-webpack-plugin": "^5.3.1",
     "husky": "^6.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
