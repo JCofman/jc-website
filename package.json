@@ -150,9 +150,9 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build": "node postinstall.js && PUBLISH_ON_NOW=branch-deploy gatsby build",
-    "build:prod": "node postinstall.js && PUBLISH_ON_NOW=production gatsby build",
-    "develop": "GATSBY_EXPERIMENTAL_REMOTE_IMAGES=1 node postinstall.js && npm-run-all -p dev storybook",
+    "build": "PUBLISH_ON_NOW=branch-deploy gatsby build",
+    "build:prod": "PUBLISH_ON_NOW=production gatsby build",
+    "develop": "GATSBY_EXPERIMENTAL_REMOTE_IMAGES=1 npm-run-all -p dev storybook",
     "serve": "gatsby serve",
     "dev": "PUBLISH_ON_NOW=branch-deploy gatsby develop",
     "lint": "npm-run-all -p lint:eslint lint:css",
