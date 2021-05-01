@@ -5,7 +5,9 @@ import { withTheme, css } from 'styled-components';
 import { InstantSearch } from 'react-instantsearch-dom';
 import styled from 'styled-components';
 import { Location } from '@reach/router';
+import { motion } from 'framer-motion';
 import { FaMoon, FaSun, FaSearch, FaWindowClose } from 'react-icons/fa';
+import { HiOutlineHome, HiOutlineUserCircle, HiOutlineSearch } from 'react-icons/hi';
 
 import useModal from '../../hooks/useModal';
 import { useMedia } from '../../hooks/useMedia';
@@ -19,13 +21,14 @@ import {
   StyledNavLogo,
   StyledNavList,
   StyledNavWrapper,
+  StyledNavList,
   StyledNavListLink,
   StyledWrapper,
 } from './StyledNavigation';
 
 const searchClient = algoliasearch(`8C28RWVQVQ`, `8bf43203e68ea1c9d485ccb865e18e99`);
 
-const StyledSearchIcon = styled(FaSearch)`
+const StyledSearchIcon = styled(HiOutlineSearch)`
   color: ${(props) => props.theme.primary};
   align-self: center;
 `;
@@ -79,13 +82,13 @@ const StyledDarkLightModeSwitcherButton = styled.button`
   ${(props) =>
     props.primary &&
     css`
-      background: ${(props) => props.theme.colors.primary};
-      color: ${(props) => props.theme.colors.white};
+      background: var(--color-primary);
+      color: var(--color-white);
     `}
   &:hover, &:focus {
-    border: var(--border-2) solid ${(props) => props.theme.colors.primary};
-
+    border: var(--border-2) solid var(--color-primary);
     cursor: pointer;
+    outline: none;
   }
 `;
 
@@ -94,6 +97,13 @@ export const NavLink = (props) => (
     <Link {...props} />
   </StyledNavListLink>
 );
+
+const iconMotion = {
+  hover: {
+    rotate: 9,
+    transition: { type: 'spring', stiffness: 900 },
+  },
+};
 
 const Navigation = (props) => {
   const {
@@ -168,7 +178,13 @@ const Navigation = (props) => {
               <div>&nbsp;</div>
               <StyledNavList>
                 <NavLink to="/">Home</NavLink>
-                <NavLink to="/blog">Blog</NavLink>
+                <NavLink to="/blog" whileHover={'hover'}>
+                  {' '}
+                  <motion.div variants={iconMotion}>
+                    <HiOutlineHome></HiOutlineHome>
+                  </motion.div>
+                  Blog
+                </NavLink>
                 <NavLink to="/about">About</NavLink>
                 <li
                   css={`

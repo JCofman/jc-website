@@ -44,11 +44,6 @@ const BlogArtikel = styled.div`
   }
 `;
 
-// const BlogArtikelHeaderTextShadow = theme(`mode`, {
-//   light: `2px 2px 0 rgba(0,0, 0,0.3)`,
-//   dark: `2px 2px 0 rgba(255,255, 255,0.3)`,
-// });
-
 const BaseArtikelHeader = styled.h2`
   font-size: 3rem;
   margin-bottom: 2rem;
@@ -60,7 +55,7 @@ const BaseArtikelHeader = styled.h2`
   }
   a:hover,
   a:focus {
-    color: ${(props) => props.theme.colors.primary};
+    color: var(--color-primary);
     transition: none;
   }
   ${(props) => props.theme.xsmall} {

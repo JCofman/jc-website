@@ -50,8 +50,8 @@ const StyledHeader = styled.header`
     margin-right: auto;
     text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
     width: 80%;
-    background-color: ${(props) => props.theme.colors.primary};
-    transition: color ${(props) => props.theme.themeTransition};
+    background-color: var(--color-primary);
+    transition: color var(--theme-transition);
     line-height: 1.1em;
     font-size: 4rem;
 
@@ -71,7 +71,7 @@ const StyledBlogBottomNav = styled.div`
   font-size: 2rem;
   a {
     margin: 1rem 2rem;
-    color: ${(props) => props.theme.colors.primary};
+    color: var(--color-primary);
   }
 `;
 

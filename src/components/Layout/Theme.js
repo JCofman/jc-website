@@ -65,7 +65,7 @@ export const paddings = {
 export const fontSizes = {
   fontSizeXs: `1.2rem`,
   fontSizeSm: `1.4rem`,
-  fontSizeBase: `1.5rem`,
+  fontSizeBase: `1.6rem`,
   fontSizeLg: `1.8rem`,
   fontSizeXl: `2rem`,
   fontSize2Xl: `2.4rem`,
@@ -78,11 +78,11 @@ export const fontSizes = {
 };
 
 export const lineHeights = {
-  lineHeightXs: `1.6rem`,
-  lineHeightSm: `2.0rem`,
-  lineHeightBase: `1.6rem`,
-  lineHeightLg: `1.8rem`,
-  lineHeightXl: `2rem`,
+  lineHeightXs: `1.2`,
+  lineHeightSm: `1.4`,
+  lineHeightBase: `1.6`,
+  lineHeightLg: `1.8`,
+  lineHeightXl: `2`,
 };
 
 export const fontWeights = {

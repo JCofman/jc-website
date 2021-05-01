@@ -35,11 +35,12 @@ const StyledTableOfContentsNavigation = styled.nav`
   }
 
   a {
+    font-size: var(--font-size-sm);
     display: block;
     opacity: 0.8;
     text-decoration: none;
     transition: opacity 500ms ease 0s;
-    margin-top: 1rem;
+    margin-top: var(--margin-1);
     text-align: left;
   }
 

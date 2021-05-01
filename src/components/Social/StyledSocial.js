@@ -9,12 +9,4 @@ export const StyledSocial = styled.div`
     color: var(--color-text);
     margin: 2rem;
   }
-  svg {
-    transition: all 0.5s ease;
-    &:hover,
-    &:focus {
-      color: var(--color-text);
-      transform: scale(1.5);
-    }
-  }
 `;

@@ -1,15 +1,17 @@
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import Social from '../../components/Social';
 import Heading from '../../components/Heading';
 import Stack from '../../components/Stack';
 import { NavLink } from '../../components/Navigation/Navigation';
 import { useBreakpoint } from '../../hooks/useBreakpoint';
+import { HiOutlineGlobe } from 'react-icons/hi';
 
 const StyledMap = styled.div`
   margin: var(--margin-6) auto;
-  transition: background-color ${(props) => props.theme.themeTransition};
+  transition: background-color var(--theme-transition);
   width: 100%;
   max-width: var(--max-width);
   ${(props) => props.theme.small} {
@@ -109,7 +111,6 @@ const LazyWorldMap = React.lazy(() => import(`../Map/ReactMap` /* webpackChunkNa
 
 const Footer = () => {
   const breakpoint = useBreakpoint();
-  console.log(breakpoint.name);
   return (
     <StyledFooterWrapper>
       <StyledFooter>
@@ -125,6 +126,7 @@ const Footer = () => {
               >
                 Countries I have traveled
               </Heading>
+
               <StyledMap>
                 {typeof window === `undefined` ? null : (
                   <Suspense fallback={<div>Loading...</div>}>
