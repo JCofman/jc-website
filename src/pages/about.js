@@ -8,6 +8,8 @@ import Heading from '../components/Heading';
 import SEO from '../components/SEO';
 
 const StyledH1 = styled.h1`
+
+
   color: ${(props) => props.theme.colors.primary};
   transform: skew(-5deg) rotate(-1deg);
   font-size: 6rem;
@@ -21,7 +23,7 @@ const StyledH1 = styled.h1`
     content: '';
     pointer-events: none;
     position: absolute;
-    transform: translateX(-0.5em) translateY(-1.5rem);
+    transform: scale(1.5) translateX(-0.3em) translateY(-0.1rem);
   }
   ${(props) => props.theme.xsmall} {
     font-size: 6rem;
@@ -181,9 +183,17 @@ const StyledH3 = styled.h3`
 
 const calculateAge = (birthday) => {
   // birthday is a date
-  const ageDifMs = Date.now() - birthday.getTime();
-  const ageDate = new Date(ageDifMs); // miliseconds from epoch
-  return Math.abs(ageDate.getUTCFullYear() - 1970);
+  const today = new Date();
+
+  let age = today.getFullYear() - birthday.getFullYear();
+  console.log(today.getMonth());
+  console.log(birthday.getMonth());
+  const month = today.getMonth() - birthday.getMonth();
+  console.log(month);
+  if (month < 0 || (month === 0 && today.getDate() < birthday.getDate())) {
+    age--;
+  }
+  return age;
 };
 
 const AboutMe = () => (
@@ -219,7 +229,7 @@ const AboutMe = () => (
             <StyledH1>Jacob Cofman</StyledH1>
             <StyledSpan>That`s me 😏</StyledSpan>
             <StyledListTriangle>
-              <li> {calculateAge(new Date(1991, 8, 31))} years old</li>
+              <li> {calculateAge(new Date('August 31, 1991 08:24:00'))} years old</li>
               <li> Living in Lörrach Germany</li>
               <li> One twin brother</li>
               <li> A lovely girlfriend</li>

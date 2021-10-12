@@ -109,7 +109,7 @@ export const StyledNavListItem = styled.li`
   margin-bottom: 0px;
 `;
 
-export const StyledNavListItemLink = styled(motion.a)`
+export const StyledNavListItemLink = styled(motion.div)`
   font-size: var(--font-size-xl);
   font-weight: 600;
   padding: 1rem 3rem;
@@ -121,7 +121,7 @@ export const StyledNavListItemLink = styled(motion.a)`
   align-items: center;
   text-transform: uppercase;
   color: var(--color-text);
-
+  justify-content: center;
   &:after {
     height: 2px;
     background: var(--color-primary);

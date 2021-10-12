@@ -5,12 +5,14 @@ import styled from 'styled-components';
 
 import SEO from '../components/SEO';
 import { usePosts } from '../hooks/usePosts';
+import { useNotionVisitedCountries } from '../hooks/useNotionVisitedCountries';
 
 import { zIndexbackGroundAfterElements } from '../components/Styles/zIndex';
 
 import Layout from '../components/Layout';
 import Header from '../components/Header';
 import Divider from '../components/Divider';
+import Inspect from 'inspx';
 
 const BlogArtikelWrapper = styled.article`
   background-color: ${(props) => props.theme.black};
@@ -159,9 +161,11 @@ const StyledMain = styled.main`
 
 const IndexPage = () => {
   let { posts } = usePosts();
+
   // only render most recent 5 posts;
   posts = posts.slice(0, 5);
   return (
+    <Inspect>
     <Layout>
       <SEO title="All posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
       <Header />
@@ -209,7 +213,6 @@ const IndexPage = () => {
                     </BlogArtikelHeaderTags>
                     {` `}
                   </BlogartikleSubInfo>
-
                   {post.excerpt}
                 </BlogArtikelSingleWrapper>
               </BlogArtikel>
@@ -219,6 +222,7 @@ const IndexPage = () => {
         })}
       </StyledMain>
     </Layout>
+    </Inspect>
   );
 };
 

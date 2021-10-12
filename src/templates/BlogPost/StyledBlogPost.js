@@ -64,6 +64,8 @@ export const StyledSingleBlogPostArticle = styled.article`
     a svg {
       text-decoration: none;
       fill: var(--color-primary);
+      visibility: visible;
+      text-decoration: none;
     }
   }
 

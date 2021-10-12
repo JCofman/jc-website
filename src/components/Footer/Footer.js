@@ -5,9 +5,12 @@ import { motion } from 'framer-motion';
 import Social from '../../components/Social';
 import Heading from '../../components/Heading';
 import Stack from '../../components/Stack';
+import { iconMotion } from '../../utils/motions';
 import { NavLink } from '../../components/Navigation/Navigation';
 import { useBreakpoint } from '../../hooks/useBreakpoint';
-import { HiOutlineGlobe } from 'react-icons/hi';
+import { HiOutlineGlobe, HiOutlineHome, HiOutlineNewspaper, HiOutlineUserCircle } from 'react-icons/hi';
+import useNotionVisitedCountries from '../../hooks/useNotionVisitedCountries';
+import { sizes } from '../Layout/Theme';
 
 const StyledMap = styled.div`
   margin: var(--margin-6) auto;
@@ -19,6 +22,10 @@ const StyledMap = styled.div`
   }
   ${(props) => props.theme.medium} {
     margin: var(--margin-1) auto;
+    min-height: 500px;
+  }
+  @media (min-width: ${sizes.desktop}px) {
+    min-height: 750px;
   }
 `;
 
@@ -111,6 +118,7 @@ const LazyWorldMap = React.lazy(() => import(`../Map/ReactMap` /* webpackChunkNa
 
 const Footer = () => {
   const breakpoint = useBreakpoint();
+  const { visitedCountries } = useNotionVisitedCountries();
   return (
     <StyledFooterWrapper>
       <StyledFooter>
@@ -131,7 +139,6 @@ const Footer = () => {
                 {typeof window === `undefined` ? null : (
                   <Suspense fallback={<div>Loading...</div>}>
                     <LazyWorldMap />
-                    {` `}
                   </Suspense>
                 )}
               </StyledMap>
@@ -140,13 +147,21 @@ const Footer = () => {
 
           <NavListWrapper>
             <NavList>
-              <NavLink to="/">Home</NavLink>
+              <NavLink initial={'rest'} whileHover="hover" to="/">
+                <motion.div variants={iconMotion}>
+                  <HiOutlineHome></HiOutlineHome>
+                </motion.div>
+                Home
+              </NavLink>
               <FooterListLink></FooterListLink>
             </NavList>
             <Social />
-            <NavList>
-              <NavLink to="/about">About</NavLink>
-            </NavList>
+            <NavLink initial="rest" to="/about" whileHover="hover" animate="rest">
+              <motion.div variants={iconMotion}>
+                <HiOutlineUserCircle></HiOutlineUserCircle>
+              </motion.div>
+              About
+            </NavLink>
           </NavListWrapper>
         </Stack>
       </StyledFooter>

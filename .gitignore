@@ -12,5 +12,6 @@ yarn-error.log
 .package-lock.json
 .yarn.lock
 .env.production
+.env.development
 setup-improvmx.sh
 .now

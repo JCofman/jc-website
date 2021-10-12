@@ -7,7 +7,13 @@ import styled from 'styled-components';
 import { Location } from '@reach/router';
 import { motion } from 'framer-motion';
 import { FaMoon, FaSun, FaSearch, FaWindowClose } from 'react-icons/fa';
-import { HiOutlineHome, HiOutlineUserCircle, HiOutlineSearch } from 'react-icons/hi';
+import {
+  HiOutlineHome,
+  HiOutlineUserCircle,
+  HiOutlineSearch,
+  HiOutlineNewspaper,
+  HiOutlineSearchCircle,
+} from 'react-icons/hi';
 
 import useModal from '../../hooks/useModal';
 import { useMedia } from '../../hooks/useMedia';
@@ -19,10 +25,9 @@ import SearchBar from '../SearchBar';
 import {
   StyledNav,
   StyledNavLogo,
-  StyledNavList,
   StyledNavWrapper,
   StyledNavList,
-  StyledNavListLink,
+  StyledNavListItemLink,
   StyledWrapper,
 } from './StyledNavigation';
 
@@ -92,13 +97,28 @@ const StyledDarkLightModeSwitcherButton = styled.button`
   }
 `;
 
-export const NavLink = (props) => (
-  <StyledNavListLink>
-    <Link {...props} />
-  </StyledNavListLink>
-);
+export const NavLink = (props) => {
+  const { children, to, ...rest } = props;
+  return (
+    <StyledNavListItemLink {...rest}>
+      <Link
+        css={`
+          display: flex;
+          gap: 1rem;
+        `}
+        to={to}
+      >
+        {' '}
+        {children}
+      </Link>
+    </StyledNavListItemLink>
+  );
+};
 
 const iconMotion = {
+  rest: {
+    rotate: 0,
+  },
   hover: {
     rotate: 9,
     transition: { type: 'spring', stiffness: 900 },
@@ -177,15 +197,25 @@ const Navigation = (props) => {
             <StyledNav>
               <div>&nbsp;</div>
               <StyledNavList>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/blog" whileHover={'hover'}>
-                  {' '}
+                <NavLink initial={'rest'} whileHover="hover" to="/">
                   <motion.div variants={iconMotion}>
                     <HiOutlineHome></HiOutlineHome>
                   </motion.div>
+                  Home
+                </NavLink>
+                <NavLink initial="rest" to="/blog" whileHover="hover" animate="rest">
+                  {' '}
+                  <motion.div variants={iconMotion}>
+                    <HiOutlineNewspaper></HiOutlineNewspaper>
+                  </motion.div>
                   Blog
                 </NavLink>
-                <NavLink to="/about">About</NavLink>
+                <NavLink initial="rest" to="/about" whileHover="hover" animate="rest">
+                  <motion.div variants={iconMotion}>
+                    <HiOutlineUserCircle></HiOutlineUserCircle>
+                  </motion.div>
+                  About
+                </NavLink>
                 <li
                   css={`
                     padding: 1rem 1rem;

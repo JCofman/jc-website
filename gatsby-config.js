@@ -72,6 +72,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-image`,
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -155,6 +156,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-json`,
+
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -200,6 +202,15 @@ module.exports = {
           `gatsby-remark-smartypants`,
         ],
         extensions: [`.mdx`, `.md`],
+      },
+    },
+    {
+      resolve: `gatsby-source-notion-api`,
+      options: {
+        token: process.env.NOTION_INTEGRATION,
+        databaseId: process.env.NOTION_DATABASE_ID,
+        propsToFrontmatter: true,
+        lowerTitleLevel: true,
       },
     },
     {

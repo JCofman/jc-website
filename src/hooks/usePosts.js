@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 export const usePosts = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
+      allMdx(sort: { order: DESC, fields: [frontmatter___date] }, filter: { fields: { slug: { regex: "/blog/" } } }) {
         totalCount
         edges {
           node {

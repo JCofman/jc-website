@@ -732,7 +732,7 @@ export const GlobalStyle = createGlobalStyle`
   pre tt:after {
     content: "";
   }
-  ::selection { background: ${(props) => props.theme.colors.primary}; }
+  ::selection { background: ${(props) => props.theme.colors.red500}; }
   code[class*='language-'],
   pre[class*='language-'] {
     font-size: 1.4rem;
