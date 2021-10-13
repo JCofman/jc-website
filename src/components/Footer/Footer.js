@@ -8,8 +8,7 @@ import Stack from '../../components/Stack';
 import { iconMotion } from '../../utils/motions';
 import { NavLink } from '../../components/Navigation/Navigation';
 import { useBreakpoint } from '../../hooks/useBreakpoint';
-import { HiOutlineGlobe, HiOutlineHome, HiOutlineNewspaper, HiOutlineUserCircle } from 'react-icons/hi';
-import useNotionVisitedCountries from '../../hooks/useNotionVisitedCountries';
+import { HiOutlineHome, HiOutlineUserCircle } from 'react-icons/hi';
 import { sizes } from '../Layout/Theme';
 
 const StyledMap = styled.div`
@@ -118,7 +117,6 @@ const LazyWorldMap = React.lazy(() => import(`../Map/ReactMap` /* webpackChunkNa
 
 const Footer = () => {
   const breakpoint = useBreakpoint();
-  const { visitedCountries } = useNotionVisitedCountries();
   return (
     <StyledFooterWrapper>
       <StyledFooter>

@@ -2,7 +2,7 @@
 
 exports[`should render a H1 header tags 1`] = `
 .c0 {
-  font-size: 8rem;
+  font-size: var(--font-size-7xl);
   font-family: 'Raleway',sans-serif;
   -webkit-transform: skew(-5deg) rotate(-1deg);
   -ms-transform: skew(-5deg) rotate(-1deg);
@@ -59,7 +59,7 @@ exports[`should render a H2 header tags 1`] = `
   margin-bottom: 2rem;
   color: var(--color-text);
   text-shadow: var(--text-shadow);
-  font-size: 5rem;
+  font-size: var(--font-size-5xl);
 }
 
 .c0 a {
@@ -109,7 +109,7 @@ exports[`should render a H3 header tags 1`] = `
   margin-bottom: 2rem;
   color: var(--color-text);
   text-shadow: var(--text-shadow);
-  font-size: 4rem;
+  font-size: var(--font-size-4xl);
 }
 
 .c0 a {
@@ -159,7 +159,7 @@ exports[`should render a H4 header tags 1`] = `
   margin-bottom: 2rem;
   color: var(--color-text);
   text-shadow: var(--text-shadow);
-  font-size: 3rem;
+  font-size: var(--font-size-3xl);
 }
 
 .c0 a {
@@ -209,7 +209,7 @@ exports[`should render a H5 header tags 1`] = `
   margin-bottom: 2rem;
   color: var(--color-text);
   text-shadow: var(--text-shadow);
-  font-size: 2.5rem;
+  font-size: var(--font-size-2xl);
 }
 
 .c0 a {
@@ -243,7 +243,7 @@ exports[`should render a H6 header tags 1`] = `
   margin-bottom: 2rem;
   color: var(--color-text);
   text-shadow: var(--text-shadow);
-  font-size: 2rem;
+  font-size: var(--font-size-xl);
 }
 
 .c0 a {

@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 import SEO from '../components/SEO';
 import { usePosts } from '../hooks/usePosts';
-import { useNotionVisitedCountries } from '../hooks/useNotionVisitedCountries';
 
 import { zIndexbackGroundAfterElements } from '../components/Styles/zIndex';
 

@@ -6,13 +6,12 @@ import { InstantSearch } from 'react-instantsearch-dom';
 import styled from 'styled-components';
 import { Location } from '@reach/router';
 import { motion } from 'framer-motion';
-import { FaMoon, FaSun, FaSearch, FaWindowClose } from 'react-icons/fa';
+import { FaMoon, FaSun, FaWindowClose } from 'react-icons/fa';
 import {
   HiOutlineHome,
   HiOutlineUserCircle,
   HiOutlineSearch,
   HiOutlineNewspaper,
-  HiOutlineSearchCircle,
 } from 'react-icons/hi';
 
 import useModal from '../../hooks/useModal';

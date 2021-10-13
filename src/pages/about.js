@@ -184,12 +184,8 @@ const StyledH3 = styled.h3`
 const calculateAge = (birthday) => {
   // birthday is a date
   const today = new Date();
-
   let age = today.getFullYear() - birthday.getFullYear();
-  console.log(today.getMonth());
-  console.log(birthday.getMonth());
   const month = today.getMonth() - birthday.getMonth();
-  console.log(month);
   if (month < 0 || (month === 0 && today.getDate() < birthday.getDate())) {
     age--;
   }

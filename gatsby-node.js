@@ -12,23 +12,27 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Get all markdown blog posts sorted by date
   const result = await graphql(
     `
-      {
-        allMdx(sort: { fields: [frontmatter___date], order: ASC }, limit: 1000) {
-          edges {
-            node {
-              id
-              frontmatter {
-                date
-                path
-                title
-              }
-              fields {
-                slug
-              }
+    {
+      allMdx(
+        sort: {fields: [frontmatter___date], order: ASC}
+        limit: 1000
+        filter: {slug: {regex: ""}}
+      ) {
+        edges {
+          node {
+            id
+            frontmatter {
+              date
+              path
+              title
+            }
+            fields {
+              slug
             }
           }
         }
       }
+    }
     `
   );
 
@@ -36,8 +40,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild(`There was an error loading your blog posts`, result.errors);
     return;
   }
+
   const posts = result.data.allMdx.edges.filter((node) => {
-    return node.fields?.slug !== null;
+    return node.fields !== null || node.fields?.slug !== null;
   });
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -61,10 +66,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   let slug;
-
   if (node.internal.type === `Mdx` && getNode(node.parent).relativePath) {
-    const { relativePath } = getNode(node.parent);
 
+    const { relativePath } = getNode(node.parent);
     slug = createFilePath({ node, getNode, basePath: `blog/`, trailingSlash: false });
     const match = BLOG_POST_FILENAME_REGEX.exec(relativePath);
 
