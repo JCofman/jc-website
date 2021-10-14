@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import { zIndexLogo, zIndexNavigation } from '../../components/Styles/zIndex';
 import { sizes } from '../Layout/Theme';
 
@@ -104,42 +105,41 @@ export const StyledNavList = styled.ul`
   align-items: center;
 `;
 
-export const StyledNavListLink = styled.li`
+export const StyledNavListItem = styled.li`
   margin-bottom: 0px;
+`;
 
-  a,
-  button {
-    font-size: var(--font-size-xl);
-    font-weight: 600;
-    padding: 1rem 3rem;
-    background: none;
-    border: none;
-    display: flex;
-    position: relative;
-    cursor: pointer;
-    align-items: center;
-    text-transform: uppercase;
-    color: var(--color-text);
-
+export const StyledNavListItemLink = styled(motion.div)`
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  padding: 1rem 3rem;
+  background: none;
+  border: none;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  align-items: center;
+  text-transform: uppercase;
+  color: var(--color-text);
+  justify-content: center;
+  &:after {
+    height: 2px;
+    background: var(--color-primary);
+    content: '';
+    width: 0;
+    position: absolute;
+    transform: translateX(-50%);
+    transition: width 0.4s;
+    transition-timing-function: cubic-bezier(1, -0.65, 0, 2.31);
+    left: 50%;
+    margin-top: 2rem;
+    bottom: 0.1em;
+  }
+  &:hover,
+  &:focus {
+    outline: none;
     &:after {
-      height: 2px;
-      background: var(--color-primary);
-      content: '';
-      width: 0;
-      position: absolute;
-      transform: translateX(-50%);
-      transition: width 0.4s;
-      transition-timing-function: cubic-bezier(1, -0.65, 0, 2.31);
-      left: 50%;
-      margin-top: 2rem;
-      bottom: 0.1em;
-    }
-    &:hover,
-    &:focus {
-      outline: none;
-      &:after {
-        width: calc(100% - 60px);
-      }
+      width: calc(100% - 60px);
     }
   }
 `;

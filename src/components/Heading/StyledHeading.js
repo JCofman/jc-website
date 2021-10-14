@@ -58,33 +58,30 @@ const sharedHeadingStyles = css`
 `;
 
 const StyledHeadingH1 = styled.h1`
-  font-size: 8rem;
+  font-size: var(--font-size-7xl);
   ${sharedHeadingStyles}
 `;
 
 const StyledHeadingH2 = styled.h2`
   ${sharedHeadingStyles}
-  font-size: 5rem;
+  font-size: var(--font-size-5xl);
 `;
 
 const StyledHeadingH3 = styled.h3`
   ${sharedHeadingStyles}
-
-  font-size: 4rem;
+  font-size: var(--font-size-4xl);
 `;
 const StyledHeadingH4 = styled.h4`
   ${sharedHeadingStyles}
-
-  font-size: 3rem;
+  font-size: var(--font-size-3xl);
 `;
 const StyledHeadingH5 = styled.h5`
   ${sharedHeadingStyles}
-
-  font-size: 2.5rem;
+  font-size: var(--font-size-2xl);
 `;
 const StyledHeadingH6 = styled.h6`
   ${sharedHeadingStyles}
-  font-size: 2rem;
+  font-size: var(--font-size-xl);
 `;
 
 export { StyledHeadingH1, StyledHeadingH2, StyledHeadingH3, StyledHeadingH4, StyledHeadingH5, StyledHeadingH6 };

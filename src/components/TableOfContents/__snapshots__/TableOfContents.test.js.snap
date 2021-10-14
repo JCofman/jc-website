@@ -20,7 +20,7 @@ exports[`Divider is rendered properly 1`] = `
   margin-bottom: 2rem;
   color: var(--color-text);
   text-shadow: var(--text-shadow);
-  font-size: 5rem;
+  font-size: var(--font-size-5xl);
 }
 
 .c1 a {
@@ -89,13 +89,14 @@ exports[`Divider is rendered properly 1`] = `
 }
 
 .c0 a {
+  font-size: var(--font-size-sm);
   display: block;
   opacity: 0.8;
   -webkit-text-decoration: none;
   text-decoration: none;
   -webkit-transition: opacity 500ms ease 0s;
   transition: opacity 500ms ease 0s;
-  margin-top: 1rem;
+  margin-top: var(--margin-1);
   text-align: left;
 }
 

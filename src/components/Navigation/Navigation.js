@@ -5,7 +5,14 @@ import { withTheme, css } from 'styled-components';
 import { InstantSearch } from 'react-instantsearch-dom';
 import styled from 'styled-components';
 import { Location } from '@reach/router';
-import { FaMoon, FaSun, FaSearch, FaWindowClose } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { FaMoon, FaSun, FaWindowClose } from 'react-icons/fa';
+import {
+  HiOutlineHome,
+  HiOutlineUserCircle,
+  HiOutlineSearch,
+  HiOutlineNewspaper,
+} from 'react-icons/hi';
 
 import useModal from '../../hooks/useModal';
 import { useMedia } from '../../hooks/useMedia';
@@ -17,15 +24,15 @@ import SearchBar from '../SearchBar';
 import {
   StyledNav,
   StyledNavLogo,
-  StyledNavList,
   StyledNavWrapper,
-  StyledNavListLink,
+  StyledNavList,
+  StyledNavListItemLink,
   StyledWrapper,
 } from './StyledNavigation';
 
 const searchClient = algoliasearch(`8C28RWVQVQ`, `8bf43203e68ea1c9d485ccb865e18e99`);
 
-const StyledSearchIcon = styled(FaSearch)`
+const StyledSearchIcon = styled(HiOutlineSearch)`
   color: ${(props) => props.theme.primary};
   align-self: center;
 `;
@@ -79,21 +86,43 @@ const StyledDarkLightModeSwitcherButton = styled.button`
   ${(props) =>
     props.primary &&
     css`
-      background: ${(props) => props.theme.colors.primary};
-      color: ${(props) => props.theme.colors.white};
+      background: var(--color-primary);
+      color: var(--color-white);
     `}
   &:hover, &:focus {
-    border: var(--border-2) solid ${(props) => props.theme.colors.primary};
-
+    border: var(--border-2) solid var(--color-primary);
     cursor: pointer;
+    outline: none;
   }
 `;
 
-export const NavLink = (props) => (
-  <StyledNavListLink>
-    <Link {...props} />
-  </StyledNavListLink>
-);
+export const NavLink = (props) => {
+  const { children, to, ...rest } = props;
+  return (
+    <StyledNavListItemLink {...rest}>
+      <Link
+        css={`
+          display: flex;
+          gap: 1rem;
+        `}
+        to={to}
+      >
+        {' '}
+        {children}
+      </Link>
+    </StyledNavListItemLink>
+  );
+};
+
+const iconMotion = {
+  rest: {
+    rotate: 0,
+  },
+  hover: {
+    rotate: 9,
+    transition: { type: 'spring', stiffness: 900 },
+  },
+};
 
 const Navigation = (props) => {
   const {
@@ -167,9 +196,25 @@ const Navigation = (props) => {
             <StyledNav>
               <div>&nbsp;</div>
               <StyledNavList>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/blog">Blog</NavLink>
-                <NavLink to="/about">About</NavLink>
+                <NavLink initial={'rest'} whileHover="hover" to="/">
+                  <motion.div variants={iconMotion}>
+                    <HiOutlineHome></HiOutlineHome>
+                  </motion.div>
+                  Home
+                </NavLink>
+                <NavLink initial="rest" to="/blog" whileHover="hover" animate="rest">
+                  {' '}
+                  <motion.div variants={iconMotion}>
+                    <HiOutlineNewspaper></HiOutlineNewspaper>
+                  </motion.div>
+                  Blog
+                </NavLink>
+                <NavLink initial="rest" to="/about" whileHover="hover" animate="rest">
+                  <motion.div variants={iconMotion}>
+                    <HiOutlineUserCircle></HiOutlineUserCircle>
+                  </motion.div>
+                  About
+                </NavLink>
                 <li
                   css={`
                     padding: 1rem 1rem;

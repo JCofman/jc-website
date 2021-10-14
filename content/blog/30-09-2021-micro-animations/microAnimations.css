@@ -1,0 +1,62 @@
+body {
+  background: #e2e8f0;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  background: #e2e8f0;
+  
+}
+
+.card {
+  background: white;
+  width: min-content;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  height: 200px;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+}
+
+.card-social {
+  display: flex;
+  font-size: 2rem;
+  color: lightGray;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.social-icon-wrapper svg  {
+  fill: white !important; 
+}
+
+
+
+.social-icon-wrapper {
+  background-color: #5c5edd;
+  color: white;
+  display: flex;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+}
+.social-icon-wrapper a:hover{
+  text-decoration: none !important;
+}
+
+a {
+  color: inherit;
+  padding: 0;
+  margin: 0;
+
+}

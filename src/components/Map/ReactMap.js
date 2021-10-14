@@ -1,50 +1,48 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
+import styled from 'styled-components';
+import { sizes } from '../Layout/Theme';
 
 import Marker from './Marker';
 import GeoWorldMap from '../world-50m.json';
-const placesIHaveVisited = [
-  {
-    name: 'North America',
-    coordinates: [-100.1667, 48.1667],
-    visitDate: new Date('December 17, 1995 03:24:00'),
-  },
-  { name: 'Germany', coordinates: [10.45412, 51.45412], visitDate: new Date() },
-  { name: 'New Zealand', coordinates: [174.885971, -40.90055], visitDate: new Date() },
-  { name: 'Oman', coordinates: [55.923255, 21.512583], visitDate: new Date() },
-  { name: 'Switzerland', coordinates: [8.227512, 46.818188], visitDate: new Date() },
-  { name: 'Australia', coordinates: [133.775136, -25.274398], visitDate: new Date() },
-  { name: 'Russia', coordinates: [105.3188, 61.524], visitDate: new Date() },
-];
+import useNotionVisitedCountries from '../../hooks/useNotionVisitedCountries';
+
+const StyledComposableMap = styled(ComposableMap)`
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
+  @media (min-width: ${sizes.desktop}px) {
+    max-width: 1400px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
+
 
 const variants = {
   start: {
     transition: { staggerChildren: 1, delayChildren: 1 },
   },
   end: {
+    opacity: 1,
     transition: { staggerChildren: 1 },
   },
 };
 
 const ReactMap = () => {
-  const item = {
-    start: { opacity: 0 },
-    end: { opacity: 1 },
-  };
+  const { visitedCountries } = useNotionVisitedCountries();
+
   return (
     <>
-      <ComposableMap
-        width={980}
-        height={551}
-        style={{
-          width: `100%`,
-          height: `auto`,
-        }}
-      >
+      <StyledComposableMap width={980} height={551}>
         <Geographies geography={GeoWorldMap}>
-          {({ geographies }) =>
-            geographies.map((geo) => (
+          {({ geographies }) => {
+            return geographies.map((geo) => (
               <Geography
                 key={geo.rsmKey}
                 geography={geo}
@@ -60,6 +58,7 @@ const ReactMap = () => {
                     strokeWidth: 0.5,
                     outline: `none`,
                     fill: `var(--color-background)`,
+                    fillOpacity: 0.5,
                   },
                   pressed: {
                     stroke: `var(--color-text)`,
@@ -69,21 +68,28 @@ const ReactMap = () => {
                   },
                 }}
               />
-            ))
-          }
+            ));
+          }}
         </Geographies>
-        <motion.g variants={variants} initial={'start'} animate={'end'}>
-          {placesIHaveVisited.map(({ name, coordinates, markerOffset }) => (
-            <Marker
-              key={name}
-              coordinates={coordinates}
-              markerOffset={markerOffset}
-              name={name}
-              variants={item}
-            ></Marker>
-          ))}
-        </motion.g>
-      </ComposableMap>
+        <AnimatePresence>
+          <motion.g variants={variants} initial={'start'} animate={'end'}>
+            {visitedCountries.map(
+              ({ name, latitude, longitude, markerOffsetY, markerOffsetX, flag, textOffsetX, textOffsetY }) => (
+                <Marker
+                  key={name}
+                  markerOffsetY={markerOffsetY}
+                  markerOffsetX={markerOffsetX}
+                  textOffsetX={textOffsetX}
+                  textOffsetY={textOffsetY}
+                  coordinates={[longitude, latitude]}
+                  flag={flag}
+                  name={name}
+                ></Marker>
+              )
+            )}
+          </motion.g>
+        </AnimatePresence>
+      </StyledComposableMap>
     </>
   );
 };

@@ -21,6 +21,7 @@ import {
   borders,
   borderRadius,
   linearGradients,
+  sizes,
 } from './Theme';
 
 export const GlobalStyle = createGlobalStyle`
@@ -47,7 +48,7 @@ export const GlobalStyle = createGlobalStyle`
     --font-size-sm: ${fontSizes.fontSizeSm};
     --font-size-base: ${fontSizes.fontSizeBase};
     --font-size-lg: ${fontSizes.fontSizeLg};
-    --font-size-xl: ${fontSizes.fontSizeLg};
+    --font-size-xl: ${fontSizes.fontSizeXl};
     --font-size-2xl: ${fontSizes.fontSize2Xl};
     --font-size-3xl: ${fontSizes.fontSize3Xl};
     --font-size-4xl: ${fontSizes.fontSize4Xl};
@@ -106,6 +107,20 @@ export const GlobalStyle = createGlobalStyle`
 
     --max-width: ${maxWidth};
 
+    @media screen and (min-width: ${sizes.smallPhone}px) {
+      --font-size-base: ${fontSizes.fontSizeLg}
+    }
+  
+    @media screen and (min-width: ${sizes.desktop}px) {
+      --font-size-base: ${fontSizes.fontSizeXl}
+    }
+    
+    a:focus {
+      outline: 2px auto var(--color-primary);
+      outline-offset: 2px;
+    }
+
+   
   }
   article,
   aside,
@@ -147,6 +162,7 @@ export const GlobalStyle = createGlobalStyle`
   a:active,
   a:hover {
     outline-width: 0;
+
   }
   abbr[title] {
     border-bottom: none;
@@ -716,7 +732,7 @@ export const GlobalStyle = createGlobalStyle`
   pre tt:after {
     content: "";
   }
-  ::selection { background: ${(props) => props.theme.colors.primary}; }
+  ::selection { background: ${(props) => props.theme.colors.red500}; }
   code[class*='language-'],
   pre[class*='language-'] {
     font-size: 1.4rem;

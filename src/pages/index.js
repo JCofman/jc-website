@@ -11,6 +11,7 @@ import { zIndexbackGroundAfterElements } from '../components/Styles/zIndex';
 import Layout from '../components/Layout';
 import Header from '../components/Header';
 import Divider from '../components/Divider';
+import Inspect from 'inspx';
 
 const BlogArtikelWrapper = styled.article`
   background-color: ${(props) => props.theme.black};
@@ -44,11 +45,6 @@ const BlogArtikel = styled.div`
   }
 `;
 
-// const BlogArtikelHeaderTextShadow = theme(`mode`, {
-//   light: `2px 2px 0 rgba(0,0, 0,0.3)`,
-//   dark: `2px 2px 0 rgba(255,255, 255,0.3)`,
-// });
-
 const BaseArtikelHeader = styled.h2`
   font-size: 3rem;
   margin-bottom: 2rem;
@@ -60,7 +56,7 @@ const BaseArtikelHeader = styled.h2`
   }
   a:hover,
   a:focus {
-    color: ${(props) => props.theme.colors.primary};
+    color: var(--color-primary);
     transition: none;
   }
   ${(props) => props.theme.xsmall} {
@@ -164,9 +160,11 @@ const StyledMain = styled.main`
 
 const IndexPage = () => {
   let { posts } = usePosts();
+
   // only render most recent 5 posts;
   posts = posts.slice(0, 5);
   return (
+    <Inspect>
     <Layout>
       <SEO title="All posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
       <Header />
@@ -214,7 +212,6 @@ const IndexPage = () => {
                     </BlogArtikelHeaderTags>
                     {` `}
                   </BlogartikleSubInfo>
-
                   {post.excerpt}
                 </BlogArtikelSingleWrapper>
               </BlogArtikel>
@@ -224,6 +221,7 @@ const IndexPage = () => {
         })}
       </StyledMain>
     </Layout>
+    </Inspect>
   );
 };
 
