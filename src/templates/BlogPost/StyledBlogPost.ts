@@ -43,7 +43,8 @@ export const StyledSingleBlogPostArticle = styled.article`
     }
     a::after {
       border-radius: 1em;
-      border-top: 0.1em solid ${(props) => props.theme.colors.primary && darken(0.5, props.theme.colors.primary)};
+      border-top: 0.1em solid
+        ${(props) => props.theme.colors.primary && darken(0.5, props.theme.colors.primary)};
       position: absolute;
       content: '';
       right: 100%;

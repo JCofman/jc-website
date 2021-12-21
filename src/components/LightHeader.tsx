@@ -2,14 +2,20 @@ import React from 'react';
 
 import { useStaticQuery, graphql } from 'gatsby';
 
-import { StyledHeaderBG, StyledWrapper, StyledInformation, StyledName } from '../templates/PageStyles/StyledHome';
+import {
+  StyledHeaderBG,
+  StyledWrapper,
+  StyledInformation,
+  StyledName,
+} from '../templates/PageStyles/StyledHome';
 import { getImage } from 'gatsby-plugin-image';
 
 import Social from './Social';
+import { PlaceHolderImageQuery } from '../graphqlTypes';
 
 const LightHeader = () => {
-  const { placeholderImage } = useStaticQuery(graphql`
-    {
+  const { placeholderImage } = useStaticQuery<PlaceHolderImageQuery>(graphql`
+    query PlaceHolderImage {
       placeholderImage: file(relativePath: { eq: "background.jpg" }) {
         childImageSharp {
           gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
@@ -27,8 +33,8 @@ const LightHeader = () => {
       <StyledWrapper>
         <StyledInformation>
           <span>HEY EVERYONE MY NAME IS JACOB COFMAN</span>
+
           <h1>
-            I LOVE WEB DEVELOPMENT
             <span role="img" aria-label="a computer emoji">
               {` `}
               💻
@@ -53,7 +59,9 @@ const LightHeader = () => {
           </h1>
         </StyledInformation>
       </StyledWrapper>
+
       <Social />
+
       <StyledName>Jacob Cofman</StyledName>
     </StyledHeaderBG>
   );

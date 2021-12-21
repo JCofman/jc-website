@@ -18,7 +18,6 @@ const Social = () => {
           <FaTwitter size={24} />
         </a>
       </motion.div>
-
       <motion.div
         whileHover={{
           rotate: 9,
@@ -41,6 +40,7 @@ const Social = () => {
           <FaBehance size={24} />
         </a>
       </motion.div>
+
       <motion.div
         whileHover={{
           rotate: 9,

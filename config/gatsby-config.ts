@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 require(`dotenv`).config({
   path: `.env.${process.env.NODE_ENV}`,
 });
@@ -24,8 +25,8 @@ const postQuery = `{
   }
 }`;
 
-const flatten = (arr) =>
-  arr.map(({ node: { frontmatter, ...rest } }) => ({
+const flatten = (arr: []) =>
+  arr.map(({ node: { frontmatter, ...rest } }: any) => ({
     ...frontmatter,
     ...rest,
   }));
@@ -34,14 +35,13 @@ const settings = { attributesToSnippet: [`excerpt:20`] };
 const queries = [
   {
     query: postQuery,
-    transformer: ({ data }) => flatten(data.posts.edges),
+    transformer: ({ data }: any) => flatten(data.posts.edges),
     indexName: process.env.ALGOLIA_INDEX_NAME,
     settings,
   },
 ];
 
 module.exports = {
-  // flags: { PRESERVE_WEBPACK_CACHE: true, FAST_DEV: true, FAST_REFRESH: true, DEV_SSR: true },
   siteMetadata: {
     title: `Jacob Cofman Website`,
     description: `This is my website and blog`,
@@ -62,6 +62,14 @@ module.exports = {
         host: 'https://www.jcofman.de',
         sitemap: 'https://www.jcofman.de/sitemap.xml',
         policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true, // defaults to false
+        jsxPragma: `jsx`, // defaults to "React"
+        allExtensions: true, // defaults to false
       },
     },
     `gatsby-plugin-optimize-svgs`,
@@ -101,7 +109,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
+        path: `${__dirname}/../content/blog`,
         name: `blog`,
       },
     },
@@ -109,7 +117,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/assets/images`,
+        path: `${__dirname}/../src/assets/images`,
       },
     },
     {
@@ -174,9 +182,6 @@ module.exports = {
             },
           },
           {
-            resolve: `gatsby-remark-static-images`,
-          },
-          {
             resolve: `gatsby-remark-embed-video`,
             options: {
               width: 800,
@@ -202,6 +207,16 @@ module.exports = {
           `gatsby-remark-smartypants`,
         ],
         extensions: [`.mdx`, `.md`],
+      },
+    },
+    {
+      resolve: 'gatsby-build-newrelic',
+      options: {
+        NR_INSERT_KEY: process.env.NEW_RELIC_INSERT_KEY || '',
+        NR_LICENSE_KEY: process.env.NEW_RELIC_LICENSE_KEY || '',
+        NR_ACCOUNT_ID: process.env.NEW_RELIC_ACCOUNT_ID,
+        SITE_NAME: 'jcofman',
+        customTags: { gatsbySite: true },
       },
     },
     {

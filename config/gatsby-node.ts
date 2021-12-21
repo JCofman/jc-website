@@ -1,38 +1,46 @@
+import { GatsbyCreatePages, BoundActionCreators } from '../gatsby-types';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require(`path`);
 
 const BLOG_POST_FILENAME_REGEX = /([0-9]+)-([0-9]+)-([0-9]+)-(.*?)\/index\.mdx$/;
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({
+  graphql,
+  actions,
+  reporter,
+}: {
+  graphql: any;
+  actions: BoundActionCreators;
+  reporter: any;
+}) => {
   const { createPage } = actions;
   // Define a template for blog post
-  const blogPostTemplate = path.resolve(`./src/templates/BlogPost/BlogPost.js`);
+  const blogPostTemplate = path.resolve(`./src/templates/BlogPost/BlogPost.tsx`);
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
     `
-    {
-      allMdx(
-        sort: {fields: [frontmatter___date], order: ASC}
-        limit: 1000
-        filter: {slug: {regex: ""}}
-      ) {
-        edges {
-          node {
-            id
-            frontmatter {
-              date
-              path
-              title
-            }
-            fields {
-              slug
+      {
+        allMdx(sort: { fields: [frontmatter___date], order: ASC }, limit: 1000) {
+          edges {
+            node {
+              id
+              frontmatter {
+                date
+                path
+                title
+              }
+              fields {
+                slug
+              }
             }
           }
         }
       }
-    }
     `
   );
 
@@ -40,7 +48,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild(`There was an error loading your blog posts`, result.errors);
     return;
   }
-
   const posts = result.data.allMdx.edges.filter((node) => {
     return node.fields !== null || node.fields?.slug !== null;
   });
@@ -48,14 +55,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
   if (posts.length > 0) {
+    // @ts-expect-error ts-migrate(7031) FIXME: Binding element 'post' implicitly has an 'any' typ... Remove this comment to see the full error message
     posts.forEach(({ node: post }, index) => {
       createPage({
-        path: post.fields.slug,
+        path: post.fields?.slug ? post.fields?.slug : 'rad',
         component: blogPostTemplate,
         context: {
           prev: index === 0 ? null : posts[index - 1].frontmatter,
           next: index === posts.length - 1 ? null : posts[index + 1].frontmatter,
-          slug: post.fields.slug,
+          slug: post.fields?.slug,
           id: post.id,
         }, // additional data can be passed via context,
       });
@@ -63,11 +71,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 };
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ node, actions, getNode }: any) => {
   const { createNodeField } = actions;
   let slug;
   if (node.internal.type === `Mdx` && getNode(node.parent).relativePath) {
-
     const { relativePath } = getNode(node.parent);
     slug = createFilePath({ node, getNode, basePath: `blog/`, trailingSlash: false });
     const match = BLOG_POST_FILENAME_REGEX.exec(relativePath);
@@ -77,6 +84,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       const month = match[2];
       const year = match[3];
       const filename = match[4];
+      // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'string' is not assignable to par... Remove this comment to see the full error message
       const date = new Date(year, month - 1, day);
       // Their slugs follow a pattern: /blog/<slug>.html
       // The date portion comes from the file name: <date>-<title>.mds
@@ -101,7 +109,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
-exports.createSchemaCustomization = ({ actions }) => {
+exports.createSchemaCustomization = ({ actions }: any) => {
   const { createTypes } = actions;
 
   // Explicitly define the siteMetadata {} object

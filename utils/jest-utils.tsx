@@ -1,9 +1,15 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
-import { themes, breakPoints, maxWidth, themeTransition, colors } from '../src/components/Layout/Theme';
+import {
+  themes,
+  breakPoints,
+  maxWidth,
+  themeTransition,
+  colors,
+} from '../src/components/Layout/Theme';
 
-export const renderWithTheme = (component) =>
+export const renderWithTheme = (component: React.ReactNode) =>
   render(
     <ThemeProvider
       theme={{

@@ -89,7 +89,7 @@ const MyBlog = () => {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          max-width: ${(props) => props.theme.maxWidth};
+          max-width: var(--max-width);
           margin: 0 auto;
           padding-top: 15rem;
         `}
@@ -99,21 +99,24 @@ const MyBlog = () => {
         </StyledGradientBox>
         <StyledGrid>
           {posts.map((post) => {
+            const gatsbyImage = getImage(post?.featuredImage);
             return (
               <StyledBlogPost key={post.title}>
                 <GatsbyLink
                   aria-label={`Go to ${post.slug}`}
-                  to={post.slug}
+                  to={post.slug || ''}
                   css={`
                     display: flex;
                     flex-direction: column;
                   `}
                 >
                   <BlogArtikelImageWrapper>
-                    <GatsbyImage
-                      alt={`unsplash cover image to article ${post.title}`}
-                      image={getImage(post.featuredImage)}
-                    />
+                    {gatsbyImage ? (
+                      <GatsbyImage
+                        alt={`unsplash cover image to article ${post.title}`}
+                        image={gatsbyImage}
+                      />
+                    ) : null}
                   </BlogArtikelImageWrapper>
 
                   <StyledArticle
@@ -130,7 +133,6 @@ const MyBlog = () => {
                       Tags
                     </span>
                     <span>
-                      {' '}
                       {post.tags != null &&
                         post.tags.map((tag, index, allTags) => {
                           if (allTags.length - 1 === index) {
@@ -149,7 +151,6 @@ const MyBlog = () => {
                     >
                       {post.title}
                     </Heading>
-
                     <p
                       css={`
                         margin-bottom: 0.75rem;
@@ -165,7 +166,7 @@ const MyBlog = () => {
                         margin-top: auto;
                       `}
                     >
-                      <Link aria-label={`Go to ${post.slug}`} to={post.slug}>
+                      <Link aria-label={`Go to ${post.slug}`} to={post.slug || ''}>
                         Read
                       </Link>
                     </div>

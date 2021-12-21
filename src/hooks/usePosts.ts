@@ -1,9 +1,13 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { AllPostsQuery } from '../graphqlTypes';
 
 export const usePosts = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      allMdx(sort: { order: DESC, fields: [frontmatter___date] }, filter: { fields: { slug: { regex: "/blog/" } } }) {
+  const data = useStaticQuery<AllPostsQuery>(graphql`
+    query AllPosts {
+      allMdx(
+        sort: { order: DESC, fields: [frontmatter___date] }
+        filter: { fields: { slug: { regex: "/blog/" } } }
+      ) {
         totalCount
         edges {
           node {
@@ -19,12 +23,22 @@ export const usePosts = () => {
               excerpt
               headerImage {
                 childImageSharp {
-                  gatsbyImageData(width: 300, height: 300, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                  gatsbyImageData(
+                    width: 300
+                    height: 300
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                  )
                 }
               }
               featuredImage {
                 childImageSharp {
-                  gatsbyImageData(width: 300, height: 300, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                  gatsbyImageData(
+                    width: 300
+                    height: 300
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                  )
                 }
               }
             }
@@ -36,14 +50,14 @@ export const usePosts = () => {
   return {
     totalCount: data.allMdx.totalCount,
     posts: data.allMdx.edges.map(({ node: { frontmatter, id, fields } }) => ({
-      title: frontmatter.title,
-      tags: frontmatter.tags,
-      path: frontmatter.path,
-      excerpt: frontmatter.excerpt,
-      date: frontmatter.date,
+      title: frontmatter?.title,
+      tags: frontmatter?.tags,
+      path: frontmatter?.path,
+      excerpt: frontmatter?.excerpt,
+      date: frontmatter?.date,
       id: id,
-      slug: fields.slug,
-      featuredImage: frontmatter.featuredImage,
+      slug: fields?.slug,
+      featuredImage: frontmatter?.featuredImage,
     })),
   };
 };

@@ -117,6 +117,7 @@ const LazyWorldMap = React.lazy(() => import(`../Map/ReactMap` /* webpackChunkNa
 
 const Footer = () => {
   const breakpoint = useBreakpoint();
+
   return (
     <StyledFooterWrapper>
       <StyledFooter>
@@ -151,6 +152,7 @@ const Footer = () => {
                 </motion.div>
                 Home
               </NavLink>
+
               <FooterListLink></FooterListLink>
             </NavList>
             <Social />

@@ -23,7 +23,6 @@ const StyledComposableMap = styled(ComposableMap)`
   }
 `;
 
-
 const variants = {
   start: {
     transition: { staggerChildren: 1, delayChildren: 1 },
@@ -74,18 +73,38 @@ const ReactMap = () => {
         <AnimatePresence>
           <motion.g variants={variants} initial={'start'} animate={'end'}>
             {visitedCountries.map(
-              ({ name, latitude, longitude, markerOffsetY, markerOffsetX, flag, textOffsetX, textOffsetY }) => (
-                <Marker
-                  key={name}
-                  markerOffsetY={markerOffsetY}
-                  markerOffsetX={markerOffsetX}
-                  textOffsetX={textOffsetX}
-                  textOffsetY={textOffsetY}
-                  coordinates={[longitude, latitude]}
-                  flag={flag}
-                  name={name}
-                ></Marker>
-              )
+              ({
+                name,
+                latitude,
+                longitude,
+                markerOffsetY,
+                markerOffsetX,
+                textOffsetX,
+                textOffsetY,
+              }) => {
+                if (
+                  markerOffsetY &&
+                  markerOffsetX &&
+                  latitude &&
+                  longitude &&
+                  textOffsetX &&
+                  textOffsetY &&
+                  name
+                ) {
+                  return (
+                    <Marker
+                      key={name}
+                      markerOffsetY={markerOffsetY}
+                      markerOffsetX={markerOffsetX}
+                      textOffsetX={textOffsetX}
+                      textOffsetY={textOffsetY}
+                      coordinates={[longitude, latitude]}
+                      name={name}
+                    ></Marker>
+                  );
+                }
+                return null;
+              }
             )}
           </motion.g>
         </AnimatePresence>

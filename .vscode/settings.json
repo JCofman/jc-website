@@ -13,15 +13,14 @@
     "titleBar.inactiveForeground": "#15202b99",
     "statusBar.background": "#4a90e2",
     "statusBarItem.hoverBackground": "#2275d7",
-    "statusBar.foreground": "#15202b"
+    "statusBar.foreground": "#15202b",
+    "sash.hoverBorder": "#76abe9",
+    "statusBarItem.remoteBackground": "#4a90e2",
+    "statusBarItem.remoteForeground": "#15202b"
   },
   "files.associations": {
     "*.md": "mdx"
   },
   "peacock.color": "#4A90E2",
-  "cSpell.words": [
-    "Artikel",
-    "Cofman",
-    "frontmatter"
-  ]
+  "cSpell.words": ["Artikel", "Cofman", "frontmatter"]
 }

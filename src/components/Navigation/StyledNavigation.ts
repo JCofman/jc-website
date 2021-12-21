@@ -27,7 +27,8 @@ export const StyledNavWrapper = styled.div`
   height: 70px;
   float: right;
   box-shadow: none;
-  transition: height 0.25s ease-in-out 0s, box-shadow 0.2s ease-in-out 0.05s, background-color var(--theme-transition);
+  transition: height 0.25s ease-in-out 0s, box-shadow 0.2s ease-in-out 0.05s,
+    background-color var(--theme-transition);
   a {
     color: var(--color-text);
   }
@@ -57,7 +58,7 @@ export const StyledNav = styled.nav`
   }
 `;
 
-export const StyledNavLogo = styled.svg`
+export const StyledNavLogo = styled.svg<{ scrollPositionY?: number }>`
   width: 140px;
   height: 140px;
   transition: all 0.25s ease-out 0s;
@@ -85,7 +86,8 @@ export const StyledNavLogo = styled.svg`
   }
 
   @media (min-width: 2000px) {
-    display: ${(props) => (props.scrollPositionY > 0 ? `visible` : `none`)};
+    display: ${(props) =>
+      props?.scrollPositionY && props?.scrollPositionY > 0 ? `visible` : `none`};
     position: fixed;
   }
 

@@ -8,8 +8,6 @@ import Heading from '../components/Heading';
 import SEO from '../components/SEO';
 
 const StyledH1 = styled.h1`
-
-
   color: ${(props) => props.theme.colors.primary};
   transform: skew(-5deg) rotate(-1deg);
   font-size: 6rem;
@@ -181,7 +179,7 @@ const StyledH3 = styled.h3`
   font-size: 3rem;
 `;
 
-const calculateAge = (birthday) => {
+const calculateAge = (birthday: Date) => {
   // birthday is a date
   const today = new Date();
   let age = today.getFullYear() - birthday.getFullYear();
@@ -219,7 +217,10 @@ const AboutMe = () => (
         <Wrapper>
           <StyledTriangle>
             {` `}
-            <GatsbyImage image={data.profileImage.childImageSharp.gatsbyImageData} alt="A picture of myself" />
+            <GatsbyImage
+              image={data.profileImage.childImageSharp.gatsbyImageData}
+              alt="A picture of myself"
+            />
           </StyledTriangle>
           <StyledMainInformation>
             <StyledH1>Jacob Cofman</StyledH1>
@@ -239,7 +240,9 @@ const AboutMe = () => (
             <StyledListDots>
               <li>I play volleyball since I am seven years old</li>
               <li>Home automation things and especially frontend engineering stuff</li>
-              <li>A lot of outdoor activities like snowboarding, hiking and just enjoying the nature</li>
+              <li>
+                A lot of outdoor activities like snowboarding, hiking and just enjoying the nature
+              </li>
             </StyledListDots>
           </StyledInformationHobbies>
           <StyledCircle>
@@ -262,7 +265,6 @@ const AboutMe = () => (
             <StyledSkills>
               <StyledListParallelogram>
                 <StyledH3>💅 Frontend</StyledH3>
-
                 <li>TypeScript - JavaScript</li>
                 <li>Styled-Components - SCSS - CSS</li>
                 <li>REST - GraphQL</li>
@@ -278,7 +280,6 @@ const AboutMe = () => (
               </StyledListParallelogram>
               <StyledListParallelogram>
                 <StyledH3>🤓 Things I am currently learning</StyledH3>
-
                 <li>Web-Security</li>
                 <li>Vue</li>
                 <li>Go</li>

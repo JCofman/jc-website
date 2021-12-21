@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { zIndexLogo } from '../../components/Styles/zIndex';
 import { BgImage } from 'gbimage-bridge';
 
-export const StyledLogo = styled.svg`
+export const StyledLogo = styled.svg<{ scrollPositionY: number }>`
   display: none;
   position: ${(props) => (props.scrollPositionY > 0 ? `fixed` : `static`)};
   top: -235px;
@@ -18,18 +18,22 @@ export const StyledLogo = styled.svg`
   ${(props) => props.theme.xsmall} {
     display: none;
   }
+
   ${(props) => props.theme.small} {
     display: none;
   }
   ${(props) => props.theme.medium} {
     display: none;
   }
+
   ${(props) => props.theme.large} {
     display: none;
   }
+
   ${(props) => props.theme.large} {
     display: none;
   }
+
   @media (min-width: 2000px) {
     position: absolute;
     top: 100px;
@@ -67,6 +71,7 @@ export const StyledInformation = styled.div`
     margin-left: 2rem;
     margin-right: 2rem;
   }
+
   ${(props) => props.theme.medium} {
     position: initial;
     padding-top: 25rem;

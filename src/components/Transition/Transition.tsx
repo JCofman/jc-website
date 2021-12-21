@@ -21,9 +21,15 @@ const variants = {
   },
 };
 
-const Layout = ({ children, location }) => (
+const Layout = ({ children, location }: { children: React.ReactNode; location: any }) => (
   <AnimatePresence>
-    <motion.main key={location.pathname} variants={variants} initial="initial" animate="enter" exit="exit">
+    <motion.main
+      key={location.pathname}
+      variants={variants}
+      initial="initial"
+      animate="enter"
+      exit="exit"
+    >
       {children}
     </motion.main>
   </AnimatePresence>

@@ -24,7 +24,16 @@ export const BACKGROUND_STYLES = {
   CIRCLE: 'CIRCLE',
 };
 
-const Heading = ({ appearance, children, backgroundStyle = 'TRIANGLE', ...rest }) => {
+const Heading = ({
+  appearance,
+  children,
+  backgroundStyle = 'TRIANGLE',
+  ...rest
+}: {
+  appearance: string;
+  children: React.ReactNode;
+  backgroundStyle?: string;
+}) => {
   const { ...headingProps } = rest;
   switch (appearance) {
     case `H1`:
@@ -53,13 +62,13 @@ const Heading = ({ appearance, children, backgroundStyle = 'TRIANGLE', ...rest }
       );
     case `H5`:
       return (
-        <StyledHeadingH5 backgroundStyle {...headingProps}>
+        <StyledHeadingH5 backgroundStyle={backgroundStyle} {...headingProps}>
           {children}
         </StyledHeadingH5>
       );
     case `H6`:
       return (
-        <StyledHeadingH6 backgroundStyle {...headingProps}>
+        <StyledHeadingH6 backgroundStyle={backgroundStyle} {...headingProps}>
           {children}
         </StyledHeadingH6>
       );

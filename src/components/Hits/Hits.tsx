@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { Highlight } from 'react-instantsearch-dom';
@@ -13,14 +12,16 @@ const StyledHits = styled.ul`
   list-style: none;
 `;
 
-const StyledHit = styled.li`
+const StyledHit = styled.li<{ highlightedIndex: number; index: number }>`
   background-color: var(--color-background);
   padding: 0.8rem;
   letter-spacing: 0.05px;
   font-size: 18px;
-  color: ${(props) => (props.highlightedIndex === props.index ? `var(--color-primary)` : `var(--color-text)`)};
+  color: ${(props) =>
+    props.highlightedIndex === props.index ? `var(--color-primary)` : `var(--color-text)`};
   a {
-    color: ${(props) => (props.highlightedIndex === props.index ? `var(--color-primary)` : `var(--color-text)`)};
+    color: ${(props) =>
+      props.highlightedIndex === props.index ? `var(--color-primary)` : `var(--color-text)`};
   }
 `;
 
@@ -78,11 +79,4 @@ const Hits = ({ getMenuProps, hits, getItemProps, highlightedIndex }) => {
   );
 };
 
-Hits.propTypes = {
-  hits: PropTypes.array,
-  getMenuProps: PropTypes.func,
-  getItemProps: PropTypes.func,
-  highlightedIndex: PropTypes.number,
-  selectedItem: PropTypes.object,
-};
 export default Hits;

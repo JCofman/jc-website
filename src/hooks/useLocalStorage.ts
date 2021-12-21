@@ -7,18 +7,19 @@ import React from 'react';
  * @param {{serialize: Function, deserialize: Function}} options The serialize and deserialize functions to use (defaults to JSON.stringify and JSON.parse respectively)
  */
 
-export const useLocalStorageState = (
-  key,
+export const useLocalStorageState = <T>(
+  key: string,
   defaultValue = '',
   { serialize = JSON.stringify, deserialize = JSON.parse } = {}
-) => {
-  const [state, setState] = React.useState(() => {
+): [T, React.Dispatch<T>] => {
+  const [state, setState] = React.useState<T>(() => {
     let valueInLocalStorage;
     const isSSR = typeof window === 'undefined';
 
     if (!isSSR) {
       valueInLocalStorage = window.localStorage.getItem(key);
     }
+
     if (valueInLocalStorage) {
       // avoids deserializing a not safe JSON value eg "dark" is valid but the string dark without ampersand should
       // not get deserialized which was used in the first version
@@ -28,6 +29,7 @@ export const useLocalStorageState = (
         return valueInLocalStorage;
       }
     }
+    // @ts-expect-error ts-migrate(2349) FIXME: This expression is not callable.
     return typeof defaultValue === 'function' ? defaultValue() : defaultValue;
   });
 

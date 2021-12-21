@@ -52,7 +52,13 @@ const StyledInput = styled.input`
   }
 `;
 
-const SearchBar = ({ isSearchStalled, refine, hits }) => {
+interface SearchBarProps {
+  isSearchStalled: boolean;
+  refine: (value: string) => void;
+  hits: [];
+}
+
+const SearchBar = ({ isSearchStalled, refine, hits }: SearchBarProps) => {
   const [inputValue, setState] = React.useState({ inputValue: `` });
 
   return (
@@ -63,7 +69,15 @@ const SearchBar = ({ isSearchStalled, refine, hits }) => {
       initialInputValue=""
       inputValue={inputValue.inputValue}
     >
-      {({ getInputProps, getItemProps, getLabelProps, getMenuProps, isOpen, highlightedIndex, selectedItem }) => (
+      {({
+        getInputProps,
+        getItemProps,
+        getLabelProps,
+        getMenuProps,
+        isOpen,
+        highlightedIndex,
+        selectedItem,
+      }) => (
         <div>
           <StyledForm noValidate action="" role="search">
             <label {...getLabelProps()}>

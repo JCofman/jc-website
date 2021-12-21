@@ -1,19 +1,17 @@
 import { useState, useEffect } from 'react';
 
-export const useMedia = (queries, values, defaultValue) => {
+export const useMedia = <T>(queries: string[], values: T[], defaultValue: T) => {
   // Array containing a media query list for each query
-  const mediaQueryLists = queries.map((q) => typeof window !== `undefined` && window.matchMedia(q));
+  const mediaQueryLists = queries.map((q) => window.matchMedia(q));
   // Function that gets value based on matching media query
   const getValue = () => {
     // Get index of first media query that matches
     const index = mediaQueryLists.findIndex((mql) => mql.matches);
     // Return related value or defaultValue if none
-    return typeof values[index] !== `undefined` ? values[index] : defaultValue;
+    return values?.[index] || defaultValue;
   };
-
   // State and setter for matched value
-  const [value, setValue] = useState(getValue);
-
+  const [value, setValue] = useState<T>(getValue);
   useEffect(
     () => {
       // Event listener callback
@@ -27,6 +25,5 @@ export const useMedia = (queries, values, defaultValue) => {
     },
     [] // Empty array ensures effect is only run on mount and unmount
   );
-
   return value;
 };

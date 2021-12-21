@@ -34,10 +34,16 @@ const StyledLink = styled((props) => <GatsbyLink {...props} />)`
   }
 `;
 
-const Link = (props) => {
+interface LinkProps {
+  to: string;
+  children: React.ReactNode;
+}
+
+const Link = (props: LinkProps) => {
+  const { children, ...rest } = props;
   return (
-    <StyledLink {...props}>
-      <span>{props.children}</span>
+    <StyledLink {...rest}>
+      <span>{children}</span>
     </StyledLink>
   );
 };

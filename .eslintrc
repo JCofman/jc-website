@@ -1,4 +1,5 @@
 {
+  "root": true,
   "env": {
     "es6": true,
     "node": true,
@@ -11,8 +12,8 @@
       "version": "detect"
     }
   },
-  "plugins": ["react-hooks"],
-  "parser": "babel-eslint",
+  "plugins": ["@typescript-eslint", "react-hooks", "jest"],
+  "parser": "@typescript-eslint/parser",
   "rules": {
     "strict": 0,
     "react/prop-types": 0,
@@ -20,5 +21,11 @@
     "no-console": "warn",
     "react-hooks/rules-of-hooks": "error"
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended"]
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:jest/recommended",
+    "prettier"
+  ]
 }

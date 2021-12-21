@@ -11,8 +11,9 @@ import Link from '../../components/Link';
 
 import TableOfContents from '../../components/TableOfContents';
 import { StyledSingleBlogPostArticle } from './StyledBlogPost';
+import { BlogPostByPathQuery } from '../../graphqlTypes';
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<{ primary?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,27 +85,40 @@ const StyledTags = styled.div`
   font-style: italic;
 `;
 
-export default function Template({ data, pageContext }) {
+interface TemplateProps {
+  data: BlogPostByPathQuery;
+  pageContext: {
+    next: { path: string; title: string };
+    prev: { path: string; title: string };
+  };
+}
+
+export default function Template({ data, pageContext }: TemplateProps) {
   const { mdx: post } = data;
   const { next, prev } = pageContext;
-  const image = getImage(post.frontmatter.headerImage);
+  const image = getImage(post?.frontmatter?.headerImag);
+
   return (
     <Layout>
       <SEO
-        title={`JCofman - ${post.frontmatter.title}`}
-        description={post.frontmatter.description || post.frontmatter.excerpt || `nothing’`}
+        title={`JCofman - ${post?.frontmatter?.title}`}
+        description={post?.frontmatter?.excerpt || `nothing’`}
         image={image}
-        pathname={post.frontmatter.path}
-        article
+        pathname={post?.frontmatter?.path || ''}
       />
       <StyledHeader>
-        <GatsbyImage image={image} alt={`background image which represents - ${post.frontmatter.title}`} />
-        <h1>{post.frontmatter.title}</h1>
+        {image ? (
+          <GatsbyImage
+            image={image}
+            alt={`background image which represents - ${post?.frontmatter?.title}`}
+          />
+        ) : null}
+        <h1>{post?.frontmatter?.title}</h1>
       </StyledHeader>
       <StyledInfo>
-        {post.frontmatter.date}
+        {post?.frontmatter?.date}
         <StyledTags>
-          {post.frontmatter.tags.map((tag, index, allTags) => {
+          {post?.frontmatter?.tags?.map((tag, index, allTags) => {
             if (allTags.length - 1 === index) {
               return ` ${tag}`;
             } else {
@@ -114,13 +128,17 @@ export default function Template({ data, pageContext }) {
         </StyledTags>
       </StyledInfo>
       <StyledSingleBlogPostArticle className="blog-post">
-        {typeof post.tableOfContents.items === 'undefined' ? (
+        {typeof post?.tableOfContents?.items === 'undefined' ? (
           <div></div>
         ) : (
-          <TableOfContents className="blog-post-toc" items={post.tableOfContents.items}></TableOfContents>
+          <TableOfContents
+            className="blog-post-toc"
+            items={post.tableOfContents.items}
+          ></TableOfContents>
         )}
+
         <div className="blog-post-content">
-          <MDXRenderer>{post.body}</MDXRenderer>
+          {post?.body ? <MDXRenderer>{post?.body}</MDXRenderer> : null}
           <StyledBlogBottomNav>
             {prev && (
               <Link to={prev.path}>
@@ -148,9 +166,7 @@ export default function Template({ data, pageContext }) {
 export const pageQuery = graphql`
   query BlogPostByPath($id: String) {
     mdx(id: { eq: $id }) {
-      tableOfContents
       id
-      body
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
@@ -163,6 +179,8 @@ export const pageQuery = graphql`
           }
         }
       }
+      tableOfContents
+      body
     }
   }
 `;

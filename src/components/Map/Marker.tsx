@@ -1,37 +1,37 @@
 /* eslint-disable react/display-name */
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Marker as ReactSimpleMarker, Annotation } from 'react-simple-maps';
+import { motion, MotionStyle, Transition } from 'framer-motion';
+import { Marker as ReactSimpleMarker, Annotation, Point } from 'react-simple-maps';
 
 const MotionMarker = motion(ReactSimpleMarker);
 
-const circleTransition = {
+const circleTransition: Transition = {
   repeatDelay: 1,
-  repeat: 'Infinity',
+  // repeat: 'Infinity',
   repeatType: 'loop',
   type: 'tween',
   ease: [0, 0.55, 0.75, 1],
 };
 
-const firstCircle = {
+const firstCircle: Transition = {
   duration: 3,
   delay: 0.3,
   ...circleTransition,
 };
 
-const secondCircle = {
+const secondCircle: Transition = {
   duration: 3,
   delay: 0.9,
   ...circleTransition,
 };
 
-const thirdCircle = {
+const thirdCircle: Transition = {
   duration: 3,
   delay: 1.5,
   ...circleTransition,
 };
 
-const styleThinHalo = {
+const styleThinHalo: MotionStyle = {
   width: 7.5,
   height: 7.5,
   top: -3.6,
@@ -58,7 +58,21 @@ const containerVariant = {
   end: { opacity: 1 },
 };
 
-export const Marker = ({ coordinates, name, markerOffsetY, markerOffsetX, textOffsetX, textOffsetY }) => {
+export const Marker = ({
+  coordinates,
+  name,
+  markerOffsetY,
+  markerOffsetX,
+  textOffsetX,
+  textOffsetY,
+}: {
+  coordinates: Point;
+  name: string;
+  markerOffsetY: number;
+  markerOffsetX: number;
+  textOffsetX: number;
+  textOffsetY: number;
+}) => {
   return (
     <motion.g variants={containerVariant}>
       <MotionMarker coordinates={coordinates}>
@@ -72,21 +86,22 @@ export const Marker = ({ coordinates, name, markerOffsetY, markerOffsetX, textOf
         >
           <motion.div>
             <motion.div
-              style={styleThinHalo}
+              style={styleThinHalo as MotionStyle}
               variants={circleVariant}
               initial={'start'}
               animate={'end'}
               transition={firstCircle}
             />
             <motion.div
-              style={styleThinHalo}
+              style={styleThinHalo as MotionStyle}
               variants={circleVariant}
               initial={'start'}
               animate={'end'}
               transition={secondCircle}
             />
+
             <motion.div
-              style={styleThinHalo}
+              style={styleThinHalo as MotionStyle}
               variants={circleVariant}
               initial={'start'}
               animate={'end'}

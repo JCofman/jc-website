@@ -165,62 +165,64 @@ const IndexPage = () => {
   posts = posts.slice(0, 5);
   return (
     <Inspect>
-    <Layout>
-      <SEO title="All posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
-      <Header />
-      <StyledMain>
-        {posts.map((post, index) => {
-          return (
-            <BlogArtikelWrapper key={post.title}>
-              <BlogArtikel>
-                <BlogArtikelImageWrapper>
-                  <Link aria-label={`Go to ${post.slug}`} to={post.slug}>
-                    <GatsbyImage
-                      image={post.featuredImage.childImageSharp.gatsbyImageData}
-                      alt={`article featured image for ${post.title}`}
-                    />
-                  </Link>
-                </BlogArtikelImageWrapper>
-                <BlogArtikelSingleWrapper>
-                  {index % 3 === 0 && (
-                    <StyledBlogArtikelHeaderTriangle>
-                      <Link to={post.slug}>{post.title}</Link>
-                    </StyledBlogArtikelHeaderTriangle>
-                  )}
-                  {index % 3 === 1 && (
-                    <StyledBlogArtikelHeaderCircle>
-                      <Link to={post.slug}>{post.title}</Link>
-                    </StyledBlogArtikelHeaderCircle>
-                  )}
-                  {index % 3 === 2 && (
-                    <StyledBlogArtikelHeaderParallelogram>
-                      <Link to={post.slug}>{post.title}</Link>
-                    </StyledBlogArtikelHeaderParallelogram>
-                  )}
+      <Layout>
+        <SEO title="All posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
+        <Header />
+        <StyledMain>
+          {posts.map((post, index: number) => {
+            return (
+              <BlogArtikelWrapper key={post.title}>
+                <BlogArtikel>
+                  <BlogArtikelImageWrapper>
+                    <Link aria-label={`Go to ${post.slug}`} to={post.slug || ''}>
+                      <GatsbyImage
+                        image={post?.featuredImage?.childImageSharp?.gatsbyImageData}
+                        alt={`article featured image for ${post.title}`}
+                      />
+                    </Link>
+                  </BlogArtikelImageWrapper>
 
-                  <BlogartikleSubInfo>
-                    <BlogArtikelHeaderTime>{post.date}</BlogArtikelHeaderTime>
-                    <BlogArtikelHeaderTags>
-                      {post.tags != null &&
-                        post.tags.map((tag, index, allTags) => {
-                          if (allTags.length - 1 === index) {
-                            return ` ${tag}`;
-                          } else {
-                            return ` ${tag},`;
-                          }
-                        })}
-                    </BlogArtikelHeaderTags>
-                    {` `}
-                  </BlogartikleSubInfo>
-                  {post.excerpt}
-                </BlogArtikelSingleWrapper>
-              </BlogArtikel>
-              <Divider />
-            </BlogArtikelWrapper>
-          );
-        })}
-      </StyledMain>
-    </Layout>
+                  <BlogArtikelSingleWrapper>
+                    {index % 3 === 0 && (
+                      <StyledBlogArtikelHeaderTriangle>
+                        <Link to={post?.slug || ''}>{post.title}</Link>
+                      </StyledBlogArtikelHeaderTriangle>
+                    )}
+                    {index % 3 === 1 && (
+                      <StyledBlogArtikelHeaderCircle>
+                        <Link to={post.slug || ''}>{post.title}</Link>
+                      </StyledBlogArtikelHeaderCircle>
+                    )}
+                    {index % 3 === 2 && (
+                      <StyledBlogArtikelHeaderParallelogram>
+                        <Link to={post.slug || ''}>{post.title}</Link>
+                      </StyledBlogArtikelHeaderParallelogram>
+                    )}
+
+                    <BlogartikleSubInfo>
+                      <BlogArtikelHeaderTime>{post.date}</BlogArtikelHeaderTime>
+
+                      <BlogArtikelHeaderTags>
+                        {post.tags != null &&
+                          post.tags.map((tag, index, allTags) => {
+                            if (allTags.length - 1 === index) {
+                              return ` ${tag}`;
+                            } else {
+                              return ` ${tag},`;
+                            }
+                          })}
+                      </BlogArtikelHeaderTags>
+                      {` `}
+                    </BlogartikleSubInfo>
+                    {post.excerpt}
+                  </BlogArtikelSingleWrapper>
+                </BlogArtikel>
+                <Divider />
+              </BlogArtikelWrapper>
+            );
+          })}
+        </StyledMain>
+      </Layout>
     </Inspect>
   );
 };

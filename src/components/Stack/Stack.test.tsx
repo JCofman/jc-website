@@ -7,6 +7,7 @@ test(`Stack is rendered properly`, () => {
   const { getByText } = render(
     <Stack>
       <div>Home</div>
+
       <div>About</div>
     </Stack>
   );

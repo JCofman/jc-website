@@ -3,6 +3,7 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { Helmet } from 'react-helmet';
 import '@fontsource/raleway';
 import '@fontsource/raleway/600.css';
+import { QueryClientProvider } from 'react-query';
 
 import { useMedia } from '../../hooks/useMedia';
 import { useLocalStorageState } from '../../hooks/useLocalStorage';
@@ -23,6 +24,7 @@ import {
   linearGradients,
   sizes,
 } from './Theme';
+import { queryClient } from '../../../config/react-query-client';
 
 export const GlobalStyle = createGlobalStyle`
    :root {
@@ -32,6 +34,7 @@ export const GlobalStyle = createGlobalStyle`
     --color-primary: ${colors.primary};
     --color-secondary: ${colors.secondary};
     
+    --color-red-500: ${colors.red500};
     --color-lightGrey: ${colors.lightGrey};
     --color-darkGrey: ${colors.darkGrey};
     --color-grey-100: ${colors.grey100};
@@ -42,6 +45,8 @@ export const GlobalStyle = createGlobalStyle`
     --color-grey-600: ${colors.grey600};
     --color-grey-700: ${colors.grey700};
     --color-grey-800: ${colors.grey800};
+
+
 
     /** FONTSIZE */
     --font-size-xs: ${fontSizes.fontSizeXs};
@@ -732,7 +737,7 @@ export const GlobalStyle = createGlobalStyle`
   pre tt:after {
     content: "";
   }
-  ::selection { background: ${(props) => props.theme.colors.red500}; }
+  ::selection { background: var(---color-red-500); }
   code[class*='language-'],
   pre[class*='language-'] {
     font-size: 1.4rem;
@@ -923,21 +928,24 @@ export const GlobalStyle = createGlobalStyle`
 
   `;
 
-const getInitialTheme = (preferedTheme) => {
-  const savedTheme = JSON.parse(localStorage.getItem(`theme`));
+const getInitialTheme = (preferedTheme: string) => {
+  const savedTheme = JSON.parse(localStorage.getItem(`theme`) as any);
   return savedTheme ? savedTheme : preferedTheme;
 };
 
 const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
 
-const Layout = ({ children, location }) => {
+const Layout = ({ children, location }: { children: React.ReactNode; location: string }) => {
   const prefersDarkMode = usePrefersDarkMode();
   let defaultThemeMode = `dark`;
   if (typeof window !== `undefined`) {
     defaultThemeMode = getInitialTheme(prefersDarkMode ? `dark` : `light`);
   }
 
-  const [themeMode, setThemeMode] = useLocalStorageState('theme', defaultThemeMode);
+  const [themeMode, setThemeMode] = useLocalStorageState<'dark' | 'light'>(
+    'theme',
+    defaultThemeMode
+  );
 
   const changeTheme = () => {
     if (themeMode === 'light') {
@@ -951,47 +959,71 @@ const Layout = ({ children, location }) => {
 
   React.useEffect(() => {
     const root = window.document.documentElement;
-    const initialTheme = root.style.getPropertyValue('--initial-color-mode');
-    updateCSSProperties(initialTheme);
+    const initialTheme = root.style.getPropertyValue('--initial-color-mode') as 'dark' | 'light';
+
+    if (themeMode) {
+      updateCSSProperties(themeMode);
+    } else if (initialTheme) {
+      updateCSSProperties(initialTheme);
+    }
   }, []);
 
-  const updateCSSProperties = (themeMode) => {
+  const updateCSSProperties = (themeMode: 'dark' | 'light') => {
     const root = window.document.documentElement;
     // 3. Update each color
     root.style.setProperty('--color-text', themeMode === 'light' ? colors.black : colors.white);
-    root.style.setProperty('--color-background', themeMode === 'light' ? colors.white : colors.black);
-    root.style.setProperty('--color-primary', themeMode === 'light' ? colors.primary : colors.primary);
-    root.style.setProperty('--text-shadow', themeMode === 'light' ? textShadows.dark : textShadows.white);
-    root.style.setProperty('--color-primary', themeMode === 'light' ? colors.primary : colors.primary);
-    root.style.setProperty('--linear-gradient', themeMode === 'light' ? linearGradients.light : linearGradients.dark);
+    root.style.setProperty(
+      '--color-background',
+      themeMode === 'light' ? colors.white : colors.black
+    );
+    root.style.setProperty(
+      '--color-primary',
+      themeMode === 'light' ? colors.primary : colors.primary
+    );
+    root.style.setProperty(
+      '--text-shadow',
+      themeMode === 'light' ? textShadows.dark : textShadows.light
+    );
+    root.style.setProperty(
+      '--color-primary',
+      themeMode === 'light' ? colors.primary : colors.primary
+    );
+    root.style.setProperty(
+      '--linear-gradient',
+      themeMode === 'light' ? linearGradients.light : linearGradients.dark
+    );
   };
 
   return (
-    <ThemeProvider
-      theme={{
-        mode: themes[themeMode],
-        ...breakPoints,
-        maxWidth,
-        themeTransition,
-        colors: { ...colors },
-      }}
-    >
-      <Helmet>
-        {activeEnv !== 'development' ? (
-          <script
-            defer
-            src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon='{"token": "27f1e6ab8f5743bd8e1e770722db344b"}'
-          ></script>
-        ) : null}
-      </Helmet>
-      <StyledLayout>
-        <Navigation location={location} changeTheme={changeTheme} />
-        {children}
-        <Footer />
-      </StyledLayout>
-      <GlobalStyle />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider
+        theme={{
+          mode: themes[themeMode],
+          ...breakPoints,
+          maxWidth,
+          themeTransition,
+          colors: { ...colors },
+        }}
+      >
+        <Helmet>
+          {activeEnv !== 'development' ? (
+            <script
+              defer
+              src="https://static.cloudflareinsights.com/beacon.min.js"
+              data-cf-beacon='{"token": "27f1e6ab8f5743bd8e1e770722db344b"}'
+            ></script>
+          ) : null}
+        </Helmet>
+
+        <StyledLayout>
+          <Navigation location={location} changeTheme={changeTheme} />
+          {children}
+          <Footer />
+        </StyledLayout>
+
+        <GlobalStyle />
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 };
 

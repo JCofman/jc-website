@@ -15,7 +15,7 @@ storiesOf(`Logo`, module).add(`Basic`, () => {
   const value = select(label, options, defaultValue);
   return (
     <>
-      <Logo width={value}></Logo>
+      <Logo></Logo>
     </>
   );
 });

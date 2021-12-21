@@ -1,7 +1,6 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { FaListUl } from 'react-icons/fa';
 
 import Divider from '../Divider';
@@ -50,16 +49,20 @@ const StyledTableOfContentsNavigation = styled.nav`
   }
 `;
 
-const TableOfContents = (props) => {
-  const { items } = props;
+interface TableOfContentsProps {
+  items: [];
+  className: string;
+}
+
+const TableOfContents = (props: TableOfContentsProps) => {
+  const { items, ...rest } = props;
   return (
-    <div>
+    <div {...rest}>
       {items && items.length > 0 ? (
         <StyledTableOfContentsNavigation>
           <Heading appearance={`H2`}>
             <FaListUl></FaListUl> Table of contents
           </Heading>
-
           <Divider></Divider>
           {items.map((item) => {
             const { url, title } = item;
@@ -74,7 +77,5 @@ const TableOfContents = (props) => {
     </div>
   );
 };
-
-PropTypes.displayName = `TableOfContents`;
 
 export default TableOfContents;

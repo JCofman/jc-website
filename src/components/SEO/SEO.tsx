@@ -2,11 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { SiteMetaDataQuery } from '../../graphqlTypes';
 
-const SEO = ({ description, lang, meta, keywords, title, src }) => {
-  const { site } = useStaticQuery(
+const SEO = ({
+  description,
+  lang,
+  meta,
+  keywords,
+  title,
+  src,
+}: {
+  description?: string;
+  lang?: string;
+  meta: [];
+  keywords: string[];
+  title: string;
+  src?: string;
+  image?: string | IGatsbyImageData;
+  pathname?: string;
+}) => {
+  const { site } = useStaticQuery<SiteMetaDataQuery>(
     graphql`
-      query {
+      query SiteMetaData {
         site {
           siteMetadata {
             title
@@ -19,8 +37,8 @@ const SEO = ({ description, lang, meta, keywords, title, src }) => {
       }
     `
   );
-  const metaDescription = description || site.siteMetadata.description;
-  const defaultTitle = site.siteMetadata?.title;
+  const metaDescription = description || site?.siteMetadata?.description;
+  const defaultTitle = site?.siteMetadata?.title;
 
   return (
     <Helmet
@@ -28,7 +46,7 @@ const SEO = ({ description, lang, meta, keywords, title, src }) => {
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined}
       meta={[
         {
           name: `description`,
@@ -52,7 +70,7 @@ const SEO = ({ description, lang, meta, keywords, title, src }) => {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata?.social?.twitter || ``,
+          content: site?.siteMetadata?.social?.twitter || ``,
         },
         {
           name: `twitter:title`,

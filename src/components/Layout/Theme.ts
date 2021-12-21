@@ -46,6 +46,8 @@ export const borders = {
   border0: `0`,
   border1: `0.2rem`,
   border2: `0.4rem`,
+  border3: `0.5rem`,
+  border4: `0.6rem`,
   border8: `0.8rem`,
   border: `0.1rem`,
 };
@@ -97,17 +99,17 @@ export const borderRadius = {
   roundedMd: `0.5rem`,
   roundedLg: `1rem`,
   borderRound: `9999px`,
-};
+} as const;
 
 export const linearGradients = {
   dark: `linear-gradient(rgba(1, 1, 1, 0.95), rgba(1, 1, 1, 0.95))`,
   light: `linear-gradient(rgba(244, 244, 244, 0.95), rgba(244, 244, 244, 0.95))`,
-};
+} as const;
 
 export const themes = {
   dark: `dark`,
   light: `light`,
-};
+} as const;
 
 const Theme = {
   mode: themes[`light`],

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Figure = (props) => {
+const Figure = (props: { src: string; alt: string }) => {
   const { src, alt } = props;
   return (
     <figure>

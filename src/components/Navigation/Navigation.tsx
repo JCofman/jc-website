@@ -16,10 +16,10 @@ import {
 
 import useModal from '../../hooks/useModal';
 import { useMedia } from '../../hooks/useMedia';
-import { useWindowScrollPosition } from '../../hooks/useWindowScrollPosition';
 
 import Logo from '../Logo';
 import SearchBar from '../SearchBar';
+import { useScroll } from 'ahooks';
 
 import {
   StyledNav,
@@ -75,7 +75,7 @@ const StyledModal = styled.div`
   padding: 8px;
 `;
 
-const StyledDarkLightModeSwitcherButton = styled.button`
+const StyledDarkLightModeSwitcherButton = styled.button<{ primary?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,7 +96,13 @@ const StyledDarkLightModeSwitcherButton = styled.button`
   }
 `;
 
-export const NavLink = (props) => {
+export const NavLink = (props: {
+  children: React.ReactNode;
+  to: string;
+  initial?: string;
+  whileHover?: string;
+  animate?: string;
+}) => {
   const { children, to, ...rest } = props;
   return (
     <StyledNavListItemLink {...rest}>
@@ -124,19 +130,23 @@ const iconMotion = {
   },
 };
 
-const Navigation = (props) => {
+const Navigation = (props: {
+  theme: { mode: string };
+  changeTheme: () => void;
+  location: string;
+}) => {
   const {
     theme: { mode },
   } = props;
   const { closeModal, isOpen, Modal, toggleModal } = useModal();
-  const { y } = useWindowScrollPosition();
+  const scroll = useScroll(document);
 
-  const searchBarRef = React.useRef(null);
+  const searchBarRef = React.useRef<HTMLInputElement | null>(null);
 
   React.useEffect(() => {
     if (isOpen) {
       if (searchBarRef.current !== null) {
-        searchBarRef.current.querySelector(`input`).focus();
+        searchBarRef.current.querySelector(`input`)?.focus();
       }
     }
   }, [isOpen]);
@@ -147,7 +157,7 @@ const Navigation = (props) => {
     //
     [true],
     // default
-    [false]
+    false
   );
 
   if (Array.isArray(isMobile) && isMobile[0] === false && isOpen) {
@@ -160,14 +170,21 @@ const Navigation = (props) => {
         <StyledWrapper>
           <StyledNavWrapper>
             <Link to="/" aria-label="Go to home">
-              <StyledNavLogo scrollPositionY={pathname === `/` ? y : 1}>
+              <StyledNavLogo
+                scrollPositionY={
+                  pathname === `/` && typeof scroll?.top === 'number' ? scroll.top : 1
+                }
+              >
                 <Logo />
               </StyledNavLogo>
             </Link>
-
             {!Array.isArray(isMobile) && isMobile ? (
               <>
-                <StyledSearchIconButton aria-label="search button" aria-haspopup="true" onClick={toggleModal}>
+                <StyledSearchIconButton
+                  aria-label="search button"
+                  aria-haspopup="true"
+                  onClick={toggleModal}
+                >
                   <StyledSearchIcon></StyledSearchIcon>
                 </StyledSearchIconButton>
                 {isOpen && (
@@ -178,6 +195,7 @@ const Navigation = (props) => {
                           <SearchBar />
                         </InstantSearch>
                       </StyledSearch>
+
                       <StyledModalCloseButton onClick={() => closeModal()}>
                         <FaWindowClose></FaWindowClose>
                       </StyledModalCloseButton>
@@ -195,6 +213,7 @@ const Navigation = (props) => {
 
             <StyledNav>
               <div>&nbsp;</div>
+
               <StyledNavList>
                 <NavLink initial={'rest'} whileHover="hover" to="/">
                   <motion.div variants={iconMotion}>
@@ -202,6 +221,7 @@ const Navigation = (props) => {
                   </motion.div>
                   Home
                 </NavLink>
+
                 <NavLink initial="rest" to="/blog" whileHover="hover" animate="rest">
                   {' '}
                   <motion.div variants={iconMotion}>
@@ -209,12 +229,14 @@ const Navigation = (props) => {
                   </motion.div>
                   Blog
                 </NavLink>
+
                 <NavLink initial="rest" to="/about" whileHover="hover" animate="rest">
                   <motion.div variants={iconMotion}>
                     <HiOutlineUserCircle></HiOutlineUserCircle>
                   </motion.div>
                   About
                 </NavLink>
+
                 <li
                   css={`
                     padding: 1rem 1rem;
@@ -230,6 +252,7 @@ const Navigation = (props) => {
                     {mode === `light` ? <FaSun /> : <FaMoon />}
                   </StyledDarkLightModeSwitcherButton>
                 </li>
+
                 <li
                   css={`
                     padding: 1rem 0.5rem;
