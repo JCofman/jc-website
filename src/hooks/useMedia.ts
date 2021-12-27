@@ -1,8 +1,24 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { useState, useEffect } from 'react';
+
+export const mockMediaQueryList: MediaQueryList = {
+  media: '',
+  matches: false,
+  onchange: () => {},
+  addListener: () => {},
+  removeListener: () => {},
+  addEventListener: () => {},
+  removeEventListener: () => {},
+  // eslint-disable-next-line no-unused-vars
+  dispatchEvent: (_: Event) => true,
+};
 
 export const useMedia = <T>(queries: string[], values: T[], defaultValue: T) => {
   // Array containing a media query list for each query
-  const mediaQueryLists = queries.map((q) => window.matchMedia(q));
+  const mediaQueryLists = queries.map((q) =>
+    typeof window === 'undefined' ? mockMediaQueryList : window.matchMedia(q)
+  );
+
   // Function that gets value based on matching media query
   const getValue = () => {
     // Get index of first media query that matches

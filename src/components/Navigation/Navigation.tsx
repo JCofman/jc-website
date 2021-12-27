@@ -139,7 +139,7 @@ const Navigation = (props: {
     theme: { mode },
   } = props;
   const { closeModal, isOpen, Modal, toggleModal } = useModal();
-  const scroll = useScroll(document);
+  const scroll = useScroll(typeof window !== 'undefined' ? window?.document : null);
 
   const searchBarRef = React.useRef<HTMLInputElement | null>(null);
 
