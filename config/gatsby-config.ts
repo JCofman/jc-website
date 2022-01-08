@@ -4,29 +4,29 @@ require(`dotenv`).config({
 });
 
 const postQuery = `{
-    posts: allMdx(
-      filter: { fileAbsolutePath: { regex: "/blog/" } }
-    ) {
-      edges {
-        node {
-          objectID: id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            path
-            excerpt
-            date(formatString: "MMM D, YYYY")
-            tags
-          }
+  posts: allMdx(
+    filter: { fileAbsolutePath: { regex: "/blog/" } }
+  ) {
+    edges {
+      node {
+        objectID: id
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          path
+          excerpt
+          date(formatString: "MMM D, YYYY")
+          tags
         }
       }
     }
-  }`;
+  }
+}`;
 
-const flatten = (arr) =>
-  arr.map(({ node: { frontmatter, ...rest } }) => ({
+const flatten = (arr: []) =>
+  arr.map(({ node: { frontmatter, ...rest } }: any) => ({
     ...frontmatter,
     ...rest,
   }));
@@ -35,7 +35,7 @@ const settings = { attributesToSnippet: [`excerpt:20`] };
 const queries = [
   {
     query: postQuery,
-    transformer: ({ data }) => flatten(data.posts.edges),
+    transformer: ({ data }: any) => flatten(data.posts.edges),
     indexName: process.env.ALGOLIA_INDEX_NAME,
     settings,
   },
@@ -109,7 +109,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
+        path: `${__dirname}/../content/blog`,
         name: `blog`,
       },
     },
@@ -117,7 +117,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/assets/images`,
+        path: `${__dirname}/../src/assets/images`,
       },
     },
     {

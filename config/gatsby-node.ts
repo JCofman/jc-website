@@ -1,3 +1,5 @@
+import { GatsbyCreatePages, BoundActionCreators } from '../gatsby-types';
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require(`path`);
 
@@ -6,7 +8,15 @@ const BLOG_POST_FILENAME_REGEX = /([0-9]+)-([0-9]+)-([0-9]+)-(.*?)\/index\.mdx$/
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({
+  graphql,
+  actions,
+  reporter,
+}: {
+  graphql: any;
+  actions: BoundActionCreators;
+  reporter: any;
+}) => {
   const { createPage } = actions;
   // Define a template for blog post
   const blogPostTemplate = path.resolve(`./src/templates/BlogPost/BlogPost.tsx`);
@@ -61,7 +71,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 };
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ node, actions, getNode }: any) => {
   const { createNodeField } = actions;
   let slug;
   if (node.internal.type === `Mdx` && getNode(node.parent).relativePath) {
@@ -99,7 +109,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
-exports.createSchemaCustomization = ({ actions }) => {
+exports.createSchemaCustomization = ({ actions }: any) => {
   const { createTypes } = actions;
 
   // Explicitly define the siteMetadata {} object
