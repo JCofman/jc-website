@@ -71,7 +71,7 @@ const ReactMap = () => {
           }}
         </Geographies>
         <AnimatePresence>
-          <motion.g variants={variants} initial={'start'} animate={'end'}>
+          <motion.g key="countries" variants={variants} initial={'start'} animate={'end'}>
             {visitedCountries.map(
               ({
                 name,

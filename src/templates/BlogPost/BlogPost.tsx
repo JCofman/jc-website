@@ -96,7 +96,7 @@ interface TemplateProps {
 export default function Template({ data, pageContext }: TemplateProps) {
   const { mdx: post } = data;
   const { next, prev } = pageContext;
-  const image = getImage(post?.frontmatter?.headerImag);
+  const image = getImage(post?.frontmatter?.headerImage);
 
   return (
     <Layout>

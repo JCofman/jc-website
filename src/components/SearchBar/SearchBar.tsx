@@ -54,7 +54,7 @@ const StyledInput = styled.input`
 
 interface SearchBarProps {
   isSearchStalled: boolean;
-  refine: (value: string) => void;
+  refine: () => void;
   hits: [];
 }
 

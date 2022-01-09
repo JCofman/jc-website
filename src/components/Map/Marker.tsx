@@ -74,7 +74,7 @@ export const Marker = ({
   textOffsetY: number;
 }) => {
   return (
-    <motion.g variants={containerVariant}>
+    <motion.g key={name} variants={containerVariant}>
       <MotionMarker coordinates={coordinates}>
         <foreignObject
           height="15"
