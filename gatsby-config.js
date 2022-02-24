@@ -124,6 +124,8 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          { resolve: `gatsby-remark-static-images` },
+          { resolve: `gatsby-remark-copy-linked-files` },
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -169,6 +171,8 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         gatsbyRemarkPlugins: [
+          { resolve: `gatsby-remark-copy-linked-files` },
+
           {
             resolve: `gatsby-remark-images`,
             options: {
