@@ -1,8 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { StyledSocial } from './StyledSocial';
-
 import { FaTwitter, FaFacebook, FaBehance, FaGithub } from 'react-icons/fa';
+
+import styled from 'styled-components';
+
+export const StyledSocial = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  a {
+    color: var(--color-text);
+    margin: 2rem;
+  }
+`;
 
 const Social = () => {
   return (
