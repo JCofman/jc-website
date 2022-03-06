@@ -46,8 +46,6 @@ export const GlobalStyle = createGlobalStyle`
     --color-grey-700: ${colors.grey700};
     --color-grey-800: ${colors.grey800};
 
-
-
     /** FONTSIZE */
     --font-size-xs: ${fontSizes.fontSizeXs};
     --font-size-sm: ${fontSizes.fontSizeSm};
@@ -102,7 +100,6 @@ export const GlobalStyle = createGlobalStyle`
     --padding-4: 3.2rem;
     --padding-5: 4.0rem;
 
-    //BREAKPOINTS 
     --br-x-small: ${breakPoints.xsmall};
     --br-small: ${breakPoints.small};
     --br-medium: ${breakPoints.medium};
@@ -929,7 +926,7 @@ export const GlobalStyle = createGlobalStyle`
   `;
 
 const getInitialTheme = (preferedTheme: string) => {
-  const savedTheme = JSON.parse(localStorage.getItem(`theme`) as any);
+  const savedTheme = JSON.parse(localStorage.getItem(`theme`) as string);
   return savedTheme ? savedTheme : preferedTheme;
 };
 

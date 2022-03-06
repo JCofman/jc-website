@@ -21,12 +21,12 @@ import Figure from '../../../src/components/Figure';
 Micro animations and interactions can enhance the user experience and also make a web application
 look more cleaned up and polished 💅.
 
-There are some principles to get interactions and animations right but such details often do not get
-prioritized in our fast-moving feature focused world and therefore are not well discussed. Nowadays
-libraries like [Framer Motion](https://www.framer.com/motion/) make it more accessible to develop
-high-quality animations without a lot of in-depth knowledge about issues like performance or
-accessibility of animations. Especially more realistic motions can be described easier then ever. In
-this blogpost we are going to build the following phyisics based micro animations.
+There are some principles to get interactions and animations right. Still, such details often do not
+get prioritized in our fast-moving feature-focused world and therefore are not well discussed.
+Nowadays, libraries like [Framer Motion](https://www.framer.com/motion/) make it more accessible to
+develop high-quality animations without in-depth knowledge about issues like performance or
+accessibility of animations. Primarily more realistic motions can be described easier than ever. In
+this blogpost we are going to build the following physics based micro animations.
 
 <figure>
   <img src="./microanimations.gif" alt="firebase console example" />
@@ -34,20 +34,20 @@ this blogpost we are going to build the following phyisics based micro animation
 
 ### **Tiny details often can make a huge difference**
 
-Do you prefer using a to-do app that gives you easy redo and un-do capabilities and where you see
-clearly which todo items is done or on the other hand have a clunky overly complex user interface in
-front of you? For example, the popular [Todoist](https://todoist.com/app/) app gives you an easily
-undo mechanism and animates your completed task smoothly into the completed area.
+Do you prefer using a todo app that gives you easy redo and un-do capabilities and where you see
+clearly which todo items is done or, on the other hand, has a clunky, overly complex user interface
+in front of you? For example, the famous [Todoist](https://todoist.com/app/) app gives you an easy
+undo mechanism and animates your completed task smoothly into the finished area.
 
-The website [https://littlebigdetails.com/](https://littlebigdetails.com/) was an awesome place to
-explore tiny details but it did not get many updates in the last few years. You can still see a lot
-of older awesome examples there.
+The website [https://littlebigdetails.com/](https://littlebigdetails.com/) was a fantastic place to
+explore tiny details, but it did not get many updates in the last few years. You can still see a lot
+of older excellent examples there.
 
-In this blog post, I want to show how to create a natural tiny micro animation that you can
-implement using spring physics with Framer Motion and React. As I have mentioned a micro animation
-can get a more natural look using spring physics. Down below you can see two examples from
-[Stripe](https://stripe.com) and [Firebase](https://firebase.com) which use such tiny
-micro-interactions in their websites.
+In this blog post, I want to show how to create a realistic tiny micro animation that you can
+implement using spring physics with Framer Motion and React. As I have mentioned, a micro animation
+can get a more natural look using spring physics. Down below, you can see two examples from
+[Stripe](https://stripe.com) and [Firebase](https://firebase.com) use such tiny micro-interactions
+in their websites.
 
 <figure>
   <img src="./micro-animation-firebase.gif" alt="firebase console example" />
@@ -77,16 +77,16 @@ React has a lot of really great animation community and a lot of great open sour
 - [React Motion](https://github.com/chenglou/react-motion)
 - [react-transition-group](https://github.com/reactjs/react-transition-group)
 
-While Framer Motion is a bit bigger in the overall bundle size it is more widely used, performant
+While Framer Motion is a bit bigger in the overall bundle size, it is more widely used, performant
 and offers a great developer experience while also making advanced animation based on spring physics
-much more easy to implement.
+much easier to implement.
 
 ## Natural animation
 
 Spring animation and physics animation libraries are focused on modeling natural world forces like
 gravity, friction, and fluid dynamics into animation.
 
-it is a technique that let animation look a lot more natural. It is based on three variables
+It is a technique that makes the animation look a lot more natural. It is based on three variables
 
 - **stiffness** (how fast the animation is)
 - **damping** (how long it takes till an animation will come to an end)
@@ -101,10 +101,10 @@ Chenglou.
 ## Let's create some micro animations
 
 We will create an example with small micro animations using framer motion. As many of the current
-websites have social icons you can make them more interactive and fun using hover animations as seen
-in the example below.
+websites have social icons. As seen in the example below, you can make them more interactive and fun
+using hover animations.
 
-Try to hover over the icons to see it in action.
+Try to hover over the icons to see them in action.
 
 <div style={{ position: 'relative', marginTop: '2rem', marginBottom: '6rem' }}>
   <MicroAnimations />
@@ -112,8 +112,8 @@ Try to hover over the icons to see it in action.
 
 [Linke to CodeSandbox](https://codesandbox.io/s/blog-micro-animation-0xfuf)
 
-We will create four different hover animations. To get started we will create a new Create React App
-and add some basic styles to it as well as social icons using the popular
+We will create four different hover animations. To get started, we will create a new Create React
+App and add some basic styles to it and social icons using the popular
 [react-icons](https://react-icons.github.io/react-icons/) package.
 
 ```bash
@@ -184,10 +184,10 @@ tags `motion.div` prefixed by motion tag. This is the same API surface as
 [Styled-Compoents](https://styled-components.com/docs/api) has.
 
 You can use any HTML tag with the prefix `motion` like `motion.div`, `motion.article` or
-`motion.svg` to define a new tag. In the example below we will just use the `whileHover` property of
-the tag to animate the social icons. You can define what should happen to the element when a user
-hovers over the div. In the case below we will rotate the icon by 9 degrees and scale it up by 1.4
-and transition the color from `#5c5edd` to `#FF008C`.
+`motion.svg` to define a new tag. In the example below, we will use the `whileHover` property of the
+tag to animate the social icons. You can define what should happen to the element when a user hovers
+over the div. In the case below, we will rotate the icon by 9 degrees and scale it up by 1.4 and
+transition the color from `#5c5edd` to `#FF008C`.
 
 ```tsx
 <motion.div
@@ -199,7 +199,7 @@ and transition the color from `#5c5edd` to `#FF008C`.
 >
 ```
 
-You can play around with different styles as you can see down below.
+You can play around with different styles, as you can see below.
 
 ```tsx
 import './styles.css';
@@ -300,7 +300,7 @@ You can also predefine various states in Framer Motion effects using
 [variants](https://www.framer.com/docs/examples/#variants) and apply the transform based on hover.
 
 With this feature, you can also animate multiple react components with one interaction. For example,
-we can create a button where an Icon gets this slick animated effect. You can create different
+we can create a button where an Icon gets this slick animated effect. You can create differently
 IconAnimation styles. I tried to replicate the one from the Firebase and Stripe example. We declare
 a variant object with the initial state of "rest" and a "hover" state. We then use a motion.button
 component to declare the initial state and hover state.
@@ -377,7 +377,7 @@ const iconMotionSetting = {
 </motion.button>;
 ```
 
-Below is the full example with the arrow motion example.
+Below is the complete example with the arrow motion example.
 
 ```tsx
 import './styles.css';
