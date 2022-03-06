@@ -12,13 +12,7 @@ VS Code development experience a bit better (at least for my kind)'
 ---
 
 import Kbd from '../../../src/components/Kbd';
-import bracketColorizerVideo from './bracket-colorizer.mp4';
-import bracketPairVideo from './bracket-pair-guides.mp4';
-import fontLigatureVideo from './font-ligatures.mp4';
-import highlightModifiedTab from './highlight-modified-tab.mp4';
-import inlayHintsVideo from './inlay-hints.mp4';
-
-# Make VS Code better by just editing some settings
+import Video from '../../../src/components/Video';
 
 This article shows some valuable tips and tricks on how to make
 [VS Code](https://code.visualstudio.com/) development experience a bit better (at least for my kind
@@ -38,13 +32,11 @@ Settings dialog in VS Code
 
 Here are the five 🔥 things I add to improve my development environment.
 
-## 1. Enable bracket colorization
+## Enable bracket colorization
 
 Using bracket colorization makes it easier to see where code blocks start and end.
 
-<video controls style={{ width: `100%` }}>
-  <source src={bracketColorizerVideo} type="video/mp4" />
-</video>
+<Video videoSrcURL={'/bracket-colorizer.mp4'} />
 
 ```jsx
 // settings.json
@@ -53,56 +45,57 @@ Using bracket colorization makes it easier to see where code blocks start and en
  "editor.bracketPairColorization.enabled": true
 ```
 
-## 2. Enable bracket pair guides
+## Enable bracket pair guides
 
 Besides using bracket colorization, I love to add bracket pair guides.
 
-<video controls style={{ width: `100%` }}>
-  <source src={bracketPairColorization} type="video/mp4" />
-</video>
+<Video videoSrcURL={'/bracket-pair-guides.mp4'} />
 
 ```jsx
 // settings.json
 
-// 1. enables vscode native bracket colorization
+// 2. enables vscode native bracket colorization
  "editor.bracketPairColorization.enabled": true
 ```
 
-## 3. Highlight modified Tab
+## Highlight modified Tab
 
 I like to make it more clear which file I work on.
 
-<video controls style={{ width: `100%` }}>
-  <source src={highlightModifiedTab} type="video/mp4" />
-</video>
+<Video videoSrcURL={'/highlight-modified-tab.mp4'} />
 
 ```jsx
 // settings.json
 
-// 2. highlight active tab
-  "workbench.editor.highlightModifiedTabs": true,
+// 3. highlight active tab
+"workbench.editor.highlightModifiedTabs": true,
 ```
 
-## 4. Using Font Ligatures
+## Using Font Ligatures
 
 It makes it easier to distinguish comparisons between code lines.
 
-<video controls style={{ width: `100%` }}>
-  <source src={fontLigatureVideo} type="video/mp4" />
-</video>
+<Video videoSrcURL={'/font-ligatures.mp4'} />
 
 ```jsx
+// settings.json
+
 // use a font with font ligatures
-	 "editor.fontFamily": "Jetbrains Mono, Menlo, Monaco, 'Courier New', monospace",
-// 3. enable font ligature
-	 "editor.fontLigatures": true,
+"editor.fontFamily": "Jetbrains Mono, Menlo, Monaco, 'Courier New', monospace",
+// 4. enable font ligature
+"editor.fontLigatures": true,
 ```
 
-## 5. Enabling Inlay hints
+## Enabling Inlay hints
 
-It can help you see what kind of properties needs to get passed into functions. without having to
-hover over the function call.
+<Video videoSrcURL={'/inlay-hints.mp4'} />
 
-<video controls style={{ width: `100%` }}>
-  <source src={inlayHintsVideo} type="video/mp4" />
-</video>
+It can help you see what properties need to get passed into functions. without having to hover over
+the function call.
+
+```jsx
+// settings.json
+
+// 5. enable parameter hints
+"typescript.inlayHints.parameterNames.enabled": "all",
+```

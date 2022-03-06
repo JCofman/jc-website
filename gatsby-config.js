@@ -138,6 +138,7 @@ module.exports = {
               markdownCaptions: true,
             },
           },
+          { resolve: 'gatsby-remark-video' },
           {
             resolve: `gatsby-remark-embed-video`,
             options: {
@@ -172,7 +173,7 @@ module.exports = {
       options: {
         gatsbyRemarkPlugins: [
           { resolve: `gatsby-remark-copy-linked-files` },
-
+          { resolve: 'gatsby-remark-video' },
           {
             resolve: `gatsby-remark-images`,
             options: {
