@@ -225,6 +225,22 @@ exports[`should render a H5 header tags 1`] = `
   transition: none;
 }
 
+.c0:before {
+  width: 0;
+  height: 0;
+  opacity: 0.2;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+  border-bottom: 2em solid var(--color-text);
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  -webkit-transform: translateX(-0.5em) translateY(-1.5rem);
+  -ms-transform: translateX(-0.5em) translateY(-1.5rem);
+  transform: translateX(-0.5em) translateY(-1.5rem);
+}
+
 <h5
   class="c0"
 >
@@ -257,6 +273,22 @@ exports[`should render a H6 header tags 1`] = `
   color: var(--color-primary);
   -webkit-transition: none;
   transition: none;
+}
+
+.c0:before {
+  width: 0;
+  height: 0;
+  opacity: 0.2;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+  border-bottom: 2em solid var(--color-text);
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  -webkit-transform: translateX(-0.5em) translateY(-1.5rem);
+  -ms-transform: translateX(-0.5em) translateY(-1.5rem);
+  transform: translateX(-0.5em) translateY(-1.5rem);
 }
 
 <h6

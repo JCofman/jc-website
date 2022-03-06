@@ -17,6 +17,20 @@ const items = [
     title: `Some improvement ideas`,
   },
 ];
+// IntersectionObserver isn't available in test environment
+const mockIntersectionObserver = jest.fn();
+mockIntersectionObserver.mockReturnValue({
+  observe: () => null,
+  unobserve: () => null,
+  disconnect: () => null,
+});
+
+window.IntersectionObserver = mockIntersectionObserver;
+
+test(`TableOfContents can render no items`, () => {
+  const { queryByRole } = renderWithTheme(<TableOfContents items={[]} />);
+  expect(queryByRole(`link`)).not.toBeInTheDocument();
+});
 
 test(`Divider is rendered properly`, () => {
   const { container } = renderWithTheme(<TableOfContents items={items} />);
@@ -34,8 +48,3 @@ test.todo(
   //   getByRole(`link`, { name: /exciting Stuff/i });
   // }
 );
-
-test(`TableOfContents can render no items`, () => {
-  const { queryByRole } = renderWithTheme(<TableOfContents items={[]} />);
-  expect(queryByRole(`link`)).not.toBeInTheDocument();
-});

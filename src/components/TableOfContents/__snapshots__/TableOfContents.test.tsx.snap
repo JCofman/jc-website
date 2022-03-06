@@ -115,7 +115,9 @@ exports[`Divider is rendered properly 1`] = `
 }
 
 <div>
-  <div>
+  <nav
+    aria-label="table of contents for post"
+  >
     <nav
       class="c0"
     >
@@ -177,20 +179,23 @@ exports[`Divider is rendered properly 1`] = `
       </svg>
       <a
         href="#exciting-stuff"
+        style="font-weight: 600;"
       >
         Exciting Stuff
       </a>
       <a
         href="#what-i-have-learned-in-a-nutshell"
+        style="font-weight: 600;"
       >
         What I have learned in a nutshell
       </a>
       <a
         href="#some-improvement-ideas"
+        style="font-weight: 600;"
       >
         Some improvement ideas
       </a>
     </nav>
-  </div>
+  </nav>
 </div>
 `;
