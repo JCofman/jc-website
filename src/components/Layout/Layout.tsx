@@ -734,7 +734,7 @@ export const GlobalStyle = createGlobalStyle`
   pre tt:after {
     content: "";
   }
-  ::selection { background: var(---color-red-500); }
+  ::selection { background: var(--color-secondary); }
   code[class*='language-'],
   pre[class*='language-'] {
     font-size: 1.4rem;
@@ -762,7 +762,7 @@ export const GlobalStyle = createGlobalStyle`
   code[class*='language-']::-moz-selection,
   code[class*='language-'] ::-moz-selection {
     text-shadow: none;
-    background: #011627;
+    background: var(--color-secondary);
   }
   
   pre[class*='language-']::selection,
@@ -770,7 +770,7 @@ export const GlobalStyle = createGlobalStyle`
   code[class*='language-']::selection,
   code[class*='language-'] ::selection {
     text-shadow: none;
-    background: #011627;
+    background: var(--color-secondary);
   }
   
   @media print {
