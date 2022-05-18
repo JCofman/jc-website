@@ -98,7 +98,7 @@ const ReactMap = () => {
                       markerOffsetX={markerOffsetX}
                       textOffsetX={textOffsetX}
                       textOffsetY={textOffsetY}
-                      coordinates={[longitude, latitude]}
+                      coordinates={[parseInt(longitude), parseInt(latitude)]}
                       name={name}
                     ></Marker>
                   );

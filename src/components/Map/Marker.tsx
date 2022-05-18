@@ -6,9 +6,6 @@ import { Marker as ReactSimpleMarker, Annotation, Point } from 'react-simple-map
 const MotionMarker = motion(ReactSimpleMarker);
 
 const circleTransition: Transition = {
-  repeatDelay: 1,
-  // repeat: 'Infinity',
-  repeatType: 'loop',
   type: 'tween',
   ease: [0, 0.55, 0.75, 1],
 };
@@ -86,14 +83,14 @@ export const Marker = ({
         >
           <motion.div>
             <motion.div
-              style={styleThinHalo as MotionStyle}
+              style={styleThinHalo}
               variants={circleVariant}
               initial={'start'}
               animate={'end'}
               transition={firstCircle}
             />
             <motion.div
-              style={styleThinHalo as MotionStyle}
+              style={styleThinHalo}
               variants={circleVariant}
               initial={'start'}
               animate={'end'}
@@ -101,7 +98,7 @@ export const Marker = ({
             />
 
             <motion.div
-              style={styleThinHalo as MotionStyle}
+              style={styleThinHalo}
               variants={circleVariant}
               initial={'start'}
               animate={'end'}

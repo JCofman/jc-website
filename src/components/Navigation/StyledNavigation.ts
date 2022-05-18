@@ -59,8 +59,8 @@ export const StyledNav = styled.nav`
 `;
 
 export const StyledNavLogo = styled.svg<{ scrollPositionY?: number }>`
-  width: 140px;
-  height: 140px;
+  width: 80px;
+  height: 80px;
   transition: all 0.25s ease-out 0s;
   margin-top: 5px; /* green top border margin */
   z-index: ${zIndexLogo};
@@ -68,8 +68,8 @@ export const StyledNavLogo = styled.svg<{ scrollPositionY?: number }>`
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
   ${(props) => props.theme.xsmall} {
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
   }
 
   ${(props) => props.theme.medium} {
@@ -83,12 +83,6 @@ export const StyledNavLogo = styled.svg<{ scrollPositionY?: number }>`
     height: 140px;
     left: 70px;
     display: inline-block;
-  }
-
-  @media (min-width: 2000px) {
-    display: ${(props) =>
-      props?.scrollPositionY && props?.scrollPositionY > 0 ? `visible` : `none`};
-    position: fixed;
   }
 
   svg {
