@@ -15,6 +15,8 @@ export const StyledWrapper = styled.div`
   z-index: ${zIndexNavigation};
   border-top: 2px solid ${(props) => props.theme.colors.primary};
   border-bottom: 1px solid #201c29;
+  background: rgb(0 0 0 / 80%);
+  backdrop-filter: blur(12px);
 `;
 
 export const StyledNavWrapper = styled.div`
