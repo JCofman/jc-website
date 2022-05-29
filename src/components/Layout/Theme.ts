@@ -35,6 +35,8 @@ export const colors = {
   grey800: `#1F2937`,
   red500: `#EF4444`,
   red600: `#DC2626`,
+  blackBlurred: `rgb(0,0,0 / 90%)`,
+  whiteBlurred: `rgb(255,255,255, / 90%)`,
 };
 
 export const textShadows = {

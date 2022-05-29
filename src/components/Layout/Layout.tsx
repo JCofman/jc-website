@@ -31,6 +31,7 @@ export const GlobalStyle = createGlobalStyle`
     /** COLOR */
     --color-text: ${colors.white};
     --color-background: ${colors.black};
+    --color-background-blurred: ${colors.blackBlurred};
     --color-primary: ${colors.primary};
     --color-secondary: ${colors.secondary};
     
@@ -969,10 +970,16 @@ const Layout = ({ children, location }: { children: React.ReactNode; location: s
     const root = window.document.documentElement;
     // 3. Update each color
     root.style.setProperty('--color-text', themeMode === 'light' ? colors.black : colors.white);
+
     root.style.setProperty(
       '--color-background',
       themeMode === 'light' ? colors.white : colors.black
     );
+    root.style.setProperty(
+      '--color-background--blurred',
+      themeMode === 'light' ? colors.whiteBlurred : colors.blackBlurred
+    );
+
     root.style.setProperty(
       '--color-primary',
       themeMode === 'light' ? colors.primary : colors.primary
